@@ -129,13 +129,17 @@ def main(file1, file2):
     print()
 
     reproducibility_summary = {}
+    gpu_utilization_summary = {}
+
     for hw_label, hw_results in [(hw1, results1), (hw2, results2)]:
         print(f"--- {hw_label.upper()} ---")
         hw_summary = {}
+        gpu_summary = {}
 
         for condition in conditions:
             reproducible_count = 0
             total_count = 0
+            gpu_utils = []
 
             for seq_name in common_sequences:
                 seq_data = hw_results['sequences'][seq_name]
@@ -144,17 +148,34 @@ def main(file1, file2):
                     reproducible_count += 1
                 total_count += 1
 
+                # Collect GPU utilization
+                if cond_data.get('gpu_utilization'):
+                    gpu_utils.append(cond_data['gpu_utilization'])
+
             hw_summary[condition] = {
                 'reproducible': reproducible_count,
                 'total': total_count,
                 'percentage': 100 * reproducible_count / total_count if total_count > 0 else 0
             }
 
+            # Aggregate GPU utilization
+            if gpu_utils:
+                gpu_summary[condition] = {
+                    'mean_of_means': float(np.mean([g['mean'] for g in gpu_utils])),
+                    'mean_of_p95': float(np.mean([g['p95'] for g in gpu_utils])),
+                    'max_p95': float(np.max([g['p95'] for g in gpu_utils])),
+                    'max_max': float(np.max([g['max'] for g in gpu_utils]))
+                }
+
             symbol = "✓" if reproducible_count == total_count else "⚠"
+            gpu_str = ""
+            if condition in gpu_summary:
+                gpu_str = f" | GPU: {gpu_summary[condition]['mean_of_means']:.0f}% avg, {gpu_summary[condition]['mean_of_p95']:.0f}% p95"
             print(f"  {condition}: {symbol} {reproducible_count}/{total_count} sequences reproducible "
-                  f"({hw_summary[condition]['percentage']:.0f}%)")
+                  f"({hw_summary[condition]['percentage']:.0f}%){gpu_str}")
 
         reproducibility_summary[hw_label] = hw_summary
+        gpu_utilization_summary[hw_label] = gpu_summary
         print()
 
     # ========================================================================
@@ -434,6 +455,7 @@ def main(file1, file2):
             'timestamp': datetime.now().isoformat()
         },
         'reproducibility_analysis': reproducibility_summary,
+        'gpu_utilization_summary': gpu_utilization_summary,
         'cross_hardware_same_condition': cross_hardware_results,
         'within_hardware_different_conditions': within_hardware_results,
         'cross_hardware_different_conditions': cross_matrix_results,
