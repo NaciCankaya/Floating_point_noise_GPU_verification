@@ -1,7 +1,7 @@
 # Inference Verification via Floating-Point Forensics
 
 ## Context
-Verification of an AI datacenter's ML computations (Accurate and Comprehensive reporting)
+Verification of an AI datacenter's ML computations (accurate and comprehensive reporting)
 
 This repo documents experiments for an idea for technical AI governance that deals with what Baker et al. refer to as "Verification Subgoals" 1A and 2A. 
 https://www.alphaxiv.org/abs/2507.15916
