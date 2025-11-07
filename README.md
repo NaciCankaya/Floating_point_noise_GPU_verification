@@ -37,27 +37,16 @@ Can attempt reproduction on a trusted reference system. Deviations between claim
 
 ### Setup
 - **Model:** Qwen2.5-7B-Instruct (BF16)
-- **Hardware:** NVIDIA A100 80GB PCIe, H100 NVL
-- **Extraction:** Key vectors from attention layers at multiple positions
-- **Layers sampled:** 1, 4, 10, 18, 28 (capturing early, middle, and late representations)
-- **Measurement:** L2 distance between key vectors
+- **Extraction:** Key vectors from attention layers at multiple positions, hidden states
+- **Measurement:** L2 distance between key vectors or hidden states
 
-### Baseline Establishment
-Cross-hardware reproducibility baseline (A100 ↔ H100, identical setup):
-- **Layer 1:** μ = 0.196, σ = 0.212
-- **Layer 4:** μ = 0.210, σ = 0.068  
-- **Layer 10:** μ = 0.235, σ = 0.038
-- **Layer 18:** μ = 0.335, σ = 0.061
-- **Layer 28:** μ = 0.425, σ = 0.310
-
-**Key finding:** Hardware differences create order-of-magnitude 10^-1 deviations, but these are consistent and can serve as a baseline for detecting additional changes.
 
 ## Experiments and Results
 
 ### 1. Repetition Reproducibility ✓
 **Test:** Multiple runs of identical setup  
 **Result:** Bit-exact reproduction on single CUDA stream  
-**Implication:** Production inference (single stream) is deterministic
+**Implication:** Production inference (single stream, controlled batch size) is deterministic.
 
 ### 2. Hardware Variation ✓
 **Test:** Same setup on different GPUs
@@ -96,20 +85,22 @@ Cross-hardware reproducibility baseline (A100 ↔ H100, identical setup):
 ### 7. CUDA Version Changes ✓
 **Test:** Different CUDA toolkit versions  
 **Result:** Systematic deviations detected  
-**Implication:** Minor software updates can be detected (may need allowlisting)
+**Implication:** Some software updates can be detected (may need allowlisting)
 
 ### 8. Pipeline Parallelism Ranks ✓
-**Test:** Different PP ranks computing same layer  
-**Result:** Small systematic deviations  
-**Implication:** PP rank location creates detectable differences
+**Test:** Different PP ranks spreading the model across 1, 2 and 4 A100s
+**Result:** Bitwise identical
+**Implication:** Not detectable via FP forensics alone
 
-### 9. Parallel CUDA Streams ⚠️ **CONTEXT-DEPENDENT**
+### 9. Parallel CUDA Streams
 **Test:** Concurrent work on separate CUDA stream  
 **Result:** 
-- **Low GPU utilization:** Bit-exact reproduction (streams on different SMs)
+- **Low GPU utilization:** Bit-exact reproduction (streams on independent SMs)
 - **High GPU utilization:** Statistical noise detected (scheduling competition)
 
-**Implication:** Detection depends on utilization level. At realistic production utilization (~60-80%), separate streams may execute independently → undetectable.
+Not reproducible across repetitions.
+
+**Implication:** Detection depends on utilization level. At realistic production utilization (~60-80%), separate streams conflict → detectable, statistical noise.
 
 ### 10. Multiple Concurrent Streams (Detailed)
 **Experiment:** Realistic parallel work at different intensities
@@ -124,83 +115,11 @@ Cross-hardware reproducibility baseline (A100 ↔ H100, identical setup):
 - Layer 1: L2 = 9.8
 - Layer 28: L2 = 508.0
 
-**Implication:** Heavy concurrent loads create detectable interference, but light loads may only affect deeper layers. Verification must check all layers, not just final output.
-
-## Summary of Detectability
-
-### Highly Detectable (Systematic Deviations > 10× Baseline)
-✓ **Batch size changes** - 81× baseline  
-✓ **Different attention kernels** (FA2 vs Eager)  
-✓ **Compilation mode** (torch.compile)  
-✓ **Different GPU architectures** (but this IS the baseline)
-
-### Detectable (Systematic Deviations > 1.5× Baseline)  
-✓ **CUDA version changes**  
-✓ **Pipeline parallelism rank location**  
-✓ **Heavy concurrent CUDA stream work**
-
-### Potentially Undetectable (Within Baseline Noise)
-⚠️ **Minor software version updates** (those not changing kernels)  
-⚠️ **Batch composition/reshuffling** (fixed size)  
-⚠️ **GPU device location** (same architecture)  
-⚠️ **Light concurrent CUDA stream work** (at low utilization)
 
 ## Implications for AI Governance
 
-### What Verification Can Detect
-1. **Hidden batch size increases** → Strongly detectable
-2. **Different model architectures** → Detectable  
-3. **Kernel/precision changes** → Detectable
-4. **Heavy parallel unauthorized work** → Detectable via interference patterns
+TBD
 
-### Verification Challenges
-1. **Light concurrent work at low utilization** → May execute independently on different SMs
-2. **Legitimate software updates** → May trigger false positives (need allowlisting)
-3. **Layer-dependent effects** → Must verify multiple layers, not just output
-4. **Statistical noise at high utilization** → Complicates threshold setting
-
-### Design Recommendations for Verification Systems
-1. **Multi-layer verification:** Check activations at multiple depths (early, middle, late layers)
-2. **Batch size as primary signal:** Strongest indicator of capacity manipulation
-3. **Per-layer thresholds:** Different layers show different baseline variations
-4. **Utilization monitoring:** High utilization increases detectability of parallel work
-5. **Software version registry:** Maintain allowlist of legitimate version changes
-6. **Continuous monitoring:** Single-point checks insufficient; need temporal consistency
-
-## Open Questions
-
-### Requiring Further Experimentation
-1. **Precision changes (FP8/FP4):** Do lower precisions increase or decrease detectability?
-2. **Scaling with model size:** How do forensics scale to 70B+ models?  
-3. **Production-realistic batching:** Continuous batching, speculative decoding impacts?
-4. **Long-context scenarios:** Do deviations accumulate or saturate with sequence length?
-5. **Quantization:** INT8/INT4 inference detectability?
-
-### Theoretical Questions  
-1. **Optimal layer selection:** Which layers are most forensically informative?
-2. **Statistical power:** How many samples needed for reliable detection?
-3. **Adversarial robustness:** Can sophisticated attackers craft undetectable evasions?
-
-## Repository Structure
-
-```
-/experiments/           # Experiment scripts
-  batch_matrix_experiment.py      # Batch size variation testing
-  cuda_stream_experiment.py       # Parallel stream testing (future)
-  cross_hardware_baseline.py      # Hardware comparison baseline
-  
-/comparison/           # Analysis scripts  
-  compare_batch_matrix.py         # Batch size detectability analysis
-  compare_baseline.py             # Cross-hardware baseline analysis
-  
-/results/              # Experimental data (JSON)
-  *_baseline_*.json               # Cross-hardware baselines
-  *_batch_matrix_*.json           # Batch size experiments
-  *_parallel_*.json               # CUDA stream experiments
-  
-/analysis/             # Summary reports
-  baseline_analysis_*.json        # Statistical summaries
-```
 
 ## Technical Details
 
@@ -215,71 +134,7 @@ Cross-hardware reproducibility baseline (A100 ↔ H100, identical setup):
 - Relevant for autoregressive generation (next token prediction)
 - Simplifies padding concerns in batched inference
 
-### Detectability Criterion
-**Threshold:** 1.5× baseline distance  
-**Rationale:** Conservative threshold allowing for measurement uncertainty while detecting meaningful deviations
 
-**Alternative thresholds under consideration:**
-- Statistical: baseline_mean + 2σ (95% confidence)
-- Percentile-based: 95th percentile of baseline  
-- Layer-specific: Different thresholds per layer depth
-
-## Running the Experiments
-
-### Prerequisites
-```bash
-pip install torch transformers numpy
-# Requires CUDA-capable GPU
-```
-
-### Quick Start
-```python
-# Establish cross-hardware baseline
-python cross_hardware_baseline.py --hardware a100
-python cross_hardware_baseline.py --hardware h100
-
-# Run batch size detectability test  
-python batch_matrix_experiment.py  # Runs all batch sizes (1, 2, 4)
-
-# Compare results
-python compare_batch_matrix.py a100_batch_matrix_*.json h100_batch_matrix_*.json
-```
-
-### Interpreting Results
-- **L2 distance < 0.1:** Likely same computational setup
-- **0.1 < L2 < 1.0:** Hardware differences or minor software variations  
-- **L2 > 1.0:** Significant setup differences (batch size, kernels, etc.)
-- **L2 > 10:** Major computational differences or parallel interference
-
-## Contributing
-
-This research is in active development. Key areas for contribution:
-1. Testing additional evasion vectors (FP8, speculative decoding, etc.)
-2. Scaling experiments to larger models (70B, 405B)
-3. Production-realistic inference scenarios (continuous batching, multi-tenant)
-4. Statistical analysis improvements (power analysis, optimal sampling)
-5. Adversarial robustness testing
-
-## Citation
-
-If you use this work, please cite:
-```
-[Citation information pending publication]
-```
-
-Related work:
-- RAND Report: "Securing Frontier AI" (WRA4077-1)  
-- Internal document on compute governance (available on request)
-
-## License
-
-[License TBD]
-
-## Contact
-
-[Contact information]
-
----
 
 **Status:** Active research project. Results are preliminary and subject to revision as we explore additional evasion vectors and scaling regimes.
 
