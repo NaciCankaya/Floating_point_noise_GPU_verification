@@ -1,0 +1,157 @@
+{
+  "timestamp": "2025-11-03T21:58:38.066515",
+  "files": {
+    "file1": "NVIDIA_A100_80GB_PCIe_cu118_7b_bf16_eager_20251103_135936.json",
+    "file2": "NVIDIA_A100_80GB_PCIe_cu121_7b_bf16_eager_20251103_140554.json"
+  },
+  "cuda_versions": {
+    "cuda1": "cu118",
+    "cuda2": "cu121"
+  },
+  "setup_verification": {
+    "checks": {
+      "GPU": {
+        "value1": "NVIDIA A100 80GB PCIe",
+        "value2": "NVIDIA A100 80GB PCIe",
+        "match": true
+      },
+      "PyTorch": {
+        "value1": "2.4.0",
+        "value2": "2.4.0",
+        "match": true
+      },
+      "Model": {
+        "value1": "Qwen/Qwen2.5-7B-Instruct",
+        "value2": "Qwen/Qwen2.5-7B-Instruct",
+        "match": true
+      },
+      "Attention": {
+        "value1": "eager",
+        "value2": "eager",
+        "match": true
+      },
+      "Precision": {
+        "value1": "bfloat16",
+        "value2": "bfloat16",
+        "match": true
+      },
+      "Prompt tokens": {
+        "value1": 3404,
+        "value2": 3404,
+        "match": true
+      }
+    },
+    "all_match": true
+  },
+  "reproducibility": {
+    "cu118": true,
+    "cu121": true
+  },
+  "layer_deviations": {
+    "1": {
+      "l2_distance": 0.017109456473775993,
+      "relative_diff": 0.0019798702537159357,
+      "max_diff": 0.015625,
+      "dims_affected": 1,
+      "dims_total": 3584,
+      "norm1": 8.641705910609025,
+      "norm2": 8.636119021660809
+    },
+    "2": {
+      "l2_distance": 0.1884355361803749,
+      "relative_diff": 0.01279413944957456,
+      "max_diff": 0.0625,
+      "dims_affected": 24,
+      "dims_total": 3584,
+      "norm1": 14.72826968340109,
+      "norm2": 14.815401490213873
+    },
+    "3": {
+      "l2_distance": 0.2744396298985527,
+      "relative_diff": 0.016039355390651645,
+      "max_diff": 0.0625,
+      "dims_affected": 76,
+      "dims_total": 3584,
+      "norm1": 17.110390237908607,
+      "norm2": 17.17616605260514
+    },
+    "4": {
+      "l2_distance": 0.4032289786061414,
+      "relative_diff": 0.021853787621933813,
+      "max_diff": 0.0625,
+      "dims_affected": 418,
+      "dims_total": 3584,
+      "norm1": 18.451217042186126,
+      "norm2": 18.455059960549686
+    },
+    "7": {
+      "l2_distance": 0.6317601608046859,
+      "relative_diff": 0.017713561645028145,
+      "max_diff": 0.0625,
+      "dims_affected": 1113,
+      "dims_total": 3584,
+      "norm1": 35.66533786173989,
+      "norm2": 35.614160825397576
+    },
+    "10": {
+      "l2_distance": 0.9733412970042831,
+      "relative_diff": 0.01746281250228844,
+      "max_diff": 0.125,
+      "dims_affected": 1763,
+      "dims_total": 3584,
+      "norm1": 55.73794581352403,
+      "norm2": 55.60480527337943
+    },
+    "14": {
+      "l2_distance": 1.2295427455914925,
+      "relative_diff": 0.018705561276393664,
+      "max_diff": 0.1875,
+      "dims_affected": 2051,
+      "dims_total": 3584,
+      "norm1": 65.73140080769295,
+      "norm2": 65.8918681574724
+    },
+    "18": {
+      "l2_distance": 1.6484337643947127,
+      "relative_diff": 0.020874912274892913,
+      "max_diff": 0.25,
+      "dims_affected": 2435,
+      "dims_total": 3584,
+      "norm1": 78.96721876897895,
+      "norm2": 79.14927780472776
+    },
+    "22": {
+      "l2_distance": 3.6280373271104396,
+      "relative_diff": 0.02276353095028522,
+      "max_diff": 0.5,
+      "dims_affected": 3082,
+      "dims_total": 3584,
+      "norm1": 159.37937462487477,
+      "norm2": 159.75742453750436
+    },
+    "28": {
+      "l2_distance": 15.401661674918813,
+      "relative_diff": 0.05003788900937356,
+      "max_diff": 7.0,
+      "dims_affected": 3352,
+      "dims_total": 3584,
+      "norm1": 307.79998876518613,
+      "norm2": 311.27552306220133
+    }
+  },
+  "error_propagation": {
+    "first_layer": 1,
+    "last_layer": 28,
+    "first_l2": 0.017109456473775993,
+    "last_l2": 15.401661674918813,
+    "growth_factor": 900.1841583059783,
+    "grows": true
+  },
+  "diagnosis": {
+    "error_propagation_confirmed": true,
+    "signal_strength": "EXCELLENT",
+    "last_l2_distance": 15.401661674918813,
+    "perfect_within_cuda_reproducibility": true,
+    "conclusion": "DISTINGUISHABLE"
+  }
+}
