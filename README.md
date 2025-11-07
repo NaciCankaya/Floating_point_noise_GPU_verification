@@ -32,12 +32,12 @@ At least this is the result I was hoping for with these experiments. Currently, 
 
 ## Experiments and Results
 
-### 1. Repetition Reproducibility ✓
+### 1. Repetition Reproducibility
 **Test:** Multiple runs of identical setup  
 **Result:** Bit-exact reproduction on single CUDA stream  
 **Implication:** Production inference (single stream, controlled batch size) is deterministic, as long as parallel request are batched together within the default CUDA stream, not in separate streams. To the best of my knowledge, this is common practice for production inference anyway, and separate CUDA streams usually server other purposes such as I/O, which should not interfere with logic.
 
-### 2. Hardware Variation ✓
+### 2. Hardware Variation
 **Test:** Same setup on different GPUs
 - Same GPU type, different device
 - Same GPU type, different cloud provider  
@@ -46,7 +46,7 @@ At least this is the result I was hoping for with these experiments. Currently, 
 **Result:** Systematic deviations detected (~0.2-0.4 range)  
 **Implication:** Hardware differences are detectable but small enough such that a verification server need not match exact hardware type (important for making this verification more accessible, not every processor can be cheaply security-hardened like H100 with CC).
 
-### 3. Batch Size Changes ✓
+### 3. Batch Size Changes
 **Test:** Cross-hardware (A100 abd H100) with different batch sizes (bs1, bs2, bs4)  
 **Result:** 81× larger than baseline L2 from hardware mismatch
 
@@ -54,27 +54,27 @@ At least this is the result I was hoping for with these experiments. Currently, 
 
 **The experiments below were so far only tested with matched hardware. They were all zero statistical noise (infinite signal/noise!), except for experiments with multiple CUDA streams AND high GPU utilization.**
 
-### 4. Batch Composition (Fixed Size) ✓
+### 4. Batch Composition (Fixed Size)
 **Test:** Different sequences in batch positions 1-3, same reference at position 0  
 **Result:** Zero deviation in reference sequence activations  
 **Implication:** Batch composition doesn't affect individual sequence processing. This means that ML outputs need to be checked sequence-wise, not batch-wise.
 
-### 5. Compilation (torch.compile) ✓
+### 5. Compilation (torch.compile)
 **Test:** Compiled vs eager mode. This is a "model organism" for what "secret backend optimization" might be like for an inference setup where a malicious host tries to secretly free up unmonitored throughput capacity
 **Result:** Systematic deviations detected  
 **Implication:** Compilation optimization detectable
 
-### 6. Attention Implementation (Eager vs FlashAttention2) ✓
+### 6. Attention Implementation (Eager vs FlashAttention2)
 **Test:** Different attention kernels  
 **Result:** Systematic deviations detected  
 **Implication:** Kernel choice is detectable
 
-### 7. CUDA Version Changes ✓
+### 7. CUDA Version Changes
 **Test:** Different CUDA toolkit versions  
 **Result:** Systematic deviations detected  
 **Implication:** Some software updates can be detected. I expect that this includes any updates that change the logic on the processor (kernels, memaccess patterns, ...).
 
-### 8. Pipeline Parallelism Ranks ✓
+### 8. Pipeline Parallelism Ranks
 **Test:** Different PP ranks spreading the model across 1, 2 and 4 A100s
 **Result:** Bitwise identical
 **Implication:** Not detectable via FP forensics alone
