@@ -1,0 +1,242 @@
+Auto-detected baseline files (2 most recent):
+  File 1: h100_baseline_20251106_192513.json
+  File 2: a100_baseline_20251106_191913.json
+
+(To compare specific files, run from command line with file arguments)
+
+======================================================================
+CROSS-HARDWARE BASELINE ANALYSIS
+======================================================================
+
+Loading: C:\noise_experiments\cross-hardware_verifiability\h100_baseline_20251106_192513.json
+Loading: C:\noise_experiments\cross-hardware_verifiability\a100_baseline_20251106_191913.json
+
+Hardware 1: h100 (NVIDIA H100 NVL)
+Hardware 2: a100 (NVIDIA A100 80GB PCIe)
+
+Common sequences: 10
+
+Sequence Summary:
+  code_1: 195 tokens → 39 sampled positions
+  code_2: 205 tokens → 41 sampled positions
+  mixed_1: 200 tokens → 40 sampled positions
+  mixed_2: 208 tokens → 42 sampled positions
+  narrative_1: 205 tokens → 41 sampled positions
+  narrative_2: 198 tokens → 40 sampled positions
+  repetitive: 186 tokens → 38 sampled positions
+  scientific: 199 tokens → 40 sampled positions
+  technical_1: 203 tokens → 41 sampled positions
+  technical_2: 205 tokens → 41 sampled positions
+
+Layers to analyze: ['layer_1', 'layer_4', 'layer_10', 'layer_18', 'layer_28']
+
+======================================================================
+LAYER: layer_1
+======================================================================
+
+Aggregate Statistics (all 403 sampled positions):
+  Mean L2:    0.196358 ± 0.212096
+  Median L2:  0.101439
+  Range:      [0.046798, 1.418488]
+  95% CI:     [0.064121, 0.710330]
+
+Convergence Analysis:
+  10 sequences (403 samples): mean=0.196358 ± 0.212096
+  3 sequences (120 samples): mean=0.190639 ± 0.200972
+  5 sequences (203 samples): mean=0.168176 ± 0.179556
+  7 sequences (281 samples): mean=0.187467 ± 0.197895
+
+  Convergence quality (7→10 sequences):
+    Absolute change: 0.008890
+    Relative change: 4.53%
+    ✓ Good convergence (<5% change)
+
+Position Analysis (quartiles):
+  Q1 0-25% (early): mean=0.200934 ± 0.219824 (99 samples)
+  Q2 25-50%: mean=0.212311 ± 0.233269 (100 samples)
+  Q3 50-75%: mean=0.197282 ± 0.215467 (100 samples)
+  Q4 75-100% (late): mean=0.175772 ± 0.175115 (104 samples)
+
+  Position effect:
+    Max quartile difference: 0.036539
+    Relative difference: 18.59%
+    ⚠ Position-dependent (>10% variation)
+
+Cross-Sequence Variance:
+  Mean of per-sequence means: 0.197129
+  Std of per-sequence means:  0.061082
+  Coefficient of variation:   0.3099
+  Range of means: [0.114574, 0.312486]
+  ⚠ High variance across examples (CV > 0.2)
+
+======================================================================
+LAYER: layer_4
+======================================================================
+
+Aggregate Statistics (all 403 sampled positions):
+  Mean L2:    0.210151 ± 0.067588
+  Median L2:  0.195146
+  Range:      [0.109824, 0.729070]
+  95% CI:     [0.146506, 0.317497]
+
+Convergence Analysis:
+  10 sequences (403 samples): mean=0.210151 ± 0.067588
+  3 sequences (120 samples): mean=0.203781 ± 0.054783
+  5 sequences (203 samples): mean=0.205040 ± 0.061789
+  7 sequences (281 samples): mean=0.208685 ± 0.068458
+
+  Convergence quality (7→10 sequences):
+    Absolute change: 0.001466
+    Relative change: 0.70%
+    ✓ Good convergence (<5% change)
+
+Position Analysis (quartiles):
+  Q1 0-25% (early): mean=0.211261 ± 0.063944 (99 samples)
+  Q2 25-50%: mean=0.210888 ± 0.058402 (100 samples)
+  Q3 50-75%: mean=0.206591 ± 0.070055 (100 samples)
+  Q4 75-100% (late): mean=0.211809 ± 0.076121 (104 samples)
+
+  Position effect:
+    Max quartile difference: 0.005218
+    Relative difference: 2.48%
+    ✓ Position-independent (<10% variation)
+
+Cross-Sequence Variance:
+  Mean of per-sequence means: 0.210253
+  Std of per-sequence means:  0.007277
+  Coefficient of variation:   0.0346
+  Range of means: [0.196472, 0.218387]
+  ✓ Low variance across examples (CV < 0.2)
+
+======================================================================
+LAYER: layer_10
+======================================================================
+
+Aggregate Statistics (all 403 sampled positions):
+  Mean L2:    0.234911 ± 0.038344
+  Median L2:  0.231467
+  Range:      [0.128730, 0.623715]
+  95% CI:     [0.185851, 0.293312]
+
+Convergence Analysis:
+  10 sequences (403 samples): mean=0.234911 ± 0.038344
+  3 sequences (120 samples): mean=0.232029 ± 0.033093
+  5 sequences (203 samples): mean=0.231873 ± 0.032857
+  7 sequences (281 samples): mean=0.237724 ± 0.040662
+
+  Convergence quality (7→10 sequences):
+    Absolute change: 0.002813
+    Relative change: 1.20%
+    ✓ Good convergence (<5% change)
+
+Position Analysis (quartiles):
+  Q1 0-25% (early): mean=0.224989 ± 0.038792 (99 samples)
+  Q2 25-50%: mean=0.233037 ± 0.028731 (100 samples)
+  Q3 50-75%: mean=0.243522 ± 0.050505 (100 samples)
+  Q4 75-100% (late): mean=0.237876 ± 0.029001 (104 samples)
+
+  Position effect:
+    Max quartile difference: 0.018533
+    Relative difference: 7.89%
+    ✓ Position-independent (<10% variation)
+
+Cross-Sequence Variance:
+  Mean of per-sequence means: 0.235109
+  Std of per-sequence means:  0.011859
+  Coefficient of variation:   0.0504
+  Range of means: [0.217926, 0.257716]
+  ✓ Low variance across examples (CV < 0.2)
+
+======================================================================
+LAYER: layer_18
+======================================================================
+
+Aggregate Statistics (all 403 sampled positions):
+  Mean L2:    0.334500 ± 0.060632
+  Median L2:  0.326147
+  Range:      [0.202814, 0.694359]
+  95% CI:     [0.251302, 0.439640]
+
+Convergence Analysis:
+  10 sequences (403 samples): mean=0.334500 ± 0.060632
+  3 sequences (120 samples): mean=0.327995 ± 0.060804
+  5 sequences (203 samples): mean=0.334906 ± 0.058539
+  7 sequences (281 samples): mean=0.344676 ± 0.064137
+
+  Convergence quality (7→10 sequences):
+    Absolute change: 0.010176
+    Relative change: 3.04%
+    ✓ Good convergence (<5% change)
+
+Position Analysis (quartiles):
+  Q1 0-25% (early): mean=0.320624 ± 0.058928 (99 samples)
+  Q2 25-50%: mean=0.333986 ± 0.049301 (100 samples)
+  Q3 50-75%: mean=0.343618 ± 0.070827 (100 samples)
+  Q4 75-100% (late): mean=0.339437 ± 0.059090 (104 samples)
+
+  Position effect:
+    Max quartile difference: 0.022994
+    Relative difference: 6.88%
+    ✓ Position-independent (<10% variation)
+
+Cross-Sequence Variance:
+  Mean of per-sequence means: 0.334815
+  Std of per-sequence means:  0.029595
+  Coefficient of variation:   0.0884
+  Range of means: [0.300310, 0.385041]
+  ✓ Low variance across examples (CV < 0.2)
+
+======================================================================
+LAYER: layer_28
+======================================================================
+
+Aggregate Statistics (all 403 sampled positions):
+  Mean L2:    0.425413 ± 0.309461
+  Median L2:  0.316816
+  Range:      [0.180031, 2.035601]
+  95% CI:     [0.226973, 1.047494]
+
+Convergence Analysis:
+  10 sequences (403 samples): mean=0.425413 ± 0.309461
+  3 sequences (120 samples): mean=0.398372 ± 0.217231
+  5 sequences (203 samples): mean=0.389113 ± 0.229800
+  7 sequences (281 samples): mean=0.415060 ± 0.286817
+
+  Convergence quality (7→10 sequences):
+    Absolute change: 0.010353
+    Relative change: 2.43%
+    ✓ Good convergence (<5% change)
+
+Position Analysis (quartiles):
+  Q1 0-25% (early): mean=0.408661 ± 0.280118 (99 samples)
+  Q2 25-50%: mean=0.424294 ± 0.320551 (100 samples)
+  Q3 50-75%: mean=0.409410 ± 0.269467 (100 samples)
+  Q4 75-100% (late): mean=0.457824 ± 0.355268 (104 samples)
+
+  Position effect:
+    Max quartile difference: 0.049162
+    Relative difference: 11.57%
+    ⚠ Position-dependent (>10% variation)
+
+Cross-Sequence Variance:
+  Mean of per-sequence means: 0.425985
+  Std of per-sequence means:  0.049139
+  Coefficient of variation:   0.1154
+  Range of means: [0.319502, 0.507606]
+  ✓ Low variance across examples (CV < 0.2)
+
+======================================================================
+✓ Analysis saved to: C:\noise_experiments\cross-hardware_verifiability\baseline_analysis_h100_vs_a100_20251106_204341.json
+  File size: 30.6 KB
+  (JSON includes this console summary at the top for easy reference)
+======================================================================
+
+SUMMARY RECOMMENDATIONS:
+
+For layer_28 (final layer):
+  Baseline deviation: 0.4254 ± 0.3095
+  95th percentile: 1.0475
+  Recommended threshold (mean + 2σ): 1.0443
+
+✓ 10 sequences provides good convergence
+  Can proceed with batch size mismatch experiments
