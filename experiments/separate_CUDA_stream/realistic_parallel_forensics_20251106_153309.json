@@ -1,0 +1,184 @@
+{
+  "metadata": {
+    "timestamp": "20251106_153309",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "pytorch_version": "2.6.0+cu118",
+    "cuda_version": "11.8",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "prompt_tokens": 649,
+    "layer_indices": [
+      1,
+      4,
+      10,
+      18,
+      28
+    ]
+  },
+  "baseline": {
+    "timing": {
+      "mean_ms": 76.23395519331098,
+      "median_ms": 75.83199487999082,
+      "std_ms": 1.3334375289415998,
+      "all_times": [
+        78.69033701717854,
+        76.43739599734545,
+        75.33364510163665,
+        75.83199487999082,
+        74.87640297040343
+      ]
+    },
+    "gpu_utilization": {
+      "mean": 55.4,
+      "p95": 100.0,
+      "max": 100.0
+    },
+    "summary": {
+      "median_time_ms": 75.83199487999082,
+      "gpu_util_p95": 100.0
+    }
+  },
+  "conditions": {
+    "light_concurrent": {
+      "timing": {
+        "mean_ms": 90.13369530439377,
+        "median_ms": 90.05917608737946,
+        "std_ms": 0.7441044079337411,
+        "all_times": [
+          89.33224622160196,
+          91.46881522610784,
+          89.5630712620914,
+          90.05917608737946,
+          90.24516772478819
+        ]
+      },
+      "gpu_utilization": {
+        "mean": 85.22222222222223,
+        "p95": 98.0,
+        "max": 98.0
+      }
+    },
+    "heavy_concurrent": {
+      "timing": {
+        "mean_ms": 96.00395243614912,
+        "median_ms": 95.93051997944713,
+        "std_ms": 1.0418082686758756,
+        "all_times": [
+          96.84987412765622,
+          95.26818012818694,
+          94.54271290451288,
+          95.93051997944713,
+          97.42847504094243
+        ]
+      },
+      "gpu_utilization": {
+        "mean": 98.14285714285714,
+        "p95": 99.0,
+        "max": 99.0
+      }
+    }
+  },
+  "fp_forensics": {
+    "description": "Floating-point forensics - checking if concurrent work affects activations",
+    "results": {
+      "light_concurrent": {
+        "all_layers_bit_exact": false,
+        "layer_by_layer": {
+          "layer_1": {
+            "bit_exact": true,
+            "l2": 0.0
+          },
+          "layer_4": {
+            "bit_exact": true,
+            "l2": 0.0
+          },
+          "layer_10": {
+            "bit_exact": true,
+            "l2": 0.0
+          },
+          "layer_18": {
+            "bit_exact": false,
+            "l2": 96.84461212158203
+          },
+          "layer_28": {
+            "bit_exact": false,
+            "l2": 653.5827026367188
+          }
+        }
+      },
+      "heavy_concurrent": {
+        "all_layers_bit_exact": false,
+        "layer_by_layer": {
+          "layer_1": {
+            "bit_exact": false,
+            "l2": 9.840258598327637
+          },
+          "layer_4": {
+            "bit_exact": false,
+            "l2": 18.757080078125
+          },
+          "layer_10": {
+            "bit_exact": false,
+            "l2": 54.66815948486328
+          },
+          "layer_18": {
+            "bit_exact": false,
+            "l2": 82.13811492919922
+          },
+          "layer_28": {
+            "bit_exact": false,
+            "l2": 508.034423828125
+          }
+        }
+      }
+    }
+  },
+  "timing_forensics": {
+    "description": "Timing forensics - checking if concurrent work slows down inference",
+    "results": {
+      "light_concurrent": {
+        "median_time_ms": 90.05917608737946,
+        "baseline_time_ms": 75.83199487999082,
+        "slowdown_ms": 14.22718120738864,
+        "slowdown_percent": 18.76144921402121,
+        "statistically_significant": true,
+        "gpu_utilization": {
+          "mean": 85.22222222222223,
+          "p95": 98.0,
+          "max": 98.0
+        }
+      },
+      "heavy_concurrent": {
+        "median_time_ms": 95.93051997944713,
+        "baseline_time_ms": 75.83199487999082,
+        "slowdown_ms": 20.09852509945631,
+        "slowdown_percent": 26.504017375863004,
+        "statistically_significant": true,
+        "gpu_utilization": {
+          "mean": 98.14285714285714,
+          "p95": 99.0,
+          "max": 99.0
+        }
+      }
+    }
+  },
+  "verdict": {
+    "fp_forensics_detects_parallel_work": true,
+    "timing_forensics_detects_parallel_work": true,
+    "summary": "BOTH_FP_AND_TIMING_WORK",
+    "interpretation": [
+      "FP forensics detects parallel workloads",
+      "Timing forensics confirms with measurable slowdown",
+      "Dual verification provides robust detection",
+      "FP alone is sufficient - provides strong signal",
+      "No need for timing if FP verification is in place"
+    ],
+    "fp_signal_strength": {
+      "light_max_l2": 653.5827026367188,
+      "heavy_max_l2": 508.034423828125
+    },
+    "timing_impact": {
+      "light_slowdown_pct": 18.76144921402121,
+      "heavy_slowdown_pct": 26.504017375863004
+    }
+  }
+}
