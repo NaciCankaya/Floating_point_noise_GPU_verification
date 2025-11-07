@@ -1,4 +1,4 @@
-This is an expriment that -in contrast to most experiments in this repo- I did in decode rather than prefill. 
+This is an experiment that -in contrast to most experiments in this repo- I did in decode rather than prefill. 
 Why? On the one hand, because not all experiments should be in prefill. After all, both matter for inference. For the 
 purposesof the experiments here, results of prefill experiments should extrapolate to decode inference though - 
 computationally, both turned out to be determinstic within our conditions (default CUDA stream, fixed algorithms 
