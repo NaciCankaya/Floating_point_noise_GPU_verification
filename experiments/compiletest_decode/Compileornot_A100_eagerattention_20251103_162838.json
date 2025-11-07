@@ -1,0 +1,105 @@
+{
+  "experiment": "key_vector_forensics_torch_compile_decode",
+  "timestamp": "2025-11-03T16:28:38.647983",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "hardware": {
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "pytorch": "2.8.0+cu128",
+    "cuda": "12.8",
+    "hostname": "0a394501b784",
+    "container_id": "0a394501b784"
+  },
+  "architecture": {
+    "num_layers": 28,
+    "num_heads": 28,
+    "head_dim": 128,
+    "key_vector_dim": 3584
+  },
+  "config": {
+    "prompt": "The capital of France is",
+    "prompt_tokens": 5,
+    "max_new_tokens": 20,
+    "repetitions": 10,
+    "dtype": "bfloat16",
+    "compile_mode": "reduce-overhead",
+    "extraction_method": "kv_cache_last_layer"
+  },
+  "reproducibility": {
+    "eager": true,
+    "compiled": true
+  },
+  "systematic_deviation": {
+    "l2_per_step": [
+      0.5234375,
+      1.5234375,
+      0.4296875,
+      0.42578125,
+      0.353515625,
+      0.59375,
+      0.39453125,
+      0.296875,
+      1.46875,
+      0.32421875,
+      0.44140625,
+      0.326171875,
+      0.34375,
+      0.2734375,
+      0.357421875,
+      0.412109375,
+      0.458984375,
+      1.078125,
+      0.3046875,
+      0.251953125
+    ],
+    "mean_l2": 0.52734375,
+    "max_l2": 1.5234375,
+    "min_l2": 0.251953125
+  },
+  "token_divergence": {
+    "tokens_match": true,
+    "eager_tokens": [
+      12095,
+      13,
+      15920,
+      315,
+      279,
+      2701,
+      12239,
+      911,
+      12095,
+      374,
+      830,
+      5267,
+      32,
+      13,
+      1084,
+      374,
+      7407,
+      304,
+      279,
+      18172
+    ],
+    "compiled_tokens": [
+      12095,
+      13,
+      15920,
+      315,
+      279,
+      2701,
+      12239,
+      911,
+      12095,
+      374,
+      830,
+      5267,
+      32,
+      13,
+      1084,
+      374,
+      7407,
+      304,
+      279,
+      18172
+    ]
+  }
+}
