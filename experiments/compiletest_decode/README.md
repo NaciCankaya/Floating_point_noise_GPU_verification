@@ -11,3 +11,5 @@ This worked so well, that I decided to use keys in every experiment from now on,
 Why? Because they are cached by default (needed for decode), and are smaller (especially for GQA, MLA etc. architectures).
 Activations (hidden states), in contrast, would need to be cached and transmitted/hashed, which is additional memory and I/O 
 overhead.
+
+There is also a speed benchmark where I test if a compiled model really does decode faster.
