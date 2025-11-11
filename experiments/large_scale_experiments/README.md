@@ -3,7 +3,7 @@
 Tested for GLM4.6 and Kimi K2 at ~120k token context length, decoding in vLLM. Comparing logprobs here, since key vector/hidden state extraction is not natively supported in vLLM. 
 
 ## **Why not transformers?**
-To simulate realistic production inference, optimized for performance, not reproducibility/science.
+Using vLLM to simulate realistic production inference, optimized for performance, not reproducibility/science.
 
 ## **Results?**
 - Deterministic for all TP ranks, for GLM4.6, Qwen3 30B A3, Deepseek v2 coder lite, Qwen2.5 7B, long and short context.
