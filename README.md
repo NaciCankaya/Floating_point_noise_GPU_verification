@@ -34,8 +34,8 @@ At least this is the result I was hoping for with these experiments. Currently, 
 
 ### 1. Repetition Reproducibility
 **Test:** Multiple runs of identical setup  
-**Result:** Bit-exact reproduction on single CUDA stream  
-**Implication:** Production inference (single stream, controlled batch size) is deterministic, as long as parallel request are batched together within the default CUDA stream, not in separate streams. To the best of my knowledge, this is common practice for production inference anyway, and separate CUDA streams usually server other purposes such as I/O, which should not interfere with logic.
+**Result:** Bit-exact reproduction, except for INT quantized models
+**Implication:** TBD
 
 ### 2. Hardware Variation
 **Test:** Same setup on different GPUs
@@ -82,12 +82,9 @@ At least this is the result I was hoping for with these experiments. Currently, 
 ### 9. Parallel CUDA Streams
 **Test:** Concurrent work on separate CUDA stream  
 **Result:** 
-- **Low GPU utilization:** Bit-exact reproduction (streams on independent SMs, no scheduling conflicts/race conditions and atomics)
-- **High GPU utilization:** Statistical noise detected (scheduling competition)
+Fully deterministic, only detectable via slowdown of default stream
 
-Not reproducible across repetitions.
-
-**Implication:** Detection depends on utilization level. At realistic production utilization (~60-80%), separate streams conflict → detectable, statistical noise.
+**Implication:** Timing verification is key
 
 
 
