@@ -380,7 +380,7 @@ experiments/
 ### **Single Script for All Experiments**
 
 \# analysis/compare\_experiments.py
-
+```python
 import json  
 import numpy as np  
 from scipy.spatial.distance import euclidean  
@@ -675,7 +675,7 @@ if \_\_name\_\_ \== "\_\_main\_\_":
     print("\\nDetailed reports saved to analysis\_reports.json")  
     print("Summary saved to summary.json")
 
----
+```
 
 ## **Critical Implementation Notes**
 
