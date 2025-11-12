@@ -2,17 +2,14 @@
 
 Same model (Qwen3-8B), all INT4, just different quantization methods.
 
-## ⭐ NEW: Unified Experiment Script
+## Implementation:
 
-**We now have a single, unified script that replaces the separate notebooks!**
+torchao/pytorch INT4 needs a different environment than the other formats, and FP16 act instead of BF16
 
-**Location:** `unified_quantization_experiment.py`
 
-**Benefits:**
-- ✅ Single codebase for all 5 quantization variants (AWQ/GPTQ ±Marlin, TorchAO INT4)
-- ✅ Analysis results (verdict, interpretation) saved to JSON (not just console)
-- ✅ Easy to run specific variants or all at once
-- ✅ Consistent methodology and dtype (bfloat16) across all formats
+## Results:
+Except for GPTQ without marlin kernel, all INT4 number formats tested produced perfectly reproducible activations. Across formats, all activations are unique.
+-> Verifiable!
 
 **Quick Start:**
 ```bash
