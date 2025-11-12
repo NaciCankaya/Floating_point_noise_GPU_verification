@@ -9,12 +9,11 @@
 ## **Executive Summary**
 
 **Total Experiments:** 8  
- **Hardware Platforms:** A100-80GB, H100  
- **Model:** Qwen3-30B-A3B-AWQ-Int4 (\~15GB, MoE architecture) QuixiAI/Qwen3-30B-A3B-AWQ  
- **Sequence Configuration:** \~6k token prompt (prefill)l \+ 30 tokens decode  
- **Repetitions per Config:** 3 (establishes within-setup reproducibility)  
- **Total Data Volume:** (8 JSON files, one for each experiment)  
- **Pod Requirements:** 4 instances: 
+ - **Hardware Platforms:** A100-80GB, H100  
+ - **Model:** Qwen3-30B-A3B-AWQ-Int4 (\~15GB, MoE architecture) QuixiAI/Qwen3-30B-A3B-AWQ  
+ - **Sequence Configuration:** \~6k token prompt (prefill)l \+ 30 tokens decode  
+ - **Repetitions per Config:** 3 (establishes within-setup reproducibility)  
+ - **Pod Requirements:** 4 instances: 
 
 (\[(1 instance for experiments 1 to 6 with single GPU) \+ (1 instance for experiments 7 and 8 using four SXM GPUs)\]  2, since we are doing this for both A100 SXM and H100 SXM, respectively
 
