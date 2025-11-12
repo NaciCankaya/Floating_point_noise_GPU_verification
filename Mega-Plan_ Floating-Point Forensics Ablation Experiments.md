@@ -354,8 +354,6 @@ bash
 
 ## **Python Code Structure**
 
-### **Recommended Architecture**
-
 experiments/  
 ├── common/  
 │   ├── \_\_init\_\_.py  
@@ -364,7 +362,8 @@ experiments/
 │   ├── runner.py             \# Run inference with extraction  
 │   └── json\_writer.py        \# Write to experiment JSON format  
 │   └── json\_reader.py        \# Used to fetch reference measurement and store all the variant’s data in \#fused json. Yes, this is redundant across experiments, but makes later comparisons simpler.  
-├── experiments/  
+├── ablation_cross_hardware/  
+│   ├── exp0\_reference.py 
 │   ├── exp1\_batch\_size.py  
 │   ├── exp2\_compile.py  
 │   ├── exp3\_quantization.py  
