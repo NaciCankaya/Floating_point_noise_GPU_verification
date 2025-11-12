@@ -8,7 +8,7 @@ torchao/pytorch INT4 needs a different environment than the other formats, and F
 
 
 ## Results:
-Except for GPTQ without marlin kernel, all INT4 number formats tested produced perfectly reproducible activations. Across formats, all activations are unique.
+Except for GPTQ without marlin kernel, all INT4 number formats tested produced perfectly reproducible logprobs. Across formats, all logprobs are unique.
 -> Verifiable!
 
 **Quick Start:**
