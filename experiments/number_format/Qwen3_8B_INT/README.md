@@ -12,25 +12,6 @@ Except for GPTQ without marlin kernel, all INT4 number formats tested here produ
 Across formats, all logprobs are unique.
 -> Verifiable!
 
-**Quick Start:**
-```bash
-# List available variants
-python unified_quantization_experiment.py --list-variants
-
-# Run all variants
-python unified_quantization_experiment.py
-
-# Run specific variants
-python unified_quantization_experiment.py --variants awq_marlin gptq_marlin
-
-# Specify output directory
-python unified_quantization_experiment.py --output-dir ./results
-```
-
-**See:** `UNIFIED_EXPERIMENT_USAGE.md` for complete documentation.
-
----
-
 ## Legacy: Original Example Code (from notebooks)
 
 The notebooks below are kept for reference, but **the unified script is recommended** for new experiments.
