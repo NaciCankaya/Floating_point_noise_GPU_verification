@@ -1,57 +1,17 @@
-# Qwen3-8B INT4 Quantization Experiments
-
-Same model (Qwen3-8B), all INT4, just different quantization methods.
-
-## ⭐ NEW: Unified Experiment Script
-
-**We now have a single, unified script that replaces the separate notebooks!**
-
-**Location:** `unified_quantization_experiment.py`
-
-**Benefits:**
-- ✅ Single codebase for all 5 quantization variants (AWQ/GPTQ ±Marlin, TorchAO INT4)
-- ✅ Analysis results (verdict, interpretation) saved to JSON (not just console)
-- ✅ Easy to run specific variants or all at once
-- ✅ Consistent methodology and dtype (bfloat16) across all formats
-
-**Quick Start:**
-```bash
-# List available variants
-python unified_quantization_experiment.py --list-variants
-
-# Run all variants
-python unified_quantization_experiment.py
-
-# Run specific variants
-python unified_quantization_experiment.py --variants awq_marlin gptq_marlin
-
-# Specify output directory
-python unified_quantization_experiment.py --output-dir ./results
-```
-
-**See:** `UNIFIED_EXPERIMENT_USAGE.md` for complete documentation.
-
----
-
-## Legacy: Original Example Code (from notebooks)
-
-The notebooks below are kept for reference, but **the unified script is recommended** for new experiments.
-
-Example code:
-
-
-
-```python
-
 #!/usr/bin/env python3
 """
-AWQ Non-Determinism Root Cause Investigation
-Tests vLLM INT4-AWQ quantization reproducibility with kernel profiling
+Unified Quantization Non-Determinism Investigation
+Tests vLLM INT4 quantization reproducibility across different formats with kernel profiling
 
-Model: Qwen3-8B (AWQ4)
-Focus: Identify whether Marlin kernel has non-deterministic behavior
+Supports multiple quantization formats:
+- AWQ (with/without Marlin)
+- GPTQ (with/without Marlin)
+- OpenVINO INT4
+- PyTorch INT4
+
+Focus: Identify whether different quantization methods have non-deterministic behavior
 """
-'''
+
 # ============================================================================
 # SUPPRESS VERBOSE LOGGING
 # ============================================================================
@@ -74,7 +34,7 @@ logging.getLogger('transformers').setLevel(logging.ERROR)
 logging.getLogger('torch').setLevel(logging.ERROR)
 logging.getLogger('huggingface_hub').setLevel(logging.INFO)
 logging.getLogger('huggingface_hub.file_download').setLevel(logging.INFO)
-'''
+
 # ============================================================================
 # IMPORTS
 # ============================================================================
@@ -87,6 +47,8 @@ import json
 import torch
 import gc
 import sys
+import argparse
+from typing import Dict, List, Tuple, Optional
 
 # Try to import new profiler API, fall back to old if needed
 try:
@@ -97,14 +59,45 @@ except ImportError:
     PROFILER_NEW_API = False
 
 # ============================================================================
-# CONFIGURATION
+# MODEL CONFIGURATIONS
 # ============================================================================
 
-MODEL_NAME = "Qwen/Qwen3-8B-AWQ"
-QUANTIZATION = "awq"
+MODEL_CONFIGS = {
+    "awq_marlin": {
+        "model_name": "Qwen/Qwen3-8B-AWQ",
+        "quantization": "awq_marlin",
+        "description": "AWQ INT4 with Marlin kernel"
+    },
+    "awq": {
+        "model_name": "Qwen/Qwen3-8B-AWQ",
+        "quantization": "awq",
+        "description": "AWQ INT4 without Marlin kernel"
+    },
+    "gptq_marlin": {
+        "model_name": "JunHowie/Qwen3-8B-GPTQ-Int4",
+        "quantization": "gptq_marlin",
+        "description": "GPTQ INT4 with Marlin kernel"
+    },
+    "gptq": {
+        "model_name": "JunHowie/Qwen3-8B-GPTQ-Int4",
+        "quantization": "gptq",
+        "description": "GPTQ INT4 without Marlin kernel"
+    },
+    "pytorch_int4": {
+        "model_name": "pytorch/Qwen3-8B-INT4",
+        "quantization": "torchao",
+        "description": "PyTorch TorchAO INT4 (HQQ algorithm)"
+    }
+}
+
+# ============================================================================
+# EXPERIMENT CONFIGURATION
+# ============================================================================
+
 TENSOR_PARALLEL_SIZE = 1
 MAX_MODEL_LEN = 8192
 GPU_MEMORY_UTILIZATION = 0.9
+TORCH_DTYPE = "float16"  # Consistent dtype across all experiments (AWQ requires float16)
 
 # Generation configuration
 MAX_TOKENS = 50
@@ -113,7 +106,7 @@ TEMPERATURE = 0.0
 SEED = 42
 TOP_LOGPROBS = 10
 
-# Test prompt
+# Test prompt (long prompt for comprehensive testing)
 TEST_PROMPT = """The Evolution of Large Language Models: Technical Foundations and Societal Implications
 
 Introduction
@@ -277,30 +270,10 @@ The path forward requires continued research at the intersection of systems opti
 This document has surveyed the technical foundations necessary to understand these verification challenges and potential solutions. The field continues to evolve rapidly, and many questions remain open. Nevertheless, the convergence of growing AI capabilities, increasing deployment scale, and emerging governance frameworks makes this research area both timely and critical for the safe development of advanced AI systems."""
 
 # ============================================================================
-# EXPERIMENT SETUP
-# ============================================================================
-
-print("=" * 80)
-print("AWQ NON-DETERMINISM ROOT CAUSE INVESTIGATION")
-print("=" * 80)
-print()
-print(f"Model: {MODEL_NAME}")
-print(f"Quantization: {QUANTIZATION} (INT4)")
-print(f"Prompt length: {len(TEST_PROMPT)} chars")
-print(f"Repetitions per mode: {NUM_REPETITIONS}")
-print()
-print("Investigation plan:")
-print("  1. Baseline: Standard vLLM generation (non-deterministic expected)")
-print("  2. With determinism: torch.use_deterministic_algorithms(True)")
-print("  3. Kernel profiling: Identify which kernels are called")
-print("  4. Analysis: Compare noise levels and kernel usage")
-print()
-
-# ============================================================================
 # HELPER FUNCTIONS
 # ============================================================================
 
-def set_deterministic_mode(enable=True):
+def set_deterministic_mode(enable: bool = True):
     """Enable/disable PyTorch deterministic algorithms"""
     if enable:
         torch.use_deterministic_algorithms(True, warn_only=True)
@@ -320,58 +293,58 @@ def clear_gpu():
     torch.cuda.empty_cache()
     torch.cuda.synchronize()
 
-def run_repetitions(llm, prompt_text, sampling_params, num_reps, mode_name):
+def run_repetitions(llm, prompt_text: str, sampling_params, num_reps: int, mode_name: str) -> Tuple:
     """Run multiple generations and collect results"""
     print(f"Running {num_reps} repetitions in {mode_name} mode...")
-    
+
     results_tokens = []
     results_logprobs = []
     results_distributions = []
-    
+
     for rep in range(num_reps):
         clear_gpu()
-        
+
         outputs = llm.generate(prompt_text, sampling_params=sampling_params)
         output = outputs[0]
-        
+
         # Extract data
         token_ids = output.outputs[0].token_ids
         results_tokens.append(token_ids)
-        
+
         # Logprobs
         logprobs_data = output.outputs[0].logprobs
         selected_logprobs = [lp[token_ids[i]].logprob for i, lp in enumerate(logprobs_data)]
         results_logprobs.append(np.array(selected_logprobs))
-        
+
         # Distributions
         rep_distributions = []
         for position_logprobs in logprobs_data:
-            sorted_items = sorted(position_logprobs.items(), 
-                                key=lambda x: x[1].logprob, 
+            sorted_items = sorted(position_logprobs.items(),
+                                key=lambda x: x[1].logprob,
                                 reverse=True)[:TOP_LOGPROBS]
             rep_distributions.append([(tok, lp.logprob) for tok, lp in sorted_items])
         results_distributions.append(rep_distributions)
-        
+
         if (rep + 1) % 5 == 0:
             print(f"  Completed {rep + 1}/{num_reps} repetitions")
-    
+
     print(f"✓ {mode_name} mode complete: {num_reps} repetitions")
     print()
-    
+
     return results_tokens, results_logprobs, results_distributions
 
-def analyze_reproducibility(results_tokens, results_logprobs, mode_name):
+def analyze_reproducibility(results_tokens: List, results_logprobs: List, mode_name: str) -> Dict:
     """Analyze reproducibility statistics"""
     print(f"Analysis: {mode_name}")
     print("-" * 60)
-    
+
     # Check token sequences
     tokens_identical = all(
-        results_tokens[0] == results_tokens[i] 
+        results_tokens[0] == results_tokens[i]
         for i in range(1, len(results_tokens))
     )
     print(f"Token sequences identical: {tokens_identical}")
-    
+
     # Check logprobs
     first_logprobs = results_logprobs[0]
     logprobs_exact = all(
@@ -379,20 +352,20 @@ def analyze_reproducibility(results_tokens, results_logprobs, mode_name):
         for i in range(1, len(results_logprobs))
     )
     print(f"Logprobs bit-exact: {logprobs_exact}")
-    
+
     if not logprobs_exact:
         # Compute L2 distances
         l2_distances = []
         for i in range(1, len(results_logprobs)):
             l2 = np.linalg.norm(first_logprobs - results_logprobs[i])
             l2_distances.append(l2)
-        
+
         print(f"\nLogprob deviations:")
         print(f"  Mean L2: {np.mean(l2_distances):.6e}")
         print(f"  Std L2:  {np.std(l2_distances):.6e}")
         print(f"  Min L2:  {np.min(l2_distances):.6e}")
         print(f"  Max L2:  {np.max(l2_distances):.6e}")
-        
+
         # Per-token statistics
         all_logprobs = np.array(results_logprobs)
         std_per_token = all_logprobs.std(axis=0)
@@ -400,15 +373,17 @@ def analyze_reproducibility(results_tokens, results_logprobs, mode_name):
         print(f"  Mean: {std_per_token.mean():.6e}")
         print(f"  Max:  {std_per_token.max():.6e}")
         print(f"  Min:  {std_per_token.min():.6e}")
-        
+
         return {
             'tokens_identical': tokens_identical,
             'logprobs_exact': logprobs_exact,
             'l2_mean': float(np.mean(l2_distances)),
             'l2_std': float(np.std(l2_distances)),
             'l2_max': float(np.max(l2_distances)),
+            'l2_min': float(np.min(l2_distances)),
             'std_per_token_mean': float(std_per_token.mean()),
-            'std_per_token_max': float(std_per_token.max())
+            'std_per_token_max': float(std_per_token.max()),
+            'std_per_token_min': float(std_per_token.min())
         }
     else:
         return {
@@ -417,357 +392,520 @@ def analyze_reproducibility(results_tokens, results_logprobs, mode_name):
             'l2_mean': 0.0,
             'l2_std': 0.0,
             'l2_max': 0.0,
+            'l2_min': 0.0,
             'std_per_token_mean': 0.0,
-            'std_per_token_max': 0.0
+            'std_per_token_max': 0.0,
+            'std_per_token_min': 0.0
         }
 
-# ============================================================================
-# PREPARE PROMPT
-# ============================================================================
+def generate_verdict(baseline_stats: Dict, det_stats: Optional[Dict],
+                     deterministic_succeeded: bool, quantization: str) -> Dict:
+    """Generate verdict and interpretation of results"""
+    verdict = {
+        "is_deterministic": baseline_stats['logprobs_exact'],
+        "deterministic_mode_tested": deterministic_succeeded,
+        "summary": "",
+        "root_cause": "",
+        "forensic_implications": "",
+        "details": []
+    }
 
-print("Preparing prompt...")
-tokenizer = AutoTokenizer.from_pretrained(
-    MODEL_NAME,
-    cache_dir='/tmp/hf_cache',
-    trust_remote_code=True
-)
+    if not baseline_stats['logprobs_exact']:
+        verdict["summary"] = "BASELINE IS NON-DETERMINISTIC"
+        verdict["details"].append(f"Mean L2 deviation: {baseline_stats['l2_mean']:.6e}")
+        verdict["details"].append(f"Max L2 deviation: {baseline_stats['l2_max']:.6e}")
 
-messages = [{"role": "user", "content": TEST_PROMPT}]
-prompt_text = tokenizer.apply_chat_template(
-    messages,
-    tokenize=False,
-    add_generation_prompt=True
-)
-
-prompt_tokens = tokenizer.encode(prompt_text)
-prompt_length = len(prompt_tokens)
-
-print(f"✓ Prompt prepared: {prompt_length} tokens")
-print()
-
-sampling_params = SamplingParams(
-    temperature=TEMPERATURE,
-    max_tokens=MAX_TOKENS,
-    seed=SEED,
-    logprobs=TOP_LOGPROBS,
-    skip_special_tokens=False
-)
-
-# ============================================================================
-# EXPERIMENT 1: BASELINE (NON-DETERMINISTIC MODE)
-# ============================================================================
-
-print("=" * 80)
-print("EXPERIMENT 1: BASELINE (Standard vLLM)")
-print("=" * 80)
-print()
-
-set_deterministic_mode(False)
-
-print("Loading model...")
-llm = LLM(
-    model=MODEL_NAME,
-    quantization=QUANTIZATION,
-    tensor_parallel_size=TENSOR_PARALLEL_SIZE,
-    max_model_len=MAX_MODEL_LEN,
-    gpu_memory_utilization=GPU_MEMORY_UTILIZATION,
-    trust_remote_code=True,
-    seed=SEED,
-    enforce_eager=True,
-    enable_prefix_caching=False
-)
-print("✓ Model loaded")
-print()
-
-# Warmup
-print("Warmup...")
-for _ in range(3):
-    _ = llm.generate(prompt_text, sampling_params=sampling_params)
-clear_gpu()
-print("✓ Warmup complete")
-print()
-
-# Run baseline
-baseline_tokens, baseline_logprobs, baseline_dists = run_repetitions(
-    llm, prompt_text, sampling_params, NUM_REPETITIONS, "BASELINE"
-)
-
-baseline_stats = analyze_reproducibility(baseline_tokens, baseline_logprobs, "BASELINE")
-print()
-
-# ============================================================================
-# KERNEL PROFILING
-# ============================================================================
-
-print("=" * 80)
-print("KERNEL PROFILING")
-print("=" * 80)
-print()
-print("Profiling kernel calls during generation...")
-
-clear_gpu()
-
-try:
-    if PROFILER_NEW_API:
-        # New PyTorch profiler API (1.8+)
-        with profile(
-            activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA],
-            with_stack=False,
-            profile_memory=False,
-            record_shapes=False
-        ) as prof:
-            _ = llm.generate(prompt_text, sampling_params=sampling_params)
-    else:
-        # Old PyTorch profiler API
-        with profiler_module.profile(
-            use_cuda=True,
-            with_stack=False,
-            profile_memory=False,
-            record_shapes=False
-        ) as prof:
-            _ = llm.generate(prompt_text, sampling_params=sampling_params)
-
-    print()
-    print("Top 20 kernels by CUDA time:")
-    print("-" * 80)
-    kernel_table = prof.key_averages().table(
-        sort_by="cuda_time_total",
-        row_limit=20
-    )
-    print(kernel_table)
-    print()
-
-    # Extract kernel names for analysis
-    kernel_data = []
-    for evt in prof.key_averages():
-        # Handle both API versions
-        is_cuda = False
-        if PROFILER_NEW_API:
-            is_cuda = hasattr(evt, 'device_type') and evt.device_type == ProfilerActivity.CUDA
+        if deterministic_succeeded and det_stats:
+            if det_stats['logprobs_exact']:
+                verdict["root_cause"] = "Non-deterministic parallel reduction, likely in kernel accumulation logic"
+                verdict["details"].append("✓ DETERMINISTIC MODE FIXES IT")
+                verdict["details"].append("Can be fixed but at performance cost")
+            else:
+                improvement = baseline_stats['l2_mean'] / det_stats['l2_mean'] if det_stats['l2_mean'] > 0 else float('inf')
+                if improvement > 2:
+                    verdict["root_cause"] = "Partial non-determinism in parallel reduction"
+                    verdict["details"].append(f"⚠ DETERMINISTIC MODE REDUCES NOISE ({improvement:.1f}x reduction)")
+                    verdict["details"].append("Partial fix, some non-determinism remains")
+                else:
+                    verdict["root_cause"] = "Non-determinism NOT from parallel reduction races, likely in quantization/dequantization logic"
+                    verdict["details"].append("❌ DETERMINISTIC MODE DOESN'T HELP")
         else:
-            is_cuda = evt.cuda_time_total > 0
-        
-        if is_cuda and evt.cuda_time_total > 0:
-            kernel_data.append({
-                'name': evt.key,
-                'cuda_time_us': evt.cuda_time_total,
-                'count': evt.count,
-                'avg_time_us': evt.cuda_time_total / evt.count if evt.count > 0 else 0
-            })
-    
-    profiling_succeeded = True
+            verdict["root_cause"] = "Unknown - deterministic mode not supported"
+            verdict["details"].append("⚠ Could not test deterministic mode")
+            verdict["details"].append("Suggests operations incompatible with deterministic algorithms")
 
-except Exception as e:
-    print(f"⚠ Kernel profiling failed: {e}")
-    print("Continuing without profiling data...")
+        verdict["forensic_implications"] = f"Noise level: ~{baseline_stats['l2_mean']:.2e} L2. For detection, need systematic deviation >> noise. Recommend: 3-5 samples for statistical significance"
+    else:
+        verdict["summary"] = "BASELINE IS DETERMINISTIC"
+        verdict["root_cause"] = "Fully deterministic behavior"
+        verdict["details"].append(f"Unexpected for {quantization}! May have been fixed in recent vLLM version")
+        verdict["forensic_implications"] = "Perfect reproducibility - any deviation indicates computational change"
+
+    return verdict
+
+def profile_kernels(llm, prompt_text: str, sampling_params) -> Tuple[bool, List, List, List, List]:
+    """Profile CUDA kernels during generation"""
+    print("=" * 80)
+    print("KERNEL PROFILING")
+    print("=" * 80)
     print()
-    kernel_data = []
-    marlin_kernels = []
-    gemm_kernels = []
-    dequant_kernels = []
-    profiling_succeeded = False
+    print("Profiling kernel calls during generation...")
 
-# Look for Marlin-specific kernels
-if profiling_succeeded:
-    marlin_kernels = [k for k in kernel_data if 'marlin' in k['name'].lower()]
-    gemm_kernels = [k for k in kernel_data if 'gemm' in k['name'].lower()]
-    dequant_kernels = [k for k in kernel_data if 'dequant' in k['name'].lower() or 'quant' in k['name'].lower()]
+    clear_gpu()
 
-    print("Kernel categories detected:")
-    print(f"  Marlin kernels: {len(marlin_kernels)}")
-    print(f"  GEMM kernels: {len(gemm_kernels)}")
-    print(f"  Dequant kernels: {len(dequant_kernels)}")
-    print()
+    try:
+        if PROFILER_NEW_API:
+            # New PyTorch profiler API (1.8+)
+            with profile(
+                activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA],
+                with_stack=False,
+                profile_memory=False,
+                record_shapes=False
+            ) as prof:
+                _ = llm.generate(prompt_text, sampling_params=sampling_params)
+        else:
+            # Old PyTorch profiler API
+            with profiler_module.profile(
+                use_cuda=True,
+                with_stack=False,
+                profile_memory=False,
+                record_shapes=False
+            ) as prof:
+                _ = llm.generate(prompt_text, sampling_params=sampling_params)
 
-    if marlin_kernels:
-        print("Marlin-specific kernels:")
-        for k in marlin_kernels[:5]:
-            print(f"  {k['name'][:60]} - {k['cuda_time_us']/1000:.2f}ms")
         print()
-else:
-    marlin_kernels = []
-    gemm_kernels = []
-    dequant_kernels = []
+        print("Top 20 kernels by CUDA time:")
+        print("-" * 80)
+        kernel_table = prof.key_averages().table(
+            sort_by="cuda_time_total",
+            row_limit=20
+        )
+        print(kernel_table)
+        print()
 
-# ============================================================================
-# EXPERIMENT 2: WITH DETERMINISTIC MODE
-# ============================================================================
+        # Extract kernel names for analysis
+        kernel_data = []
+        for evt in prof.key_averages():
+            # Handle both API versions
+            is_cuda = False
+            if PROFILER_NEW_API:
+                is_cuda = hasattr(evt, 'device_type') and evt.device_type == ProfilerActivity.CUDA
+            else:
+                is_cuda = evt.cuda_time_total > 0
 
-print("=" * 80)
-print("EXPERIMENT 2: WITH DETERMINISTIC MODE")
-print("=" * 80)
-print()
+            if is_cuda and evt.cuda_time_total > 0:
+                kernel_data.append({
+                    'name': evt.key,
+                    'cuda_time_us': evt.cuda_time_total,
+                    'count': evt.count,
+                    'avg_time_us': evt.cuda_time_total / evt.count if evt.count > 0 else 0
+                })
 
-# Unload model
-del llm
-clear_gpu()
+        # Categorize kernels
+        marlin_kernels = [k for k in kernel_data if 'marlin' in k['name'].lower()]
+        gemm_kernels = [k for k in kernel_data if 'gemm' in k['name'].lower()]
+        dequant_kernels = [k for k in kernel_data if 'dequant' in k['name'].lower() or 'quant' in k['name'].lower()]
 
-# Enable deterministic mode
-set_deterministic_mode(True)
+        print("Kernel categories detected:")
+        print(f"  Marlin kernels: {len(marlin_kernels)}")
+        print(f"  GEMM kernels: {len(gemm_kernels)}")
+        print(f"  Dequant kernels: {len(dequant_kernels)}")
+        print()
 
-# Reload model
-print("Reloading model with deterministic settings...")
-try:
-    llm = LLM(
-        model=MODEL_NAME,
-        quantization=QUANTIZATION,
-        tensor_parallel_size=TENSOR_PARALLEL_SIZE,
-        max_model_len=MAX_MODEL_LEN,
-        gpu_memory_utilization=GPU_MEMORY_UTILIZATION,
-        trust_remote_code=True,
-        seed=SEED,
-        enforce_eager=True,
-        enable_prefix_caching=False
-    )
-    print("✓ Model loaded with deterministic mode")
+        if marlin_kernels:
+            print("Marlin-specific kernels:")
+            for k in marlin_kernels[:5]:
+                print(f"  {k['name'][:60]} - {k['cuda_time_us']/1000:.2f}ms")
+            print()
+
+        return True, kernel_data, marlin_kernels, gemm_kernels, dequant_kernels
+
+    except Exception as e:
+        print(f"⚠ Kernel profiling failed: {e}")
+        print("Continuing without profiling data...")
+        print()
+        return False, [], [], [], []
+
+def run_experiment(variant_name: str, config: Dict, output_dir: str = ".") -> Dict:
+    """Run complete experiment for a single quantization variant"""
+
+    model_name = config["model_name"]
+    quantization = config["quantization"]
+    description = config["description"]
+
+    print("=" * 80)
+    print(f"QUANTIZATION INVESTIGATION: {variant_name.upper()}")
+    print("=" * 80)
     print()
-    
+    print(f"Description: {description}")
+    print(f"Model: {model_name}")
+    print(f"Quantization: {quantization}")
+    print(f"Prompt length: {len(TEST_PROMPT)} chars")
+    print(f"Repetitions per mode: {NUM_REPETITIONS}")
+    print()
+
+    if "note" in config:
+        print(f"NOTE: {config['note']}")
+        print()
+
+    print("Investigation plan:")
+    print("  1. Baseline: Standard vLLM generation (non-deterministic expected)")
+    print("  2. With determinism: torch.use_deterministic_algorithms(True)")
+    print("  3. Kernel profiling: Identify which kernels are called")
+    print("  4. Analysis: Compare noise levels and kernel usage")
+    print()
+
+    # ============================================================================
+    # PREPARE PROMPT
+    # ============================================================================
+
+    print("Preparing prompt...")
+    tokenizer = AutoTokenizer.from_pretrained(
+        model_name,
+        cache_dir='/tmp/hf_cache',
+        trust_remote_code=True
+    )
+
+    messages = [{"role": "user", "content": TEST_PROMPT}]
+    prompt_text = tokenizer.apply_chat_template(
+        messages,
+        tokenize=False,
+        add_generation_prompt=True
+    )
+
+    prompt_tokens = tokenizer.encode(prompt_text)
+    prompt_length = len(prompt_tokens)
+
+    print(f"✓ Prompt prepared: {prompt_length} tokens")
+    print()
+
+    sampling_params = SamplingParams(
+        temperature=TEMPERATURE,
+        max_tokens=MAX_TOKENS,
+        seed=SEED,
+        logprobs=TOP_LOGPROBS,
+        skip_special_tokens=False
+    )
+
+    # ============================================================================
+    # EXPERIMENT 1: BASELINE (NON-DETERMINISTIC MODE)
+    # ============================================================================
+
+    print("=" * 80)
+    print("EXPERIMENT 1: BASELINE (Standard vLLM)")
+    print("=" * 80)
+    print()
+
+    set_deterministic_mode(False)
+
+    print("Loading model...")
+    try:
+        llm_kwargs = {
+            "model": model_name,
+            "tensor_parallel_size": TENSOR_PARALLEL_SIZE,
+            "max_model_len": MAX_MODEL_LEN,
+            "gpu_memory_utilization": GPU_MEMORY_UTILIZATION,
+            "dtype": TORCH_DTYPE,
+            "trust_remote_code": True,
+            "seed": SEED,
+            "enforce_eager": True,
+            "enable_prefix_caching": False
+        }
+
+        # Add quantization parameter if specified
+        if quantization is not None:
+            llm_kwargs["quantization"] = quantization
+
+        llm = LLM(**llm_kwargs)
+        print("✓ Model loaded")
+        print()
+    except Exception as e:
+        print(f"❌ Failed to load model: {e}")
+        print()
+        return {
+            "variant": variant_name,
+            "error": str(e),
+            "success": False
+        }
+
     # Warmup
     print("Warmup...")
-    for _ in range(3):
-        _ = llm.generate(prompt_text, sampling_params=sampling_params)
-    clear_gpu()
-    print("✓ Warmup complete")
-    print()
-    
-    # Run with deterministic mode
-    det_tokens, det_logprobs, det_dists = run_repetitions(
-        llm, prompt_text, sampling_params, NUM_REPETITIONS, "DETERMINISTIC"
+    try:
+        for _ in range(3):
+            _ = llm.generate(prompt_text, sampling_params=sampling_params)
+        clear_gpu()
+        print("✓ Warmup complete")
+        print()
+    except Exception as e:
+        print(f"❌ Warmup failed: {e}")
+        del llm
+        clear_gpu()
+        return {
+            "variant": variant_name,
+            "error": str(e),
+            "success": False
+        }
+
+    # Run baseline
+    baseline_tokens, baseline_logprobs, baseline_dists = run_repetitions(
+        llm, prompt_text, sampling_params, NUM_REPETITIONS, "BASELINE"
     )
-    
-    det_stats = analyze_reproducibility(det_tokens, det_logprobs, "DETERMINISTIC")
+
+    baseline_stats = analyze_reproducibility(baseline_tokens, baseline_logprobs, "BASELINE")
     print()
-    
-    deterministic_succeeded = True
 
-except Exception as e:
-    print(f"⚠ Deterministic mode failed: {e}")
-    print("This suggests deterministic algorithms don't support all operations")
+    # ============================================================================
+    # KERNEL PROFILING
+    # ============================================================================
+
+    profiling_succeeded, kernel_data, marlin_kernels, gemm_kernels, dequant_kernels = profile_kernels(
+        llm, prompt_text, sampling_params
+    )
+
+    # ============================================================================
+    # EXPERIMENT 2: WITH DETERMINISTIC MODE
+    # ============================================================================
+
+    print("=" * 80)
+    print("EXPERIMENT 2: WITH DETERMINISTIC MODE")
+    print("=" * 80)
     print()
-    deterministic_succeeded = False
-    det_stats = None
 
-# ============================================================================
-# COMPARATIVE ANALYSIS
-# ============================================================================
+    # Unload model
+    del llm
+    clear_gpu()
 
-print("=" * 80)
-print("COMPARATIVE ANALYSIS")
-print("=" * 80)
-print()
+    # Enable deterministic mode
+    set_deterministic_mode(True)
 
-print("Baseline vs Deterministic Mode:")
-print("-" * 60)
-print(f"{'Metric':<30} {'Baseline':<20} {'Deterministic':<20}")
-print("-" * 60)
+    # Reload model
+    print("Reloading model with deterministic settings...")
+    try:
+        llm = LLM(**llm_kwargs)
+        print("✓ Model loaded with deterministic mode")
+        print()
 
-if deterministic_succeeded and det_stats:
-    print(f"{'Tokens identical':<30} {str(baseline_stats['tokens_identical']):<20} {str(det_stats['tokens_identical']):<20}")
-    print(f"{'Logprobs exact':<30} {str(baseline_stats['logprobs_exact']):<20} {str(det_stats['logprobs_exact']):<20}")
-    print(f"{'Mean L2 distance':<30} {baseline_stats['l2_mean']:.6e}  {det_stats['l2_mean']:.6e}")
-    print(f"{'Max L2 distance':<30} {baseline_stats['l2_max']:.6e}  {det_stats['l2_max']:.6e}")
-    print(f"{'Per-token std (mean)':<30} {baseline_stats['std_per_token_mean']:.6e}  {det_stats['std_per_token_mean']:.6e}")
-    print(f"{'Per-token std (max)':<30} {baseline_stats['std_per_token_max']:.6e}  {det_stats['std_per_token_max']:.6e}")
-else:
-    print(f"{'Tokens identical':<30} {str(baseline_stats['tokens_identical']):<20} {'N/A':<20}")
-    print(f"{'Logprobs exact':<30} {str(baseline_stats['logprobs_exact']):<20} {'N/A':<20}")
-    print(f"{'Mean L2 distance':<30} {baseline_stats['l2_mean']:.6e}  {'N/A':<20}")
+        # Warmup
+        print("Warmup...")
+        for _ in range(3):
+            _ = llm.generate(prompt_text, sampling_params=sampling_params)
+        clear_gpu()
+        print("✓ Warmup complete")
+        print()
 
-print()
+        # Run with deterministic mode
+        det_tokens, det_logprobs, det_dists = run_repetitions(
+            llm, prompt_text, sampling_params, NUM_REPETITIONS, "DETERMINISTIC"
+        )
 
-# ============================================================================
-# VERDICT
-# ============================================================================
+        det_stats = analyze_reproducibility(det_tokens, det_logprobs, "DETERMINISTIC")
+        print()
 
-print("=" * 80)
-print("VERDICT")
-print("=" * 80)
-print()
+        deterministic_succeeded = True
 
-if not baseline_stats['logprobs_exact']:
-    print("❌ BASELINE IS NON-DETERMINISTIC")
-    print(f"   Mean L2 deviation: {baseline_stats['l2_mean']:.6e}")
-    print(f"   Max L2 deviation: {baseline_stats['l2_max']:.6e}")
+    except Exception as e:
+        print(f"⚠ Deterministic mode failed: {e}")
+        print("This suggests deterministic algorithms don't support all operations")
+        print()
+        deterministic_succeeded = False
+        det_stats = None
+        det_tokens = None
+        det_logprobs = None
+
+    # ============================================================================
+    # COMPARATIVE ANALYSIS
+    # ============================================================================
+
+    print("=" * 80)
+    print("COMPARATIVE ANALYSIS")
+    print("=" * 80)
     print()
-    
+
+    print("Baseline vs Deterministic Mode:")
+    print("-" * 60)
+    print(f"{'Metric':<30} {'Baseline':<20} {'Deterministic':<20}")
+    print("-" * 60)
+
     if deterministic_succeeded and det_stats:
-        if det_stats['logprobs_exact']:
-            print("✓ DETERMINISTIC MODE FIXES IT")
-            print("  → Root cause: Non-deterministic parallel reduction")
-            print("  → Likely in Marlin kernel accumulation logic")
-            print("  → Can be fixed but at performance cost")
-        else:
-            improvement = baseline_stats['l2_mean'] / det_stats['l2_mean'] if det_stats['l2_mean'] > 0 else float('inf')
-            if improvement > 2:
-                print("⚠ DETERMINISTIC MODE REDUCES NOISE")
-                print(f"  → {improvement:.1f}x reduction in mean L2")
-                print("  → Partial fix, some non-determinism remains")
-            else:
-                print("❌ DETERMINISTIC MODE DOESN'T HELP")
-                print("  → Root cause is NOT parallel reduction races")
-                print("  → Likely in quantization/dequantization logic itself")
+        print(f"{'Tokens identical':<30} {str(baseline_stats['tokens_identical']):<20} {str(det_stats['tokens_identical']):<20}")
+        print(f"{'Logprobs exact':<30} {str(baseline_stats['logprobs_exact']):<20} {str(det_stats['logprobs_exact']):<20}")
+        print(f"{'Mean L2 distance':<30} {baseline_stats['l2_mean']:.6e}  {det_stats['l2_mean']:.6e}")
+        print(f"{'Max L2 distance':<30} {baseline_stats['l2_max']:.6e}  {det_stats['l2_max']:.6e}")
+        print(f"{'Per-token std (mean)':<30} {baseline_stats['std_per_token_mean']:.6e}  {det_stats['std_per_token_mean']:.6e}")
+        print(f"{'Per-token std (max)':<30} {baseline_stats['std_per_token_max']:.6e}  {det_stats['std_per_token_max']:.6e}")
     else:
-        print("⚠ Could not test deterministic mode (not supported)")
-        print("  → Suggests operations incompatible with deterministic algorithms")
-    
+        print(f"{'Tokens identical':<30} {str(baseline_stats['tokens_identical']):<20} {'N/A':<20}")
+        print(f"{'Logprobs exact':<30} {str(baseline_stats['logprobs_exact']):<20} {'N/A':<20}")
+        print(f"{'Mean L2 distance':<30} {baseline_stats['l2_mean']:.6e}  {'N/A':<20}")
+
+    print()
+
+    # ============================================================================
+    # VERDICT
+    # ============================================================================
+
+    print("=" * 80)
+    print("VERDICT")
+    print("=" * 80)
+    print()
+
+    verdict = generate_verdict(baseline_stats, det_stats, deterministic_succeeded, quantization or "unknown")
+
+    print(verdict["summary"])
+    for detail in verdict["details"]:
+        print(f"  {detail}")
+    if verdict["root_cause"]:
+        print()
+        print(f"Root cause: {verdict['root_cause']}")
     print()
     print("Forensic implications:")
-    print(f"  Noise level: ~{baseline_stats['l2_mean']:.2e} L2")
-    print("  For detection, need systematic deviation >> noise")
-    print("  Recommend: 3-5 samples for statistical significance")
-else:
-    print("✓ BASELINE IS DETERMINISTIC")
-    print("  → Unexpected! AWQ should be non-deterministic in vLLM")
-    print("  → May have been fixed in recent version")
+    print(f"  {verdict['forensic_implications']}")
+    print()
 
-print()
+    # ============================================================================
+    # SAVE RESULTS
+    # ============================================================================
 
-# ============================================================================
-# SAVE RESULTS
-# ============================================================================
-
-output_data = {
-    "experiment": "awq_nondeterminism_investigation",
-    "timestamp": datetime.now().isoformat(),
-    "model": MODEL_NAME,
-    "quantization": QUANTIZATION,
-    "config": {
-        "tensor_parallel": TENSOR_PARALLEL_SIZE,
-        "max_model_len": MAX_MODEL_LEN,
-        "max_tokens": MAX_TOKENS,
-        "repetitions": NUM_REPETITIONS,
-        "temperature": TEMPERATURE,
-        "seed": SEED
-    },
-    "prompt_length": prompt_length,
-    "baseline": {
-        "stats": baseline_stats,
-        "tokens": baseline_tokens,
-        "logprobs": [lp.tolist() for lp in baseline_logprobs]
-    },
-    "deterministic": {
-        "succeeded": deterministic_succeeded,
-        "stats": det_stats if det_stats else None,
-        "tokens": det_tokens if deterministic_succeeded else None,
-        "logprobs": [lp.tolist() for lp in det_logprobs] if deterministic_succeeded else None
-    },
-    "kernels": {
-        "profiling_succeeded": profiling_succeeded,
-        "all_kernels": kernel_data if profiling_succeeded else [],
-        "marlin_kernels": marlin_kernels if profiling_succeeded else [],
-        "gemm_kernels": gemm_kernels if profiling_succeeded else [],
-        "dequant_kernels": dequant_kernels if profiling_succeeded else []
+    output_data = {
+        "variant": variant_name,
+        "experiment": "quantization_nondeterminism_investigation",
+        "timestamp": datetime.now().isoformat(),
+        "model": model_name,
+        "quantization": quantization,
+        "description": description,
+        "config": {
+            "tensor_parallel": TENSOR_PARALLEL_SIZE,
+            "max_model_len": MAX_MODEL_LEN,
+            "max_tokens": MAX_TOKENS,
+            "repetitions": NUM_REPETITIONS,
+            "temperature": TEMPERATURE,
+            "seed": SEED
+        },
+        "prompt_length": prompt_length,
+        "baseline": {
+            "stats": baseline_stats,
+            "tokens": baseline_tokens,
+            "logprobs": [lp.tolist() for lp in baseline_logprobs]
+        },
+        "deterministic": {
+            "succeeded": deterministic_succeeded,
+            "stats": det_stats if det_stats else None,
+            "tokens": det_tokens if deterministic_succeeded else None,
+            "logprobs": [lp.tolist() for lp in det_logprobs] if deterministic_succeeded and det_logprobs else None
+        },
+        "kernels": {
+            "profiling_succeeded": profiling_succeeded,
+            "all_kernels": kernel_data if profiling_succeeded else [],
+            "marlin_kernels": marlin_kernels if profiling_succeeded else [],
+            "gemm_kernels": gemm_kernels if profiling_succeeded else [],
+            "dequant_kernels": dequant_kernels if profiling_succeeded else []
+        },
+        "verdict": verdict,
+        "success": True
     }
-}
 
-output_file = f"awq_investigation_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-with open(output_file, "w") as f:
-    json.dump(output_data, f, indent=2)
+    output_file = os.path.join(output_dir, f"{variant_name}_investigation_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json")
+    with open(output_file, "w") as f:
+        json.dump(output_data, f, indent=2)
 
-print(f"Results saved to: {output_file}")
-print()
-print("=" * 80)
-print("INVESTIGATION COMPLETE")
-print("=" * 80)
-```
+    print(f"Results saved to: {output_file}")
+    print()
+    print("=" * 80)
+    print(f"INVESTIGATION COMPLETE: {variant_name.upper()}")
+    print("=" * 80)
+    print()
 
+    # Cleanup
+    del llm
+    clear_gpu()
+
+    return output_data
+
+def main():
+    """Main entry point"""
+    parser = argparse.ArgumentParser(
+        description="Run quantization non-determinism investigation across multiple INT4 formats"
+    )
+    parser.add_argument(
+        "--variants",
+        nargs="+",
+        choices=list(MODEL_CONFIGS.keys()) + ["all"],
+        default=["all"],
+        help="Which quantization variants to test (default: all)"
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=str,
+        default=".",
+        help="Output directory for results (default: current directory)"
+    )
+    parser.add_argument(
+        "--list-variants",
+        action="store_true",
+        help="List available variants and exit"
+    )
+
+    args = parser.parse_args()
+
+    if args.list_variants:
+        print("Available quantization variants:")
+        print()
+        for name, config in MODEL_CONFIGS.items():
+            print(f"  {name:15} - {config['description']}")
+            if "note" in config:
+                print(f"                   NOTE: {config['note']}")
+        return
+
+    # Determine which variants to run
+    if "all" in args.variants:
+        variants_to_run = list(MODEL_CONFIGS.keys())
+    else:
+        variants_to_run = args.variants
+
+    print("=" * 80)
+    print("UNIFIED QUANTIZATION NON-DETERMINISM INVESTIGATION")
+    print("=" * 80)
+    print()
+    print(f"Testing {len(variants_to_run)} variant(s): {', '.join(variants_to_run)}")
+    print(f"Output directory: {args.output_dir}")
+    print()
+
+    # Create output directory if needed
+    os.makedirs(args.output_dir, exist_ok=True)
+
+    # Run experiments
+    all_results = {}
+    for variant_name in variants_to_run:
+        print()
+        print("=" * 80)
+        print(f"STARTING: {variant_name.upper()}")
+        print("=" * 80)
+        print()
+
+        config = MODEL_CONFIGS[variant_name]
+        result = run_experiment(variant_name, config, args.output_dir)
+        all_results[variant_name] = result
+
+        # Small break between experiments
+        print("\n" * 2)
+
+    # Summary
+    print("=" * 80)
+    print("ALL EXPERIMENTS COMPLETE")
+    print("=" * 80)
+    print()
+    print("Summary:")
+    print("-" * 60)
+    for variant_name, result in all_results.items():
+        if result.get("success", False):
+            verdict = result["verdict"]
+            status = "✓ DETERMINISTIC" if verdict["is_deterministic"] else "❌ NON-DETERMINISTIC"
+            print(f"  {variant_name:15} - {status}")
+            if not verdict["is_deterministic"]:
+                print(f"                     Noise level: {result['baseline']['stats']['l2_mean']:.2e} L2")
+        else:
+            print(f"  {variant_name:15} - ❌ FAILED: {result.get('error', 'Unknown error')}")
+    print()
+
+if __name__ == "__main__":
+    main()
