@@ -227,7 +227,7 @@ All 8 experiment files follow this identical structure:
    * Save to `concurrent_streams_experiment.json`  
 8. **CUDA Version Switch to cu118** (\~30 min)
 
-bash
+```bash
 
   *\# Install CUDA 11.8*
 
@@ -252,13 +252,14 @@ bash
    *\# Verify CUDA version*
 
    python \-c "import torch; print(torch.version.cuda)"
+```
 
 9. **Experiment 6a: CUDA 11.8**  
    * Load AWQ model  
    * Run cu118 config (3 reps)  
 10. **CUDA Version Switch to cu121**
 
-bash
+```bash
 
    *\# Install CUDA 12.1*
 
@@ -277,7 +278,7 @@ bash
     pip uninstall torch \-y
 
     pip install torch torchvision torchaudio \--index-url https://download.pytorch.org/whl/cu121
-
+```
 11. **Experiment 6b: CUDA 12.1**  
     * Load AWQ model  
     * Run cu121 config (3 reps)  
@@ -995,6 +996,7 @@ Every experiment must verify bit-exact reproducibility within identical setups:
 ### **2\. CUDA Stream Isolation (Experiment 5\)**
 
 \# Concurrent stream implementation  
+```
 stream0 \= torch.cuda.Stream()  \# Main inference  
 stream1 \= torch.cuda.Stream()  \# Concurrent work
 
@@ -1009,12 +1011,14 @@ with torch.cuda.stream(stream1):
         dummy \= torch.randn(8192, 8192, device='cuda') @ torch.randn(8192, 8192, device='cuda')
 
 torch.cuda.synchronize()
+```
 
 ### **3\. Prompt Construction**
 
 All experiments use identical prompt to ensure comparability, except batch\_size, where we add batch neighbours to the reference sequence0 (same as in exp0):
 
 I recommend using Qwen’s standard chat template. Prompt should be a text pulled from a long pdf, cut to 8k token length. Same with batch neighbours, but use different pdfs. This text is simply combined with the prompt: “Provide a summary” or whatever.
+Actually, just check out prompts.py from commons.
 
 ### **4\. Memory Management**
 
@@ -1027,12 +1031,12 @@ gc.collect()
 ### **5\. Timing Verification**
 
 While not primary metric, track runtime:
-
+```python
 import time  
 start \= time.time()  
 \# ... run inference ...  
 runtime \= time.time() \- start
-
+```
 Include in JSON for timing forensics analysis. Average of three repetitions, and variance from average.
 
 ---
