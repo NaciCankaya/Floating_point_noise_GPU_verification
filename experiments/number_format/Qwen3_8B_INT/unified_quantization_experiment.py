@@ -97,7 +97,7 @@ MODEL_CONFIGS = {
 TENSOR_PARALLEL_SIZE = 1
 MAX_MODEL_LEN = 8192
 GPU_MEMORY_UTILIZATION = 0.9
-TORCH_DTYPE = "bfloat16"  # Consistent dtype across all experiments
+TORCH_DTYPE = "float16"  # Consistent dtype across all experiments (AWQ requires float16)
 
 # Generation configuration
 MAX_TOKENS = 50
