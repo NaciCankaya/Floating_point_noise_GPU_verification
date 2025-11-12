@@ -17,10 +17,10 @@ To monitor and verify an (inference) server's outputs, a third party could use a
 But how to ensure comprehensive reporting (subgoal 2A)?
 
 ## The problem
-Even if timing verification can ensure that there are no "idle bubbles" in the untrusted server, a malicious host could process hidden work in parallel and "off the record".
+Even if timing verification can ensure that there are no "idle bubbles" in the untrusted server, a malicious host could process hidden work in parallel and "off the record". This might be hidden from timing verification if the host can use more efficient execution than declared, matching the expected timing while freeing parallel capacity that goes unmonitored.
 
 ## The solution (?)
-ML workloads are "numerically sensitive" to the exact computational graph through a processor. Non-associative operations and accumulation leave a (practically) unique "compunded rounding error" for each graph. This is oftern refered to as "non-determinism" in ML. However, in this work, I make a critical distinction:
+ML workloads are "numerically sensitive" to the exact computational graph through a processor. Non-associative operations and accumulation leave a (practically) unique "compounded rounding error" for each graph. This is oftern refered to as "non-determinism" in ML. However, in this work, I make a critical distinction:
 
 **GPU computations exhibit two types of "rounding error":**
 
