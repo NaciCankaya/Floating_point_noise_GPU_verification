@@ -8,7 +8,8 @@ torchao/pytorch INT4 needs a different environment than the other formats, and F
 
 
 ## Results:
-Except for GPTQ without marlin kernel, all INT4 number formats tested produced perfectly reproducible logprobs. Across formats, all logprobs are unique.
+Except for GPTQ without marlin kernel, all INT4 number formats tested here produced perfectly reproducible logprobs. Interestingly, AWQ without Marlin kernels was non-deterministic for Deepseek v2 lite coder, as shown one folder up.
+Across formats, all logprobs are unique.
 -> Verifiable!
 
 **Quick Start:**
