@@ -15,7 +15,7 @@
  - **Repetitions per Config:** 3 (establishes within-setup reproducibility)  
  - **Pod Requirements:** 4 instances: 
 
-(\[(1 instance for experiments 1 to 6 with single GPU) \+ (1 instance for experiments 7 and 8 using four SXM GPUs)\]  2, since we are doing this for both A100 SXM and H100 SXM, respectively
+\[(1 instance for experiments 1 to 6 with single GPU) \+ (1 instance for experiments 7 and 8 using four SXM GPUs)\] \* 2, since we are doing this for both A100 SXM and H100 SXM, respectively
 
 For most of the experiments seen here, I already have implementations ready in my repo. But they do not fit the standardized format used here, with identical model, prompt, and json format. This is why we are repeating them in one go. But still, if you are not sure what to do, look into the repo.
 
