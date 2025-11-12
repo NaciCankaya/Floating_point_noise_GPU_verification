@@ -9,10 +9,10 @@ Same model (Qwen3-8B), all INT4, just different quantization methods.
 **Location:** `unified_quantization_experiment.py`
 
 **Benefits:**
-- ✅ Single codebase for all 6 quantization variants
+- ✅ Single codebase for all 5 quantization variants (AWQ/GPTQ ±Marlin, TorchAO INT4)
 - ✅ Analysis results (verdict, interpretation) saved to JSON (not just console)
 - ✅ Easy to run specific variants or all at once
-- ✅ Consistent methodology across all formats
+- ✅ Consistent methodology and dtype (bfloat16) across all formats
 
 **Quick Start:**
 ```bash

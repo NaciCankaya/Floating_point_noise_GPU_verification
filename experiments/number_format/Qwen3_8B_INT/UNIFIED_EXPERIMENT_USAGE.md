@@ -7,7 +7,7 @@ The `unified_quantization_experiment.py` script provides a single, unified codeb
 ## Key Improvements
 
 ### 1. **Single Source of Truth**
-- One script instead of 4-6 separate notebooks
+- One script instead of 4 separate notebooks
 - Consistent methodology across all variants
 - Easier to maintain and update
 
@@ -22,11 +22,13 @@ Previously, analysis results were only printed to console. Now the JSON output i
   - `details`: human-readable analysis points
 
 ### 3. **Configuration-Driven**
-All 6 quantization variants are configured in one place:
+All 5 quantization variants are configured in one place:
 - AWQ (with/without Marlin)
 - GPTQ (with/without Marlin)
-- OpenVINO INT4
-- PyTorch INT4
+- PyTorch TorchAO INT4
+
+### 4. **Consistent dtype**
+All experiments use `bfloat16` dtype for reproducible comparisons across formats.
 
 ## Supported Variants
 
@@ -36,8 +38,7 @@ All 6 quantization variants are configured in one place:
 | `awq` | Qwen/Qwen3-8B-AWQ | AWQ INT4 | Standard |
 | `gptq_marlin` | JunHowie/Qwen3-8B-GPTQ-Int4 | GPTQ INT4 | Marlin |
 | `gptq` | JunHowie/Qwen3-8B-GPTQ-Int4 | GPTQ INT4 | Standard |
-| `openvino` | OpenVINO/Qwen3-8B-int4-ov | OpenVINO INT4 | N/A |
-| `pytorch_int4` | pytorch/Qwen3-8B-INT4 | PyTorch INT4 | N/A |
+| `pytorch_int4` | pytorch/Qwen3-8B-INT4 | TorchAO INT4 (HQQ) | N/A |
 
 ## Usage
 
@@ -196,6 +197,7 @@ Qwen3_8B_GPTQ4_noMarlin.ipynb   (2,000 lines)
 - Total: ~8,000 lines of duplicated code
 - Analysis verdict only in console output
 - Hard to maintain consistency
+- No consistent dtype specification
 
 ### After (Unified Script)
 ```
@@ -205,6 +207,7 @@ unified_quantization_experiment.py  (1,200 lines)
 - Verdict saved to JSON
 - Easy to add new variants
 - Consistent methodology
+- Unified bfloat16 dtype across all experiments
 
 ## Adding New Variants
 
@@ -226,11 +229,13 @@ No other code changes needed!
 
 ## Notes
 
-- **OpenVINO and PyTorch INT4**: These variants may require different vLLM loading parameters or may not be directly supported by vLLM. The script will gracefully handle loading failures and report them in the JSON output.
+- **PyTorch TorchAO INT4**: Requires TorchAO support in vLLM. Uses the `torchao` quantization method with HQQ algorithm. Model must have been quantized with TorchAO INT4 weight-only quantization.
 
 - **GPU Memory**: Each variant reloads the model, so ensure sufficient GPU memory. The script clears GPU memory between variants.
 
-- **Runtime**: Each variant takes ~5-10 minutes depending on hardware. Running all 6 variants takes ~30-60 minutes.
+- **Runtime**: Each variant takes ~5-10 minutes depending on hardware. Running all 5 variants takes ~25-50 minutes.
+
+- **dtype**: All experiments consistently use bfloat16 dtype to ensure fair comparisons.
 
 - **Deterministic Mode**: Some quantization methods may not support PyTorch's deterministic mode. This is expected and handled gracefully.
 
@@ -239,12 +244,12 @@ No other code changes needed!
 ### Model Loading Fails
 ```json
 {
-  "variant": "openvino",
-  "error": "Model format not supported by vLLM",
+  "variant": "pytorch_int4",
+  "error": "TorchAO quantization not supported in this vLLM version",
   "success": false
 }
 ```
-This is expected for formats not yet supported by vLLM. The script continues with other variants.
+If a format is not supported by your vLLM version, the script will log the error and continue with other variants.
 
 ### CUDA OOM (Out of Memory)
 Reduce `GPU_MEMORY_UTILIZATION` in the script (default: 0.9) or run variants one at a time.

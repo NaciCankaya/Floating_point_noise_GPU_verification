@@ -83,17 +83,10 @@ MODEL_CONFIGS = {
         "quantization": "gptq",
         "description": "GPTQ INT4 without Marlin kernel"
     },
-    "openvino": {
-        "model_name": "OpenVINO/Qwen3-8B-int4-ov",
-        "quantization": None,  # OpenVINO uses different loading mechanism
-        "description": "OpenVINO INT4 format",
-        "note": "May require different vLLM loading parameters"
-    },
     "pytorch_int4": {
         "model_name": "pytorch/Qwen3-8B-INT4",
-        "quantization": None,  # PyTorch native INT4
-        "description": "PyTorch native INT4 format",
-        "note": "May require different vLLM loading parameters"
+        "quantization": "torchao",
+        "description": "PyTorch TorchAO INT4 (HQQ algorithm)"
     }
 }
 
@@ -104,6 +97,7 @@ MODEL_CONFIGS = {
 TENSOR_PARALLEL_SIZE = 1
 MAX_MODEL_LEN = 8192
 GPU_MEMORY_UTILIZATION = 0.9
+TORCH_DTYPE = "bfloat16"  # Consistent dtype across all experiments
 
 # Generation configuration
 MAX_TOKENS = 50
@@ -611,6 +605,7 @@ def run_experiment(variant_name: str, config: Dict, output_dir: str = ".") -> Di
             "tensor_parallel_size": TENSOR_PARALLEL_SIZE,
             "max_model_len": MAX_MODEL_LEN,
             "gpu_memory_utilization": GPU_MEMORY_UTILIZATION,
+            "dtype": TORCH_DTYPE,
             "trust_remote_code": True,
             "seed": SEED,
             "enforce_eager": True,
