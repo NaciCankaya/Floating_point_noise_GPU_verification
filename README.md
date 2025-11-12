@@ -100,6 +100,13 @@ Fully deterministic for inference using transformers. Often NON-deterministic wi
 - Differences across different formats?
   - Every time. Even within the same INT precision, different quant method or kernels
 
+### 11. Large scale experiments
+**Test:** Does reproducibility suddenly break for heavy, tensor parallel workloads? Test large models (Kimi K2 Thinking, GLM4.6, Qwen3 32B) with long context inference (~120k token context)
+**Results:** 
+- Fully deterministic for FP models, sometimes not for INT models in vLLM (like K2 Thinking). See 10.
+- Fully deterministic for GLM at Tensor Parallel 4: TP or large scale do not break determinism.
+
+
 ## Implications for AI Governance
 
 TBD, more experiments needed. If trends continue as they did so far: Promising method for datacenter monitoring under adversarial conditions!
