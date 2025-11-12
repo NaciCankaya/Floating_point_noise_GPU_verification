@@ -76,7 +76,7 @@ Regarding implementation, you can take heavy inspiration from the experiment fil
 ## **Uniform JSON Schema**
 
 All 8 experiment files follow this identical structure:
-
+```
 {  
   "experiment\_metadata": {  
     "experiment\_type": "batch\_size",  
@@ -169,7 +169,7 @@ All 8 experiment files follow this identical structure:
     }  
   \]  
 }
-
+```
 **Key Schema Features:**
 
 * Self-documenting: All versions and configurations embedded  
