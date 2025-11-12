@@ -82,11 +82,23 @@ At least this is the result I was hoping for with these experiments. Currently, 
 ### 9. Parallel CUDA Streams
 **Test:** Concurrent work on separate CUDA stream  
 **Result:** 
-Fully deterministic, only detectable via slowdown of default stream
+Fully deterministic and numerically independent of concurrent streams, only detectable via slowdown of default stream
 
 **Implication:** Timing verification is key
 
-
+### 10. Quantization formats
+**Test:** Within-setup reproducibility for different weight formats (INT, floating point) 
+**Results:** 
+Fully deterministic for inference using transformers. Often NON-deterministic within a setup in vLLM.
+- When did non-determinism appear?
+  - For vLLM inference on some INT quantizations
+  - Which ones? Those without optimized kernels to support the specific quant method (like compressed tensors, awq, gptq, ...).
+  - Often fixable by using different formats or using more efficient, deterministic kernels such as vLLM's Marlin for awq and GPTQ
+- When deterministic?
+  - For all FP number formats tested. Native tensor cores help.
+  - For the faster variants of INT quants. Not dependendt on number of bits (INT4, INT8, ...), but on native support for the right kernels
+- Differences across different formats?
+  - Every time. Even within the same INT precision, different quant method or kernels
 
 ## Implications for AI Governance
 
