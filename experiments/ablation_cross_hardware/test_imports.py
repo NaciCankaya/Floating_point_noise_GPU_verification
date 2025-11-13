@@ -111,7 +111,7 @@ try:
     import auto_gptq
     print("✓ Installed")
 except ImportError:
-    print("✗ Not installed (install for GPTQ support)")
+    print("✗ Not installed (transformers has built-in GPTQ support)")
 
 print("  - BitsAndBytes: ", end="")
 try:
