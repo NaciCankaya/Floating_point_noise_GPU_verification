@@ -10,7 +10,7 @@
 
 **Total Experiments:** 8  
  - **Hardware Platforms:** A100-80GB, H100  
- - **Model:** Qwen3-30B-A3B-AWQ-Int4 (\~15GB, MoE architecture) QuixiAI/Qwen3-30B-A3B-AWQ  
+ - **Model:** Qwen3-30B-A3B-GPTQ-Int4 (\~15GB, MoE architecture) Qwen/Qwen3-30B-A3B-GPTQ-Int4  
  - **Sequence Configuration:** \~6k token prompt (prefill)l \+ 30 tokens decode  
  - **Repetitions per Config:** 3 (establishes within-setup reproducibility)  
  - **Pod Requirements:** 4 instances: 
@@ -23,9 +23,9 @@ For most of the experiments seen here, I already have implementations ready in m
 
 **Configuration (all experiments reuse this as baseline):**
 
-* `batch_size`: 1  
-* `compile`: False  
-* `quant_method`: AWQ  
+* `batch_size`: 1
+* `compile`: False
+* `quant_method`: GPTQ
 * `attention_impl`: flash\_attention\_2  
 * `concurrent_work`: False (default CUDA stream)  
 * `cuda_version`: Pod default (\~12.8)  
@@ -39,7 +39,7 @@ For most of the experiments seen here, I already have implementations ready in m
 | 0\. Reference | None.  | 1 |
 | 1\. Batch Size | batch\_size: 2, 4 | 2 |
 | 2\. Compilation | compile: True | 1 |
-| 3\. Quantization | quant\_method: gptq, bnbQuixiAI/Qwen3-30B-A3B-AWQunsloth/Qwen3-30B-A3B-bnb-4bit | 2 |
+| 3\. Quantization | quant\_method: bnb (unsloth/Qwen3-30B-A3B-bnb-4bit) | 1 |
 | 4\. Attention | attention\_impl: eager | 1 |
 | 5\. Concurrent Streams | concurrent\_work: True | 1 |
 | 6\. CUDA Version | cuda\_version: 11.8, 12.1 (or cu118, cu 121\) | 2 |
@@ -184,10 +184,10 @@ All 8 experiment files follow this identical structure:
 
 **Execution Sequence:**
 
-1. **Setup** (\~20 min)  
-   * **Setup:** Install dependencies (just test them by running the experiment code and install whatever the error print wants you to pip install)  
-   * **Experiment 1 \- Batch Size:** Download base model: `QuixiAI/Qwen3-30B-A3B-AWQ`  
-   * Download quantization variants: GPTQ, BNB versions  
+1. **Setup** (\~20 min)
+   * **Setup:** Install dependencies (just test them by running the experiment code and install whatever the error print wants you to pip install)
+   * **Experiment 1 \- Batch Size:** Download base model: `Qwen/Qwen3-30B-A3B-GPTQ-Int4`
+   * Download quantization variant: BNB version (unsloth/Qwen3-30B-A3B-bnb-4bit)
    * Verify installations and model loading  
 2. **Experiment 0: Reference Baseline**  
    * Run 3 reps with baseline config  
@@ -195,30 +195,29 @@ All 8 experiment files follow this identical structure:
    * Save to `reference_baseline.json` (for documentation)  
    * This data will be reused as baseline for Experiments 1-6  
 3. **Experiment 1: Batch Size**  
-   * Load AWQ model  
+   * Load GPTQ model  
    * Run bs1, bs2, bs4 configs. Make sure to use distinct token sequences, all \~6k tokens long, same as experiment 0\. Beware padding tokens to not measure the wrong thing.   
    * Run bs=2 (3 reps)  
    * Run bs=4 (3 reps)  
    * Fetch json from Experiment 0 bs=1 data as baseline  
    * Save all three’s results to `batch_size_experiment.json`  
 4. **Experiment 2: Compilation**  
-   * Load AWQ model with `torch.compile(model)`  
+   * Load GPTQ model with `torch.compile(model)`  
    * Run compile=True (3 reps)  
    * Reuse Experiment 0 compile=False data as baseline  
    * Save to `compile_experiment.json`  
-5. **Experiment 3: Quantization**  
-   * Load GPTQ model variant (3 reps)  
-   * Load BNB model variant (3 reps)  
-   * Reuse Experiment 0 AWQ data as baseline  
-   * Save to `quantization_experiment.json`  
-   * Delete the other two quants, keep awq  
+5. **Experiment 3: Quantization**
+   * Load BNB model variant (3 reps)
+   * Reuse Experiment 0 GPTQ data as baseline
+   * Save to `quantization_experiment.json`
+   * Delete BNB after experiment, keep GPTQ  
 6. **Experiment 4: Attention**  
-   * Load AWQ model with `attn_implementation="eager"`  
+   * Load GPTQ model with `attn_implementation="eager"`  
    * Run eager attention (3 reps)  
    * Reuse Experiment 0 FA2 data as baseline  
    * Save to `attention_experiment.json`  
 7. **Experiment 5: Concurrent Streams**  
-   * Load AWQ model  
+   * Load GPTQ model  
    * Launch concurrent workload on stream 1 (\~50% GPU util)  
    * Run inference on stream 0 (3 reps)  
    * make sure both overlap (check out the profiler script in my repo)  
@@ -254,7 +253,7 @@ All 8 experiment files follow this identical structure:
 ```
 
 9. **Experiment 6a: CUDA 11.8**  
-   * Load AWQ model  
+   * Load GPTQ model  
    * Run cu118 config (3 reps)  
 10. **CUDA Version Switch to cu121**
 
@@ -279,7 +278,7 @@ All 8 experiment files follow this identical structure:
     pip install torch torchvision torchaudio \--index-url https://download.pytorch.org/whl/cu121
 ```
 11. **Experiment 6b: CUDA 12.1**  
-    * Load AWQ model  
+    * Load GPTQ model  
     * Run cu121 config (3 reps)  
     * Combine with cu118 data and Experiment 0 (cu128) as baseline  
     * Save to `cuda_version_experiment.json`
