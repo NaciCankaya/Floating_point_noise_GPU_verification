@@ -53,7 +53,7 @@ TORCH_COMPILE = False
 
 # Extraction parameters
 LAYER_INDICES = [1, 4, 39]  # First, fourth, and last layer (reduced for smaller file size)
-POSITIONS = [-3, -2, -1]
+POSITIONS = [-1]  # Only last token position (reduced for smaller file size)
 TOP_K_LOGPROBS = 10
 
 # Paths
