@@ -46,13 +46,13 @@ NUM_REPETITIONS = 3
 MAX_NEW_TOKENS = 30
 
 # Model parameters
-MODEL_NAME = "Qwen/Qwen3-30B-A3B-GPTQ-Int4"
-QUANTIZATION = "gptq"
+MODEL_NAME = "Qwen/Qwen2.5-7B-Instruct"  # Unquantized model (avoiding GPTQ issues)
+QUANTIZATION = "none"
 ATTN_IMPLEMENTATION = "flash_attention_2"
 TORCH_COMPILE = False
 
 # Extraction parameters
-LAYER_INDICES = [1, 2, 4, 12, 39]
+LAYER_INDICES = [1, 2, 4, 12, 27]  # Adjusted for 7B model (28 layers total, 0-27)
 POSITIONS = [-3, -2, -1]
 TOP_K_LOGPROBS = 10
 

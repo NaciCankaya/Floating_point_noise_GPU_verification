@@ -9,12 +9,10 @@ torchaudio
 transformers>=4.35.0
 accelerate>=0.24.0
 
-# Quantization support
-# GPTQ backend (REQUIRED for loading GPTQ models)
-gptqmodel  # Preferred option - easier to install
-# Alternative if gptqmodel fails:
-# pip install auto-gptq --extra-index-url https://huggingface.github.io/autogptq-index/whl/cu121/
-optimum>=1.14.0
+# Quantization support (currently not used - using unquantized model)
+# gptqmodel  # Commented out - GPTQ installation issues
+# auto-gptq  # Commented out - GPTQ installation issues
+optimum>=1.14.0  # Keep for potential future use
 
 # Flash Attention (for flash_attention_2)
 flash-attn>=2.3.0

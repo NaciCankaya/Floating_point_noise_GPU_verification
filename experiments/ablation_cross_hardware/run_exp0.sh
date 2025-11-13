@@ -93,14 +93,12 @@ pip install -r requirements.txt
 echo ""
 echo "Installing optional dependencies..."
 
-# Flash attention (often fails, but not critical)
+# Flash attention (optional, improves performance)
 echo "Attempting to install flash-attention (may take 5-10 minutes)..."
 pip install flash-attn --no-build-isolation || echo "⚠ flash-attn installation failed (will use default attention)"
 
-# GPTQ backend (REQUIRED for GPTQ models)
-echo "Installing GPTQ backend library..."
-# Use helper script that detects CUDA version and tries appropriate wheels
-bash install_gptq.sh
+# Note: Skipping GPTQ backend - using unquantized model instead
+echo "  → Using unquantized model (Qwen2.5-7B-Instruct), skipping GPTQ backend"
 
 echo ""
 
