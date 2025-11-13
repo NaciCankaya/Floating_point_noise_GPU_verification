@@ -52,7 +52,7 @@ ATTN_IMPLEMENTATION = "flash_attention_2"
 TORCH_COMPILE = False
 
 # Extraction parameters
-LAYER_INDICES = [1, 2, 4, 12, 39]  # For 30B model (40 layers total, 0-39)
+LAYER_INDICES = [1, 4, 39]  # First, fourth, and last layer (reduced for smaller file size)
 POSITIONS = [-3, -2, -1]
 TOP_K_LOGPROBS = 10
 
