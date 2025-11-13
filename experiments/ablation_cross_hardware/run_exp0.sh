@@ -98,7 +98,7 @@ echo "Attempting to install flash-attention (may take 5-10 minutes)..."
 pip install flash-attn --no-build-isolation || echo "⚠ flash-attn installation failed (will use default attention)"
 
 # Note: Skipping GPTQ backend - using unquantized model instead
-echo "  → Using unquantized model (Qwen2.5-7B-Instruct), skipping GPTQ backend"
+echo "  → Using unquantized model (Qwen3-30B-A3B), skipping GPTQ backend"
 
 echo ""
 

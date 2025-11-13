@@ -3,7 +3,7 @@
 Experiment 0: Reference Baseline
 
 Establishes baseline measurement with default configuration:
-- Model: Qwen/Qwen2.5-30B-Instruct (unquantized)
+- Model: Qwen/Qwen3-30B-A3B (unquantized)
 - Batch size: 1
 - Compile: False
 - Quantization: None
@@ -46,7 +46,7 @@ NUM_REPETITIONS = 3
 MAX_NEW_TOKENS = 30
 
 # Model parameters
-MODEL_NAME = "Qwen/Qwen2.5-30B-Instruct"  # Unquantized 30B model
+MODEL_NAME = "Qwen/Qwen3-30B-A3B"  # Unquantized 30B MoE model
 QUANTIZATION = "none"
 ATTN_IMPLEMENTATION = "flash_attention_2"
 TORCH_COMPILE = False

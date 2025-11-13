@@ -88,4 +88,4 @@ def load_multiple_prompts_from_pdfs(
 
 
 # Default PDF for experiments (can be overridden)
-DEFAULT_PDF = Path(__file__).parent.parent / "ablation_cross_hardware" / "DeepSeek_V3_2.pdf"
+DEFAULT_PDF = Path(__file__).parent.parent / "ablation_cross_hardware" / "Qwen3_Technical_Report.pdf"
