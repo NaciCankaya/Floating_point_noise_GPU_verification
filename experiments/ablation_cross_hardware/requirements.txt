@@ -1,0 +1,32 @@
+# Core dependencies for ablation experiments
+
+# PyTorch (install with CUDA support)
+torch>=2.0.0
+torchvision
+torchaudio
+
+# Transformers and model loading
+transformers>=4.35.0
+accelerate>=0.24.0
+
+# Quantization support
+auto-gptq>=0.5.0
+optimum>=1.14.0
+
+# Flash Attention (for flash_attention_2)
+flash-attn>=2.3.0
+
+# PDF processing
+PyPDF2>=3.0.0
+
+# Data processing
+numpy>=1.24.0
+
+# Optional: BitsAndBytes for BNB quantization (if using exp3)
+# bitsandbytes>=0.41.0
+
+# System utilities
+psutil
+
+# For model downloads
+huggingface_hub>=0.19.0
