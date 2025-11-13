@@ -99,10 +99,12 @@ pip install flash-attn --no-build-isolation || echo "⚠ flash-attn installation
 
 # GPTQ backend (REQUIRED for GPTQ models)
 echo "Installing GPTQ backend library..."
-# Try gptqmodel first (easier to install)
-pip install gptqmodel || \
-# Fall back to auto-gptq with pre-built wheels
-pip install auto-gptq --extra-index-url https://huggingface.github.io/autogptq-index/whl/cu121/ || \
+# Try pre-built auto-gptq wheels from HuggingFace for CUDA 12.1
+pip install auto-gptq --no-build-isolation --extra-index-url https://huggingface.github.io/autogptq-index/whl/cu121/ || \
+# Try for CUDA 12.4 if 12.1 not available
+pip install auto-gptq --no-build-isolation --extra-index-url https://huggingface.github.io/autogptq-index/whl/cu124/ || \
+# Try gptqmodel as last resort
+pip install gptqmodel --no-build-isolation || \
 echo "  ✗ GPTQ backend installation failed - experiment may not work"
 
 echo ""
