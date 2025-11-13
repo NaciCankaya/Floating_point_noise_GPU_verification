@@ -77,17 +77,9 @@ def load_model(
     # Handle quantization-specific settings
     if quantization == "gptq":
         # GPTQ models are already quantized in the checkpoint
-        # Transformers >= 4.32 has built-in GPTQ support
-        print("Loading GPTQ model (using transformers built-in support)...")
-
-        # Try to use GPTQConfig if available (transformers >= 4.35)
-        try:
-            from transformers import GPTQConfig
-            gptq_config = GPTQConfig(bits=4, disable_exllama=True, use_cuda_fp16=False)
-            model_kwargs["quantization_config"] = gptq_config
-            print("  Using GPTQConfig for optimized loading")
-        except (ImportError, Exception) as e:
-            print(f"  Using default GPTQ loading ({e})")
+        # The model's config.json already contains quantization_config
+        # Requires gptqmodel or auto-gptq backend library
+        print("Loading GPTQ model (requires gptqmodel or auto-gptq backend)...")
     elif quantization == "bnb":
         # BitsAndBytes quantization loaded via model
         print("Loading BNB model...")

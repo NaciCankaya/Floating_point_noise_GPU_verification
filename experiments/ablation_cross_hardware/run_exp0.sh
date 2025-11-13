@@ -97,11 +97,13 @@ echo "Installing optional dependencies..."
 echo "Attempting to install flash-attention (may take 5-10 minutes)..."
 pip install flash-attn --no-build-isolation || echo "⚠ flash-attn installation failed (will use default attention)"
 
-# Auto-GPTQ (OPTIONAL - transformers has built-in GPTQ support)
-echo "Attempting to install auto-gptq (optional, transformers has built-in GPTQ)..."
-pip install auto-gptq --extra-index-url https://huggingface.github.io/autogptq-index/whl/cu121/ 2>/dev/null || \
-pip install auto-gptq==0.7.1 --no-build-isolation 2>/dev/null || \
-echo "  → Skipping auto-gptq (will use transformers built-in GPTQ support)"
+# GPTQ backend (REQUIRED for GPTQ models)
+echo "Installing GPTQ backend library..."
+# Try gptqmodel first (easier to install)
+pip install gptqmodel || \
+# Fall back to auto-gptq with pre-built wheels
+pip install auto-gptq --extra-index-url https://huggingface.github.io/autogptq-index/whl/cu121/ || \
+echo "  ✗ GPTQ backend installation failed - experiment may not work"
 
 echo ""
 

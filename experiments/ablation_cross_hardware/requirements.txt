@@ -10,9 +10,10 @@ transformers>=4.35.0
 accelerate>=0.24.0
 
 # Quantization support
-# Note: auto-gptq requires pre-built wheels for your CUDA version
-# Install separately: pip install auto-gptq --extra-index-url https://huggingface.github.io/autogptq-index/whl/cu121/
-# auto-gptq>=0.5.0  # Commented out - install separately
+# GPTQ backend (REQUIRED for loading GPTQ models)
+gptqmodel  # Preferred option - easier to install
+# Alternative if gptqmodel fails:
+# pip install auto-gptq --extra-index-url https://huggingface.github.io/autogptq-index/whl/cu121/
 optimum>=1.14.0
 
 # Flash Attention (for flash_attention_2)
