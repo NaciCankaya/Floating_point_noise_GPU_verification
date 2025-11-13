@@ -98,8 +98,10 @@ echo "Attempting to install flash-attention (may take 5-10 minutes)..."
 pip install flash-attn --no-build-isolation || echo "⚠ flash-attn installation failed (will use default attention)"
 
 # Auto-GPTQ (needed for GPTQ model loading)
-echo "Installing auto-gptq..."
-pip install auto-gptq optimum || echo "⚠ auto-gptq installation failed"
+echo "Installing auto-gptq with pre-built wheels..."
+pip install auto-gptq --extra-index-url https://huggingface.github.io/autogptq-index/whl/cu121/ || \
+pip install auto-gptq==0.7.1 --no-build-isolation || \
+echo "⚠ auto-gptq installation failed (may still work with transformers built-in GPTQ)"
 
 echo ""
 
