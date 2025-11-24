@@ -1,0 +1,831 @@
+================================================================================
+PREFILL vs DECODE EXPERIMENT
+================================================================================
+Log file: /workspace/experiments/experiment_log_20251124_164613.txt
+
+Environment:
+  hostname: c895fe420c2d
+  platform: Linux-5.15.0-140-generic-x86_64-with-glibc2.35
+  python_version: 3.10.18
+  torch_version: 2.6.0+cu118
+  cuda_version: 11.8
+  transformers_version: 4.57.1
+  gpu_name: NVIDIA A100-SXM4-80GB
+  gpu_count: 1
+
+Configuration:
+  Model: Qwen/Qwen2.5-7B-Instruct
+  Layers: [28]
+  Batch sizes: [4, 5, 8, 9, 16, 17]
+  Max tokens: 20
+
+Loading model...
+Found 3 PDF(s)
+  Loading: /workspace/Verification-for-International-AI-Governance.pdf
+    → 120214 tokens
+  Loading: /workspace/Epoch_data.pdf
+    → 29497 tokens
+  Loading: /workspace/Llama3.1.pdf
+    → 99282 tokens
+Total tokens: 248993
+Creating 51 slices of 512 tokens each
+Created 3 reference sequences with 16 dummies each
+
+Experiment design:
+  - Decode runs at 6 batch sizes
+  - Prefill reproduces at 6 batch sizes
+  - Matrix: 6 decode × 6 prefill = 36 comparisons per reference
+  - Works purely at token ID level (no tokenization artifacts)
+  - NEW: Within-mode batch size comparisons (sanity check)
+
+✓ Model loaded
+
+
+================================================================================
+REFERENCE: ref_0
+================================================================================
+
+Global minimum prompt length: 512 tokens
+(All batch sizes will use this length)
+
+Decode runs:
+  bs=4...       Prompt length: 512 tokens → Final: 532 tokens (20 generated)
+    Extract positions: [528, 529, 530]
+  bs=5...       Prompt length: 512 tokens → Final: 532 tokens (20 generated)
+    Extract positions: [528, 529, 530]
+  bs=8...       Prompt length: 512 tokens → Final: 532 tokens (20 generated)
+    Extract positions: [528, 529, 530]
+  bs=9...       Prompt length: 512 tokens → Final: 532 tokens (20 generated)
+    Extract positions: [528, 529, 530]
+  bs=16...       Prompt length: 512 tokens → Final: 532 tokens (20 generated)
+    Extract positions: [528, 529, 530]
+  bs=17...       Prompt length: 512 tokens → Final: 532 tokens (20 generated)
+    Extract positions: [528, 529, 530]
+
+================================================================================
+TOKEN GENERATION CONSISTENCY CHECK
+================================================================================
+
+Generated tokens by batch size:
+  bs=4:
+    IDs:  [1096, 1895, 40324, 279, 4650, 369, 6489, 22901, 198, 351, 57775, 311, 1824, 279, 8480, 4401, 323, 990, 315, 15235]
+    Text: ' This report explores the potential for international verification\nagreements to support the responsible development and use of AI'
+    ✓
+  bs=5:
+    IDs:  [1096, 1895, 40324, 279, 4650, 369, 6489, 22901, 198, 351, 57775, 311, 1824, 279, 8480, 4401, 323, 990, 315, 15235]
+    Text: ' This report explores the potential for international verification\nagreements to support the responsible development and use of AI'
+    ✓
+  bs=8:
+    IDs:  [1096, 1895, 40324, 279, 4650, 369, 6489, 22901, 198, 351, 57775, 311, 1824, 279, 8480, 4401, 323, 990, 315, 15235]
+    Text: ' This report explores the potential for international verification\nagreements to support the responsible development and use of AI'
+    ✓
+  bs=9:
+    IDs:  [1096, 1895, 40324, 279, 4650, 369, 6489, 22901, 198, 351, 57775, 311, 1824, 279, 8480, 4401, 323, 990, 315, 15235]
+    Text: ' This report explores the potential for international verification\nagreements to support the responsible development and use of AI'
+    ✓
+  bs=16:
+    IDs:  [1096, 1895, 40324, 279, 4650, 369, 6489, 22901, 198, 351, 57775, 311, 1824, 279, 8480, 4401, 323, 990, 315, 15235]
+    Text: ' This report explores the potential for international verification\nagreements to support the responsible development and use of AI'
+    ✓
+  bs=17:
+    IDs:  [1096, 1895, 40324, 279, 4650, 369, 6489, 22901, 198, 351, 57775, 311, 1824, 279, 8480, 4401, 323, 990, 315, 15235]
+    Text: ' This report explores the potential for international verification\nagreements to support the responsible development and use of AI'
+    ✓
+
+✓ Element 0 generates IDENTICAL tokens across all batch sizes
+  → Can meaningfully compare activations for same token sequence
+
+Prefill reproductions:
+
+  Reproducing decode bs=4:
+    with bs=4... [Ext: 532 tokens, exact neighbors] → Extract at: [528, 529, 530]
+    with bs=5... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=8... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=9... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=16... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=17... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+
+  Reproducing decode bs=5:
+    with bs=4... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=5... [Ext: 532 tokens, exact neighbors] → Extract at: [528, 529, 530]
+    with bs=8... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=9... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=16... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=17... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+
+  Reproducing decode bs=8:
+    with bs=4... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=5... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=8... [Ext: 532 tokens, exact neighbors] → Extract at: [528, 529, 530]
+    with bs=9... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=16... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=17... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+
+  Reproducing decode bs=9:
+    with bs=4... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=5... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=8... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=9... [Ext: 532 tokens, exact neighbors] → Extract at: [528, 529, 530]
+    with bs=16... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=17... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+
+  Reproducing decode bs=16:
+    with bs=4... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=5... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=8... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=9... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=16... [Ext: 532 tokens, exact neighbors] → Extract at: [528, 529, 530]
+    with bs=17... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+
+  Reproducing decode bs=17:
+    with bs=4... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=5... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=8... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=9... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=16... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=17... [Ext: 532 tokens, exact neighbors] → Extract at: [528, 529, 530]
+
+================================================================================
+REFERENCE: ref_1
+================================================================================
+
+Global minimum prompt length: 512 tokens
+(All batch sizes will use this length)
+
+Decode runs:
+  bs=4...       Prompt length: 512 tokens → Final: 532 tokens (20 generated)
+    Extract positions: [528, 529, 530]
+  bs=5...       Prompt length: 512 tokens → Final: 532 tokens (20 generated)
+    Extract positions: [528, 529, 530]
+  bs=8...       Prompt length: 512 tokens → Final: 532 tokens (20 generated)
+    Extract positions: [528, 529, 530]
+  bs=9...       Prompt length: 512 tokens → Final: 532 tokens (20 generated)
+    Extract positions: [528, 529, 530]
+  bs=16...       Prompt length: 512 tokens → Final: 532 tokens (20 generated)
+    Extract positions: [528, 529, 530]
+  bs=17...       Prompt length: 512 tokens → Final: 532 tokens (20 generated)
+    Extract positions: [528, 529, 530]
+
+================================================================================
+TOKEN GENERATION CONSISTENCY CHECK
+================================================================================
+
+Generated tokens by batch size:
+  bs=4:
+    IDs:  [9677, 9831, 198, 983, 4193, 311, 11075, 429, 2188, 315, 43643, 5267, 19, 75141, 2188, 315, 27231, 374, 4362, 16804]
+    Text: ' parties willing\nto accept to achieve that level of certainty?\n4.What level of transparency is needed—and'
+    ✓
+  bs=5:
+    IDs:  [9677, 9831, 198, 983, 4193, 311, 11075, 429, 2188, 315, 43643, 5267, 19, 75141, 2188, 315, 27231, 374, 4362, 16804]
+    Text: ' parties willing\nto accept to achieve that level of certainty?\n4.What level of transparency is needed—and'
+    ✓
+  bs=8:
+    IDs:  [9677, 9831, 198, 983, 4193, 311, 11075, 429, 2188, 315, 43643, 5267, 19, 75141, 2188, 315, 27231, 374, 4362, 16804]
+    Text: ' parties willing\nto accept to achieve that level of certainty?\n4.What level of transparency is needed—and'
+    ✓
+  bs=9:
+    IDs:  [9677, 9831, 198, 983, 4193, 311, 11075, 429, 2188, 315, 43643, 5267, 19, 75141, 2188, 315, 27231, 374, 4362, 16804]
+    Text: ' parties willing\nto accept to achieve that level of certainty?\n4.What level of transparency is needed—and'
+    ✓
+  bs=16:
+    IDs:  [9677, 9831, 198, 983, 4193, 311, 11075, 429, 2188, 315, 43643, 5267, 19, 75141, 2188, 315, 27231, 374, 4362, 16804]
+    Text: ' parties willing\nto accept to achieve that level of certainty?\n4.What level of transparency is needed—and'
+    ✓
+  bs=17:
+    IDs:  [9677, 9831, 198, 983, 4193, 311, 11075, 429, 2188, 315, 43643, 5267, 19, 75141, 2188, 315, 27231, 374, 4362, 16804]
+    Text: ' parties willing\nto accept to achieve that level of certainty?\n4.What level of transparency is needed—and'
+    ✓
+
+✓ Element 0 generates IDENTICAL tokens across all batch sizes
+  → Can meaningfully compare activations for same token sequence
+
+Prefill reproductions:
+
+  Reproducing decode bs=4:
+    with bs=4... [Ext: 532 tokens, exact neighbors] → Extract at: [528, 529, 530]
+    with bs=5... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=8... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=9... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=16... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=17... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+
+  Reproducing decode bs=5:
+    with bs=4... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=5... [Ext: 532 tokens, exact neighbors] → Extract at: [528, 529, 530]
+    with bs=8... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=9... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=16... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=17... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+
+  Reproducing decode bs=8:
+    with bs=4... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=5... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=8... [Ext: 532 tokens, exact neighbors] → Extract at: [528, 529, 530]
+    with bs=9... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=16... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=17... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+
+  Reproducing decode bs=9:
+    with bs=4... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=5... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=8... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=9... [Ext: 532 tokens, exact neighbors] → Extract at: [528, 529, 530]
+    with bs=16... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=17... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+
+  Reproducing decode bs=16:
+    with bs=4... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=5... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=8... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=9... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=16... [Ext: 532 tokens, exact neighbors] → Extract at: [528, 529, 530]
+    with bs=17... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+
+  Reproducing decode bs=17:
+    with bs=4... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=5... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=8... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=9... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=16... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=17... [Ext: 532 tokens, exact neighbors] → Extract at: [528, 529, 530]
+
+================================================================================
+REFERENCE: ref_2
+================================================================================
+
+Global minimum prompt length: 512 tokens
+(All batch sizes will use this length)
+
+Decode runs:
+  bs=4...       Prompt length: 512 tokens → Final: 532 tokens (20 generated)
+    Extract positions: [528, 529, 530]
+  bs=5...       Prompt length: 512 tokens → Final: 532 tokens (20 generated)
+    Extract positions: [528, 529, 530]
+  bs=8...       Prompt length: 512 tokens → Final: 532 tokens (20 generated)
+    Extract positions: [528, 529, 530]
+  bs=9...       Prompt length: 512 tokens → Final: 532 tokens (20 generated)
+    Extract positions: [528, 529, 530]
+  bs=16...       Prompt length: 512 tokens → Final: 532 tokens (20 generated)
+    Extract positions: [528, 529, 530]
+  bs=17...       Prompt length: 512 tokens → Final: 532 tokens (20 generated)
+    Extract positions: [528, 529, 530]
+
+================================================================================
+TOKEN GENERATION CONSISTENCY CHECK
+================================================================================
+
+Generated tokens by batch size:
+  bs=4:
+    IDs:  [19, 23, 20, 20, 15, 95420, 55, 344, 13, 17, 18, 15, 18, 13, 16, 21, 16, 16, 20, 624]
+    Text: '48550/arXiv.2303.16115.\n'
+    ✓
+  bs=5:
+    IDs:  [19, 23, 20, 20, 15, 95420, 55, 344, 13, 17, 18, 15, 18, 13, 16, 21, 16, 17, 20, 624]
+    Text: '48550/arXiv.2303.16125.\n'
+    ✗ DIFFERENT
+  bs=8:
+    IDs:  [19, 23, 20, 20, 15, 95420, 55, 344, 13, 17, 18, 15, 18, 13, 16, 21, 16, 17, 20, 624]
+    Text: '48550/arXiv.2303.16125.\n'
+    ✗ DIFFERENT
+  bs=9:
+    IDs:  [19, 23, 20, 20, 15, 95420, 55, 344, 13, 17, 18, 15, 18, 13, 16, 21, 16, 19, 20, 624]
+    Text: '48550/arXiv.2303.16145.\n'
+    ✗ DIFFERENT
+  bs=16:
+    IDs:  [19, 23, 20, 20, 15, 95420, 55, 344, 13, 17, 18, 15, 18, 13, 16, 21, 16, 16, 20, 624]
+    Text: '48550/arXiv.2303.16115.\n'
+    ✓
+  bs=17:
+    IDs:  [19, 23, 20, 20, 15, 95420, 55, 344, 13, 17, 18, 15, 18, 13, 16, 21, 16, 16, 20, 624]
+    Text: '48550/arXiv.2303.16115.\n'
+    ✓
+
+⚠ Element 0 generates DIFFERENT tokens across batch sizes
+  → Batch composition affects generation
+
+Prefill reproductions:
+
+  Reproducing decode bs=4:
+    with bs=4... [Ext: 532 tokens, exact neighbors] → Extract at: [528, 529, 530]
+    with bs=5... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=8... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=9... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=16... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=17... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+
+  Reproducing decode bs=5:
+    with bs=4... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=5... [Ext: 532 tokens, exact neighbors] → Extract at: [528, 529, 530]
+    with bs=8... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=9... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=16... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=17... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+
+  Reproducing decode bs=8:
+    with bs=4... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=5... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=8... [Ext: 532 tokens, exact neighbors] → Extract at: [528, 529, 530]
+    with bs=9... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=16... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=17... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+
+  Reproducing decode bs=9:
+    with bs=4... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=5... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=8... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=9... [Ext: 532 tokens, exact neighbors] → Extract at: [528, 529, 530]
+    with bs=16... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=17... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+
+  Reproducing decode bs=16:
+    with bs=4... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=5... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=8... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=9... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=16... [Ext: 532 tokens, exact neighbors] → Extract at: [528, 529, 530]
+    with bs=17... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+
+  Reproducing decode bs=17:
+    with bs=4... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=5... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=8... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=9... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=16... [Ext: 532 tokens, arb neighbors] → Extract at: [528, 529, 530]
+    with bs=17... [Ext: 532 tokens, exact neighbors] → Extract at: [528, 529, 530]
+
+✓ Data saved to: /workspace/experiments/prefill_decode_20251124_164735.json
+
+================================================================================
+WITHIN-MODE BATCH SIZE EFFECTS
+================================================================================
+
+Sanity check: Does batch size affect activations even with identical tokens?
+Expected: YES - batch size changes computation even for same sequence
+
+DEBUG: Total measurements received: 108
+DEBUG: First measurement keys: ['ref_name', 'decode_batch_size', 'prefill_batch_size', 'is_diagonal', 'decode_data', 'prefill_data']
+DEBUG: First measurement decode_batch_size: 4
+DEBUG: First measurement ref_name: ref_0
+DEBUG: decode_data signals keys: ['pos_-3', 'pos_-2', 'pos_-1']
+
+REF_0
+--------------------------------------------------------------------------------
+  DEBUG: decode has 6 batch sizes: [4, 5, 8, 9, 16, 17]
+  DEBUG: prefill_diagonal has 6 batch sizes: [4, 5, 8, 9, 16, 17]
+
+DECODE mode (autoregressive):
+  bs=4 vs bs=5:
+    Key vectors: Δ_max = 2.54e-01
+    Logprobs:    Δ_max = 2.07e-01
+  bs=4 vs bs=8:
+    Key vectors: Δ_max = 2.85e-01
+    Logprobs:    Δ_max = 3.31e-01
+  bs=4 vs bs=9:
+    Key vectors: Δ_max = 3.05e-01
+    Logprobs:    Δ_max = 4.84e-01
+  bs=4 vs bs=16:
+    Key vectors: Δ_max = 2.61e-01
+    Logprobs:    Δ_max = 2.80e-01
+  bs=4 vs bs=17:
+    Key vectors: Δ_max = 2.52e-01
+    Logprobs:    Δ_max = 3.54e-01
+  bs=5 vs bs=8:
+    Key vectors: Δ_max = 3.05e-01
+    Logprobs:    Δ_max = 4.15e-01
+  bs=5 vs bs=9:
+    Key vectors: Δ_max = 2.82e-01
+    Logprobs:    Δ_max = 5.73e-01
+  bs=5 vs bs=16:
+    Key vectors: Δ_max = 2.48e-01
+    Logprobs:    Δ_max = 3.31e-01
+  bs=5 vs bs=17:
+    Key vectors: Δ_max = 2.68e-01
+    Logprobs:    Δ_max = 4.33e-01
+  bs=8 vs bs=9:
+    Key vectors: Δ_max = 2.92e-01
+    Logprobs:    Δ_max = 3.06e-01
+  bs=8 vs bs=16:
+    Key vectors: Δ_max = 3.07e-01
+    Logprobs:    Δ_max = 2.50e-01
+  bs=8 vs bs=17:
+    Key vectors: Δ_max = 3.05e-01
+    Logprobs:    Δ_max = 2.38e-01
+  bs=9 vs bs=16:
+    Key vectors: Δ_max = 2.74e-01
+    Logprobs:    Δ_max = 3.06e-01
+  bs=9 vs bs=17:
+    Key vectors: Δ_max = 2.91e-01
+    Logprobs:    Δ_max = 2.17e-01
+  bs=16 vs bs=17:
+    Key vectors: Δ_max = 2.81e-01
+    Logprobs:    Δ_max = 2.17e-01
+
+PREFILL mode (parallel forward):
+  bs=4 vs bs=5:
+    Key vectors: Δ_max = 2.50e-01
+    Logprobs:    Δ_max = 2.80e-01
+  bs=4 vs bs=8:
+    Key vectors: Δ_max = 2.89e-01
+    Logprobs:    Δ_max = 2.50e-01
+  bs=4 vs bs=9:
+    Key vectors: Δ_max = 2.50e-01
+    Logprobs:    Δ_max = 2.80e-01
+  bs=4 vs bs=16:
+    Key vectors: Δ_max = 3.04e-01
+    Logprobs:    Δ_max = 3.06e-01
+  bs=4 vs bs=17:
+    Key vectors: Δ_max = 2.84e-01
+    Logprobs:    Δ_max = 2.80e-01
+  bs=5 vs bs=8:
+    Key vectors: Δ_max = 2.70e-01
+    Logprobs:    Δ_max = 3.75e-01
+  bs=5 vs bs=9:
+    Key vectors: Δ_max = 0.00e+00
+    Logprobs:    Δ_max = 0.00e+00
+  bs=5 vs bs=16:
+    Key vectors: Δ_max = 2.76e-01
+    Logprobs:    Δ_max = 2.17e-01
+  bs=5 vs bs=17:
+    Key vectors: Δ_max = 2.72e-01
+    Logprobs:    Δ_max = 2.50e-01
+  bs=8 vs bs=9:
+    Key vectors: Δ_max = 2.70e-01
+    Logprobs:    Δ_max = 3.75e-01
+  bs=8 vs bs=16:
+    Key vectors: Δ_max = 2.58e-01
+    Logprobs:    Δ_max = 4.33e-01
+  bs=8 vs bs=17:
+    Key vectors: Δ_max = 3.11e-01
+    Logprobs:    Δ_max = 3.31e-01
+  bs=9 vs bs=16:
+    Key vectors: Δ_max = 2.76e-01
+    Logprobs:    Δ_max = 2.17e-01
+  bs=9 vs bs=17:
+    Key vectors: Δ_max = 2.72e-01
+    Logprobs:    Δ_max = 2.50e-01
+  bs=16 vs bs=17:
+    Key vectors: Δ_max = 2.72e-01
+    Logprobs:    Δ_max = 2.17e-01
+
+REF_1
+--------------------------------------------------------------------------------
+  DEBUG: decode has 6 batch sizes: [4, 5, 8, 9, 16, 17]
+  DEBUG: prefill_diagonal has 6 batch sizes: [4, 5, 8, 9, 16, 17]
+
+DECODE mode (autoregressive):
+  bs=4 vs bs=5:
+    Key vectors: Δ_max = 1.46e+00
+    Logprobs:    Δ_max = 2.04e-01
+  bs=4 vs bs=8:
+    Key vectors: Δ_max = 1.44e+00
+    Logprobs:    Δ_max = 2.26e-01
+  bs=4 vs bs=9:
+    Key vectors: Δ_max = 1.52e+00
+    Logprobs:    Δ_max = 1.95e-01
+  bs=4 vs bs=16:
+    Key vectors: Δ_max = 1.54e+00
+    Logprobs:    Δ_max = 2.26e-01
+  bs=4 vs bs=17:
+    Key vectors: Δ_max = 1.45e+00
+    Logprobs:    Δ_max = 1.86e-01
+  bs=5 vs bs=8:
+    Key vectors: Δ_max = 4.04e-01
+    Logprobs:    Δ_max = 1.61e-01
+  bs=5 vs bs=9:
+    Key vectors: Δ_max = 5.90e-01
+    Logprobs:    Δ_max = 2.18e-01
+  bs=5 vs bs=16:
+    Key vectors: Δ_max = 6.23e-01
+    Logprobs:    Δ_max = 2.37e-01
+  bs=5 vs bs=17:
+    Key vectors: Δ_max = 3.85e-01
+    Logprobs:    Δ_max = 2.99e-01
+  bs=8 vs bs=9:
+    Key vectors: Δ_max = 5.85e-01
+    Logprobs:    Δ_max = 1.82e-01
+  bs=8 vs bs=16:
+    Key vectors: Δ_max = 6.37e-01
+    Logprobs:    Δ_max = 2.00e-01
+  bs=8 vs bs=17:
+    Key vectors: Δ_max = 3.47e-01
+    Logprobs:    Δ_max = 2.19e-01
+  bs=9 vs bs=16:
+    Key vectors: Δ_max = 3.33e-01
+    Logprobs:    Δ_max = 1.51e-01
+  bs=9 vs bs=17:
+    Key vectors: Δ_max = 5.58e-01
+    Logprobs:    Δ_max = 1.66e-01
+  bs=16 vs bs=17:
+    Key vectors: Δ_max = 5.57e-01
+    Logprobs:    Δ_max = 2.54e-01
+
+PREFILL mode (parallel forward):
+  bs=4 vs bs=5:
+    Key vectors: Δ_max = 1.05e+00
+    Logprobs:    Δ_max = 2.39e-01
+  bs=4 vs bs=8:
+    Key vectors: Δ_max = 5.89e-01
+    Logprobs:    Δ_max = 1.96e-01
+  bs=4 vs bs=9:
+    Key vectors: Δ_max = 1.05e+00
+    Logprobs:    Δ_max = 2.39e-01
+  bs=4 vs bs=16:
+    Key vectors: Δ_max = 6.34e-01
+    Logprobs:    Δ_max = 1.98e-01
+  bs=4 vs bs=17:
+    Key vectors: Δ_max = 1.05e+00
+    Logprobs:    Δ_max = 2.03e-01
+  bs=5 vs bs=8:
+    Key vectors: Δ_max = 1.17e+00
+    Logprobs:    Δ_max = 1.77e-01
+  bs=5 vs bs=9:
+    Key vectors: Δ_max = 0.00e+00
+    Logprobs:    Δ_max = 0.00e+00
+  bs=5 vs bs=16:
+    Key vectors: Δ_max = 1.19e+00
+    Logprobs:    Δ_max = 1.98e-01
+  bs=5 vs bs=17:
+    Key vectors: Δ_max = 4.30e-01
+    Logprobs:    Δ_max = 2.37e-01
+  bs=8 vs bs=9:
+    Key vectors: Δ_max = 1.17e+00
+    Logprobs:    Δ_max = 1.77e-01
+  bs=8 vs bs=16:
+    Key vectors: Δ_max = 3.55e-01
+    Logprobs:    Δ_max = 1.98e-01
+  bs=8 vs bs=17:
+    Key vectors: Δ_max = 1.15e+00
+    Logprobs:    Δ_max = 2.19e-01
+  bs=9 vs bs=16:
+    Key vectors: Δ_max = 1.19e+00
+    Logprobs:    Δ_max = 1.98e-01
+  bs=9 vs bs=17:
+    Key vectors: Δ_max = 4.30e-01
+    Logprobs:    Δ_max = 2.37e-01
+  bs=16 vs bs=17:
+    Key vectors: Δ_max = 1.17e+00
+    Logprobs:    Δ_max = 2.38e-01
+
+REF_2
+--------------------------------------------------------------------------------
+  DEBUG: decode has 6 batch sizes: [4, 5, 8, 9, 16, 17]
+  DEBUG: prefill_diagonal has 6 batch sizes: [4, 5, 8, 9, 16, 17]
+
+DECODE mode (autoregressive):
+  bs=4 vs bs=5:
+    Key vectors: Δ_max = 5.52e+00
+    Logprobs:    Δ_max = 7.59e-01
+  bs=4 vs bs=8:
+    Key vectors: Δ_max = 5.41e+00
+    Logprobs:    Δ_max = 7.88e-01
+  bs=4 vs bs=9:
+    Key vectors: Δ_max = 5.23e+00
+    Logprobs:    Δ_max = 3.82e-01
+  bs=4 vs bs=16:
+    Key vectors: Δ_max = 2.04e+00
+    Logprobs:    Δ_max = 1.19e-01
+  bs=4 vs bs=17:
+    Key vectors: Δ_max = 4.46e-01
+    Logprobs:    Δ_max = 1.19e-01
+  bs=5 vs bs=8:
+    Key vectors: Δ_max = 1.07e+00
+    Logprobs:    Δ_max = 2.17e-01
+  bs=5 vs bs=9:
+    Key vectors: Δ_max = 4.83e+00
+    Logprobs:    Δ_max = 4.00e-01
+  bs=5 vs bs=16:
+    Key vectors: Δ_max = 5.45e+00
+    Logprobs:    Δ_max = 7.59e-01
+  bs=5 vs bs=17:
+    Key vectors: Δ_max = 5.46e+00
+    Logprobs:    Δ_max = 7.48e-01
+  bs=8 vs bs=9:
+    Key vectors: Δ_max = 4.83e+00
+    Logprobs:    Δ_max = 4.39e-01
+  bs=8 vs bs=16:
+    Key vectors: Δ_max = 5.33e+00
+    Logprobs:    Δ_max = 7.88e-01
+  bs=8 vs bs=17:
+    Key vectors: Δ_max = 5.34e+00
+    Logprobs:    Δ_max = 7.73e-01
+  bs=9 vs bs=16:
+    Key vectors: Δ_max = 5.58e+00
+    Logprobs:    Δ_max = 3.82e-01
+  bs=9 vs bs=17:
+    Key vectors: Δ_max = 5.16e+00
+    Logprobs:    Δ_max = 3.71e-01
+  bs=16 vs bs=17:
+    Key vectors: Δ_max = 2.03e+00
+    Logprobs:    Δ_max = 6.25e-02
+
+PREFILL mode (parallel forward):
+  bs=4 vs bs=5:
+    Key vectors: Δ_max = 5.44e+00
+    Logprobs:    Δ_max = 7.16e-01
+  bs=4 vs bs=8:
+    Key vectors: Δ_max = 5.53e+00
+    Logprobs:    Δ_max = 6.04e-01
+  bs=4 vs bs=9:
+    Key vectors: Δ_max = 5.57e+00
+    Logprobs:    Δ_max = 3.06e-01
+  bs=4 vs bs=16:
+    Key vectors: Δ_max = 4.21e-01
+    Logprobs:    Δ_max = 2.62e-01
+  bs=4 vs bs=17:
+    Key vectors: Δ_max = 5.93e-01
+    Logprobs:    Δ_max = 1.98e-01
+  bs=5 vs bs=8:
+    Key vectors: Δ_max = 1.06e+00
+    Logprobs:    Δ_max = 2.13e-01
+  bs=5 vs bs=9:
+    Key vectors: Δ_max = 4.80e+00
+    Logprobs:    Δ_max = 5.35e-01
+  bs=5 vs bs=16:
+    Key vectors: Δ_max = 5.43e+00
+    Logprobs:    Δ_max = 6.79e-01
+  bs=5 vs bs=17:
+    Key vectors: Δ_max = 5.47e+00
+    Logprobs:    Δ_max = 8.23e-01
+  bs=8 vs bs=9:
+    Key vectors: Δ_max = 4.80e+00
+    Logprobs:    Δ_max = 4.11e-01
+  bs=8 vs bs=16:
+    Key vectors: Δ_max = 5.52e+00
+    Logprobs:    Δ_max = 6.06e-01
+  bs=8 vs bs=17:
+    Key vectors: Δ_max = 5.55e+00
+    Logprobs:    Δ_max = 7.16e-01
+  bs=9 vs bs=16:
+    Key vectors: Δ_max = 5.53e+00
+    Logprobs:    Δ_max = 4.39e-01
+  bs=9 vs bs=17:
+    Key vectors: Δ_max = 5.56e+00
+    Logprobs:    Δ_max = 4.15e-01
+  bs=16 vs bs=17:
+    Key vectors: Δ_max = 6.18e-01
+    Logprobs:    Δ_max = 2.60e-01
+
+================================================================================
+WITHIN-MODE AGGREGATE STATISTICS
+================================================================================
+
+DECODE mode:
+  Key vectors: μ = 1.79e+00, max = 5.58e+00
+  Logprobs:    μ = 3.37e-01, max = 7.88e-01
+
+PREFILL mode:
+  Key vectors: μ = 1.74e+00, max = 5.57e+00
+  Logprobs:    μ = 3.15e-01, max = 8.23e-01
+  ⚠ 2/45 key comparisons are EXACTLY ZERO
+  ⚠ 2/45 logprob comparisons are EXACTLY ZERO
+
+  Zero locations by reference:
+    ref_0:
+      key zeros:     [(5, 9)]
+      logprob zeros: [(5, 9)]
+    ref_1:
+      key zeros:     [(5, 9)]
+      logprob zeros: [(5, 9)]
+
+  Cross-reference consistency:
+    Key zeros: NO pairs are zero across all refs (coincidental)
+    Logprob zeros: NO pairs are zero across all refs (coincidental)
+
+================================================================================
+CONCLUSION: WITHIN-MODE BATCH EFFECTS
+================================================================================
+
+DECODE:
+  ✓ Batch size DOES affect computation (both keys and logprobs differ)
+    Keys: 1.79e+00, Logprobs: 3.37e-01
+
+PREFILL:
+  ✓ Batch size DOES affect computation (both keys and logprobs differ)
+    Keys: 1.74e+00, Logprobs: 3.15e-01
+
+================================================================================
+ANALYSIS: DECODE vs PREFILL MATRIX
+================================================================================
+
+================================================================================
+REF_0
+================================================================================
+
+Key Vectors (max L2 distance):
+                Prefill bs=  4  Prefill bs=  5  Prefill bs=  8  Prefill bs=  9  Prefill bs= 16  Prefill bs= 17  
+Decode bs=4          3.00e-01     3.18e-01     2.92e-01     3.18e-01     2.61e-01     2.91e-01
+Decode bs=5          2.68e-01     2.50e-01     2.78e-01     2.50e-01     2.77e-01     2.98e-01
+Decode bs=8          3.33e-01     3.26e-01     2.81e-01     3.26e-01     2.65e-01     3.35e-01
+Decode bs=9          3.12e-01     2.79e-01     3.13e-01     2.79e-01     3.10e-01     3.30e-01
+Decode bs=16         2.59e-01     2.45e-01     3.04e-01     2.45e-01     2.61e-01     2.87e-01
+Decode bs=17         2.90e-01     2.77e-01     2.88e-01     2.77e-01     2.19e-01     2.71e-01
+
+Logprobs (max L2 distance):
+                Prefill bs=  4  Prefill bs=  5  Prefill bs=  8  Prefill bs=  9  Prefill bs= 16  Prefill bs= 17  
+Decode bs=4          2.17e-01     2.50e-01     2.17e-01     2.50e-01     3.31e-01     2.50e-01
+Decode bs=5          2.17e-01     3.54e-01     1.65e-01     3.54e-01     4.15e-01     3.06e-01
+Decode bs=8          3.54e-01     2.21e-01     4.68e-01     2.21e-01     1.77e-01     2.17e-01
+Decode bs=9          4.33e-01     3.75e-01     6.12e-01     3.75e-01     2.86e-01     3.75e-01
+Decode bs=16         2.50e-01     2.80e-01     3.54e-01     2.80e-01     3.37e-01     1.98e-01
+Decode bs=17         3.31e-01     2.50e-01     4.84e-01     2.50e-01     2.58e-01     2.50e-01
+
+================================================================================
+REF_1
+================================================================================
+
+Key Vectors (max L2 distance):
+                Prefill bs=  4  Prefill bs=  5  Prefill bs=  8  Prefill bs=  9  Prefill bs= 16  Prefill bs= 17  
+Decode bs=4          1.54e+00     1.17e+00     1.45e+00     1.17e+00     1.45e+00     1.16e+00
+Decode bs=5          6.04e-01     1.17e+00     4.41e-01     1.17e+00     4.22e-01     1.16e+00
+Decode bs=8          6.31e-01     1.19e+00     4.51e-01     1.19e+00     3.50e-01     1.16e+00
+Decode bs=9          3.45e-01     1.05e+00     5.65e-01     1.05e+00     6.04e-01     1.04e+00
+Decode bs=16         3.93e-01     1.04e+00     6.10e-01     1.04e+00     6.45e-01     1.07e+00
+Decode bs=17         6.04e-01     1.15e+00     3.82e-01     1.15e+00     3.50e-01     1.16e+00
+
+Logprobs (max L2 distance):
+                Prefill bs=  4  Prefill bs=  5  Prefill bs=  8  Prefill bs=  9  Prefill bs= 16  Prefill bs= 17  
+Decode bs=4          1.40e-01     2.25e-01     1.86e-01     2.25e-01     1.98e-01     1.82e-01
+Decode bs=5          2.04e-01     2.37e-01     2.19e-01     2.37e-01     2.45e-01     2.17e-01
+Decode bs=8          2.30e-01     2.00e-01     2.51e-01     2.00e-01     2.03e-01     2.03e-01
+Decode bs=9          1.85e-01     1.85e-01     2.07e-01     1.85e-01     1.90e-01     2.18e-01
+Decode bs=16         2.17e-01     2.03e-01     1.84e-01     2.03e-01     2.31e-01     2.37e-01
+Decode bs=17         1.75e-01     1.98e-01     1.88e-01     1.98e-01     1.86e-01     2.28e-01
+
+================================================================================
+REF_2
+================================================================================
+
+Key Vectors (max L2 distance):
+                Prefill bs=  4  Prefill bs=  5  Prefill bs=  8  Prefill bs=  9  Prefill bs= 16  Prefill bs= 17  
+Decode bs=4          2.05e+00     4.60e-01     1.09e+00     4.60e-01     2.03e+00     2.06e+00
+Decode bs=5          4.56e-01     1.07e+00     4.46e-01     1.07e+00     4.45e-01     4.39e-01
+Decode bs=8          1.10e+00     4.42e-01     1.07e+00     4.42e-01     1.05e+00     1.06e+00
+Decode bs=9          2.07e+00     4.48e-01     4.66e-01     4.48e-01     2.27e+00     4.26e-01
+Decode bs=16         3.97e-01     2.04e+00     2.05e+00     2.04e+00     3.56e-01     6.07e-01
+Decode bs=17         2.05e+00     4.27e-01     1.05e+00     4.27e-01     2.03e+00     2.06e+00
+
+Logprobs (max L2 distance):
+                Prefill bs=  4  Prefill bs=  5  Prefill bs=  8  Prefill bs=  9  Prefill bs= 16  Prefill bs= 17  
+Decode bs=4          1.94e-01     2.75e-01     2.60e-01     2.75e-01     2.60e-01     1.19e-01
+Decode bs=5          1.61e-01     1.84e-01     1.59e-01     1.84e-01     1.94e-01     1.94e-01
+Decode bs=8          2.25e-01     2.17e-01     2.16e-01     2.17e-01     2.25e-01     2.26e-01
+Decode bs=9          1.82e-01     2.10e-01     2.17e-01     2.10e-01     2.44e-01     2.10e-01
+Decode bs=16         1.98e-01     2.75e-01     2.60e-01     2.75e-01     2.60e-01     6.25e-02
+Decode bs=17         1.98e-01     2.60e-01     2.60e-01     2.60e-01     2.45e-01     8.84e-02
+
+================================================================================
+AGGREGATE STATISTICS (AVERAGE ACROSS REFERENCES)
+================================================================================
+
+KEY_VECTORS:
+                Prefill bs=  4  Prefill bs=  5  Prefill bs=  8  Prefill bs=  9  Prefill bs= 16  Prefill bs= 17  
+Decode bs=4          1.29e+00     6.50e-01     9.45e-01     6.50e-01     1.25e+00     1.17e+00
+Decode bs=5          4.42e-01     8.30e-01     3.88e-01     8.30e-01     3.81e-01     6.33e-01
+Decode bs=8          6.87e-01     6.52e-01     6.00e-01     6.52e-01     5.56e-01     8.54e-01
+Decode bs=9          9.10e-01     5.92e-01     4.48e-01     5.92e-01     1.06e+00     5.97e-01
+Decode bs=16         3.50e-01     1.11e+00     9.87e-01     1.11e+00     4.21e-01     6.53e-01
+Decode bs=17         9.81e-01     6.18e-01     5.74e-01     6.18e-01     8.65e-01     1.16e+00
+
+  Diagonal (noise - decode bs = prefill bs):
+    μ = 8.17e-01, σ = 3.17e-01
+    Values: ['1.29e+00', '8.30e-01', '6.00e-01', '5.92e-01', '4.21e-01', '1.16e+00']
+
+  Off-diagonal (signal - decode bs ≠ prefill bs):
+    μ = 7.40e-01, σ = 2.45e-01
+
+  SNR (signal/noise): 0.91×
+
+LOGPROBS:
+                Prefill bs=  4  Prefill bs=  5  Prefill bs=  8  Prefill bs=  9  Prefill bs= 16  Prefill bs= 17  
+Decode bs=4          1.83e-01     2.50e-01     2.21e-01     2.50e-01     2.63e-01     1.84e-01
+Decode bs=5          1.94e-01     2.58e-01     1.81e-01     2.58e-01     2.85e-01     2.39e-01
+Decode bs=8          2.70e-01     2.13e-01     3.12e-01     2.13e-01     2.02e-01     2.15e-01
+Decode bs=9          2.67e-01     2.57e-01     3.45e-01     2.57e-01     2.40e-01     2.68e-01
+Decode bs=16         2.21e-01     2.52e-01     2.66e-01     2.52e-01     2.76e-01     1.66e-01
+Decode bs=17         2.35e-01     2.36e-01     3.11e-01     2.36e-01     2.29e-01     1.89e-01
+
+  Diagonal (noise - decode bs = prefill bs):
+    μ = 2.46e-01, σ = 4.59e-02
+    Values: ['1.83e-01', '2.58e-01', '3.12e-01', '2.57e-01', '2.76e-01', '1.89e-01']
+
+  Off-diagonal (signal - decode bs ≠ prefill bs):
+    μ = 2.41e-01, σ = 3.72e-02
+
+  SNR (signal/noise): 0.98×
+
+================================================================================
+CONCLUSION
+================================================================================
+
+Key Vectors: SNR = 0.91× ✗ NOT DETECTABLE
+Logprobs:    SNR = 0.98× ✗ NOT DETECTABLE
+
+✗ BATCH SIZE MISMATCHES NOT RELIABLY DETECTABLE
+  → Off-diagonal distances similar to diagonal distances
+  → Cannot reliably detect decode batch size from prefill
+✓ Analysis saved (file size: 9.9 MB)
+
+================================================================================
+EXPERIMENT COMPLETE
+================================================================================
+
