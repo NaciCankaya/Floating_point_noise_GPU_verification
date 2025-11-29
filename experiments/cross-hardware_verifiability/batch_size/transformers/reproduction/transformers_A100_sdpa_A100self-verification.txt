@@ -1,0 +1,893 @@
+================================================================================
+CROSS-HARDWARE BATCH SIZE DETECTABILITY - VERIFICATION (teacher-forcing)
+================================================================================
+
+System: 48f75a293fc0
+GPU: NVIDIA A100 80GB PCIe
+Attention: sdpa
+Layers: [28]
+Found 1 PDF(s)
+  Loading: /workspace/Verification-for-International-AI-Governance.pdf
+    → 120214 tokens
+Total tokens: 120214
+Creating 51 slices of 1000 tokens each
+
+================================================================================
+ENVIRONMENT VALIDATION
+================================================================================
+
+Script configuration:
+  ✓ attn_implementation: sdpa
+
+Container-level dependencies:
+  ✓ python_version: 3.12.3
+  ✓ cuda_version: 12.8
+  ✓ cudnn_version: 91002
+
+Pip-installable packages:
+  ✓ torch_version: 2.9.0+cu128
+  ✓ transformers_version: 4.57.3
+  ✓ numpy_version: 2.1.2
+  - flash_attn_version: not using flash_attention_2 (skip)
+
+Expected differences (hardware):
+  ⚠ gpu_name: SAME (NVIDIA A100 80GB PCIe) - are you on different hardware?
+  ⚠ hostname: SAME (48f75a293fc0) - are you on different hardware?
+
+------------------------------------------------------------
+✓ ENVIRONMENT VALIDATION PASSED
+
+Loaded equivalent pairs from reference:
+  Prefill: [(2, 3), (4, 5), (4, 8), (4, 9), (4, 16), (4, 17), (5, 8), (5, 9), (5, 16), (5, 17), (8, 9), (8, 16), (8, 17), (9, 16), (9, 17), (16, 17)]
+  Decode: [(2, 3), (4, 5), (8, 9)]
+
+================================================================================
+REFERENCE: ref_0
+================================================================================
+
+  Claimed batch size: 1
+    Verify bs=1 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=1) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 5.05e-01, LP: 1.01e-01
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 5.05e-01, LP: 1.01e-01
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 5.09e-01, LP: 1.56e-01
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 5.09e-01, LP: 1.56e-01
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 4.86e-01, LP: 1.60e-01
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 4.86e-01, LP: 1.60e-01
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 4.94e-01, LP: 1.25e-01
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 4.96e-01, LP: 1.14e-01
+
+  Claimed batch size: 2
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 5.05e-01, LP: 1.01e-01
+    Verify bs=2 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=2) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 4.67e-01, LP: 2.03e-01
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 4.67e-01, LP: 2.03e-01
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 4.54e-01, LP: 1.77e-01
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 4.54e-01, LP: 1.77e-01
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 4.53e-01, LP: 1.73e-01
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 4.34e-01, LP: 1.86e-01
+
+  Claimed batch size: 3
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 5.05e-01, LP: 1.01e-01
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=3 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=3) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 4.67e-01, LP: 2.03e-01
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 4.67e-01, LP: 2.03e-01
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 4.54e-01, LP: 1.77e-01
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 4.54e-01, LP: 1.77e-01
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 4.53e-01, LP: 1.73e-01
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 4.34e-01, LP: 1.86e-01
+
+  Claimed batch size: 4
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 5.09e-01, LP: 1.56e-01
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 4.67e-01, LP: 2.03e-01
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 4.67e-01, LP: 2.03e-01
+    Verify bs=4 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=4) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 3.76e-01, LP: 2.11e-01
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 3.76e-01, LP: 2.11e-01
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 3.00e-01, LP: 5.89e-02
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 4.48e-01, LP: 4.17e-02
+
+  Claimed batch size: 5
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 5.09e-01, LP: 1.56e-01
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 4.67e-01, LP: 2.03e-01
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 4.67e-01, LP: 2.03e-01
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=5 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=5) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 3.76e-01, LP: 2.11e-01
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 3.76e-01, LP: 2.11e-01
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 3.00e-01, LP: 5.89e-02
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 4.48e-01, LP: 4.17e-02
+
+  Claimed batch size: 8
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 4.86e-01, LP: 1.60e-01
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 4.54e-01, LP: 1.77e-01
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 4.54e-01, LP: 1.77e-01
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 3.76e-01, LP: 2.11e-01
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 3.76e-01, LP: 2.11e-01
+    Verify bs=8 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=8) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 3.72e-01, LP: 1.94e-01
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 3.90e-01, LP: 1.94e-01
+
+  Claimed batch size: 9
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 4.86e-01, LP: 1.60e-01
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 4.54e-01, LP: 1.77e-01
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 4.54e-01, LP: 1.77e-01
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 3.76e-01, LP: 2.11e-01
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 3.76e-01, LP: 2.11e-01
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=9 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=9) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 3.72e-01, LP: 1.94e-01
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 3.90e-01, LP: 1.94e-01
+
+  Claimed batch size: 16
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 4.94e-01, LP: 1.25e-01
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 4.53e-01, LP: 1.73e-01
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 4.53e-01, LP: 1.73e-01
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 3.00e-01, LP: 5.89e-02
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 3.00e-01, LP: 5.89e-02
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 3.72e-01, LP: 1.94e-01
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 3.72e-01, LP: 1.94e-01
+    Verify bs=16 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=16) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 4.38e-01, LP: 1.01e-01
+
+  Claimed batch size: 17
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 4.96e-01, LP: 1.14e-01
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 4.34e-01, LP: 1.86e-01
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 4.34e-01, LP: 1.86e-01
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 4.48e-01, LP: 4.17e-02
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 4.48e-01, LP: 4.17e-02
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 3.90e-01, LP: 1.94e-01
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 3.90e-01, LP: 1.94e-01
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 4.38e-01, LP: 1.01e-01
+    Verify bs=17 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=17) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+
+================================================================================
+REFERENCE: ref_1
+================================================================================
+
+  Claimed batch size: 1
+    Verify bs=1 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=1) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 5.88e-01, LP: 1.48e-01
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 5.88e-01, LP: 1.48e-01
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 3.57e-01, LP: 1.75e-01
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 3.57e-01, LP: 1.75e-01
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 6.39e-01, LP: 2.36e-01
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 6.39e-01, LP: 2.36e-01
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 3.27e-01, LP: 1.28e-01
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 8.47e-01, LP: 1.51e-01
+
+  Claimed batch size: 2
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 5.88e-01, LP: 1.48e-01
+    Verify bs=2 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=2) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 6.14e-01, LP: 1.37e-01
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 6.14e-01, LP: 1.37e-01
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 4.51e-01, LP: 2.57e-01
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 4.51e-01, LP: 2.57e-01
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 6.05e-01, LP: 1.63e-01
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 9.87e-01, LP: 1.74e-01
+
+  Claimed batch size: 3
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 5.88e-01, LP: 1.48e-01
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=3 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=3) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 6.14e-01, LP: 1.37e-01
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 6.14e-01, LP: 1.37e-01
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 4.51e-01, LP: 2.57e-01
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 4.51e-01, LP: 2.57e-01
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 6.05e-01, LP: 1.63e-01
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 9.87e-01, LP: 1.74e-01
+
+  Claimed batch size: 4
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 3.57e-01, LP: 1.75e-01
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 6.14e-01, LP: 1.37e-01
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 6.14e-01, LP: 1.37e-01
+    Verify bs=4 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=4) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 6.18e-01, LP: 2.74e-01
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 6.18e-01, LP: 2.74e-01
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 3.60e-01, LP: 2.17e-01
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 8.65e-01, LP: 1.72e-01
+
+  Claimed batch size: 5
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 3.57e-01, LP: 1.75e-01
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 6.14e-01, LP: 1.37e-01
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 6.14e-01, LP: 1.37e-01
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=5 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=5) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 6.18e-01, LP: 2.74e-01
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 6.18e-01, LP: 2.74e-01
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 3.60e-01, LP: 2.17e-01
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 8.65e-01, LP: 1.72e-01
+
+  Claimed batch size: 8
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 6.39e-01, LP: 2.36e-01
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 4.51e-01, LP: 2.57e-01
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 4.51e-01, LP: 2.57e-01
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 6.18e-01, LP: 2.74e-01
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 6.18e-01, LP: 2.74e-01
+    Verify bs=8 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=8) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 6.25e-01, LP: 1.93e-01
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 9.69e-01, LP: 1.46e-01
+
+  Claimed batch size: 9
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 6.39e-01, LP: 2.36e-01
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 4.51e-01, LP: 2.57e-01
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 4.51e-01, LP: 2.57e-01
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 6.18e-01, LP: 2.74e-01
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 6.18e-01, LP: 2.74e-01
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=9 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=9) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 6.25e-01, LP: 1.93e-01
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 9.69e-01, LP: 1.46e-01
+
+  Claimed batch size: 16
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 3.27e-01, LP: 1.28e-01
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 6.05e-01, LP: 1.63e-01
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 6.05e-01, LP: 1.63e-01
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 3.60e-01, LP: 2.17e-01
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 3.60e-01, LP: 2.17e-01
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 6.25e-01, LP: 1.93e-01
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 6.25e-01, LP: 1.93e-01
+    Verify bs=16 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=16) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 8.48e-01, LP: 1.57e-01
+
+  Claimed batch size: 17
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 8.47e-01, LP: 1.51e-01
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 9.87e-01, LP: 1.74e-01
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 9.87e-01, LP: 1.74e-01
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 8.65e-01, LP: 1.72e-01
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 8.65e-01, LP: 1.72e-01
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 9.69e-01, LP: 1.46e-01
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 9.69e-01, LP: 1.46e-01
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 8.48e-01, LP: 1.57e-01
+    Verify bs=17 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=17) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+
+================================================================================
+REFERENCE: ref_2
+================================================================================
+
+  Claimed batch size: 1
+    Verify bs=1 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=1) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 5.23e-01, LP: 5.19e-02
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 5.23e-01, LP: 5.19e-02
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 3.30e-01, LP: 2.98e-02
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 3.30e-01, LP: 2.98e-02
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 5.58e-01, LP: 4.22e-02
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 5.58e-01, LP: 4.22e-02
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 5.55e-01, LP: 7.41e-02
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 5.72e-01, LP: 4.20e-02
+
+  Claimed batch size: 2
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 8.59e-01, LP: 1.45e-01
+    Verify bs=2 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=2) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 2.79e-01, LP: 1.78e-01
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 2.79e-01, LP: 1.78e-01
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 8.51e-01, LP: 1.56e-01
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 8.51e-01, LP: 1.56e-01
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 2.48e-01, LP: 1.31e-01
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 8.70e-01, LP: 1.47e-01
+
+  Claimed batch size: 3
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 8.59e-01, LP: 1.45e-01
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=3 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=3) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 2.79e-01, LP: 1.78e-01
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 2.79e-01, LP: 1.78e-01
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 8.51e-01, LP: 1.56e-01
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 8.51e-01, LP: 1.56e-01
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 2.48e-01, LP: 1.31e-01
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 8.70e-01, LP: 1.47e-01
+
+  Claimed batch size: 4
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 3.17e-01, LP: 1.32e-01
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 3.31e-01, LP: 1.58e-01
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 3.31e-01, LP: 1.58e-01
+    Verify bs=4 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=4) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 2.81e-01, LP: 3.84e-02
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 2.81e-01, LP: 3.84e-02
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 3.63e-01, LP: 1.22e-01
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 5.45e-01, LP: 1.21e-01
+
+  Claimed batch size: 5
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 3.17e-01, LP: 1.32e-01
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 3.31e-01, LP: 1.58e-01
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 3.31e-01, LP: 1.58e-01
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=5 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=5) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 2.81e-01, LP: 3.84e-02
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 2.81e-01, LP: 3.84e-02
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 3.63e-01, LP: 1.22e-01
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 5.45e-01, LP: 1.21e-01
+
+  Claimed batch size: 8
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 5.58e-01, LP: 4.22e-02
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 3.01e-01, LP: 9.40e-02
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 3.01e-01, LP: 9.40e-02
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 5.95e-01, LP: 7.16e-02
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 5.95e-01, LP: 7.16e-02
+    Verify bs=8 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=8) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 8.37e-01, LP: 1.13e-01
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 3.20e-01, LP: 8.35e-02
+
+  Claimed batch size: 9
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 5.58e-01, LP: 4.22e-02
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 3.01e-01, LP: 9.40e-02
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 3.01e-01, LP: 9.40e-02
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 5.95e-01, LP: 7.16e-02
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 5.95e-01, LP: 7.16e-02
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=9 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=9) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 8.37e-01, LP: 1.13e-01
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 3.20e-01, LP: 8.35e-02
+
+  Claimed batch size: 16
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 8.64e-01, LP: 1.43e-01
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 2.48e-01, LP: 1.04e-01
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 2.48e-01, LP: 1.04e-01
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 2.65e-01, LP: 1.65e-01
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 2.65e-01, LP: 1.65e-01
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 8.51e-01, LP: 1.63e-01
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 8.51e-01, LP: 1.63e-01
+    Verify bs=16 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=16) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+    Verify bs=17 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=17) → 20 steps
+      Key: 8.78e-01, LP: 1.16e-01
+
+  Claimed batch size: 17
+    Verify bs=1 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=1) → 20 steps
+      Key: 3.27e-01, LP: 1.89e-01
+    Verify bs=2 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=2) → 20 steps
+      Key: 8.70e-01, LP: 1.22e-01
+    Verify bs=3 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=3) → 20 steps
+      Key: 8.70e-01, LP: 1.22e-01
+    Verify bs=4 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=4) → 20 steps
+      Key: 8.64e-01, LP: 1.97e-01
+    Verify bs=5 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=5) → 20 steps
+      Key: 8.64e-01, LP: 1.97e-01
+    Verify bs=8 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=8) → 20 steps
+      Key: 2.87e-01, LP: 1.34e-01
+    Verify bs=9 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=9) → 20 steps
+      Key: 2.87e-01, LP: 1.34e-01
+    Verify bs=16 (off):      Prompt: 1000, Gen: 20, arb neighbors (bs=16) → 20 steps
+      Key: 8.78e-01, LP: 1.16e-01
+    Verify bs=17 (diag):      Prompt: 1000, Gen: 20, exact neighbors (bs=17) → 20 steps
+      Key: 0.00e+00, LP: 0.00e+00
+
+================================================================================
+CROSS-HARDWARE BATCH SIZE DETECTABILITY (PREFILL)
+================================================================================
+
+================================================================================
+REF_0
+================================================================================
+
+Key Vectors (mean L2):
+              v_bs=  1 v_bs=  2 v_bs=  3 v_bs=  4 v_bs=  5 v_bs=  8 v_bs=  9 v_bs= 16 v_bs= 17 
+c_bs=1     0.00e+00  1.20e+00  1.20e+00  2.17e+00  2.17e+00  2.17e+00  2.17e+00  2.17e+00  2.17e+00
+c_bs=2     1.20e+00  0.00e+00  0.00e+00  1.85e+00  1.85e+00  1.85e+00  1.85e+00  1.85e+00  1.85e+00
+c_bs=3     1.20e+00  0.00e+00  0.00e+00  1.85e+00  1.85e+00  1.85e+00  1.85e+00  1.85e+00  1.85e+00
+c_bs=4     2.17e+00  1.85e+00  1.85e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=5     2.17e+00  1.85e+00  1.85e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=8     2.17e+00  1.85e+00  1.85e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=9     2.17e+00  1.85e+00  1.85e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=16    2.17e+00  1.85e+00  1.85e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=17    2.17e+00  1.85e+00  1.85e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+Logprobs (mean L2):
+              v_bs=  1 v_bs=  2 v_bs=  3 v_bs=  4 v_bs=  5 v_bs=  8 v_bs=  9 v_bs= 16 v_bs= 17 
+c_bs=1     0.00e+00  3.06e-01  3.06e-01  4.57e-01  4.57e-01  4.57e-01  4.57e-01  4.57e-01  4.57e-01
+c_bs=2     3.06e-01  0.00e+00  0.00e+00  2.92e-01  2.92e-01  2.92e-01  2.92e-01  2.92e-01  2.92e-01
+c_bs=3     3.06e-01  0.00e+00  0.00e+00  2.92e-01  2.92e-01  2.92e-01  2.92e-01  2.92e-01  2.92e-01
+c_bs=4     4.57e-01  2.92e-01  2.92e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=5     4.57e-01  2.92e-01  2.92e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=8     4.57e-01  2.92e-01  2.92e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=9     4.57e-01  2.92e-01  2.92e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=16    4.57e-01  2.92e-01  2.92e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=17    4.57e-01  2.92e-01  2.92e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+================================================================================
+REF_1
+================================================================================
+
+Key Vectors (mean L2):
+              v_bs=  1 v_bs=  2 v_bs=  3 v_bs=  4 v_bs=  5 v_bs=  8 v_bs=  9 v_bs= 16 v_bs= 17 
+c_bs=1     0.00e+00  5.42e-01  5.42e-01  4.16e-01  4.16e-01  4.16e-01  4.16e-01  4.16e-01  4.16e-01
+c_bs=2     5.42e-01  0.00e+00  0.00e+00  4.58e-01  4.58e-01  4.58e-01  4.58e-01  4.58e-01  4.58e-01
+c_bs=3     5.42e-01  0.00e+00  0.00e+00  4.58e-01  4.58e-01  4.58e-01  4.58e-01  4.58e-01  4.58e-01
+c_bs=4     4.16e-01  4.58e-01  4.58e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=5     4.16e-01  4.58e-01  4.58e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=8     4.16e-01  4.58e-01  4.58e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=9     4.16e-01  4.58e-01  4.58e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=16    4.16e-01  4.58e-01  4.58e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=17    4.16e-01  4.58e-01  4.58e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+Logprobs (mean L2):
+              v_bs=  1 v_bs=  2 v_bs=  3 v_bs=  4 v_bs=  5 v_bs=  8 v_bs=  9 v_bs= 16 v_bs= 17 
+c_bs=1     0.00e+00  1.33e-01  1.33e-01  1.67e-01  1.67e-01  1.67e-01  1.67e-01  1.67e-01  1.67e-01
+c_bs=2     1.33e-01  0.00e+00  0.00e+00  1.46e-01  1.46e-01  1.46e-01  1.46e-01  1.46e-01  1.46e-01
+c_bs=3     1.33e-01  0.00e+00  0.00e+00  1.46e-01  1.46e-01  1.46e-01  1.46e-01  1.46e-01  1.46e-01
+c_bs=4     1.67e-01  1.46e-01  1.46e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=5     1.67e-01  1.46e-01  1.46e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=8     1.67e-01  1.46e-01  1.46e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=9     1.67e-01  1.46e-01  1.46e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=16    1.67e-01  1.46e-01  1.46e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=17    1.67e-01  1.46e-01  1.46e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+================================================================================
+REF_2
+================================================================================
+
+Key Vectors (mean L2):
+              v_bs=  1 v_bs=  2 v_bs=  3 v_bs=  4 v_bs=  5 v_bs=  8 v_bs=  9 v_bs= 16 v_bs= 17 
+c_bs=1     0.00e+00  2.58e-01  2.58e-01  2.67e-01  2.67e-01  2.67e-01  2.67e-01  2.67e-01  2.67e-01
+c_bs=2     2.58e-01  0.00e+00  0.00e+00  2.85e-01  2.85e-01  2.85e-01  2.85e-01  2.85e-01  2.85e-01
+c_bs=3     2.58e-01  0.00e+00  0.00e+00  2.85e-01  2.85e-01  2.85e-01  2.85e-01  2.85e-01  2.85e-01
+c_bs=4     2.67e-01  2.85e-01  2.85e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=5     2.67e-01  2.85e-01  2.85e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=8     2.67e-01  2.85e-01  2.85e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=9     2.67e-01  2.85e-01  2.85e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=16    2.67e-01  2.85e-01  2.85e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=17    2.67e-01  2.85e-01  2.85e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+Logprobs (mean L2):
+              v_bs=  1 v_bs=  2 v_bs=  3 v_bs=  4 v_bs=  5 v_bs=  8 v_bs=  9 v_bs= 16 v_bs= 17 
+c_bs=1     0.00e+00  1.62e-01  1.62e-01  1.53e-01  1.53e-01  1.53e-01  1.53e-01  1.53e-01  1.53e-01
+c_bs=2     1.62e-01  0.00e+00  0.00e+00  1.61e-01  1.61e-01  1.61e-01  1.61e-01  1.61e-01  1.61e-01
+c_bs=3     1.62e-01  0.00e+00  0.00e+00  1.61e-01  1.61e-01  1.61e-01  1.61e-01  1.61e-01  1.61e-01
+c_bs=4     1.53e-01  1.61e-01  1.61e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=5     1.53e-01  1.61e-01  1.61e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=8     1.53e-01  1.61e-01  1.61e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=9     1.53e-01  1.61e-01  1.61e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=16    1.53e-01  1.61e-01  1.61e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=17    1.53e-01  1.61e-01  1.61e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+================================================================================
+AGGREGATE (average across references):
+================================================================================
+
+Key Vectors (mean L2):
+              v_bs=  1 v_bs=  2 v_bs=  3 v_bs=  4 v_bs=  5 v_bs=  8 v_bs=  9 v_bs= 16 v_bs= 17 
+c_bs=1     0.00e+00  6.66e-01  6.66e-01  9.51e-01  9.51e-01  9.51e-01  9.51e-01  9.51e-01  9.51e-01
+c_bs=2     6.66e-01  0.00e+00  0.00e+00  8.66e-01  8.66e-01  8.66e-01  8.66e-01  8.66e-01  8.66e-01
+c_bs=3     6.66e-01  0.00e+00  0.00e+00  8.66e-01  8.66e-01  8.66e-01  8.66e-01  8.66e-01  8.66e-01
+c_bs=4     9.51e-01  8.66e-01  8.66e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=5     9.51e-01  8.66e-01  8.66e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=8     9.51e-01  8.66e-01  8.66e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=9     9.51e-01  8.66e-01  8.66e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=16    9.51e-01  8.66e-01  8.66e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=17    9.51e-01  8.66e-01  8.66e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+Logprobs (mean L2):
+              v_bs=  1 v_bs=  2 v_bs=  3 v_bs=  4 v_bs=  5 v_bs=  8 v_bs=  9 v_bs= 16 v_bs= 17 
+c_bs=1     0.00e+00  2.00e-01  2.00e-01  2.59e-01  2.59e-01  2.59e-01  2.59e-01  2.59e-01  2.59e-01
+c_bs=2     2.00e-01  0.00e+00  0.00e+00  2.00e-01  2.00e-01  2.00e-01  2.00e-01  2.00e-01  2.00e-01
+c_bs=3     2.00e-01  0.00e+00  0.00e+00  2.00e-01  2.00e-01  2.00e-01  2.00e-01  2.00e-01  2.00e-01
+c_bs=4     2.59e-01  2.00e-01  2.00e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=5     2.59e-01  2.00e-01  2.00e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=8     2.59e-01  2.00e-01  2.00e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=9     2.59e-01  2.00e-01  2.00e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=16    2.59e-01  2.00e-01  2.00e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+c_bs=17    2.59e-01  2.00e-01  2.00e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+================================================================================
+SNR ANALYSIS
+================================================================================
+
+Diagonal (baseline = cross-hardware, same batch size):
+  Key vectors: 0.00e+00
+  Logprobs: 0.00e+00
+
+Off-diagonal (all pairs):
+  Key vectors - Mean: 4.84e-01, SNR: inf×
+  Logprobs - Mean: 1.21e-01, SNR: inf×
+
+Excluded equivalent pairs (same kernel within-hardware):
+  (2, 3) and (3, 2)
+  (4, 5) and (5, 4)
+  (4, 8) and (8, 4)
+  (4, 9) and (9, 4)
+  (4, 16) and (16, 4)
+  (4, 17) and (17, 4)
+  (5, 8) and (8, 5)
+  (5, 9) and (9, 5)
+  (5, 16) and (16, 5)
+  (5, 17) and (17, 5)
+  (8, 9) and (9, 8)
+  (8, 16) and (16, 8)
+  (8, 17) and (17, 8)
+  (9, 16) and (16, 9)
+  (9, 17) and (17, 9)
+  (16, 17) and (17, 16)
+  Total excluded: 32 cells
+
+Off-diagonal (meaningful pairs only):
+  Count: 40
+  Key vectors - Mean: 8.71e-01, SNR: inf×
+  Logprobs - Mean: 2.18e-01, SNR: inf×
+
+================================================================================
+CROSS-HARDWARE BATCH SIZE DETECTABILITY (DECODE)
+================================================================================
+
+================================================================================
+REF_0
+================================================================================
+
+Key Vectors (mean L2):
+              v_bs=  1 v_bs=  2 v_bs=  3 v_bs=  4 v_bs=  5 v_bs=  8 v_bs=  9 v_bs= 16 v_bs= 17 
+c_bs=1     0.00e+00  5.05e-01  5.05e-01  5.09e-01  5.09e-01  4.86e-01  4.86e-01  4.94e-01  4.96e-01
+c_bs=2     5.05e-01  0.00e+00  0.00e+00  4.67e-01  4.67e-01  4.54e-01  4.54e-01  4.53e-01  4.34e-01
+c_bs=3     5.05e-01  0.00e+00  0.00e+00  4.67e-01  4.67e-01  4.54e-01  4.54e-01  4.53e-01  4.34e-01
+c_bs=4     5.09e-01  4.67e-01  4.67e-01  0.00e+00  0.00e+00  3.76e-01  3.76e-01  3.00e-01  4.48e-01
+c_bs=5     5.09e-01  4.67e-01  4.67e-01  0.00e+00  0.00e+00  3.76e-01  3.76e-01  3.00e-01  4.48e-01
+c_bs=8     4.86e-01  4.54e-01  4.54e-01  3.76e-01  3.76e-01  0.00e+00  0.00e+00  3.72e-01  3.90e-01
+c_bs=9     4.86e-01  4.54e-01  4.54e-01  3.76e-01  3.76e-01  0.00e+00  0.00e+00  3.72e-01  3.90e-01
+c_bs=16    4.94e-01  4.53e-01  4.53e-01  3.00e-01  3.00e-01  3.72e-01  3.72e-01  0.00e+00  4.38e-01
+c_bs=17    4.96e-01  4.34e-01  4.34e-01  4.48e-01  4.48e-01  3.90e-01  3.90e-01  4.38e-01  0.00e+00
+
+Logprobs (mean L2):
+              v_bs=  1 v_bs=  2 v_bs=  3 v_bs=  4 v_bs=  5 v_bs=  8 v_bs=  9 v_bs= 16 v_bs= 17 
+c_bs=1     0.00e+00  1.01e-01  1.01e-01  1.56e-01  1.56e-01  1.60e-01  1.60e-01  1.25e-01  1.14e-01
+c_bs=2     1.01e-01  0.00e+00  0.00e+00  2.03e-01  2.03e-01  1.77e-01  1.77e-01  1.73e-01  1.86e-01
+c_bs=3     1.01e-01  0.00e+00  0.00e+00  2.03e-01  2.03e-01  1.77e-01  1.77e-01  1.73e-01  1.86e-01
+c_bs=4     1.56e-01  2.03e-01  2.03e-01  0.00e+00  0.00e+00  2.11e-01  2.11e-01  5.89e-02  4.17e-02
+c_bs=5     1.56e-01  2.03e-01  2.03e-01  0.00e+00  0.00e+00  2.11e-01  2.11e-01  5.89e-02  4.17e-02
+c_bs=8     1.60e-01  1.77e-01  1.77e-01  2.11e-01  2.11e-01  0.00e+00  0.00e+00  1.94e-01  1.94e-01
+c_bs=9     1.60e-01  1.77e-01  1.77e-01  2.11e-01  2.11e-01  0.00e+00  0.00e+00  1.94e-01  1.94e-01
+c_bs=16    1.25e-01  1.73e-01  1.73e-01  5.89e-02  5.89e-02  1.94e-01  1.94e-01  0.00e+00  1.01e-01
+c_bs=17    1.14e-01  1.86e-01  1.86e-01  4.17e-02  4.17e-02  1.94e-01  1.94e-01  1.01e-01  0.00e+00
+
+================================================================================
+REF_1
+================================================================================
+
+Key Vectors (mean L2):
+              v_bs=  1 v_bs=  2 v_bs=  3 v_bs=  4 v_bs=  5 v_bs=  8 v_bs=  9 v_bs= 16 v_bs= 17 
+c_bs=1     0.00e+00  5.88e-01  5.88e-01  3.57e-01  3.57e-01  6.39e-01  6.39e-01  3.27e-01  8.47e-01
+c_bs=2     5.88e-01  0.00e+00  0.00e+00  6.14e-01  6.14e-01  4.51e-01  4.51e-01  6.05e-01  9.87e-01
+c_bs=3     5.88e-01  0.00e+00  0.00e+00  6.14e-01  6.14e-01  4.51e-01  4.51e-01  6.05e-01  9.87e-01
+c_bs=4     3.57e-01  6.14e-01  6.14e-01  0.00e+00  0.00e+00  6.18e-01  6.18e-01  3.60e-01  8.65e-01
+c_bs=5     3.57e-01  6.14e-01  6.14e-01  0.00e+00  0.00e+00  6.18e-01  6.18e-01  3.60e-01  8.65e-01
+c_bs=8     6.39e-01  4.51e-01  4.51e-01  6.18e-01  6.18e-01  0.00e+00  0.00e+00  6.25e-01  9.69e-01
+c_bs=9     6.39e-01  4.51e-01  4.51e-01  6.18e-01  6.18e-01  0.00e+00  0.00e+00  6.25e-01  9.69e-01
+c_bs=16    3.27e-01  6.05e-01  6.05e-01  3.60e-01  3.60e-01  6.25e-01  6.25e-01  0.00e+00  8.48e-01
+c_bs=17    8.47e-01  9.87e-01  9.87e-01  8.65e-01  8.65e-01  9.69e-01  9.69e-01  8.48e-01  0.00e+00
+
+Logprobs (mean L2):
+              v_bs=  1 v_bs=  2 v_bs=  3 v_bs=  4 v_bs=  5 v_bs=  8 v_bs=  9 v_bs= 16 v_bs= 17 
+c_bs=1     0.00e+00  1.48e-01  1.48e-01  1.75e-01  1.75e-01  2.36e-01  2.36e-01  1.28e-01  1.51e-01
+c_bs=2     1.48e-01  0.00e+00  0.00e+00  1.37e-01  1.37e-01  2.57e-01  2.57e-01  1.63e-01  1.74e-01
+c_bs=3     1.48e-01  0.00e+00  0.00e+00  1.37e-01  1.37e-01  2.57e-01  2.57e-01  1.63e-01  1.74e-01
+c_bs=4     1.75e-01  1.37e-01  1.37e-01  0.00e+00  0.00e+00  2.74e-01  2.74e-01  2.17e-01  1.72e-01
+c_bs=5     1.75e-01  1.37e-01  1.37e-01  0.00e+00  0.00e+00  2.74e-01  2.74e-01  2.17e-01  1.72e-01
+c_bs=8     2.36e-01  2.57e-01  2.57e-01  2.74e-01  2.74e-01  0.00e+00  0.00e+00  1.93e-01  1.46e-01
+c_bs=9     2.36e-01  2.57e-01  2.57e-01  2.74e-01  2.74e-01  0.00e+00  0.00e+00  1.93e-01  1.46e-01
+c_bs=16    1.28e-01  1.63e-01  1.63e-01  2.17e-01  2.17e-01  1.93e-01  1.93e-01  0.00e+00  1.57e-01
+c_bs=17    1.51e-01  1.74e-01  1.74e-01  1.72e-01  1.72e-01  1.46e-01  1.46e-01  1.57e-01  0.00e+00
+
+================================================================================
+REF_2
+================================================================================
+
+Key Vectors (mean L2):
+              v_bs=  1 v_bs=  2 v_bs=  3 v_bs=  4 v_bs=  5 v_bs=  8 v_bs=  9 v_bs= 16 v_bs= 17 
+c_bs=1     0.00e+00  5.23e-01  5.23e-01  3.30e-01  3.30e-01  5.58e-01  5.58e-01  5.55e-01  5.72e-01
+c_bs=2     8.59e-01  0.00e+00  0.00e+00  2.79e-01  2.79e-01  8.51e-01  8.51e-01  2.48e-01  8.70e-01
+c_bs=3     8.59e-01  0.00e+00  0.00e+00  2.79e-01  2.79e-01  8.51e-01  8.51e-01  2.48e-01  8.70e-01
+c_bs=4     3.17e-01  3.31e-01  3.31e-01  0.00e+00  0.00e+00  2.81e-01  2.81e-01  3.63e-01  5.45e-01
+c_bs=5     3.17e-01  3.31e-01  3.31e-01  0.00e+00  0.00e+00  2.81e-01  2.81e-01  3.63e-01  5.45e-01
+c_bs=8     5.58e-01  3.01e-01  3.01e-01  5.95e-01  5.95e-01  0.00e+00  0.00e+00  8.37e-01  3.20e-01
+c_bs=9     5.58e-01  3.01e-01  3.01e-01  5.95e-01  5.95e-01  0.00e+00  0.00e+00  8.37e-01  3.20e-01
+c_bs=16    8.64e-01  2.48e-01  2.48e-01  2.65e-01  2.65e-01  8.51e-01  8.51e-01  0.00e+00  8.78e-01
+c_bs=17    3.27e-01  8.70e-01  8.70e-01  8.64e-01  8.64e-01  2.87e-01  2.87e-01  8.78e-01  0.00e+00
+
+Logprobs (mean L2):
+              v_bs=  1 v_bs=  2 v_bs=  3 v_bs=  4 v_bs=  5 v_bs=  8 v_bs=  9 v_bs= 16 v_bs= 17 
+c_bs=1     0.00e+00  5.19e-02  5.19e-02  2.98e-02  2.98e-02  4.22e-02  4.22e-02  7.41e-02  4.20e-02
+c_bs=2     1.45e-01  0.00e+00  0.00e+00  1.78e-01  1.78e-01  1.56e-01  1.56e-01  1.31e-01  1.47e-01
+c_bs=3     1.45e-01  0.00e+00  0.00e+00  1.78e-01  1.78e-01  1.56e-01  1.56e-01  1.31e-01  1.47e-01
+c_bs=4     1.32e-01  1.58e-01  1.58e-01  0.00e+00  0.00e+00  3.84e-02  3.84e-02  1.22e-01  1.21e-01
+c_bs=5     1.32e-01  1.58e-01  1.58e-01  0.00e+00  0.00e+00  3.84e-02  3.84e-02  1.22e-01  1.21e-01
+c_bs=8     4.22e-02  9.40e-02  9.40e-02  7.16e-02  7.16e-02  0.00e+00  0.00e+00  1.13e-01  8.35e-02
+c_bs=9     4.22e-02  9.40e-02  9.40e-02  7.16e-02  7.16e-02  0.00e+00  0.00e+00  1.13e-01  8.35e-02
+c_bs=16    1.43e-01  1.04e-01  1.04e-01  1.65e-01  1.65e-01  1.63e-01  1.63e-01  0.00e+00  1.16e-01
+c_bs=17    1.89e-01  1.22e-01  1.22e-01  1.97e-01  1.97e-01  1.34e-01  1.34e-01  1.16e-01  0.00e+00
+
+================================================================================
+AGGREGATE (average across references):
+================================================================================
+
+Key Vectors (mean L2):
+              v_bs=  1 v_bs=  2 v_bs=  3 v_bs=  4 v_bs=  5 v_bs=  8 v_bs=  9 v_bs= 16 v_bs= 17 
+c_bs=1     0.00e+00  5.39e-01  5.39e-01  3.99e-01  3.99e-01  5.61e-01  5.61e-01  4.59e-01  6.38e-01
+c_bs=2     6.51e-01  0.00e+00  0.00e+00  4.53e-01  4.53e-01  5.85e-01  5.85e-01  4.35e-01  7.64e-01
+c_bs=3     6.51e-01  0.00e+00  0.00e+00  4.53e-01  4.53e-01  5.85e-01  5.85e-01  4.35e-01  7.64e-01
+c_bs=4     3.95e-01  4.71e-01  4.71e-01  0.00e+00  0.00e+00  4.25e-01  4.25e-01  3.41e-01  6.19e-01
+c_bs=5     3.95e-01  4.71e-01  4.71e-01  0.00e+00  0.00e+00  4.25e-01  4.25e-01  3.41e-01  6.19e-01
+c_bs=8     5.61e-01  4.02e-01  4.02e-01  5.30e-01  5.30e-01  0.00e+00  0.00e+00  6.11e-01  5.60e-01
+c_bs=9     5.61e-01  4.02e-01  4.02e-01  5.30e-01  5.30e-01  0.00e+00  0.00e+00  6.11e-01  5.60e-01
+c_bs=16    5.62e-01  4.35e-01  4.35e-01  3.09e-01  3.09e-01  6.16e-01  6.16e-01  0.00e+00  7.21e-01
+c_bs=17    5.56e-01  7.64e-01  7.64e-01  7.26e-01  7.26e-01  5.48e-01  5.48e-01  7.21e-01  0.00e+00
+
+Logprobs (mean L2):
+              v_bs=  1 v_bs=  2 v_bs=  3 v_bs=  4 v_bs=  5 v_bs=  8 v_bs=  9 v_bs= 16 v_bs= 17 
+c_bs=1     0.00e+00  1.00e-01  1.00e-01  1.20e-01  1.20e-01  1.46e-01  1.46e-01  1.09e-01  1.02e-01
+c_bs=2     1.31e-01  0.00e+00  0.00e+00  1.73e-01  1.73e-01  1.97e-01  1.97e-01  1.56e-01  1.69e-01
+c_bs=3     1.31e-01  0.00e+00  0.00e+00  1.73e-01  1.73e-01  1.97e-01  1.97e-01  1.56e-01  1.69e-01
+c_bs=4     1.54e-01  1.66e-01  1.66e-01  0.00e+00  0.00e+00  1.74e-01  1.74e-01  1.33e-01  1.12e-01
+c_bs=5     1.54e-01  1.66e-01  1.66e-01  0.00e+00  0.00e+00  1.74e-01  1.74e-01  1.33e-01  1.12e-01
+c_bs=8     1.46e-01  1.76e-01  1.76e-01  1.85e-01  1.85e-01  0.00e+00  0.00e+00  1.67e-01  1.41e-01
+c_bs=9     1.46e-01  1.76e-01  1.76e-01  1.85e-01  1.85e-01  0.00e+00  0.00e+00  1.67e-01  1.41e-01
+c_bs=16    1.32e-01  1.47e-01  1.47e-01  1.47e-01  1.47e-01  1.83e-01  1.83e-01  0.00e+00  1.24e-01
+c_bs=17    1.51e-01  1.61e-01  1.61e-01  1.37e-01  1.37e-01  1.58e-01  1.58e-01  1.24e-01  0.00e+00
+
+================================================================================
+SNR ANALYSIS
+================================================================================
+
+Diagonal (baseline = cross-hardware, same batch size):
+  Key vectors: 0.00e+00
+  Logprobs: 0.00e+00
+
+Off-diagonal (all pairs):
+  Key vectors - Mean: 4.83e-01, SNR: inf×
+  Logprobs - Mean: 1.42e-01, SNR: inf×
+
+Excluded equivalent pairs (same kernel within-hardware):
+  (2, 3) and (3, 2)
+  (4, 5) and (5, 4)
+  (8, 9) and (9, 8)
+  Total excluded: 6 cells
+
+Off-diagonal (meaningful pairs only):
+  Count: 66
+  Key vectors - Mean: 5.27e-01, SNR: inf×
+  Logprobs - Mean: 1.55e-01, SNR: inf×
+
+================================================================================
+PREFILL vs DECODE COMPARISON (meaningful SNR)
+================================================================================
+Prefill - Key: inf×, LP: inf×
+Decode  - Key: inf×, LP: inf×
+
+✓ Results saved to: /workspace/experiments/verify_20251125_181000.json

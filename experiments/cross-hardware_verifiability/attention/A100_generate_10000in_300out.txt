@@ -1,0 +1,275 @@
+================================================================================
+ATTENTION IMPLEMENTATION CROSS-HARDWARE EXPERIMENT
+================================================================================
+GPU: NVIDIA A100-SXM4-80GB
+Hostname: 2b0c722dfad5
+Found 1 PDF(s)
+  Loading: /workspace/Verification-for-International-AI-Governance.pdf
+Total source tokens: 120215
+Prompt structure: 33 prefix + 10000 snippet + 34 suffix = 10067 tokens
+
+Created 6 prompts
+
+================================================================================
+GENERATION MODE
+================================================================================
+
+--- Attention: eager ---
+Loading model with attention: eager
+  ref_0: 300 tokens
+    -> This excerpt is clearly from a technical report or white paper focused on the topic of international agreements and the...
+  ref_1: 300 tokens
+    -> Based on the excerpt provided, this document appears to be from a report or white paper focused on the...
+  ref_2: 300 tokens
+    -> Based on the excerpt provided, this document appears to be from a technical or academic report or white paper...
+  ref_3: 72 tokens
+    -> Based on the excerpt provided, this document appears to be from a technical or academic report or white paper...
+  ref_4: 300 tokens
+    -> Based on the excerpt provided, this document appears to be from a technical or academic report or white paper...
+  ref_5: 300 tokens
+    -> Based on the excerpt provided, this document appears to be from a technical or policy report focused on the...
+
+--- Attention: sdpa ---
+Loading model with attention: sdpa
+  ref_0: 300 tokens
+    -> This excerpt is from a research report or white paper focused on the international governance and verification of artificial intelligence...
+  ref_1: 300 tokens
+    -> Based on the excerpt provided, this document appears to be from a report or white paper focused on the...
+  ref_2: 300 tokens
+    -> Based on the excerpt provided, this document appears to be from a technical or academic report focused on the...
+  ref_3: 300 tokens
+    -> Based on the excerpt provided, this document appears to be from a technical or academic report focused on the...
+  ref_4: 300 tokens
+    -> Based on the excerpt provided, this document appears to be from a technical or academic report focused on the...
+  ref_5: 300 tokens
+    -> This excerpt is from a technical and policy document focused on the governance and verification of artificial intelligence (AI...
+
+--- Attention: flash_attention_2 ---
+Loading model with attention: flash_attention_2
+  ref_0: 300 tokens
+    -> This excerpt is from a research report or white paper focused on the topic of international agreements and their verification...
+  ref_1: 300 tokens
+    -> Based on the excerpt provided, this document appears to be from a report or white paper focused on the...
+  ref_2: 300 tokens
+    -> Based on the excerpt provided, this document appears to be from a technical or academic report focused on the...
+  ref_3: 300 tokens
+    -> Based on the excerpt provided, this document appears to be a technical report or white paper focused on the...
+  ref_4: 300 tokens
+    -> Based on the excerpt provided, this document appears to be from a technical or academic report focused on the...
+  ref_5: 300 tokens
+    -> This excerpt is from a technical and policy document focused on the governance and verification of artificial intelligence (AI...
+
+================================================================================
+WITHIN-HARDWARE ATTENTION EFFECTS (PREFILL)
+================================================================================
+
+--- ref_0 ---
+
+Key Vectors (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   1.44e+01   1.44e+01
+      sdpa   1.44e+01   0.00e+00   4.39e-01
+flash_attention_2   1.44e+01   4.39e-01   0.00e+00
+
+Logprobs (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   3.25e+00   3.40e+00
+      sdpa   3.25e+00   0.00e+00   1.76e-01
+flash_attention_2   3.40e+00   1.76e-01   0.00e+00
+
+--- ref_1 ---
+
+Key Vectors (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   1.33e+01   1.34e+01
+      sdpa   1.33e+01   0.00e+00   4.30e-01
+flash_attention_2   1.34e+01   4.30e-01   0.00e+00
+
+Logprobs (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   1.39e+00   1.55e+00
+      sdpa   1.39e+00   0.00e+00   2.32e-01
+flash_attention_2   1.55e+00   2.32e-01   0.00e+00
+
+--- ref_2 ---
+
+Key Vectors (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   7.10e+00   7.20e+00
+      sdpa   7.10e+00   0.00e+00   4.78e-01
+flash_attention_2   7.20e+00   4.78e-01   0.00e+00
+
+Logprobs (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   2.16e+00   2.36e+00
+      sdpa   2.16e+00   0.00e+00   2.42e-01
+flash_attention_2   2.36e+00   2.42e-01   0.00e+00
+
+--- ref_3 ---
+
+Key Vectors (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   1.37e+01   1.39e+01
+      sdpa   1.37e+01   0.00e+00   5.55e-01
+flash_attention_2   1.39e+01   5.55e-01   0.00e+00
+
+Logprobs (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   6.04e+00   5.94e+00
+      sdpa   6.04e+00   0.00e+00   1.55e-01
+flash_attention_2   5.94e+00   1.55e-01   0.00e+00
+
+--- ref_4 ---
+
+Key Vectors (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   1.45e+01   1.47e+01
+      sdpa   1.45e+01   0.00e+00   9.67e-01
+flash_attention_2   1.47e+01   9.67e-01   0.00e+00
+
+Logprobs (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   8.60e+00   8.48e+00
+      sdpa   8.60e+00   0.00e+00   1.24e-01
+flash_attention_2   8.48e+00   1.24e-01   0.00e+00
+
+--- ref_5 ---
+
+Key Vectors (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   1.34e+01   1.34e+01
+      sdpa   1.34e+01   0.00e+00   6.62e-01
+flash_attention_2   1.34e+01   6.62e-01   0.00e+00
+
+Logprobs (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   4.40e+00   4.38e+00
+      sdpa   4.40e+00   0.00e+00   1.63e-01
+flash_attention_2   4.38e+00   1.63e-01   0.00e+00
+
+AGGREGATE (average across references):
+
+Key Vectors (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   1.27e+01   1.28e+01
+      sdpa   1.27e+01   0.00e+00   5.89e-01
+flash_attention_2   1.28e+01   5.89e-01   0.00e+00
+
+Logprobs (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   4.31e+00   4.35e+00
+      sdpa   4.31e+00   0.00e+00   1.82e-01
+flash_attention_2   4.35e+00   1.82e-01   0.00e+00
+
+Off-diagonal stats:
+  Key vectors - Mean: 8.72e+00
+  Logprobs - Mean: 2.95e+00
+
+================================================================================
+WITHIN-HARDWARE ATTENTION EFFECTS (DECODE)
+================================================================================
+
+--- ref_0 ---
+
+Key Vectors (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   2.66e+01   3.02e+01
+      sdpa   2.66e+01   0.00e+00   1.98e+01
+flash_attention_2   3.02e+01   1.98e+01   0.00e+00
+
+Logprobs (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   5.62e+00   5.15e+00
+      sdpa   5.62e+00   0.00e+00   3.53e+00
+flash_attention_2   5.15e+00   3.53e+00   0.00e+00
+
+--- ref_1 ---
+
+Key Vectors (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   2.71e+01   3.10e+01
+      sdpa   2.71e+01   0.00e+00   2.22e+01
+flash_attention_2   3.10e+01   2.22e+01   0.00e+00
+
+Logprobs (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   8.71e+00   7.28e+00
+      sdpa   8.71e+00   0.00e+00   9.22e+00
+flash_attention_2   7.28e+00   9.22e+00   0.00e+00
+
+--- ref_2 ---
+
+Key Vectors (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   2.80e+01   3.14e+01
+      sdpa   2.80e+01   0.00e+00   3.35e+01
+flash_attention_2   3.14e+01   3.35e+01   0.00e+00
+
+Logprobs (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   9.89e+00   1.31e+01
+      sdpa   9.89e+00   0.00e+00   8.02e+00
+flash_attention_2   1.31e+01   8.02e+00   0.00e+00
+
+--- ref_3 ---
+
+Key Vectors (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   3.43e+01   3.38e+01
+      sdpa   3.43e+01   0.00e+00   2.82e+01
+flash_attention_2   3.38e+01   2.82e+01   0.00e+00
+
+Logprobs (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   9.77e+00   1.10e+01
+      sdpa   9.77e+00   0.00e+00   2.96e+00
+flash_attention_2   1.10e+01   2.96e+00   0.00e+00
+
+--- ref_4 ---
+
+Key Vectors (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   2.39e+01   1.86e+01
+      sdpa   2.39e+01   0.00e+00   2.39e+01
+flash_attention_2   1.86e+01   2.39e+01   0.00e+00
+
+Logprobs (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   6.88e+00   6.34e+00
+      sdpa   6.88e+00   0.00e+00   6.44e+00
+flash_attention_2   6.34e+00   6.44e+00   0.00e+00
+
+--- ref_5 ---
+
+Key Vectors (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   2.40e+01   3.02e+01
+      sdpa   2.40e+01   0.00e+00   3.04e+01
+flash_attention_2   3.02e+01   3.04e+01   0.00e+00
+
+Logprobs (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   1.35e+01   9.85e+00
+      sdpa   1.35e+01   0.00e+00   1.89e+01
+flash_attention_2   9.85e+00   1.89e+01   0.00e+00
+
+AGGREGATE (average across references):
+
+Key Vectors (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   2.73e+01   2.92e+01
+      sdpa   2.73e+01   0.00e+00   2.63e+01
+flash_attention_2   2.92e+01   2.63e+01   0.00e+00
+
+Logprobs (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   0.00e+00   9.05e+00   8.79e+00
+      sdpa   9.05e+00   0.00e+00   8.18e+00
+flash_attention_2   8.79e+00   8.18e+00   0.00e+00
+
+Off-diagonal stats:
+  Key vectors - Mean: 2.76e+01
+  Logprobs - Mean: 8.67e+00
+
+Saved to: /workspace/experiments/attn_generate_20251126_194820.json
+Next: Copy to verifier, set TEACHER_FORCING=True, set REFERENCE_FILE

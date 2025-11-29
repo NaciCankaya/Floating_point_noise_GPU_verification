@@ -1,7 +1,0 @@
-transformers
-hf_transfer
-accelerate
-ninja
-packaging
-wheel
-flash-attn

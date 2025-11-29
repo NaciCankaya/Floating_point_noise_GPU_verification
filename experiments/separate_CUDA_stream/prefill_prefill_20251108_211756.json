@@ -1,0 +1,63 @@
+{
+  "experiment": "exp1_prefill_prefill",
+  "attestation": {
+    "timestamp": "2025-11-08T21:17:49.496091",
+    "hostname": "b14dbb0d3093",
+    "pytorch": {
+      "version": "2.8.0+cu128",
+      "cuda_version": "12.8"
+    },
+    "gpu": {
+      "name": "NVIDIA A100 80GB PCIe",
+      "capability": "8.0"
+    }
+  },
+  "config": {
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "default_tokens": 875,
+    "concurrent_tokens": 711,
+    "sample_interval": 50,
+    "layer_indices": [
+      1,
+      4,
+      10,
+      18,
+      28
+    ]
+  },
+  "sanity_check": {
+    "passed": true,
+    "description": "Verified different prompts produce different keys"
+  },
+  "forensics": {
+    "keys": {
+      "low_concurrent": {
+        "all_exact": true
+      },
+      "high_concurrent": {
+        "all_exact": true
+      }
+    }
+  },
+  "timing_forensics": {
+    "low_concurrent": {
+      "time_ms": 107.36679285764694,
+      "baseline_ms": 68.69707256555557,
+      "slowdown_ms": 38.66972029209137,
+      "slowdown_pct": 56.29020109290684,
+      "significant": true
+    },
+    "high_concurrent": {
+      "time_ms": 132.5552947819233,
+      "baseline_ms": 68.69707256555557,
+      "slowdown_ms": 63.85822221636772,
+      "slowdown_pct": 92.95624956278846,
+      "significant": true
+    }
+  },
+  "verdict": {
+    "keys_exact": true,
+    "timing_detects": true,
+    "sanity_check_passed": true
+  }
+}

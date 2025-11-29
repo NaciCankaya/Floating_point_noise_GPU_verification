@@ -1,0 +1,495 @@
+================================================================================
+CROSS-HARDWARE BATCH SIZE DETECTABILITY - GENERATION (reference)
+================================================================================
+
+System: c6c6242ae438
+GPU: NVIDIA A100 80GB PCIe
+Attention: sdpa
+Layers: [28]
+Found 1 PDF(s)
+  Loading: /workspace/Verification-for-International-AI-Governance.pdf
+Total source tokens: 120215
+Prompt structure: 33 prefix + 1000 snippet + 34 suffix = 1067 tokens
+All 51 prompts: 1067 tokens each
+
+Sample prompt ending:
+' . . . . . ."\n\nBased on this excerpt, what type of document do you think this is from, and what is its likely subject matter? Explain your reasoning.<|im_end|>\n<|im_start|>assistant\n'
+
+================================================================================
+REFERENCE: ref_0
+================================================================================
+
+Prompt length: 1067 tokens
+
+  bs=1:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=2:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=3:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=4:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=5:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=8:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=9:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=16:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=17:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+
+================================================================================
+REFERENCE: ref_1
+================================================================================
+
+Prompt length: 1067 tokens
+
+  bs=1:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=2:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=3:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=4:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=5:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=8:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=9:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=16:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=17:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+
+================================================================================
+REFERENCE: ref_2
+================================================================================
+
+Prompt length: 1067 tokens
+
+  bs=1:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=2:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=3:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=4:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=5:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=8:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=9:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=16:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+  bs=17:      Prompt: 1067 tokens → Final: 1217 tokens (150 generated)
+
+--- Token consistency for ref_0 ---
+
+================================================================================
+TOKEN GENERATION CONSISTENCY CHECK
+================================================================================
+
+Generated tokens by batch size:
+  bs=1:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 3412, 1895, 476, 264, 4158, 5567, 10735, 389, 279, 8544, 315, 6489, 34086, 323, 22901, 315, 20443, 11229, 320, 15469, 8, 19473, 13, 5692, 594, 279, 32711, 4815, 419, 16688, 1447, 16, 13, 3070, 3851, 323, 24124, 95518, 576, 2197, 374, 24849, 330, 62339, 369, 7179, 15235, 80589, 1, 323, 11469, 5248, 12014, 504, 5257, 14250, 323, 3412, 14336, 11, 18860, 264, 39706, 3412, 5041, 382, 17, 13, 3070, 2762, 323, 28596, 95518, 576, 2197, 374, 32930, 448, 458, 8115, 11, 8794, 11, 323, 14158, 429, 4263, 279, 2739, 12919, 2897, 315, 6489, 15235, 19473, 11, 279, 11513, 304, 68863, 54480, 5601, 323, 7375, 11, 323, 4948, 2606, 323, 6559, 32483, 13, 1096, 5944, 374, 14260, 315, 264, 3412, 1895, 476, 4158, 5567, 382, 18, 13, 3070, 13019, 33364, 95518, 576, 2197, 1594, 2342, 1119, 279, 68443]
+    Text: 'Based on the excerpt provided, this document appears to be from a research report or a white paper focused on the topic of international governance and verification of artificial intelligence (AI) agreements. Here\'s the reasoning behind this conclusion:\n\n1. **Title and Authors**: The document is titled "Verification for International AI Governance" and lists multiple authors from various academic and research institutions, indicating a collaborative research effort.\n\n2. **Content and Structure**: The document is structured with an abstract, contents, and sections that discuss the verifiability of international AI agreements, the challenges in verifying computational rules and tools, and political options and tradeoffs. This structure is typical of a research report or white paper.\n\n3. **Subject Matter**: The document delves into the feasibility'
+    ✓
+  bs=2:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 3412, 1895, 476, 4158, 5567, 10735, 389, 279, 8544, 315, 6489, 34086, 323, 22901, 315, 20443, 11229, 320, 15469, 8, 19473, 13, 5692, 594, 279, 32711, 4815, 419, 16688, 1447, 16, 13, 3070, 3851, 323, 24124, 95518, 576, 2197, 374, 24849, 330, 62339, 369, 7179, 15235, 80589, 1, 323, 11469, 5248, 12014, 504, 5257, 14250, 323, 3412, 14336, 11, 18860, 264, 39706, 3412, 5041, 382, 17, 13, 3070, 2762, 323, 28596, 95518, 576, 2197, 374, 32930, 448, 458, 8115, 11, 8794, 11, 323, 14158, 429, 4263, 279, 2739, 12919, 2897, 315, 6489, 15235, 19473, 11, 279, 11513, 304, 22901, 11, 323, 4650, 19827, 311, 22279, 1493, 11513, 13, 1096, 5944, 374, 14260, 315, 3412, 6682, 476, 4158, 15689, 382, 18, 13, 3070, 13019, 33364, 95518, 576, 2197, 1594, 2342, 1119, 279, 68443, 315, 6489, 19473, 311, 10091]
+    Text: 'Based on the excerpt provided, this document appears to be from a research report or white paper focused on the topic of international governance and verification of artificial intelligence (AI) agreements. Here\'s the reasoning behind this conclusion:\n\n1. **Title and Authors**: The document is titled "Verification for International AI Governance" and lists multiple authors from various academic and research institutions, indicating a collaborative research effort.\n\n2. **Content and Structure**: The document is structured with an abstract, contents, and sections that discuss the verifiability of international AI agreements, the challenges in verification, and potential approaches to overcome these challenges. This structure is typical of research reports or white papers.\n\n3. **Subject Matter**: The document delves into the feasibility of international agreements to manage'
+    ✗ DIFFERENT
+  bs=3:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 3412, 1895, 476, 4158, 5567, 10735, 389, 279, 8544, 315, 6489, 34086, 323, 22901, 315, 20443, 11229, 320, 15469, 8, 19473, 13, 5692, 594, 279, 32711, 4815, 419, 16688, 1447, 16, 13, 3070, 3851, 323, 24124, 95518, 576, 2197, 374, 24849, 330, 62339, 369, 7179, 15235, 80589, 1, 323, 11469, 5248, 12014, 504, 5257, 14250, 323, 3412, 14336, 11, 18860, 264, 39706, 3412, 5041, 382, 17, 13, 3070, 2762, 323, 28596, 95518, 576, 2197, 374, 32930, 448, 458, 8115, 11, 8794, 11, 323, 14158, 429, 4263, 279, 2739, 12919, 2897, 315, 6489, 15235, 19473, 11, 279, 11513, 304, 22901, 11, 323, 4650, 19827, 311, 22279, 1493, 11513, 13, 1096, 5944, 374, 14260, 315, 3412, 6682, 476, 4158, 15689, 382, 18, 13, 3070, 13019, 33364, 95518, 576, 2197, 1594, 2342, 1119, 279, 68443, 315, 6489, 19473, 311, 10091]
+    Text: 'Based on the excerpt provided, this document appears to be from a research report or white paper focused on the topic of international governance and verification of artificial intelligence (AI) agreements. Here\'s the reasoning behind this conclusion:\n\n1. **Title and Authors**: The document is titled "Verification for International AI Governance" and lists multiple authors from various academic and research institutions, indicating a collaborative research effort.\n\n2. **Content and Structure**: The document is structured with an abstract, contents, and sections that discuss the verifiability of international AI agreements, the challenges in verification, and potential approaches to overcome these challenges. This structure is typical of research reports or white papers.\n\n3. **Subject Matter**: The document delves into the feasibility of international agreements to manage'
+    ✗ DIFFERENT
+  bs=4:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 3412, 1895, 476, 264, 4158, 5567, 10735, 389, 279, 8544, 315, 6489, 34086, 323, 22901, 315, 20443, 11229, 320, 15469, 8, 19473, 13, 5692, 594, 279, 32711, 4815, 419, 16688, 1447, 16, 13, 3070, 3851, 323, 24124, 95518, 576, 2197, 374, 24849, 330, 62339, 369, 7179, 15235, 80589, 1, 323, 11469, 5248, 12014, 504, 5257, 14250, 323, 3412, 14336, 11, 18860, 264, 39706, 3412, 5041, 382, 17, 13, 3070, 2762, 323, 28596, 95518, 576, 2197, 374, 32930, 448, 458, 8115, 11, 8794, 11, 323, 14158, 429, 4263, 279, 2739, 12919, 2897, 315, 6489, 15235, 19473, 11, 279, 11513, 304, 22901, 11, 323, 4650, 19827, 311, 22279, 1493, 11513, 13, 1096, 5944, 374, 14260, 315, 3412, 6682, 476, 4158, 15689, 382, 18, 13, 3070, 13019, 33364, 95518, 576, 2197, 1594, 2342, 1119, 279, 68443, 315, 6489, 19473, 311]
+    Text: 'Based on the excerpt provided, this document appears to be from a research report or a white paper focused on the topic of international governance and verification of artificial intelligence (AI) agreements. Here\'s the reasoning behind this conclusion:\n\n1. **Title and Authors**: The document is titled "Verification for International AI Governance" and lists multiple authors from various academic and research institutions, indicating a collaborative research effort.\n\n2. **Content and Structure**: The document is structured with an abstract, contents, and sections that discuss the verifiability of international AI agreements, the challenges in verification, and potential approaches to overcome these challenges. This structure is typical of research reports or white papers.\n\n3. **Subject Matter**: The document delves into the feasibility of international agreements to'
+    ✗ DIFFERENT
+  bs=5:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 3412, 1895, 476, 264, 4158, 5567, 10735, 389, 279, 8544, 315, 6489, 34086, 323, 22901, 315, 20443, 11229, 320, 15469, 8, 19473, 13, 5692, 594, 279, 32711, 4815, 419, 16688, 1447, 16, 13, 3070, 3851, 323, 24124, 95518, 576, 2197, 374, 24849, 330, 62339, 369, 7179, 15235, 80589, 1, 323, 11469, 5248, 12014, 504, 5257, 14250, 323, 3412, 14336, 11, 18860, 264, 39706, 3412, 5041, 382, 17, 13, 3070, 2762, 323, 28596, 95518, 576, 2197, 374, 32930, 448, 458, 8115, 11, 8794, 11, 323, 14158, 429, 4263, 279, 2739, 12919, 2897, 315, 6489, 15235, 19473, 11, 279, 11513, 304, 22901, 11, 323, 4650, 19827, 311, 22279, 1493, 11513, 13, 1096, 5944, 374, 14260, 315, 3412, 6682, 476, 4158, 15689, 382, 18, 13, 3070, 13019, 33364, 95518, 576, 2197, 1594, 2342, 1119, 279, 68443, 315, 6489, 19473, 311]
+    Text: 'Based on the excerpt provided, this document appears to be from a research report or a white paper focused on the topic of international governance and verification of artificial intelligence (AI) agreements. Here\'s the reasoning behind this conclusion:\n\n1. **Title and Authors**: The document is titled "Verification for International AI Governance" and lists multiple authors from various academic and research institutions, indicating a collaborative research effort.\n\n2. **Content and Structure**: The document is structured with an abstract, contents, and sections that discuss the verifiability of international AI agreements, the challenges in verification, and potential approaches to overcome these challenges. This structure is typical of research reports or white papers.\n\n3. **Subject Matter**: The document delves into the feasibility of international agreements to'
+    ✗ DIFFERENT
+  bs=8:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 3412, 1895, 476, 4158, 5567, 10735, 389, 279, 8544, 315, 6489, 34086, 323, 22901, 315, 20443, 11229, 320, 15469, 8, 19473, 13, 5692, 594, 279, 32711, 4815, 419, 16688, 1447, 16, 13, 3070, 3851, 323, 24124, 95518, 576, 2197, 374, 24849, 330, 62339, 369, 7179, 15235, 80589, 1, 323, 11469, 5248, 12014, 504, 5257, 14250, 323, 3412, 14336, 11, 18860, 264, 39706, 3412, 5041, 382, 17, 13, 3070, 2762, 323, 28596, 95518, 576, 2197, 374, 32930, 448, 458, 8115, 11, 8794, 11, 323, 14158, 429, 4263, 279, 2739, 12919, 2897, 315, 6489, 15235, 19473, 11, 279, 11513, 304, 22901, 11, 323, 4650, 19827, 311, 22279, 1493, 11513, 13, 1096, 5944, 374, 14260, 315, 3412, 6682, 476, 4158, 15689, 382, 18, 13, 3070, 13019, 33364, 95518, 576, 2197, 1594, 2342, 1119, 279, 68443, 315, 6489, 19473, 311, 10091]
+    Text: 'Based on the excerpt provided, this document appears to be from a research report or white paper focused on the topic of international governance and verification of artificial intelligence (AI) agreements. Here\'s the reasoning behind this conclusion:\n\n1. **Title and Authors**: The document is titled "Verification for International AI Governance" and lists multiple authors from various academic and research institutions, indicating a collaborative research effort.\n\n2. **Content and Structure**: The document is structured with an abstract, contents, and sections that discuss the verifiability of international AI agreements, the challenges in verification, and potential approaches to overcome these challenges. This structure is typical of research reports or white papers.\n\n3. **Subject Matter**: The document delves into the feasibility of international agreements to manage'
+    ✗ DIFFERENT
+  bs=9:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 3412, 1895, 476, 4158, 5567, 10735, 389, 279, 8544, 315, 6489, 34086, 323, 22901, 315, 20443, 11229, 320, 15469, 8, 19473, 13, 5692, 594, 279, 32711, 4815, 419, 16688, 1447, 16, 13, 3070, 3851, 323, 24124, 95518, 576, 2197, 374, 24849, 330, 62339, 369, 7179, 15235, 80589, 1, 323, 11469, 5248, 12014, 504, 5257, 14250, 323, 3412, 14336, 11, 18860, 264, 39706, 3412, 5041, 382, 17, 13, 3070, 2762, 323, 28596, 95518, 576, 2197, 374, 32930, 448, 458, 8115, 11, 8794, 11, 323, 14158, 429, 4263, 279, 2739, 12919, 2897, 315, 6489, 15235, 19473, 11, 279, 11513, 304, 22901, 11, 323, 4650, 19827, 311, 22279, 1493, 11513, 13, 1096, 5944, 374, 14260, 315, 3412, 6682, 476, 4158, 15689, 382, 18, 13, 3070, 13019, 33364, 95518, 576, 2197, 1594, 2342, 1119, 279, 68443, 315, 6489, 19473, 311, 10091]
+    Text: 'Based on the excerpt provided, this document appears to be from a research report or white paper focused on the topic of international governance and verification of artificial intelligence (AI) agreements. Here\'s the reasoning behind this conclusion:\n\n1. **Title and Authors**: The document is titled "Verification for International AI Governance" and lists multiple authors from various academic and research institutions, indicating a collaborative research effort.\n\n2. **Content and Structure**: The document is structured with an abstract, contents, and sections that discuss the verifiability of international AI agreements, the challenges in verification, and potential approaches to overcome these challenges. This structure is typical of research reports or white papers.\n\n3. **Subject Matter**: The document delves into the feasibility of international agreements to manage'
+    ✗ DIFFERENT
+  bs=16:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 3412, 1895, 476, 4158, 5567, 10735, 389, 279, 8544, 315, 6489, 34086, 323, 22901, 315, 20443, 11229, 320, 15469, 8, 19473, 13, 5692, 594, 279, 32711, 4815, 419, 16688, 1447, 16, 13, 3070, 3851, 323, 24124, 95518, 576, 2197, 374, 24849, 330, 62339, 369, 7179, 15235, 80589, 1, 323, 11469, 5248, 12014, 504, 5257, 14250, 323, 3412, 14336, 11, 18860, 264, 39706, 3412, 5041, 382, 17, 13, 3070, 2762, 323, 28596, 95518, 576, 2197, 374, 32930, 448, 458, 8115, 11, 8794, 11, 323, 14158, 429, 4263, 279, 2739, 12919, 2897, 315, 6489, 15235, 19473, 11, 279, 11513, 304, 68863, 54480, 5601, 323, 7375, 11, 323, 4948, 2606, 323, 6559, 32483, 13, 1096, 5944, 374, 14260, 315, 264, 3412, 1895, 476, 4158, 5567, 382, 18, 13, 3070, 13019, 33364, 95518, 576, 2197, 1594, 2342, 1119, 279, 68443, 315]
+    Text: 'Based on the excerpt provided, this document appears to be from a research report or white paper focused on the topic of international governance and verification of artificial intelligence (AI) agreements. Here\'s the reasoning behind this conclusion:\n\n1. **Title and Authors**: The document is titled "Verification for International AI Governance" and lists multiple authors from various academic and research institutions, indicating a collaborative research effort.\n\n2. **Content and Structure**: The document is structured with an abstract, contents, and sections that discuss the verifiability of international AI agreements, the challenges in verifying computational rules and tools, and political options and tradeoffs. This structure is typical of a research report or white paper.\n\n3. **Subject Matter**: The document delves into the feasibility of'
+    ✗ DIFFERENT
+  bs=17:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 3412, 1895, 476, 4158, 5567, 10735, 389, 279, 8544, 315, 6489, 34086, 323, 22901, 315, 20443, 11229, 320, 15469, 8, 19473, 13, 5692, 594, 279, 32711, 4815, 419, 16688, 1447, 16, 13, 3070, 3851, 323, 24124, 95518, 576, 2197, 374, 24849, 330, 62339, 369, 7179, 15235, 80589, 1, 323, 11469, 5248, 12014, 504, 5257, 14250, 323, 3412, 14336, 11, 18860, 264, 39706, 3412, 5041, 382, 17, 13, 3070, 2762, 323, 28596, 95518, 576, 2197, 374, 32930, 448, 458, 8115, 11, 8794, 11, 323, 14158, 429, 4263, 279, 2739, 12919, 2897, 315, 6489, 15235, 19473, 11, 279, 11513, 304, 22901, 11, 323, 4650, 19827, 311, 22279, 1493, 11513, 13, 1096, 5944, 374, 14260, 315, 264, 3412, 1895, 476, 4158, 5567, 382, 18, 13, 3070, 13019, 33364, 95518, 576, 2197, 1594, 2342, 1119, 279, 68443, 315, 6489, 19473, 311]
+    Text: 'Based on the excerpt provided, this document appears to be from a research report or white paper focused on the topic of international governance and verification of artificial intelligence (AI) agreements. Here\'s the reasoning behind this conclusion:\n\n1. **Title and Authors**: The document is titled "Verification for International AI Governance" and lists multiple authors from various academic and research institutions, indicating a collaborative research effort.\n\n2. **Content and Structure**: The document is structured with an abstract, contents, and sections that discuss the verifiability of international AI agreements, the challenges in verification, and potential approaches to overcome these challenges. This structure is typical of a research report or white paper.\n\n3. **Subject Matter**: The document delves into the feasibility of international agreements to'
+    ✗ DIFFERENT
+
+⚠ Element 0 generates DIFFERENT tokens across batch sizes
+
+--- Token consistency for ref_1 ---
+
+================================================================================
+TOKEN GENERATION CONSISTENCY CHECK
+================================================================================
+
+Generated tokens by batch size:
+  bs=1:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 62581, 476, 14250, 16599, 11, 4363, 264, 3412, 5567, 476, 264, 12453, 304, 264, 2311, 11, 10735, 389, 279, 18580, 24154, 315, 20443, 11229, 320, 15469, 8, 304, 279, 2266, 315, 6489, 4300, 323, 4763, 13, 576, 32711, 369, 419, 16688, 374, 438, 11017, 1447, 16, 13, 3070, 34, 7556, 11913, 323, 15042, 95518, 576, 1467, 5646, 51846, 304, 264, 15908, 14250, 1707, 11, 1667, 5109, 323, 56516, 3151, 6816, 323, 8173, 13, 1096, 374, 14260, 315, 14250, 4378, 382, 17, 13, 3070, 13019, 33364, 95518, 576, 2213, 34334, 279, 18580, 10707, 304, 279, 4231, 315, 15235, 11, 279, 4650, 15276, 323, 10488, 5815, 448, 279, 6277, 990, 315, 15235, 11, 323, 279, 26829, 24154, 369, 6489, 4300, 323, 4763, 13, 1084, 28627, 389, 13347, 1741, 438, 279, 16775, 57698, 8172, 11, 279, 4763, 54767, 11, 11249]
+    Text: 'Based on the excerpt provided, this document appears to be from a scholarly or academic publication, likely a research paper or a chapter in a book, focused on the strategic implications of artificial intelligence (AI) in the context of international relations and security. The reasoning for this conclusion is as follows:\n\n1. **Citation Style and Format**: The text includes citations in a formal academic style, using numbers and referencing specific pages and sources. This is typical of academic writing.\n\n2. **Subject Matter**: The content discusses the strategic competition in the age of AI, the potential risks and opportunities associated with the military use of AI, and the broader implications for international relations and security. It touches on topics such as the offense-defense balance, the security dilemma, nuclear'
+    ✓
+  bs=2:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 62581, 476, 14250, 16599, 11, 4363, 264, 3412, 5567, 476, 264, 12453, 304, 264, 2311, 13, 576, 32711, 369, 419, 16688, 374, 438, 11017, 1447, 16, 13, 3070, 34, 7556, 11913, 95518, 576, 1467, 5646, 11682, 51846, 448, 2150, 5109, 323, 3151, 15057, 311, 12014, 323, 4278, 11, 892, 374, 14260, 315, 14250, 4378, 13, 1752, 3110, 11, 51846, 311, 330, 79046, 11, 220, 17, 15, 17, 19, 1335, 330, 28418, 30497, 9965, 10294, 220, 23, 22, 11, 902, 13, 220, 16, 320, 16, 24, 24, 18, 35393, 323, 330, 785, 27745, 315, 58585, 320, 26490, 21601, 3822, 8445, 11, 220, 16, 24, 21, 15, 9940, 525, 23126, 304, 264, 1616, 429, 374, 4185, 304, 14250, 15689, 382, 17, 13, 3070, 13019, 33364, 95518, 576, 2213, 34334, 18580, 10707, 304, 279, 2266, 315, 20443, 11229, 320, 15469]
+    Text: 'Based on the excerpt provided, this document appears to be from a scholarly or academic publication, likely a research paper or a chapter in a book. The reasoning for this conclusion is as follows:\n\n1. **Citation Style**: The text includes detailed citations with page numbers and specific references to authors and works, which is typical of academic writing. For example, citations to "RAND, 2024," "American Political Science Review 87, no. 1 (1993)," and "The Strategy of Conflict (Harvard University Press, 1960)" are formatted in a way that is common in academic papers.\n\n2. **Subject Matter**: The content discusses strategic competition in the context of artificial intelligence (AI'
+    ✗ DIFFERENT
+  bs=3:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 62581, 476, 14250, 16599, 11, 4363, 264, 3412, 5567, 476, 264, 12453, 304, 264, 2311, 11, 10735, 389, 279, 18580, 24154, 315, 20443, 11229, 320, 15469, 8, 304, 279, 2266, 315, 6489, 4300, 323, 4763, 13, 576, 32711, 369, 419, 16688, 374, 438, 11017, 1447, 16, 13, 3070, 34, 7556, 11913, 323, 15042, 95518, 576, 1467, 5646, 51846, 304, 264, 15908, 14250, 1707, 11, 1667, 5109, 323, 15057, 311, 3151, 6816, 476, 2860, 8173, 13, 1096, 374, 14260, 315, 14250, 4378, 382, 17, 13, 3070, 13019, 33364, 95518, 576, 2213, 34334, 279, 18580, 10707, 304, 279, 4231, 315, 15235, 11, 279, 4650, 15276, 323, 10488, 5815, 448, 279, 6277, 990, 315, 15235, 11, 323, 279, 24154, 369, 6489, 4300, 323, 4763, 13, 1084, 28627, 389, 13347, 1741, 438, 279, 16775, 57698, 8172, 11, 279, 4763, 54767, 11]
+    Text: 'Based on the excerpt provided, this document appears to be from a scholarly or academic publication, likely a research paper or a chapter in a book, focused on the strategic implications of artificial intelligence (AI) in the context of international relations and security. The reasoning for this conclusion is as follows:\n\n1. **Citation Style and Format**: The text includes citations in a formal academic style, using numbers and references to specific pages or online sources. This is typical of academic writing.\n\n2. **Subject Matter**: The content discusses the strategic competition in the age of AI, the potential risks and opportunities associated with the military use of AI, and the implications for international relations and security. It touches on topics such as the offense-defense balance, the security dilemma,'
+    ✗ DIFFERENT
+  bs=4:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 62581, 476, 14250, 16599, 11, 4363, 264, 3412, 5567, 476, 264, 12453, 304, 264, 2311, 11, 10735, 389, 279, 18580, 24154, 315, 20443, 11229, 320, 15469, 8, 304, 279, 2266, 315, 6489, 4300, 323, 4763, 13, 576, 32711, 369, 419, 16688, 374, 438, 11017, 1447, 16, 13, 3070, 34, 7556, 11913, 323, 15042, 95518, 576, 1467, 5646, 51846, 304, 264, 15908, 14250, 1707, 11, 1667, 5109, 323, 15057, 311, 3151, 6816, 476, 2860, 8173, 13, 1096, 374, 14260, 315, 14250, 4378, 382, 17, 13, 3070, 13019, 33364, 95518, 576, 2213, 34334, 279, 18580, 10707, 304, 279, 4231, 315, 15235, 11, 21080, 389, 279, 15276, 323, 10488, 5815, 448, 279, 6277, 990, 315, 15235, 13, 1084, 1083, 28627, 389, 13656, 323, 31787, 38455, 389, 3170, 5302, 2578, 728, 311, 4116, 11, 279, 24154, 315, 15235, 389, 279, 16775]
+    Text: 'Based on the excerpt provided, this document appears to be from a scholarly or academic publication, likely a research paper or a chapter in a book, focused on the strategic implications of artificial intelligence (AI) in the context of international relations and security. The reasoning for this conclusion is as follows:\n\n1. **Citation Style and Format**: The text includes citations in a formal academic style, using numbers and references to specific pages or online sources. This is typical of academic writing.\n\n2. **Subject Matter**: The content discusses the strategic competition in the age of AI, focusing on the risks and opportunities associated with the military use of AI. It also touches on historical and theoretical perspectives on why states might go to war, the implications of AI on the offense'
+    ✗ DIFFERENT
+  bs=5:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 62581, 476, 14250, 16599, 11, 4363, 264, 3412, 5567, 476, 264, 12453, 304, 264, 2311, 11, 10735, 389, 279, 18580, 24154, 315, 20443, 11229, 320, 15469, 8, 304, 279, 2266, 315, 6489, 4300, 323, 4763, 13, 576, 32711, 369, 419, 16688, 374, 438, 11017, 1447, 16, 13, 3070, 34, 7556, 11913, 323, 15042, 95518, 576, 1467, 5646, 51846, 304, 264, 15908, 14250, 1707, 11, 1667, 5109, 323, 15057, 311, 3151, 6816, 476, 2860, 8173, 13, 1096, 374, 14260, 315, 14250, 4378, 382, 17, 13, 3070, 13019, 33364, 95518, 576, 2213, 34334, 279, 18580, 10707, 304, 279, 4231, 315, 15235, 11, 21080, 389, 279, 15276, 323, 10488, 5815, 448, 279, 6277, 990, 315, 15235, 13, 1084, 1083, 28627, 389, 13656, 323, 31787, 38455, 389, 3170, 5302, 2578, 728, 311, 4116, 11, 279, 24154, 315, 15235, 389, 279, 16775]
+    Text: 'Based on the excerpt provided, this document appears to be from a scholarly or academic publication, likely a research paper or a chapter in a book, focused on the strategic implications of artificial intelligence (AI) in the context of international relations and security. The reasoning for this conclusion is as follows:\n\n1. **Citation Style and Format**: The text includes citations in a formal academic style, using numbers and references to specific pages or online sources. This is typical of academic writing.\n\n2. **Subject Matter**: The content discusses the strategic competition in the age of AI, focusing on the risks and opportunities associated with the military use of AI. It also touches on historical and theoretical perspectives on why states might go to war, the implications of AI on the offense'
+    ✗ DIFFERENT
+  bs=8:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 62581, 476, 14250, 16599, 11, 4363, 264, 3412, 5567, 476, 264, 12453, 304, 264, 2311, 13, 576, 32711, 369, 419, 16688, 374, 438, 11017, 1447, 16, 13, 3070, 34, 7556, 11913, 95518, 576, 1467, 5646, 11682, 51846, 448, 2150, 5109, 323, 3151, 15057, 311, 12014, 323, 4278, 11, 892, 374, 14260, 315, 14250, 4378, 13, 1752, 3110, 11, 51846, 311, 330, 79046, 11, 220, 17, 15, 17, 19, 1335, 330, 28418, 30497, 9965, 10294, 220, 23, 22, 11, 902, 13, 220, 16, 320, 16, 24, 24, 18, 35393, 323, 330, 785, 27745, 315, 58585, 320, 26490, 21601, 3822, 8445, 11, 220, 16, 24, 21, 15, 9940, 525, 23126, 304, 264, 1616, 429, 374, 4185, 304, 14250, 15689, 382, 17, 13, 3070, 13019, 33364, 95518, 576, 2213, 34334, 18580, 10707, 304, 279, 2266, 315, 20443, 11229, 320, 15469]
+    Text: 'Based on the excerpt provided, this document appears to be from a scholarly or academic publication, likely a research paper or a chapter in a book. The reasoning for this conclusion is as follows:\n\n1. **Citation Style**: The text includes detailed citations with page numbers and specific references to authors and works, which is typical of academic writing. For example, citations to "RAND, 2024," "American Political Science Review 87, no. 1 (1993)," and "The Strategy of Conflict (Harvard University Press, 1960)" are formatted in a way that is common in academic papers.\n\n2. **Subject Matter**: The content discusses strategic competition in the context of artificial intelligence (AI'
+    ✗ DIFFERENT
+  bs=9:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 62581, 476, 14250, 16599, 11, 4363, 264, 3412, 5567, 476, 264, 12453, 304, 264, 2311, 13, 576, 32711, 369, 419, 16688, 374, 438, 11017, 1447, 16, 13, 3070, 34, 7556, 11913, 95518, 576, 1467, 5646, 11682, 51846, 448, 2150, 5109, 323, 3151, 15057, 311, 12014, 323, 4278, 11, 892, 374, 14260, 315, 14250, 4378, 13, 1752, 3110, 11, 51846, 311, 330, 79046, 11, 220, 17, 15, 17, 19, 1335, 330, 28418, 30497, 9965, 10294, 220, 23, 22, 11, 902, 13, 220, 16, 320, 16, 24, 24, 18, 35393, 323, 330, 785, 27745, 315, 58585, 320, 26490, 21601, 3822, 8445, 11, 220, 16, 24, 21, 15, 9940, 525, 23126, 304, 264, 1616, 429, 374, 4185, 304, 14250, 15689, 382, 17, 13, 3070, 13019, 33364, 95518, 576, 2213, 34334, 18580, 10707, 304, 279, 2266, 315, 20443, 11229, 320, 15469]
+    Text: 'Based on the excerpt provided, this document appears to be from a scholarly or academic publication, likely a research paper or a chapter in a book. The reasoning for this conclusion is as follows:\n\n1. **Citation Style**: The text includes detailed citations with page numbers and specific references to authors and works, which is typical of academic writing. For example, citations to "RAND, 2024," "American Political Science Review 87, no. 1 (1993)," and "The Strategy of Conflict (Harvard University Press, 1960)" are formatted in a way that is common in academic papers.\n\n2. **Subject Matter**: The content discusses strategic competition in the context of artificial intelligence (AI'
+    ✗ DIFFERENT
+  bs=16:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 62581, 476, 14250, 16599, 11, 4363, 264, 3412, 5567, 476, 264, 12453, 304, 264, 2311, 13, 576, 32711, 369, 419, 16688, 374, 438, 11017, 1447, 16, 13, 3070, 34, 7556, 11913, 95518, 576, 1467, 5646, 11682, 51846, 448, 2150, 5109, 323, 3151, 15057, 311, 12014, 323, 4278, 11, 892, 374, 14260, 315, 14250, 4378, 13, 1752, 3110, 11, 51846, 311, 330, 79046, 11, 220, 17, 15, 17, 19, 1335, 330, 28418, 30497, 9965, 10294, 220, 23, 22, 11, 902, 13, 220, 16, 320, 16, 24, 24, 18, 35393, 323, 330, 785, 27745, 315, 58585, 320, 26490, 21601, 3822, 8445, 11, 220, 16, 24, 21, 15, 9940, 525, 23126, 304, 264, 1616, 429, 374, 4185, 304, 14250, 15689, 382, 17, 13, 3070, 13019, 33364, 95518, 576, 2213, 34334, 18580, 10707, 304, 279, 2266, 315, 20443, 11229, 320, 15469]
+    Text: 'Based on the excerpt provided, this document appears to be from a scholarly or academic publication, likely a research paper or a chapter in a book. The reasoning for this conclusion is as follows:\n\n1. **Citation Style**: The text includes detailed citations with page numbers and specific references to authors and works, which is typical of academic writing. For example, citations to "RAND, 2024," "American Political Science Review 87, no. 1 (1993)," and "The Strategy of Conflict (Harvard University Press, 1960)" are formatted in a way that is common in academic papers.\n\n2. **Subject Matter**: The content discusses strategic competition in the context of artificial intelligence (AI'
+    ✗ DIFFERENT
+  bs=17:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 62581, 476, 14250, 16599, 11, 4363, 264, 3412, 5567, 476, 264, 12453, 304, 264, 2311, 11, 10735, 389, 279, 18580, 24154, 315, 20443, 11229, 320, 15469, 8, 304, 279, 2266, 315, 6489, 4300, 323, 4763, 13, 576, 32711, 369, 419, 16688, 374, 438, 11017, 1447, 16, 13, 3070, 34, 30667, 323, 44078, 95518, 576, 1467, 5646, 12114, 51846, 323, 15057, 311, 14250, 15689, 11, 6467, 11, 323, 6682, 11, 1741, 438, 330, 79046, 11, 220, 17, 15, 17, 19, 1335, 330, 28418, 30497, 9965, 10294, 1335, 323, 330, 38066, 23051, 1189, 1096, 14807, 429, 279, 2197, 374, 44345, 304, 14250, 3412, 323, 6358, 382, 17, 13, 3070, 71021, 315, 576, 90767, 23752, 82, 95518, 576, 49465, 34334, 31787, 48025, 504, 6489, 4300, 11, 1741, 438, 279, 7286, 315, 20337, 279, 2639, 40508, 1660, 2238, 33248, 369, 5302]
+    Text: 'Based on the excerpt provided, this document appears to be from a scholarly or academic publication, likely a research paper or a chapter in a book, focused on the strategic implications of artificial intelligence (AI) in the context of international relations and security. The reasoning for this conclusion is as follows:\n\n1. **Citations and References**: The text includes numerous citations and references to academic papers, books, and reports, such as "RAND, 2024," "American Political Science Review," and "Lawfare." This indicates that the document is grounded in academic research and analysis.\n\n2. **Discussion of Theoretical Frameworks**: The excerpt discusses theoretical frameworks from international relations, such as the concept of maintaining the status quo being too costly for states'
+    ✗ DIFFERENT
+
+⚠ Element 0 generates DIFFERENT tokens across batch sizes
+
+--- Token consistency for ref_2 ---
+
+================================================================================
+TOKEN GENERATION CONSISTENCY CHECK
+================================================================================
+
+Generated tokens by batch size:
+  bs=1:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 10916, 476, 14250, 1895, 11, 4363, 10735, 389, 279, 11513, 323, 24154, 315, 68863, 10847, 7377, 11773, 323, 5234, 1924, 1058, 1087, 13, 576, 2197, 1594, 2342, 1119, 3151, 10916, 4714, 5435, 311, 279, 13420, 2628, 2022, 315, 7377, 11773, 323, 279, 22901, 315, 10847, 5234, 1924, 1058, 1087, 11, 892, 13230, 432, 374, 949, 315, 264, 8131, 10219, 389, 5440, 22901, 11, 4763, 11, 323, 10767, 61442, 382, 14374, 26759, 287, 1447, 16, 13, 3070, 62226, 45945, 2449, 323, 75772, 25, 1019, 256, 481, 576, 1467, 5711, 3151, 10916, 3793, 1741, 438, 330, 36411, 2628, 2022, 1335, 330, 57269, 11773, 1335, 330, 6998, 1924, 1058, 1087, 1335, 330, 1458, 380, 1087, 1335, 330, 3509, 12282, 1335, 330, 15105, 4019, 1335, 323, 330, 29662, 25812, 1189, 1096, 14807, 264, 2197, 429, 374, 7548, 10916, 304, 6993, 624]
+    Text: 'Based on the excerpt provided, this document appears to be from a technical or academic report, likely focused on the challenges and implications of verifying advanced digital hardware and semiconductors. The document delves into specific technical issues related to the miniaturization of digital hardware and the verification of advanced semiconductors, which suggests it is part of a larger discussion on technology verification, security, and possibly cybersecurity.\n\n### Reasoning:\n\n1. **Technical Terminology and Concepts:**\n   - The text uses specific technical terms such as "miniaturization," "digital hardware," "semiconductors," "transistors," "node sizes," "foundries," and "chip designers." This indicates a document that is highly technical in nature.\n'
+    ✓
+  bs=2:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 10916, 476, 14250, 1895, 11, 4363, 10735, 389, 279, 11513, 323, 24154, 315, 68863, 10847, 7377, 11773, 323, 5234, 1924, 1058, 1087, 13, 576, 2197, 1594, 2342, 1119, 3151, 10916, 4714, 5435, 311, 279, 13420, 2628, 2022, 315, 7377, 11773, 323, 279, 22901, 315, 10847, 5234, 1924, 1058, 1087, 11, 892, 13230, 432, 374, 949, 315, 264, 8131, 10219, 389, 22901, 14310, 11, 4763, 11, 323, 10767, 61442, 382, 14374, 26759, 287, 1447, 16, 13, 3070, 62226, 45945, 2449, 323, 75772, 25, 1019, 256, 481, 576, 1467, 5711, 3151, 10916, 3793, 1741, 438, 330, 36411, 2628, 2022, 1335, 330, 57269, 11773, 1335, 330, 6998, 1924, 1058, 1087, 1335, 330, 1458, 380, 1087, 1335, 330, 3509, 12282, 1335, 330, 15105, 4019, 1335, 323, 330, 29662, 25812, 1189, 1096, 14807, 264, 2197, 429, 374, 7548, 10916, 304, 6993, 624]
+    Text: 'Based on the excerpt provided, this document appears to be from a technical or academic report, likely focused on the challenges and implications of verifying advanced digital hardware and semiconductors. The document delves into specific technical issues related to the miniaturization of digital hardware and the verification of advanced semiconductors, which suggests it is part of a larger discussion on verification technologies, security, and possibly cybersecurity.\n\n### Reasoning:\n\n1. **Technical Terminology and Concepts:**\n   - The text uses specific technical terms such as "miniaturization," "digital hardware," "semiconductors," "transistors," "node sizes," "foundries," and "chip designers." This indicates a document that is highly technical in nature.\n'
+    ✗ DIFFERENT
+  bs=3:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 10916, 476, 14250, 1895, 11, 4363, 10735, 389, 279, 11513, 323, 24154, 315, 68863, 10847, 7377, 11773, 323, 5234, 1924, 1058, 1087, 13, 576, 2197, 1594, 2342, 1119, 3151, 10916, 4714, 5435, 311, 279, 13420, 2628, 2022, 315, 7377, 11773, 323, 279, 22901, 315, 10847, 5234, 1924, 1058, 1087, 11, 892, 13230, 432, 374, 949, 315, 264, 8131, 10219, 389, 5440, 22901, 11, 4763, 11, 323, 10767, 61442, 382, 14374, 26759, 287, 1447, 16, 13, 3070, 62226, 45945, 2449, 323, 75772, 25, 1019, 256, 481, 576, 1467, 5711, 3151, 10916, 3793, 1741, 438, 330, 36411, 2628, 2022, 1335, 330, 57269, 11773, 1335, 330, 6998, 1924, 1058, 1087, 1335, 330, 1458, 380, 1087, 1335, 330, 3509, 12282, 1335, 330, 15105, 4019, 1335, 323, 330, 29662, 25812, 1189, 1096, 14807, 264, 2197, 429, 374, 10735, 389, 10916, 13566, 315]
+    Text: 'Based on the excerpt provided, this document appears to be from a technical or academic report, likely focused on the challenges and implications of verifying advanced digital hardware and semiconductors. The document delves into specific technical issues related to the miniaturization of digital hardware and the verification of advanced semiconductors, which suggests it is part of a larger discussion on technology verification, security, and possibly cybersecurity.\n\n### Reasoning:\n\n1. **Technical Terminology and Concepts:**\n   - The text uses specific technical terms such as "miniaturization," "digital hardware," "semiconductors," "transistors," "node sizes," "foundries," and "chip designers." This indicates a document that is focused on technical aspects of'
+    ✗ DIFFERENT
+  bs=4:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 10916, 476, 14250, 1895, 11, 4363, 10735, 389, 279, 11513, 323, 24154, 315, 68863, 10847, 7377, 11773, 323, 5234, 1924, 1058, 1087, 13, 576, 2197, 1594, 2342, 1119, 3151, 10916, 4714, 5435, 311, 279, 13420, 2628, 2022, 315, 7377, 11773, 323, 279, 22901, 315, 10847, 5234, 1924, 1058, 1087, 11, 892, 13230, 432, 374, 949, 315, 264, 8131, 10219, 389, 5440, 22901, 11, 4763, 11, 323, 10767, 61442, 382, 14374, 26759, 287, 1447, 16, 13, 3070, 62226, 45945, 2449, 323, 75772, 25, 1019, 256, 481, 576, 2197, 5711, 10916, 3793, 1741, 438, 330, 36411, 2628, 2022, 1335, 330, 57269, 11773, 1335, 330, 6998, 1924, 1058, 1087, 1335, 330, 1458, 380, 1087, 1335, 330, 3509, 12282, 1335, 330, 15105, 4019, 1335, 323, 330, 29662, 25812, 1189, 1096, 14807, 264, 7548, 10916, 3832, 4925, 624, 256, 481, 1084, 34334]
+    Text: 'Based on the excerpt provided, this document appears to be from a technical or academic report, likely focused on the challenges and implications of verifying advanced digital hardware and semiconductors. The document delves into specific technical issues related to the miniaturization of digital hardware and the verification of advanced semiconductors, which suggests it is part of a larger discussion on technology verification, security, and possibly cybersecurity.\n\n### Reasoning:\n\n1. **Technical Terminology and Concepts:**\n   - The document uses technical terms such as "miniaturization," "digital hardware," "semiconductors," "transistors," "node sizes," "foundries," and "chip designers." This indicates a highly technical subject matter.\n   - It discusses'
+    ✗ DIFFERENT
+  bs=5:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 10916, 476, 14250, 1895, 11, 4363, 10735, 389, 279, 11513, 323, 24154, 315, 68863, 10847, 7377, 11773, 323, 5234, 1924, 1058, 1087, 13, 576, 2197, 1594, 2342, 1119, 3151, 10916, 4714, 5435, 311, 279, 13420, 2628, 2022, 315, 7377, 11773, 323, 279, 22901, 315, 10847, 5234, 1924, 1058, 1087, 11, 892, 13230, 432, 374, 949, 315, 264, 8131, 10219, 389, 5440, 22901, 11, 4763, 11, 323, 10767, 61442, 382, 14374, 26759, 287, 1447, 16, 13, 3070, 62226, 45945, 2449, 323, 75772, 25, 1019, 256, 481, 576, 2197, 5711, 10916, 3793, 1741, 438, 330, 36411, 2628, 2022, 1335, 330, 57269, 11773, 1335, 330, 6998, 1924, 1058, 1087, 1335, 330, 1458, 380, 1087, 1335, 330, 3509, 12282, 1335, 330, 15105, 4019, 1335, 323, 330, 29662, 25812, 1189, 1096, 14807, 264, 7548, 10916, 3832, 4925, 624, 256, 481, 1084, 34334]
+    Text: 'Based on the excerpt provided, this document appears to be from a technical or academic report, likely focused on the challenges and implications of verifying advanced digital hardware and semiconductors. The document delves into specific technical issues related to the miniaturization of digital hardware and the verification of advanced semiconductors, which suggests it is part of a larger discussion on technology verification, security, and possibly cybersecurity.\n\n### Reasoning:\n\n1. **Technical Terminology and Concepts:**\n   - The document uses technical terms such as "miniaturization," "digital hardware," "semiconductors," "transistors," "node sizes," "foundries," and "chip designers." This indicates a highly technical subject matter.\n   - It discusses'
+    ✗ DIFFERENT
+  bs=8:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 10916, 476, 14250, 1895, 11, 4363, 10735, 389, 279, 11513, 323, 24154, 315, 68863, 10847, 7377, 11773, 323, 5234, 1924, 1058, 1087, 13, 576, 2197, 1594, 2342, 1119, 3151, 10916, 4714, 5435, 311, 279, 13420, 2628, 2022, 315, 7377, 11773, 323, 279, 22901, 315, 10847, 5234, 1924, 1058, 1087, 11, 892, 13230, 432, 374, 949, 315, 264, 8131, 10219, 389, 5440, 22901, 11, 4763, 11, 323, 10767, 61442, 382, 14374, 26759, 287, 1447, 16, 13, 3070, 62226, 45945, 2449, 323, 75772, 95518, 576, 49465, 5711, 10916, 3793, 1741, 438, 330, 36411, 2628, 2022, 1335, 330, 57269, 11773, 1335, 330, 6998, 1924, 1058, 1087, 1335, 330, 1458, 380, 1087, 1335, 330, 3509, 12282, 1335, 323, 330, 50632, 1189, 1096, 14807, 429, 279, 2197, 374, 14550, 448, 7548, 27076, 323, 10916, 14878, 382, 17, 13, 3070, 47514, 25311, 323]
+    Text: 'Based on the excerpt provided, this document appears to be from a technical or academic report, likely focused on the challenges and implications of verifying advanced digital hardware and semiconductors. The document delves into specific technical issues related to the miniaturization of digital hardware and the verification of advanced semiconductors, which suggests it is part of a larger discussion on technology verification, security, and possibly cybersecurity.\n\n### Reasoning:\n\n1. **Technical Terminology and Concepts**: The excerpt uses technical terms such as "miniaturization," "digital hardware," "semiconductors," "transistors," "node sizes," and "verification." This indicates that the document is dealing with highly specialized and technical subjects.\n\n2. **Specific Examples and'
+    ✗ DIFFERENT
+  bs=9:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 10916, 476, 14250, 1895, 11, 4363, 10735, 389, 279, 11513, 323, 24154, 315, 68863, 10847, 7377, 11773, 323, 5234, 1924, 1058, 1087, 13, 576, 2197, 1594, 2342, 1119, 3151, 10916, 4714, 5435, 311, 279, 13420, 2628, 2022, 315, 7377, 11773, 323, 279, 22901, 315, 10847, 5234, 1924, 1058, 1087, 11, 892, 13230, 432, 374, 949, 315, 264, 8131, 10219, 389, 5440, 22901, 11, 4763, 11, 323, 10767, 61442, 382, 14374, 26759, 287, 1447, 16, 13, 3070, 62226, 45945, 2449, 323, 75772, 95518, 576, 49465, 5711, 10916, 3793, 1741, 438, 330, 36411, 2628, 2022, 1335, 330, 57269, 11773, 1335, 330, 6998, 1924, 1058, 1087, 1335, 330, 1458, 380, 1087, 1335, 330, 3509, 12282, 1335, 323, 330, 50632, 1189, 1096, 14807, 429, 279, 2197, 374, 14550, 448, 7548, 27076, 323, 10916, 14878, 382, 17, 13, 3070, 47514, 25311, 323]
+    Text: 'Based on the excerpt provided, this document appears to be from a technical or academic report, likely focused on the challenges and implications of verifying advanced digital hardware and semiconductors. The document delves into specific technical issues related to the miniaturization of digital hardware and the verification of advanced semiconductors, which suggests it is part of a larger discussion on technology verification, security, and possibly cybersecurity.\n\n### Reasoning:\n\n1. **Technical Terminology and Concepts**: The excerpt uses technical terms such as "miniaturization," "digital hardware," "semiconductors," "transistors," "node sizes," and "verification." This indicates that the document is dealing with highly specialized and technical subjects.\n\n2. **Specific Examples and'
+    ✗ DIFFERENT
+  bs=16:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 10916, 476, 14250, 1895, 11, 4363, 10735, 389, 279, 11513, 323, 24154, 315, 68863, 10847, 7377, 11773, 323, 5234, 1924, 1058, 1087, 13, 576, 2197, 1594, 2342, 1119, 3151, 10916, 4714, 5435, 311, 279, 13420, 2628, 2022, 315, 7377, 11773, 323, 279, 22901, 315, 10847, 5234, 1924, 1058, 1087, 11, 892, 13230, 432, 374, 949, 315, 264, 8131, 10219, 389, 5440, 22901, 11, 4763, 11, 323, 10767, 61442, 382, 14374, 26759, 287, 1447, 16, 13, 3070, 62226, 45945, 2449, 323, 75772, 25, 1019, 256, 481, 576, 1467, 5711, 3151, 10916, 3793, 1741, 438, 330, 36411, 2628, 2022, 1335, 330, 57269, 11773, 1335, 330, 6998, 1924, 1058, 1087, 1335, 330, 1458, 380, 1087, 1335, 330, 3509, 12282, 1335, 330, 15105, 4019, 1335, 323, 330, 29662, 25812, 1189, 1096, 14807, 264, 2197, 429, 374, 7548, 10916, 323, 4363, 5326]
+    Text: 'Based on the excerpt provided, this document appears to be from a technical or academic report, likely focused on the challenges and implications of verifying advanced digital hardware and semiconductors. The document delves into specific technical issues related to the miniaturization of digital hardware and the verification of advanced semiconductors, which suggests it is part of a larger discussion on technology verification, security, and possibly cybersecurity.\n\n### Reasoning:\n\n1. **Technical Terminology and Concepts:**\n   - The text uses specific technical terms such as "miniaturization," "digital hardware," "semiconductors," "transistors," "node sizes," "foundries," and "chip designers." This indicates a document that is highly technical and likely written'
+    ✗ DIFFERENT
+  bs=17:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 10916, 476, 14250, 1895, 11, 4363, 10735, 389, 279, 11513, 323, 24154, 315, 68863, 10847, 7377, 11773, 323, 5234, 1924, 1058, 1087, 13, 576, 2197, 1594, 2342, 1119, 3151, 10916, 4714, 5435, 311, 279, 13420, 2628, 2022, 315, 7377, 11773, 323, 279, 22901, 315, 10847, 5234, 1924, 1058, 1087, 11, 892, 13230, 432, 374, 949, 315, 264, 8131, 10219, 389, 5440, 22901, 11, 4763, 11, 323, 10767, 61442, 382, 14374, 26759, 287, 1447, 16, 13, 3070, 62226, 45945, 2449, 323, 75772, 25, 1019, 256, 481, 576, 1467, 5711, 3151, 10916, 3793, 1741, 438, 330, 36411, 2628, 2022, 1335, 330, 57269, 11773, 1335, 330, 6998, 1924, 1058, 1087, 1335, 330, 1458, 380, 1087, 1335, 330, 3509, 12282, 1335, 323, 330, 50632, 1189, 1096, 14807, 264, 2197, 429, 374, 7548, 10916, 304, 6993, 382, 17, 13, 3070, 71021, 315]
+    Text: 'Based on the excerpt provided, this document appears to be from a technical or academic report, likely focused on the challenges and implications of verifying advanced digital hardware and semiconductors. The document delves into specific technical issues related to the miniaturization of digital hardware and the verification of advanced semiconductors, which suggests it is part of a larger discussion on technology verification, security, and possibly cybersecurity.\n\n### Reasoning:\n\n1. **Technical Terminology and Concepts:**\n   - The text uses specific technical terms such as "miniaturization," "digital hardware," "semiconductors," "transistors," "node sizes," and "verification." This indicates a document that is highly technical in nature.\n\n2. **Discussion of'
+    ✗ DIFFERENT
+
+⚠ Element 0 generates DIFFERENT tokens across batch sizes
+
+================================================================================
+WITHIN-HARDWARE BATCH SIZE EFFECTS (PREFILL)
+================================================================================
+
+================================================================================
+REF_0
+================================================================================
+
+Key Vectors (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  5.88e-01  8.91e-01  8.91e-01  8.91e-01  8.91e-01  8.91e-01  8.91e-01  8.91e-01
+bs=2    5.88e-01  0.00e+00  1.19e+00  1.19e+00  1.19e+00  1.19e+00  1.19e+00  1.19e+00  1.19e+00
+bs=3    8.91e-01  1.19e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=4    8.91e-01  1.19e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=5    8.91e-01  1.19e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=8    8.91e-01  1.19e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=9    8.91e-01  1.19e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=16   8.91e-01  1.19e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=17   8.91e-01  1.19e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+Logprobs (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  5.20e-01  4.06e-01  4.06e-01  4.06e-01  4.06e-01  4.06e-01  4.06e-01  4.06e-01
+bs=2    5.20e-01  0.00e+00  4.43e-01  4.43e-01  4.43e-01  4.43e-01  4.43e-01  4.43e-01  4.43e-01
+bs=3    4.06e-01  4.43e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=4    4.06e-01  4.43e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=5    4.06e-01  4.43e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=8    4.06e-01  4.43e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=9    4.06e-01  4.43e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=16   4.06e-01  4.43e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=17   4.06e-01  4.43e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+================================================================================
+REF_1
+================================================================================
+
+Key Vectors (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  3.94e-01  3.12e-01  3.12e-01  3.12e-01  3.12e-01  3.12e-01  3.12e-01  3.12e-01
+bs=2    3.94e-01  0.00e+00  3.72e-01  3.72e-01  3.72e-01  3.72e-01  3.72e-01  3.72e-01  3.72e-01
+bs=3    3.12e-01  3.72e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=4    3.12e-01  3.72e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=5    3.12e-01  3.72e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=8    3.12e-01  3.72e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=9    3.12e-01  3.72e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=16   3.12e-01  3.72e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=17   3.12e-01  3.72e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+Logprobs (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  3.14e-01  7.13e-01  7.13e-01  7.13e-01  7.13e-01  7.13e-01  7.13e-01  7.13e-01
+bs=2    3.14e-01  0.00e+00  4.61e-01  4.61e-01  4.61e-01  4.61e-01  4.61e-01  4.61e-01  4.61e-01
+bs=3    7.13e-01  4.61e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=4    7.13e-01  4.61e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=5    7.13e-01  4.61e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=8    7.13e-01  4.61e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=9    7.13e-01  4.61e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=16   7.13e-01  4.61e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=17   7.13e-01  4.61e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+================================================================================
+REF_2
+================================================================================
+
+Key Vectors (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  3.38e-01  5.99e-01  5.99e-01  5.99e-01  5.99e-01  5.99e-01  5.99e-01  5.99e-01
+bs=2    3.38e-01  0.00e+00  5.64e-01  5.64e-01  5.64e-01  5.64e-01  5.64e-01  5.64e-01  5.64e-01
+bs=3    5.99e-01  5.64e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=4    5.99e-01  5.64e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=5    5.99e-01  5.64e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=8    5.99e-01  5.64e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=9    5.99e-01  5.64e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=16   5.99e-01  5.64e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=17   5.99e-01  5.64e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+Logprobs (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  1.60e-01  2.14e-01  2.14e-01  2.14e-01  2.14e-01  2.14e-01  2.14e-01  2.14e-01
+bs=2    1.60e-01  0.00e+00  2.82e-01  2.82e-01  2.82e-01  2.82e-01  2.82e-01  2.82e-01  2.82e-01
+bs=3    2.14e-01  2.82e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=4    2.14e-01  2.82e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=5    2.14e-01  2.82e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=8    2.14e-01  2.82e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=9    2.14e-01  2.82e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=16   2.14e-01  2.82e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=17   2.14e-01  2.82e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+================================================================================
+AGGREGATE (average across references):
+================================================================================
+
+Key Vectors (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  4.40e-01  6.01e-01  6.01e-01  6.01e-01  6.01e-01  6.01e-01  6.01e-01  6.01e-01
+bs=2    4.40e-01  0.00e+00  7.08e-01  7.08e-01  7.08e-01  7.08e-01  7.08e-01  7.08e-01  7.08e-01
+bs=3    6.01e-01  7.08e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=4    6.01e-01  7.08e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=5    6.01e-01  7.08e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=8    6.01e-01  7.08e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=9    6.01e-01  7.08e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=16   6.01e-01  7.08e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=17   6.01e-01  7.08e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+Logprobs (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  3.31e-01  4.44e-01  4.44e-01  4.44e-01  4.44e-01  4.44e-01  4.44e-01  4.44e-01
+bs=2    3.31e-01  0.00e+00  3.95e-01  3.95e-01  3.95e-01  3.95e-01  3.95e-01  3.95e-01  3.95e-01
+bs=3    4.44e-01  3.95e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=4    4.44e-01  3.95e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=5    4.44e-01  3.95e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=8    4.44e-01  3.95e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=9    4.44e-01  3.95e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=16   4.44e-01  3.95e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=17   4.44e-01  3.95e-01  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+Off-diagonal stats:
+  Key vectors - Mean: 2.67e-01, Range: [0.00e+00, 7.08e-01]
+  Logprobs - Mean: 1.72e-01, Range: [0.00e+00, 4.44e-01]
+
+⚠ NOTE: 21/36 comparisons are equivalent (< 1e-09)
+
+Kernel equivalence classes:
+  Class 1: [1]
+  Class 2: [2]
+  Class 3: [3, 4, 5, 8, 9, 16, 17]
+
+Equivalent pairs (will be excluded from cross-hardware signal):
+  (3, 4)
+  (3, 5)
+  (3, 8)
+  (3, 9)
+  (3, 16)
+  (3, 17)
+  (4, 5)
+  (4, 8)
+  (4, 9)
+  (4, 16)
+  (4, 17)
+  (5, 8)
+  (5, 9)
+  (5, 16)
+  (5, 17)
+  (8, 9)
+  (8, 16)
+  (8, 17)
+  (9, 16)
+  (9, 17)
+  (16, 17)
+
+✓ SANITY CHECK PASSED
+
+================================================================================
+WITHIN-HARDWARE BATCH SIZE EFFECTS (DECODE)
+================================================================================
+
+================================================================================
+REF_0
+================================================================================
+
+Key Vectors (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  2.50e+01  2.50e+01  2.75e+01  2.75e+01  2.50e+01  2.50e+01  2.40e+01  2.75e+01
+bs=2    2.50e+01  0.00e+00  2.73e-01  2.35e+01  2.35e+01  3.55e-01  3.55e-01  2.62e+01  2.35e+01
+bs=3    2.50e+01  2.73e-01  0.00e+00  2.35e+01  2.35e+01  3.59e-01  3.59e-01  2.62e+01  2.34e+01
+bs=4    2.75e+01  2.35e+01  2.35e+01  0.00e+00  0.00e+00  2.35e+01  2.35e+01  2.28e+01  4.50e-01
+bs=5    2.75e+01  2.35e+01  2.35e+01  0.00e+00  0.00e+00  2.35e+01  2.35e+01  2.28e+01  4.50e-01
+bs=8    2.50e+01  3.55e-01  3.59e-01  2.35e+01  2.35e+01  0.00e+00  0.00e+00  2.62e+01  2.35e+01
+bs=9    2.50e+01  3.55e-01  3.59e-01  2.35e+01  2.35e+01  0.00e+00  0.00e+00  2.62e+01  2.35e+01
+bs=16   2.40e+01  2.62e+01  2.62e+01  2.28e+01  2.28e+01  2.62e+01  2.62e+01  0.00e+00  2.27e+01
+bs=17   2.75e+01  2.35e+01  2.34e+01  4.50e-01  4.50e-01  2.35e+01  2.35e+01  2.27e+01  0.00e+00
+
+Logprobs (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00       inf       inf       inf       inf       inf       inf       inf       inf
+bs=2         inf  0.00e+00  1.21e-01       inf       inf  1.20e-01  1.20e-01       inf       inf
+bs=3         inf  1.21e-01  0.00e+00       inf       inf  1.33e-01  1.33e-01       inf       inf
+bs=4         inf       inf       inf  0.00e+00  0.00e+00       inf       inf       inf  2.14e-01
+bs=5         inf       inf       inf  0.00e+00  0.00e+00       inf       inf       inf  2.14e-01
+bs=8         inf  1.20e-01  1.33e-01       inf       inf  0.00e+00  0.00e+00       inf       inf
+bs=9         inf  1.20e-01  1.33e-01       inf       inf  0.00e+00  0.00e+00       inf       inf
+bs=16        inf       inf       inf       inf       inf       inf       inf  0.00e+00       inf
+bs=17        inf       inf       inf  2.14e-01  2.14e-01       inf       inf       inf  0.00e+00
+
+================================================================================
+REF_1
+================================================================================
+
+Key Vectors (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  2.74e+01  2.94e+01  2.50e+01  2.50e+01  2.74e+01  2.74e+01  2.74e+01  2.54e+01
+bs=2    2.74e+01  0.00e+00  3.25e+01  2.30e+01  2.30e+01  9.00e-01  9.00e-01  8.98e-01  2.69e+01
+bs=3    2.94e+01  3.25e+01  0.00e+00  2.76e+01  2.76e+01  3.25e+01  3.25e+01  3.25e+01  2.97e+01
+bs=4    2.50e+01  2.30e+01  2.76e+01  0.00e+00  0.00e+00  2.30e+01  2.30e+01  2.30e+01  2.57e+01
+bs=5    2.50e+01  2.30e+01  2.76e+01  0.00e+00  0.00e+00  2.30e+01  2.30e+01  2.30e+01  2.57e+01
+bs=8    2.74e+01  9.00e-01  3.25e+01  2.30e+01  2.30e+01  0.00e+00  0.00e+00  2.49e-01  2.69e+01
+bs=9    2.74e+01  9.00e-01  3.25e+01  2.30e+01  2.30e+01  0.00e+00  0.00e+00  2.49e-01  2.69e+01
+bs=16   2.74e+01  8.98e-01  3.25e+01  2.30e+01  2.30e+01  2.49e-01  2.49e-01  0.00e+00  2.69e+01
+bs=17   2.54e+01  2.69e+01  2.97e+01  2.57e+01  2.57e+01  2.69e+01  2.69e+01  2.69e+01  0.00e+00
+
+Logprobs (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00       inf       inf       inf       inf       inf       inf       inf       inf
+bs=2         inf  0.00e+00       inf       inf       inf  2.65e-01  2.65e-01  2.99e-01       inf
+bs=3         inf       inf  0.00e+00       inf       inf       inf       inf       inf       inf
+bs=4         inf       inf       inf  0.00e+00  0.00e+00       inf       inf       inf       inf
+bs=5         inf       inf       inf  0.00e+00  0.00e+00       inf       inf       inf       inf
+bs=8         inf  2.65e-01       inf       inf       inf  0.00e+00  0.00e+00  4.17e-02       inf
+bs=9         inf  2.65e-01       inf       inf       inf  0.00e+00  0.00e+00  4.17e-02       inf
+bs=16        inf  2.99e-01       inf       inf       inf  4.17e-02  4.17e-02  0.00e+00       inf
+bs=17        inf       inf       inf       inf       inf       inf       inf       inf  0.00e+00
+
+================================================================================
+REF_2
+================================================================================
+
+Key Vectors (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  3.60e-01  2.27e+01  2.93e+01  2.93e+01  2.97e+01  2.97e+01  1.41e+01  2.93e+01
+bs=2    3.60e-01  0.00e+00  2.27e+01  2.93e+01  2.93e+01  2.97e+01  2.97e+01  1.41e+01  2.93e+01
+bs=3    2.27e+01  2.27e+01  0.00e+00  2.60e+01  2.60e+01  2.35e+01  2.35e+01  2.56e+01  2.58e+01
+bs=4    2.93e+01  2.93e+01  2.60e+01  0.00e+00  0.00e+00  2.25e+01  2.25e+01  2.53e+01  1.48e+01
+bs=5    2.93e+01  2.93e+01  2.60e+01  0.00e+00  0.00e+00  2.25e+01  2.25e+01  2.53e+01  1.48e+01
+bs=8    2.97e+01  2.97e+01  2.35e+01  2.25e+01  2.25e+01  0.00e+00  0.00e+00  3.00e+01  1.93e+01
+bs=9    2.97e+01  2.97e+01  2.35e+01  2.25e+01  2.25e+01  0.00e+00  0.00e+00  3.00e+01  1.93e+01
+bs=16   1.41e+01  1.41e+01  2.56e+01  2.53e+01  2.53e+01  3.00e+01  3.00e+01  0.00e+00  2.66e+01
+bs=17   2.93e+01  2.93e+01  2.58e+01  1.48e+01  1.48e+01  1.93e+01  1.93e+01  2.66e+01  0.00e+00
+
+Logprobs (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  2.49e-01       inf       inf       inf       inf       inf       inf       inf
+bs=2    2.49e-01  0.00e+00       inf       inf       inf       inf       inf       inf       inf
+bs=3         inf       inf  0.00e+00       inf       inf       inf       inf       inf       inf
+bs=4         inf       inf       inf  0.00e+00  0.00e+00       inf       inf       inf       inf
+bs=5         inf       inf       inf  0.00e+00  0.00e+00       inf       inf       inf       inf
+bs=8         inf       inf       inf       inf       inf  0.00e+00  0.00e+00       inf       inf
+bs=9         inf       inf       inf       inf       inf  0.00e+00  0.00e+00       inf       inf
+bs=16        inf       inf       inf       inf       inf       inf       inf  0.00e+00       inf
+bs=17        inf       inf       inf       inf       inf       inf       inf       inf  0.00e+00
+
+================================================================================
+AGGREGATE (average across references):
+================================================================================
+
+Key Vectors (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  1.76e+01  2.57e+01  2.73e+01  2.73e+01  2.74e+01  2.74e+01  2.18e+01  2.74e+01
+bs=2    1.76e+01  0.00e+00  1.85e+01  2.53e+01  2.53e+01  1.03e+01  1.03e+01  1.37e+01  2.65e+01
+bs=3    2.57e+01  1.85e+01  0.00e+00  2.57e+01  2.57e+01  1.88e+01  1.88e+01  2.81e+01  2.63e+01
+bs=4    2.73e+01  2.53e+01  2.57e+01  0.00e+00  0.00e+00  2.30e+01  2.30e+01  2.37e+01  1.37e+01
+bs=5    2.73e+01  2.53e+01  2.57e+01  0.00e+00  0.00e+00  2.30e+01  2.30e+01  2.37e+01  1.37e+01
+bs=8    2.74e+01  1.03e+01  1.88e+01  2.30e+01  2.30e+01  0.00e+00  0.00e+00  1.88e+01  2.32e+01
+bs=9    2.74e+01  1.03e+01  1.88e+01  2.30e+01  2.30e+01  0.00e+00  0.00e+00  1.88e+01  2.32e+01
+bs=16   2.18e+01  1.37e+01  2.81e+01  2.37e+01  2.37e+01  1.88e+01  1.88e+01  0.00e+00  2.54e+01
+bs=17   2.74e+01  2.65e+01  2.63e+01  1.37e+01  1.37e+01  2.32e+01  2.32e+01  2.54e+01  0.00e+00
+
+Logprobs (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00       inf       inf       inf       inf       inf       inf       inf       inf
+bs=2         inf  0.00e+00       inf       inf       inf       inf       inf       inf       inf
+bs=3         inf       inf  0.00e+00       inf       inf       inf       inf       inf       inf
+bs=4         inf       inf       inf  0.00e+00  0.00e+00       inf       inf       inf       inf
+bs=5         inf       inf       inf  0.00e+00  0.00e+00       inf       inf       inf       inf
+bs=8         inf       inf       inf       inf       inf  0.00e+00  0.00e+00       inf       inf
+bs=9         inf       inf       inf       inf       inf  0.00e+00  0.00e+00       inf       inf
+bs=16        inf       inf       inf       inf       inf       inf       inf  0.00e+00       inf
+bs=17        inf       inf       inf       inf       inf       inf       inf       inf  0.00e+00
+
+Off-diagonal stats:
+  Key vectors - Mean: 2.09e+01, Range: [0.00e+00, 2.81e+01]
+  Logprobs - Mean: 0.00e+00, Range: [0.00e+00, inf]
+
+⚠ NOTE: 2/36 comparisons are equivalent (< 1e-09)
+
+Kernel equivalence classes:
+  Class 1: [1]
+  Class 2: [2]
+  Class 3: [3]
+  Class 4: [4, 5]
+  Class 5: [8, 9]
+  Class 6: [16]
+  Class 7: [17]
+
+Equivalent pairs (will be excluded from cross-hardware signal):
+  (4, 5)
+  (8, 9)
+
+✗ SANITY CHECK FAILED (No variation)
+
+✓ Saved to: /workspace/experiments/decode_20251126_163114.json
+
+Next step: Copy to verifier machine, set TEACHER_FORCING=True

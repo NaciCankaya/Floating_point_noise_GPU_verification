@@ -1,0 +1,5999 @@
+{
+  "metadata": {
+    "reference_environment": {
+      "hostname": "48f75a293fc0",
+      "platform": "Linux-6.8.0-87-generic-x86_64-with-glibc2.39",
+      "python_version": "3.12.3",
+      "torch_version": "2.9.0+cu128",
+      "cuda_version": "12.8",
+      "cudnn_version": "91002",
+      "transformers_version": "4.57.3",
+      "numpy_version": "2.1.2",
+      "attn_implementation": "sdpa",
+      "gpu_name": "NVIDIA A100 80GB PCIe",
+      "gpu_count": 1,
+      "flash_attn_version": "N/A"
+    },
+    "verifier_environment": {
+      "hostname": "0ab58b9350be",
+      "platform": "Linux-6.14.0-24-generic-x86_64-with-glibc2.39",
+      "python_version": "3.12.3",
+      "torch_version": "2.9.0+cu128",
+      "cuda_version": "12.8",
+      "cudnn_version": "91002",
+      "transformers_version": "4.57.3",
+      "numpy_version": "2.1.2",
+      "attn_implementation": "sdpa",
+      "gpu_name": "NVIDIA H100 PCIe",
+      "gpu_count": 1,
+      "flash_attn_version": "N/A"
+    },
+    "batch_sizes": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      8,
+      9,
+      16,
+      17
+    ],
+    "layer_indices": [
+      28
+    ],
+    "prefill_equivalent_pairs": [
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        16
+      ],
+      [
+        4,
+        17
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        5,
+        16
+      ],
+      [
+        5,
+        17
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        8,
+        16
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        9,
+        16
+      ],
+      [
+        9,
+        17
+      ],
+      [
+        16,
+        17
+      ]
+    ],
+    "decode_equivalent_pairs": [
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        8,
+        9
+      ]
+    ]
+  },
+  "comparisons": [
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 2.281300619295349,
+        "key_vectors_mean": 1.9197817758582847,
+        "logprobs_max": 1.2135305992057452,
+        "logprobs_mean": 0.5337640925150612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5980054171972279,
+        "key_vectors_mean": 0.45039993942110296,
+        "logprobs_max": 0.21650635753292646,
+        "logprobs_mean": 0.11383545251582612
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 2.281300619295349,
+        "key_vectors_mean": 1.9197817758582847,
+        "logprobs_max": 1.2135305992057452,
+        "logprobs_mean": 0.5337640925150612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5980054171972279,
+        "key_vectors_mean": 0.45039993942110296,
+        "logprobs_max": 0.21650635753292646,
+        "logprobs_mean": 0.11383545251582612
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 2.281300619295349,
+        "key_vectors_mean": 1.9197817758582847,
+        "logprobs_max": 1.2135305992057452,
+        "logprobs_mean": 0.5337640925150612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5980054171972279,
+        "key_vectors_mean": 0.45039993942110296,
+        "logprobs_max": 0.21650635753292646,
+        "logprobs_mean": 0.11383545251582612
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 2.281300619295349,
+        "key_vectors_mean": 1.9197817758582847,
+        "logprobs_max": 1.2135305992057452,
+        "logprobs_mean": 0.5337640925150612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5980054171972279,
+        "key_vectors_mean": 0.45039993942110296,
+        "logprobs_max": 0.21650635753292646,
+        "logprobs_mean": 0.11383545251582612
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 2.281300619295349,
+        "key_vectors_mean": 1.9197817758582847,
+        "logprobs_max": 1.2135305992057452,
+        "logprobs_mean": 0.5337640925150612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5980054171972279,
+        "key_vectors_mean": 0.45039993942110296,
+        "logprobs_max": 0.21650635753292646,
+        "logprobs_mean": 0.11383545251582612
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 2.281300619295349,
+        "key_vectors_mean": 1.9197817758582847,
+        "logprobs_max": 1.2135305992057452,
+        "logprobs_mean": 0.5337640925150612
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0845810098805762,
+        "key_vectors_mean": 0.692815004063703,
+        "logprobs_max": 0.2165063528364589,
+        "logprobs_mean": 0.17276101604436525
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 2.281300619295349,
+        "key_vectors_mean": 1.9197817758582847,
+        "logprobs_max": 1.2135305992057452,
+        "logprobs_mean": 0.5337640925150612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.637178641085104,
+        "key_vectors_mean": 0.4859195980290481,
+        "logprobs_max": 0.12500000001455192,
+        "logprobs_mean": 0.12500000000970127
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 2.281300619295349,
+        "key_vectors_mean": 1.9197817758582847,
+        "logprobs_max": 1.2135305992057452,
+        "logprobs_mean": 0.5337640925150612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.6206455893044895,
+        "key_vectors_mean": 0.440767502288284,
+        "logprobs_max": 0.12500000001455192,
+        "logprobs_mean": 0.08333333333818398
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 2.281300619295349,
+        "key_vectors_mean": 1.9197817758582847,
+        "logprobs_max": 1.2135305992057452,
+        "logprobs_mean": 0.5337640925150612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.6492154728408527,
+        "key_vectors_mean": 0.4508600305237951,
+        "logprobs_max": 0.25000001408625355,
+        "logprobs_mean": 0.2144276889753689
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 2.47203690409172,
+        "key_vectors_mean": 1.4180853918993608,
+        "logprobs_max": 0.8523863978879441,
+        "logprobs_mean": 0.3768265031451201
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5217737009619913,
+        "key_vectors_mean": 0.42753995115663374,
+        "logprobs_max": 0.21650635753292646,
+        "logprobs_mean": 0.18600423663296617
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 2.47203690409172,
+        "key_vectors_mean": 1.4180853918993608,
+        "logprobs_max": 0.8523863978879441,
+        "logprobs_mean": 0.3768265031451201
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5217737009619913,
+        "key_vectors_mean": 0.42753995115663374,
+        "logprobs_max": 0.21650635753292646,
+        "logprobs_mean": 0.18600423663296617
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 2.47203690409172,
+        "key_vectors_mean": 1.4180853918993608,
+        "logprobs_max": 0.8523863978879441,
+        "logprobs_mean": 0.3768265031451201
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5217737009619913,
+        "key_vectors_mean": 0.42753995115663374,
+        "logprobs_max": 0.21650635753292646,
+        "logprobs_mean": 0.18600423663296617
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 2.47203690409172,
+        "key_vectors_mean": 1.4180853918993608,
+        "logprobs_max": 0.8523863978879441,
+        "logprobs_mean": 0.3768265031451201
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5217737009619913,
+        "key_vectors_mean": 0.42753995115663374,
+        "logprobs_max": 0.21650635753292646,
+        "logprobs_mean": 0.18600423663296617
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 2.47203690409172,
+        "key_vectors_mean": 1.4180853918993608,
+        "logprobs_max": 0.8523863978879441,
+        "logprobs_mean": 0.3768265031451201
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5217737009619913,
+        "key_vectors_mean": 0.42753995115663374,
+        "logprobs_max": 0.21650635753292646,
+        "logprobs_mean": 0.18600423663296617
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 2.47203690409172,
+        "key_vectors_mean": 1.4180853918993608,
+        "logprobs_max": 0.8523863978879441,
+        "logprobs_mean": 0.3768265031451201
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.1218481947902914,
+        "key_vectors_mean": 0.6517207550814038,
+        "logprobs_max": 0.21650635094610965,
+        "logprobs_mean": 0.15550211698688718
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 2.47203690409172,
+        "key_vectors_mean": 1.4180853918993608,
+        "logprobs_max": 0.8523863978879441,
+        "logprobs_mean": 0.3768265031451201
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5766984900993405,
+        "key_vectors_mean": 0.44561232998623906,
+        "logprobs_max": 0.216506352365972,
+        "logprobs_mean": 0.17276101589238693
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 2.47203690409172,
+        "key_vectors_mean": 1.4180853918993608,
+        "logprobs_max": 0.8523863978879441,
+        "logprobs_mean": 0.3768265031451201
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.4735718874729017,
+        "key_vectors_mean": 0.4170853140079851,
+        "logprobs_max": 0.17677669731342943,
+        "logprobs_mean": 0.1595177975415394
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 2.47203690409172,
+        "key_vectors_mean": 1.4180853918993608,
+        "logprobs_max": 0.8523863978879441,
+        "logprobs_mean": 0.3768265031451201
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.47551437325144097,
+        "key_vectors_mean": 0.432021436854853,
+        "logprobs_max": 0.21650636721151406,
+        "logprobs_mean": 0.20326314059334882
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 2.47203690409172,
+        "key_vectors_mean": 1.4180853918993608,
+        "logprobs_max": 0.8523863978879441,
+        "logprobs_mean": 0.3768265031451201
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5217737009619913,
+        "key_vectors_mean": 0.42753995115663374,
+        "logprobs_max": 0.21650635753292646,
+        "logprobs_mean": 0.18600423663296617
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 2.47203690409172,
+        "key_vectors_mean": 1.4180853918993608,
+        "logprobs_max": 0.8523863978879441,
+        "logprobs_mean": 0.3768265031451201
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5217737009619913,
+        "key_vectors_mean": 0.42753995115663374,
+        "logprobs_max": 0.21650635753292646,
+        "logprobs_mean": 0.18600423663296617
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 2.47203690409172,
+        "key_vectors_mean": 1.4180853918993608,
+        "logprobs_max": 0.8523863978879441,
+        "logprobs_mean": 0.3768265031451201
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5217737009619913,
+        "key_vectors_mean": 0.42753995115663374,
+        "logprobs_max": 0.21650635753292646,
+        "logprobs_mean": 0.18600423663296617
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 2.47203690409172,
+        "key_vectors_mean": 1.4180853918993608,
+        "logprobs_max": 0.8523863978879441,
+        "logprobs_mean": 0.3768265031451201
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5217737009619913,
+        "key_vectors_mean": 0.42753995115663374,
+        "logprobs_max": 0.21650635753292646,
+        "logprobs_mean": 0.18600423663296617
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 2.47203690409172,
+        "key_vectors_mean": 1.4180853918993608,
+        "logprobs_max": 0.8523863978879441,
+        "logprobs_mean": 0.3768265031451201
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5217737009619913,
+        "key_vectors_mean": 0.42753995115663374,
+        "logprobs_max": 0.21650635753292646,
+        "logprobs_mean": 0.18600423663296617
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 2.47203690409172,
+        "key_vectors_mean": 1.4180853918993608,
+        "logprobs_max": 0.8523863978879441,
+        "logprobs_mean": 0.3768265031451201
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.1218481947902914,
+        "key_vectors_mean": 0.6517207550814038,
+        "logprobs_max": 0.21650635094610965,
+        "logprobs_mean": 0.15550211698688718
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 2.47203690409172,
+        "key_vectors_mean": 1.4180853918993608,
+        "logprobs_max": 0.8523863978879441,
+        "logprobs_mean": 0.3768265031451201
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5766984900993405,
+        "key_vectors_mean": 0.44561232998623906,
+        "logprobs_max": 0.216506352365972,
+        "logprobs_mean": 0.17276101589238693
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 2.47203690409172,
+        "key_vectors_mean": 1.4180853918993608,
+        "logprobs_max": 0.8523863978879441,
+        "logprobs_mean": 0.3768265031451201
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.4735718874729017,
+        "key_vectors_mean": 0.4170853140079851,
+        "logprobs_max": 0.17677669731342943,
+        "logprobs_mean": 0.1595177975415394
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 2.47203690409172,
+        "key_vectors_mean": 1.4180853918993608,
+        "logprobs_max": 0.8523863978879441,
+        "logprobs_mean": 0.3768265031451201
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.47551437325144097,
+        "key_vectors_mean": 0.432021436854853,
+        "logprobs_max": 0.21650636721151406,
+        "logprobs_mean": 0.20326314059334882
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.488942118688607,
+        "key_vectors_mean": 0.4147336430948918,
+        "logprobs_max": 0.125,
+        "logprobs_mean": 0.041666666666666664
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.488942118688607,
+        "key_vectors_mean": 0.4147336430948918,
+        "logprobs_max": 0.125,
+        "logprobs_mean": 0.041666666666666664
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.488942118688607,
+        "key_vectors_mean": 0.4147336430948918,
+        "logprobs_max": 0.125,
+        "logprobs_mean": 0.041666666666666664
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.488942118688607,
+        "key_vectors_mean": 0.4147336430948918,
+        "logprobs_max": 0.125,
+        "logprobs_mean": 0.041666666666666664
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.488942118688607,
+        "key_vectors_mean": 0.4147336430948918,
+        "logprobs_max": 0.125,
+        "logprobs_mean": 0.041666666666666664
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.109934359492715,
+        "key_vectors_mean": 0.6405492693797997,
+        "logprobs_max": 0.1767767033638069,
+        "logprobs_mean": 0.15951780022574544
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.4388850121471081,
+        "key_vectors_mean": 0.3799462689641337,
+        "logprobs_max": 0.2500000061190803,
+        "logprobs_mean": 0.08333333537302677
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.45331781314529007,
+        "key_vectors_mean": 0.40951050404933115,
+        "logprobs_max": 0.2500000061190803,
+        "logprobs_mean": 0.12500000204454406
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.48904376406360994,
+        "key_vectors_mean": 0.42565773794348677,
+        "logprobs_max": 0.21650636721151406,
+        "logprobs_mean": 0.11383545573717135
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.488942118688607,
+        "key_vectors_mean": 0.4147336430948918,
+        "logprobs_max": 0.125,
+        "logprobs_mean": 0.041666666666666664
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.488942118688607,
+        "key_vectors_mean": 0.4147336430948918,
+        "logprobs_max": 0.125,
+        "logprobs_mean": 0.041666666666666664
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.488942118688607,
+        "key_vectors_mean": 0.4147336430948918,
+        "logprobs_max": 0.125,
+        "logprobs_mean": 0.041666666666666664
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.488942118688607,
+        "key_vectors_mean": 0.4147336430948918,
+        "logprobs_max": 0.125,
+        "logprobs_mean": 0.041666666666666664
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.488942118688607,
+        "key_vectors_mean": 0.4147336430948918,
+        "logprobs_max": 0.125,
+        "logprobs_mean": 0.041666666666666664
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.109934359492715,
+        "key_vectors_mean": 0.6405492693797997,
+        "logprobs_max": 0.1767767033638069,
+        "logprobs_mean": 0.15951780022574544
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.4388850121471081,
+        "key_vectors_mean": 0.3799462689641337,
+        "logprobs_max": 0.2500000061190803,
+        "logprobs_mean": 0.08333333537302677
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.45331781314529007,
+        "key_vectors_mean": 0.40951050404933115,
+        "logprobs_max": 0.2500000061190803,
+        "logprobs_mean": 0.12500000204454406
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.48904376406360994,
+        "key_vectors_mean": 0.42565773794348677,
+        "logprobs_max": 0.21650636721151406,
+        "logprobs_mean": 0.11383545573717135
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5046077990119728,
+        "key_vectors_mean": 0.4042791520302675,
+        "logprobs_max": 0.33071891850866375,
+        "logprobs_mean": 0.1935729728556238
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5046077990119728,
+        "key_vectors_mean": 0.4042791520302675,
+        "logprobs_max": 0.33071891850866375,
+        "logprobs_mean": 0.1935729728556238
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5046077990119728,
+        "key_vectors_mean": 0.4042791520302675,
+        "logprobs_max": 0.33071891850866375,
+        "logprobs_mean": 0.1935729728556238
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5046077990119728,
+        "key_vectors_mean": 0.4042791520302675,
+        "logprobs_max": 0.33071891850866375,
+        "logprobs_mean": 0.1935729728556238
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5046077990119728,
+        "key_vectors_mean": 0.4042791520302675,
+        "logprobs_max": 0.33071891850866375,
+        "logprobs_mean": 0.1935729728556238
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.1359034249154811,
+        "key_vectors_mean": 0.6106806559268324,
+        "logprobs_max": 0.27950849721350496,
+        "logprobs_mean": 0.20700495034006386
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5802800031140964,
+        "key_vectors_mean": 0.4258333601783479,
+        "logprobs_max": 0.1767766953377959,
+        "logprobs_mean": 0.14225889844593198
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.4999156821204604,
+        "key_vectors_mean": 0.39617208701886913,
+        "logprobs_max": 0.1767766953377959,
+        "logprobs_mean": 0.1595177968815742
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5003211063214249,
+        "key_vectors_mean": 0.4083351498465351,
+        "logprobs_max": 0.33071892552129994,
+        "logprobs_mean": 0.22047928134332126
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5046077990119728,
+        "key_vectors_mean": 0.4042791520302675,
+        "logprobs_max": 0.33071891850866375,
+        "logprobs_mean": 0.1935729728556238
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5046077990119728,
+        "key_vectors_mean": 0.4042791520302675,
+        "logprobs_max": 0.33071891850866375,
+        "logprobs_mean": 0.1935729728556238
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5046077990119728,
+        "key_vectors_mean": 0.4042791520302675,
+        "logprobs_max": 0.33071891850866375,
+        "logprobs_mean": 0.1935729728556238
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5046077990119728,
+        "key_vectors_mean": 0.4042791520302675,
+        "logprobs_max": 0.33071891850866375,
+        "logprobs_mean": 0.1935729728556238
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5046077990119728,
+        "key_vectors_mean": 0.4042791520302675,
+        "logprobs_max": 0.33071891850866375,
+        "logprobs_mean": 0.1935729728556238
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.1359034249154811,
+        "key_vectors_mean": 0.6106806559268324,
+        "logprobs_max": 0.27950849721350496,
+        "logprobs_mean": 0.20700495034006386
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5802800031140964,
+        "key_vectors_mean": 0.4258333601783479,
+        "logprobs_max": 0.1767766953377959,
+        "logprobs_mean": 0.14225889844593198
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.4999156821204604,
+        "key_vectors_mean": 0.39617208701886913,
+        "logprobs_max": 0.1767766953377959,
+        "logprobs_mean": 0.1595177968815742
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5003211063214249,
+        "key_vectors_mean": 0.4083351498465351,
+        "logprobs_max": 0.33071892552129994,
+        "logprobs_mean": 0.22047928134332126
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.46924712523066037,
+        "key_vectors_mean": 0.3908410280519299,
+        "logprobs_max": 0.1767767033638069,
+        "logprobs_mean": 0.1005922344546023
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.46924712523066037,
+        "key_vectors_mean": 0.3908410280519299,
+        "logprobs_max": 0.1767767033638069,
+        "logprobs_mean": 0.1005922344546023
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.46924712523066037,
+        "key_vectors_mean": 0.3908410280519299,
+        "logprobs_max": 0.1767767033638069,
+        "logprobs_mean": 0.1005922344546023
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.46924712523066037,
+        "key_vectors_mean": 0.3908410280519299,
+        "logprobs_max": 0.1767767033638069,
+        "logprobs_mean": 0.1005922344546023
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.46924712523066037,
+        "key_vectors_mean": 0.3908410280519299,
+        "logprobs_max": 0.1767767033638069,
+        "logprobs_mean": 0.1005922344546023
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.118802465575192,
+        "key_vectors_mean": 0.6027499165850992,
+        "logprobs_max": 0.17677669731342943,
+        "logprobs_mean": 0.1595177975366888
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.44051263983813777,
+        "key_vectors_mean": 0.3799039695825491,
+        "logprobs_max": 0.17677669530692663,
+        "logprobs_mean": 0.058925565102308876
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.45420157859056337,
+        "key_vectors_mean": 0.38540398017214866,
+        "logprobs_max": 0.17677669530692663,
+        "logprobs_mean": 0.10059223177382619
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.4982621643894612,
+        "key_vectors_mean": 0.39882835073625716,
+        "logprobs_max": 0.21650636721151406,
+        "logprobs_mean": 0.172761023525107
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.42310528268331465,
+        "key_vectors_mean": 0.3647061059916979,
+        "logprobs_max": 0.0,
+        "logprobs_mean": 0.0
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.42310528268331465,
+        "key_vectors_mean": 0.3647061059916979,
+        "logprobs_max": 0.0,
+        "logprobs_mean": 0.0
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.42310528268331465,
+        "key_vectors_mean": 0.3647061059916979,
+        "logprobs_max": 0.0,
+        "logprobs_mean": 0.0
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.42310528268331465,
+        "key_vectors_mean": 0.3647061059916979,
+        "logprobs_max": 0.0,
+        "logprobs_mean": 0.0
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.42310528268331465,
+        "key_vectors_mean": 0.3647061059916979,
+        "logprobs_max": 0.0,
+        "logprobs_mean": 0.0
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0864179786659114,
+        "key_vectors_mean": 0.639064630490712,
+        "logprobs_max": 0.1767767033638069,
+        "logprobs_mean": 0.17677669865795775
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5056570128858925,
+        "key_vectors_mean": 0.43225795639668285,
+        "logprobs_max": 0.2500000061190803,
+        "logprobs_mean": 0.12500000203969344
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.3967694727957024,
+        "key_vectors_mean": 0.38837221161590213,
+        "logprobs_max": 0.2500000061190803,
+        "logprobs_mean": 0.16666666871121075
+      }
+    },
+    {
+      "ref_name": "ref_0",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 2.2807745140997318,
+        "key_vectors_mean": 1.157859467174551,
+        "logprobs_max": 0.35355339966884014,
+        "logprobs_mean": 0.15951811779196612
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5193156461851094,
+        "key_vectors_mean": 0.41385958036889764,
+        "logprobs_max": 0.25000001408625355,
+        "logprobs_mean": 0.12500000469541786
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 2.0331114540816384,
+        "key_vectors_mean": 0.9662546259899671,
+        "logprobs_max": 0.1647238344939512,
+        "logprobs_mean": 0.15252535290483313
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0906205024189286,
+        "key_vectors_mean": 0.8207501956194099,
+        "logprobs_max": 0.3370912832132919,
+        "logprobs_mean": 0.23380754756024333
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 2.0331114540816384,
+        "key_vectors_mean": 0.9662546259899671,
+        "logprobs_max": 0.1647238344939512,
+        "logprobs_mean": 0.15252535290483313
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0906205024189286,
+        "key_vectors_mean": 0.8207501956194099,
+        "logprobs_max": 0.3370912832132919,
+        "logprobs_mean": 0.23380754756024333
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 2.0331114540816384,
+        "key_vectors_mean": 0.9662546259899671,
+        "logprobs_max": 0.1647238344939512,
+        "logprobs_mean": 0.15252535290483313
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0906205024189286,
+        "key_vectors_mean": 0.8207501956194099,
+        "logprobs_max": 0.3370912832132919,
+        "logprobs_mean": 0.23380754756024333
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 2.0331114540816384,
+        "key_vectors_mean": 0.9662546259899671,
+        "logprobs_max": 0.1647238344939512,
+        "logprobs_mean": 0.15252535290483313
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.082126207436965,
+        "key_vectors_mean": 0.6334555111193936,
+        "logprobs_max": 0.21655094528749402,
+        "logprobs_mean": 0.1860075318093585
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 2.0331114540816384,
+        "key_vectors_mean": 0.9662546259899671,
+        "logprobs_max": 0.1647238344939512,
+        "logprobs_mean": 0.15252535290483313
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.082126207436965,
+        "key_vectors_mean": 0.6334555111193936,
+        "logprobs_max": 0.21655094528749402,
+        "logprobs_mean": 0.1860075318093585
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 2.0331114540816384,
+        "key_vectors_mean": 0.9662546259899671,
+        "logprobs_max": 0.1647238344939512,
+        "logprobs_mean": 0.15252535290483313
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.05962060136599,
+        "key_vectors_mean": 0.8486447209403734,
+        "logprobs_max": 0.15309310911405405,
+        "logprobs_mean": 0.13928273689914258
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 2.0331114540816384,
+        "key_vectors_mean": 0.9662546259899671,
+        "logprobs_max": 0.1647238344939512,
+        "logprobs_mean": 0.15252535290483313
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0918078481706226,
+        "key_vectors_mean": 0.8566472640176007,
+        "logprobs_max": 0.2783841244007707,
+        "logprobs_mean": 0.22390727158949728
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 2.0331114540816384,
+        "key_vectors_mean": 0.9662546259899671,
+        "logprobs_max": 0.1647238344939512,
+        "logprobs_mean": 0.15252535290483313
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0627420731236725,
+        "key_vectors_mean": 0.8139786655471438,
+        "logprobs_max": 0.17770821515072302,
+        "logprobs_mean": 0.1647645910429119
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 2.0331114540816384,
+        "key_vectors_mean": 0.9662546259899671,
+        "logprobs_max": 0.1647238344939512,
+        "logprobs_mean": 0.15252535290483313
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0828841291049436,
+        "key_vectors_mean": 0.8460845509309568,
+        "logprobs_max": 0.2801151692726415,
+        "logprobs_mean": 0.21214012132895754
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 2.026015040121346,
+        "key_vectors_mean": 1.005088779541261,
+        "logprobs_max": 0.17750887136721505,
+        "logprobs_mean": 0.10946577941509629
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0601085930431657,
+        "key_vectors_mean": 0.6072278696000434,
+        "logprobs_max": 0.23385409643318011,
+        "logprobs_mean": 0.20115120374789872
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 2.026015040121346,
+        "key_vectors_mean": 1.005088779541261,
+        "logprobs_max": 0.17750887136721505,
+        "logprobs_mean": 0.10946577941509629
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0601085930431657,
+        "key_vectors_mean": 0.6072278696000434,
+        "logprobs_max": 0.23385409643318011,
+        "logprobs_mean": 0.20115120374789872
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 2.026015040121346,
+        "key_vectors_mean": 1.005088779541261,
+        "logprobs_max": 0.17750887136721505,
+        "logprobs_mean": 0.10946577941509629
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0601085930431657,
+        "key_vectors_mean": 0.6072278696000434,
+        "logprobs_max": 0.23385409643318011,
+        "logprobs_mean": 0.20115120374789872
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 2.026015040121346,
+        "key_vectors_mean": 1.005088779541261,
+        "logprobs_max": 0.17750887136721505,
+        "logprobs_mean": 0.10946577941509629
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0960225445690193,
+        "key_vectors_mean": 0.8665738498584422,
+        "logprobs_max": 0.1767766952966369,
+        "logprobs_mean": 0.143508630286724
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 2.026015040121346,
+        "key_vectors_mean": 1.005088779541261,
+        "logprobs_max": 0.17750887136721505,
+        "logprobs_mean": 0.10946577941509629
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0960225445690193,
+        "key_vectors_mean": 0.8665738498584422,
+        "logprobs_max": 0.1767766952966369,
+        "logprobs_mean": 0.143508630286724
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 2.026015040121346,
+        "key_vectors_mean": 1.005088779541261,
+        "logprobs_max": 0.17750887136721505,
+        "logprobs_mean": 0.10946577941509629
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0632907855792608,
+        "key_vectors_mean": 0.6326324764203419,
+        "logprobs_max": 0.1768313091760258,
+        "logprobs_mean": 0.13713280596500144
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 2.026015040121346,
+        "key_vectors_mean": 1.005088779541261,
+        "logprobs_max": 0.17750887136721505,
+        "logprobs_mean": 0.10946577941509629
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0916583701842515,
+        "key_vectors_mean": 0.6382155584642663,
+        "logprobs_max": 0.22534698777920506,
+        "logprobs_mean": 0.17090916170865292
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 2.026015040121346,
+        "key_vectors_mean": 1.005088779541261,
+        "logprobs_max": 0.17750887136721505,
+        "logprobs_mean": 0.10946577941509629
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.054660451065347,
+        "key_vectors_mean": 0.5884744277151212,
+        "logprobs_max": 0.125,
+        "logprobs_mean": 0.10416730243984329
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 2.026015040121346,
+        "key_vectors_mean": 1.005088779541261,
+        "logprobs_max": 0.17750887136721505,
+        "logprobs_mean": 0.10946577941509629
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0636486338115707,
+        "key_vectors_mean": 0.6308758115422357,
+        "logprobs_max": 0.13975424859373686,
+        "logprobs_mean": 0.07604753219044252
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 2.026015040121346,
+        "key_vectors_mean": 1.005088779541261,
+        "logprobs_max": 0.17750887136721505,
+        "logprobs_mean": 0.10946577941509629
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0601085930431657,
+        "key_vectors_mean": 0.6072278696000434,
+        "logprobs_max": 0.23385409643318011,
+        "logprobs_mean": 0.20115120374789872
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 2.026015040121346,
+        "key_vectors_mean": 1.005088779541261,
+        "logprobs_max": 0.17750887136721505,
+        "logprobs_mean": 0.10946577941509629
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0601085930431657,
+        "key_vectors_mean": 0.6072278696000434,
+        "logprobs_max": 0.23385409643318011,
+        "logprobs_mean": 0.20115120374789872
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 2.026015040121346,
+        "key_vectors_mean": 1.005088779541261,
+        "logprobs_max": 0.17750887136721505,
+        "logprobs_mean": 0.10946577941509629
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0601085930431657,
+        "key_vectors_mean": 0.6072278696000434,
+        "logprobs_max": 0.23385409643318011,
+        "logprobs_mean": 0.20115120374789872
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 2.026015040121346,
+        "key_vectors_mean": 1.005088779541261,
+        "logprobs_max": 0.17750887136721505,
+        "logprobs_mean": 0.10946577941509629
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0960225445690193,
+        "key_vectors_mean": 0.8665738498584422,
+        "logprobs_max": 0.1767766952966369,
+        "logprobs_mean": 0.143508630286724
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 2.026015040121346,
+        "key_vectors_mean": 1.005088779541261,
+        "logprobs_max": 0.17750887136721505,
+        "logprobs_mean": 0.10946577941509629
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0960225445690193,
+        "key_vectors_mean": 0.8665738498584422,
+        "logprobs_max": 0.1767766952966369,
+        "logprobs_mean": 0.143508630286724
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 2.026015040121346,
+        "key_vectors_mean": 1.005088779541261,
+        "logprobs_max": 0.17750887136721505,
+        "logprobs_mean": 0.10946577941509629
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0632907855792608,
+        "key_vectors_mean": 0.6326324764203419,
+        "logprobs_max": 0.1768313091760258,
+        "logprobs_mean": 0.13713280596500144
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 2.026015040121346,
+        "key_vectors_mean": 1.005088779541261,
+        "logprobs_max": 0.17750887136721505,
+        "logprobs_mean": 0.10946577941509629
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0916583701842515,
+        "key_vectors_mean": 0.6382155584642663,
+        "logprobs_max": 0.22534698777920506,
+        "logprobs_mean": 0.17090916170865292
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 2.026015040121346,
+        "key_vectors_mean": 1.005088779541261,
+        "logprobs_max": 0.17750887136721505,
+        "logprobs_mean": 0.10946577941509629
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.054660451065347,
+        "key_vectors_mean": 0.5884744277151212,
+        "logprobs_max": 0.125,
+        "logprobs_mean": 0.10416730243984329
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 2.026015040121346,
+        "key_vectors_mean": 1.005088779541261,
+        "logprobs_max": 0.17750887136721505,
+        "logprobs_mean": 0.10946577941509629
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0636486338115707,
+        "key_vectors_mean": 0.6308758115422357,
+        "logprobs_max": 0.13975424859373686,
+        "logprobs_mean": 0.07604753219044252
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0796208785878814,
+        "key_vectors_mean": 0.8451203025224093,
+        "logprobs_max": 0.2801151692726415,
+        "logprobs_mean": 0.2274129537102546
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0796208785878814,
+        "key_vectors_mean": 0.8451203025224093,
+        "logprobs_max": 0.2801151692726415,
+        "logprobs_mean": 0.2274129537102546
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0796208785878814,
+        "key_vectors_mean": 0.8451203025224093,
+        "logprobs_max": 0.2801151692726415,
+        "logprobs_mean": 0.2274129537102546
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0689263770093727,
+        "key_vectors_mean": 0.6540219309474731,
+        "logprobs_max": 0.21724729743918314,
+        "logprobs_mean": 0.1557491154639388
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0689263770093727,
+        "key_vectors_mean": 0.6540219309474731,
+        "logprobs_max": 0.21724729743918314,
+        "logprobs_mean": 0.1557491154639388
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.067382011517977,
+        "key_vectors_mean": 0.8451664504682913,
+        "logprobs_max": 0.21655094528749402,
+        "logprobs_mean": 0.1969899981697636
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0881816142684788,
+        "key_vectors_mean": 0.8484055130459387,
+        "logprobs_max": 0.2639610682593943,
+        "logprobs_mean": 0.1979436384178981
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0630586453665982,
+        "key_vectors_mean": 0.8350929119292511,
+        "logprobs_max": 0.20728904953761465,
+        "logprobs_mean": 0.18346471654606944
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.070682641126417,
+        "key_vectors_mean": 0.8334620103021906,
+        "logprobs_max": 0.20808402084748281,
+        "logprobs_mean": 0.17352800715612152
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0796208785878814,
+        "key_vectors_mean": 0.8451203025224093,
+        "logprobs_max": 0.2801151692726415,
+        "logprobs_mean": 0.2274129537102546
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0796208785878814,
+        "key_vectors_mean": 0.8451203025224093,
+        "logprobs_max": 0.2801151692726415,
+        "logprobs_mean": 0.2274129537102546
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0796208785878814,
+        "key_vectors_mean": 0.8451203025224093,
+        "logprobs_max": 0.2801151692726415,
+        "logprobs_mean": 0.2274129537102546
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0689263770093727,
+        "key_vectors_mean": 0.6540219309474731,
+        "logprobs_max": 0.21724729743918314,
+        "logprobs_mean": 0.1557491154639388
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0689263770093727,
+        "key_vectors_mean": 0.6540219309474731,
+        "logprobs_max": 0.21724729743918314,
+        "logprobs_mean": 0.1557491154639388
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.067382011517977,
+        "key_vectors_mean": 0.8451664504682913,
+        "logprobs_max": 0.21655094528749402,
+        "logprobs_mean": 0.1969899981697636
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0881816142684788,
+        "key_vectors_mean": 0.8484055130459387,
+        "logprobs_max": 0.2639610682593943,
+        "logprobs_mean": 0.1979436384178981
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0630586453665982,
+        "key_vectors_mean": 0.8350929119292511,
+        "logprobs_max": 0.20728904953761465,
+        "logprobs_mean": 0.18346471654606944
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.070682641126417,
+        "key_vectors_mean": 0.8334620103021906,
+        "logprobs_max": 0.20808402084748281,
+        "logprobs_mean": 0.17352800715612152
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0640941329488878,
+        "key_vectors_mean": 0.6857221332662974,
+        "logprobs_max": 0.3953091346084824,
+        "logprobs_mean": 0.28580520809116267
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0640941329488878,
+        "key_vectors_mean": 0.6857221332662974,
+        "logprobs_max": 0.3953091346084824,
+        "logprobs_mean": 0.28580520809116267
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0640941329488878,
+        "key_vectors_mean": 0.6857221332662974,
+        "logprobs_max": 0.3953091346084824,
+        "logprobs_mean": 0.28580520809116267
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.2093315402173745,
+        "key_vectors_mean": 0.9028125085843627,
+        "logprobs_max": 0.35903525637957545,
+        "logprobs_mean": 0.3160451233319715
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.2093315402173745,
+        "key_vectors_mean": 0.9028125085843627,
+        "logprobs_max": 0.35903525637957545,
+        "logprobs_mean": 0.3160451233319715
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.058643684757876,
+        "key_vectors_mean": 0.7122009778719822,
+        "logprobs_max": 0.2576959519944316,
+        "logprobs_mean": 0.2331830998340089
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.092644425618242,
+        "key_vectors_mean": 0.6972786676663283,
+        "logprobs_max": 0.41926282602689213,
+        "logprobs_mean": 0.3330287279305331
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0547840255259395,
+        "key_vectors_mean": 0.6666273381695983,
+        "logprobs_max": 0.25003862082667794,
+        "logprobs_mean": 0.2068069293250531
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.067130440265899,
+        "key_vectors_mean": 0.693059929282969,
+        "logprobs_max": 0.3307481094502389,
+        "logprobs_mean": 0.2714269723358001
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0640941329488878,
+        "key_vectors_mean": 0.6857221332662974,
+        "logprobs_max": 0.3953091346084824,
+        "logprobs_mean": 0.28580520809116267
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0640941329488878,
+        "key_vectors_mean": 0.6857221332662974,
+        "logprobs_max": 0.3953091346084824,
+        "logprobs_mean": 0.28580520809116267
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0640941329488878,
+        "key_vectors_mean": 0.6857221332662974,
+        "logprobs_max": 0.3953091346084824,
+        "logprobs_mean": 0.28580520809116267
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.2093315402173745,
+        "key_vectors_mean": 0.9028125085843627,
+        "logprobs_max": 0.35903525637957545,
+        "logprobs_mean": 0.3160451233319715
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.2093315402173745,
+        "key_vectors_mean": 0.9028125085843627,
+        "logprobs_max": 0.35903525637957545,
+        "logprobs_mean": 0.3160451233319715
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.058643684757876,
+        "key_vectors_mean": 0.7122009778719822,
+        "logprobs_max": 0.2576959519944316,
+        "logprobs_mean": 0.2331830998340089
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.092644425618242,
+        "key_vectors_mean": 0.6972786676663283,
+        "logprobs_max": 0.41926282602689213,
+        "logprobs_mean": 0.3330287279305331
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0547840255259395,
+        "key_vectors_mean": 0.6666273381695983,
+        "logprobs_max": 0.25003862082667794,
+        "logprobs_mean": 0.2068069293250531
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.067130440265899,
+        "key_vectors_mean": 0.693059929282969,
+        "logprobs_max": 0.3307481094502389,
+        "logprobs_mean": 0.2714269723358001
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0931915544575221,
+        "key_vectors_mean": 0.8358927650804479,
+        "logprobs_max": 0.3370912832132919,
+        "logprobs_mean": 0.24924053234777357
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0931915544575221,
+        "key_vectors_mean": 0.8358927650804479,
+        "logprobs_max": 0.3370912832132919,
+        "logprobs_mean": 0.24924053234777357
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0931915544575221,
+        "key_vectors_mean": 0.8358927650804479,
+        "logprobs_max": 0.3370912832132919,
+        "logprobs_mean": 0.24924053234777357
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0753685125709591,
+        "key_vectors_mean": 0.6503726565261297,
+        "logprobs_max": 0.31250002535525606,
+        "logprobs_mean": 0.20862617553407622
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0753685125709591,
+        "key_vectors_mean": 0.6503726565261297,
+        "logprobs_max": 0.31250002535525606,
+        "logprobs_mean": 0.20862617553407622
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0749705443065098,
+        "key_vectors_mean": 0.8662414794917499,
+        "logprobs_max": 0.2576941017140432,
+        "logprobs_mean": 0.17417547568766867
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.1068020251497532,
+        "key_vectors_mean": 0.8615689486553549,
+        "logprobs_max": 0.39031239644932364,
+        "logprobs_mean": 0.2228988402833648
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.075617681926354,
+        "key_vectors_mean": 0.8201963997528962,
+        "logprobs_max": 0.17770821515072302,
+        "logprobs_mean": 0.08869885437610457
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0955889859616403,
+        "key_vectors_mean": 0.8573362392355799,
+        "logprobs_max": 0.2801151692726415,
+        "logprobs_mean": 0.2009191743443884
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.5650028788742014,
+        "key_vectors_mean": 0.7851474052781522,
+        "logprobs_max": 0.3540614850803249,
+        "logprobs_mean": 0.28597387966137594
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.5650028788742014,
+        "key_vectors_mean": 0.7851474052781522,
+        "logprobs_max": 0.3540614850803249,
+        "logprobs_mean": 0.28597387966137594
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.5650028788742014,
+        "key_vectors_mean": 0.7851474052781522,
+        "logprobs_max": 0.3540614850803249,
+        "logprobs_mean": 0.28597387966137594
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.2135644936772427,
+        "key_vectors_mean": 0.6881687065903606,
+        "logprobs_max": 0.2506780964835991,
+        "logprobs_mean": 0.21824302480206184
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.2135644936772427,
+        "key_vectors_mean": 0.6881687065903606,
+        "logprobs_max": 0.2506780964835991,
+        "logprobs_mean": 0.21824302480206184
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.557375704423234,
+        "key_vectors_mean": 0.7771031063597587,
+        "logprobs_max": 0.23385562570593937,
+        "logprobs_mean": 0.18211854195371993
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.5682966994265684,
+        "key_vectors_mean": 0.810700141326802,
+        "logprobs_max": 0.32978473693802923,
+        "logprobs_mean": 0.2547700577088447
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.5571943208334358,
+        "key_vectors_mean": 0.7541793109036119,
+        "logprobs_max": 0.20810636236463464,
+        "logprobs_mean": 0.15777533983941705
+      }
+    },
+    {
+      "ref_name": "ref_1",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 2.0285885020111545,
+        "key_vectors_mean": 0.9073297844645469,
+        "logprobs_max": 0.2253693039989409,
+        "logprobs_mean": 0.11120749317973605
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.566043561331115,
+        "key_vectors_mean": 0.7783110019566829,
+        "logprobs_max": 0.3003215497069496,
+        "logprobs_mean": 0.2233218682262713
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 0.3354525034964377,
+        "key_vectors_mean": 0.2928088504900867,
+        "logprobs_max": 0.21652961272067855,
+        "logprobs_mean": 0.12965560050740665
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0467160694983726,
+        "key_vectors_mean": 0.5679196958971691,
+        "logprobs_max": 0.15958656779199465,
+        "logprobs_mean": 0.05466036634733155
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 0.3354525034964377,
+        "key_vectors_mean": 0.2928088504900867,
+        "logprobs_max": 0.21652961272067855,
+        "logprobs_mean": 0.12965560050740665
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0467160694983726,
+        "key_vectors_mean": 0.5679196958971691,
+        "logprobs_max": 0.15958656779199465,
+        "logprobs_mean": 0.05466036634733155
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 0.3354525034964377,
+        "key_vectors_mean": 0.2928088504900867,
+        "logprobs_max": 0.21652961272067855,
+        "logprobs_mean": 0.12965560050740665
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0467160694983726,
+        "key_vectors_mean": 0.5679196958971691,
+        "logprobs_max": 0.15958656779199465,
+        "logprobs_mean": 0.05466036634733155
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 0.3354525034964377,
+        "key_vectors_mean": 0.2928088504900867,
+        "logprobs_max": 0.21652961272067855,
+        "logprobs_mean": 0.12965560050740665
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0467160694983726,
+        "key_vectors_mean": 0.5679196958971691,
+        "logprobs_max": 0.15958656779199465,
+        "logprobs_mean": 0.05466036634733155
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 0.3354525034964377,
+        "key_vectors_mean": 0.2928088504900867,
+        "logprobs_max": 0.21652961272067855,
+        "logprobs_mean": 0.12965560050740665
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0467160694983726,
+        "key_vectors_mean": 0.5679196958971691,
+        "logprobs_max": 0.15958656779199465,
+        "logprobs_mean": 0.05466036634733155
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 0.3354525034964377,
+        "key_vectors_mean": 0.2928088504900867,
+        "logprobs_max": 0.21652961272067855,
+        "logprobs_mean": 0.12965560050740665
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0479271800121792,
+        "key_vectors_mean": 0.5694975909388035,
+        "logprobs_max": 0.16828640022295324,
+        "logprobs_mean": 0.09842112160252008
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 0.3354525034964377,
+        "key_vectors_mean": 0.2928088504900867,
+        "logprobs_max": 0.21652961272067855,
+        "logprobs_mean": 0.12965560050740665
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.047001828443815,
+        "key_vectors_mean": 0.5727149355457363,
+        "logprobs_max": 0.1401903003509872,
+        "logprobs_mean": 0.08840471331186472
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 0.3354525034964377,
+        "key_vectors_mean": 0.2928088504900867,
+        "logprobs_max": 0.21652961272067855,
+        "logprobs_mean": 0.12965560050740665
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0459950570081868,
+        "key_vectors_mean": 0.5622984418177008,
+        "logprobs_max": 0.16632553793784194,
+        "logprobs_mean": 0.15088511876569013
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 1,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 0.3354525034964377,
+        "key_vectors_mean": 0.2928088504900867,
+        "logprobs_max": 0.21652961272067855,
+        "logprobs_mean": 0.12965560050740665
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0443589222606164,
+        "key_vectors_mean": 0.5563814181870642,
+        "logprobs_max": 0.1250343275618646,
+        "logprobs_mean": 0.04200363002062154
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 0.321418536470754,
+        "key_vectors_mean": 0.2993705944545051,
+        "logprobs_max": 0.14320549046737,
+        "logprobs_mean": 0.08849492742613714
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.30730216835417945,
+        "key_vectors_mean": 0.295095297230906,
+        "logprobs_max": 0.2188894644706547,
+        "logprobs_mean": 0.17540093574950943
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 0.321418536470754,
+        "key_vectors_mean": 0.2993705944545051,
+        "logprobs_max": 0.14320549046737,
+        "logprobs_mean": 0.08849492742613714
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.30730216835417945,
+        "key_vectors_mean": 0.295095297230906,
+        "logprobs_max": 0.2188894644706547,
+        "logprobs_mean": 0.17540093574950943
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 0.321418536470754,
+        "key_vectors_mean": 0.2993705944545051,
+        "logprobs_max": 0.14320549046737,
+        "logprobs_mean": 0.08849492742613714
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.30730216835417945,
+        "key_vectors_mean": 0.295095297230906,
+        "logprobs_max": 0.2188894644706547,
+        "logprobs_mean": 0.17540093574950943
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 0.321418536470754,
+        "key_vectors_mean": 0.2993705944545051,
+        "logprobs_max": 0.14320549046737,
+        "logprobs_mean": 0.08849492742613714
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.30730216835417945,
+        "key_vectors_mean": 0.295095297230906,
+        "logprobs_max": 0.2188894644706547,
+        "logprobs_mean": 0.17540093574950943
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 0.321418536470754,
+        "key_vectors_mean": 0.2993705944545051,
+        "logprobs_max": 0.14320549046737,
+        "logprobs_mean": 0.08849492742613714
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.30730216835417945,
+        "key_vectors_mean": 0.295095297230906,
+        "logprobs_max": 0.2188894644706547,
+        "logprobs_mean": 0.17540093574950943
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 0.321418536470754,
+        "key_vectors_mean": 0.2993705944545051,
+        "logprobs_max": 0.14320549046737,
+        "logprobs_mean": 0.08849492742613714
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.2987379174801834,
+        "key_vectors_mean": 0.27441673385231996,
+        "logprobs_max": 0.19989020194715063,
+        "logprobs_mean": 0.14897741981895427
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 0.321418536470754,
+        "key_vectors_mean": 0.2993705944545051,
+        "logprobs_max": 0.14320549046737,
+        "logprobs_mean": 0.08849492742613714
+      },
+      "decode_distances": {
+        "key_vectors_max": 2.014912171744071,
+        "key_vectors_mean": 0.8873344920571636,
+        "logprobs_max": 0.1799659230506505,
+        "logprobs_mean": 0.1553344953882522
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 0.321418536470754,
+        "key_vectors_mean": 0.2993705944545051,
+        "logprobs_max": 0.14320549046737,
+        "logprobs_mean": 0.08849492742613714
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.32792625766253275,
+        "key_vectors_mean": 0.27974775929123,
+        "logprobs_max": 0.14320549046737,
+        "logprobs_mean": 0.08628343104221657
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 2,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 0.321418536470754,
+        "key_vectors_mean": 0.2993705944545051,
+        "logprobs_max": 0.14320549046737,
+        "logprobs_mean": 0.08849492742613714
+      },
+      "decode_distances": {
+        "key_vectors_max": 2.0209021161084544,
+        "key_vectors_mean": 0.8551398563269405,
+        "logprobs_max": 0.1799659230506505,
+        "logprobs_mean": 0.14273428488633855
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 0.321418536470754,
+        "key_vectors_mean": 0.2993705944545051,
+        "logprobs_max": 0.14320549046737,
+        "logprobs_mean": 0.08849492742613714
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.30730216835417945,
+        "key_vectors_mean": 0.295095297230906,
+        "logprobs_max": 0.2188894644706547,
+        "logprobs_mean": 0.17540093574950943
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 0.321418536470754,
+        "key_vectors_mean": 0.2993705944545051,
+        "logprobs_max": 0.14320549046737,
+        "logprobs_mean": 0.08849492742613714
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.30730216835417945,
+        "key_vectors_mean": 0.295095297230906,
+        "logprobs_max": 0.2188894644706547,
+        "logprobs_mean": 0.17540093574950943
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 0.321418536470754,
+        "key_vectors_mean": 0.2993705944545051,
+        "logprobs_max": 0.14320549046737,
+        "logprobs_mean": 0.08849492742613714
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.30730216835417945,
+        "key_vectors_mean": 0.295095297230906,
+        "logprobs_max": 0.2188894644706547,
+        "logprobs_mean": 0.17540093574950943
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 0.321418536470754,
+        "key_vectors_mean": 0.2993705944545051,
+        "logprobs_max": 0.14320549046737,
+        "logprobs_mean": 0.08849492742613714
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.30730216835417945,
+        "key_vectors_mean": 0.295095297230906,
+        "logprobs_max": 0.2188894644706547,
+        "logprobs_mean": 0.17540093574950943
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 0.321418536470754,
+        "key_vectors_mean": 0.2993705944545051,
+        "logprobs_max": 0.14320549046737,
+        "logprobs_mean": 0.08849492742613714
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.30730216835417945,
+        "key_vectors_mean": 0.295095297230906,
+        "logprobs_max": 0.2188894644706547,
+        "logprobs_mean": 0.17540093574950943
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 0.321418536470754,
+        "key_vectors_mean": 0.2993705944545051,
+        "logprobs_max": 0.14320549046737,
+        "logprobs_mean": 0.08849492742613714
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.2987379174801834,
+        "key_vectors_mean": 0.27441673385231996,
+        "logprobs_max": 0.19989020194715063,
+        "logprobs_mean": 0.14897741981895427
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 0.321418536470754,
+        "key_vectors_mean": 0.2993705944545051,
+        "logprobs_max": 0.14320549046737,
+        "logprobs_mean": 0.08849492742613714
+      },
+      "decode_distances": {
+        "key_vectors_max": 2.014912171744071,
+        "key_vectors_mean": 0.8873344920571636,
+        "logprobs_max": 0.1799659230506505,
+        "logprobs_mean": 0.1553344953882522
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 0.321418536470754,
+        "key_vectors_mean": 0.2993705944545051,
+        "logprobs_max": 0.14320549046737,
+        "logprobs_mean": 0.08849492742613714
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.32792625766253275,
+        "key_vectors_mean": 0.27974775929123,
+        "logprobs_max": 0.14320549046737,
+        "logprobs_mean": 0.08628343104221657
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 3,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 0.321418536470754,
+        "key_vectors_mean": 0.2993705944545051,
+        "logprobs_max": 0.14320549046737,
+        "logprobs_mean": 0.08849492742613714
+      },
+      "decode_distances": {
+        "key_vectors_max": 2.0209021161084544,
+        "key_vectors_mean": 0.8551398563269405,
+        "logprobs_max": 0.1799659230506505,
+        "logprobs_mean": 0.14273428488633855
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.32928022747563457,
+        "key_vectors_mean": 0.2811131836708846,
+        "logprobs_max": 0.16639719477269638,
+        "logprobs_mean": 0.10423585173037324
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.32928022747563457,
+        "key_vectors_mean": 0.2811131836708846,
+        "logprobs_max": 0.16639719477269638,
+        "logprobs_mean": 0.10423585173037324
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.32928022747563457,
+        "key_vectors_mean": 0.2811131836708846,
+        "logprobs_max": 0.16639719477269638,
+        "logprobs_mean": 0.10423585173037324
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.32928022747563457,
+        "key_vectors_mean": 0.2811131836708846,
+        "logprobs_max": 0.16639719477269638,
+        "logprobs_mean": 0.10423585173037324
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.32928022747563457,
+        "key_vectors_mean": 0.2811131836708846,
+        "logprobs_max": 0.16639719477269638,
+        "logprobs_mean": 0.10423585173037324
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5990700672807964,
+        "key_vectors_mean": 0.3837932815903889,
+        "logprobs_max": 0.15661882738765845,
+        "logprobs_mean": 0.13953546297443087
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.2946037967718251,
+        "key_vectors_mean": 0.2838018136926058,
+        "logprobs_max": 0.25875773690123743,
+        "logprobs_mean": 0.166082916591938
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.4202642242899584,
+        "key_vectors_mean": 0.32047193674244734,
+        "logprobs_max": 0.15676489868421647,
+        "logprobs_mean": 0.14138966970087993
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 4,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5826838502205973,
+        "key_vectors_mean": 0.38846283984353475,
+        "logprobs_max": 0.16639719477269638,
+        "logprobs_mean": 0.10699774780979447
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.32928022747563457,
+        "key_vectors_mean": 0.2811131836708846,
+        "logprobs_max": 0.16639719477269638,
+        "logprobs_mean": 0.10423585173037324
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.32928022747563457,
+        "key_vectors_mean": 0.2811131836708846,
+        "logprobs_max": 0.16639719477269638,
+        "logprobs_mean": 0.10423585173037324
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.32928022747563457,
+        "key_vectors_mean": 0.2811131836708846,
+        "logprobs_max": 0.16639719477269638,
+        "logprobs_mean": 0.10423585173037324
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.32928022747563457,
+        "key_vectors_mean": 0.2811131836708846,
+        "logprobs_max": 0.16639719477269638,
+        "logprobs_mean": 0.10423585173037324
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.32928022747563457,
+        "key_vectors_mean": 0.2811131836708846,
+        "logprobs_max": 0.16639719477269638,
+        "logprobs_mean": 0.10423585173037324
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5990700672807964,
+        "key_vectors_mean": 0.3837932815903889,
+        "logprobs_max": 0.15661882738765845,
+        "logprobs_mean": 0.13953546297443087
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.2946037967718251,
+        "key_vectors_mean": 0.2838018136926058,
+        "logprobs_max": 0.25875773690123743,
+        "logprobs_mean": 0.166082916591938
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.4202642242899584,
+        "key_vectors_mean": 0.32047193674244734,
+        "logprobs_max": 0.15676489868421647,
+        "logprobs_mean": 0.14138966970087993
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 5,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.5826838502205973,
+        "key_vectors_mean": 0.38846283984353475,
+        "logprobs_max": 0.16639719477269638,
+        "logprobs_mean": 0.10699774780979447
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.049228689841838,
+        "key_vectors_mean": 0.8289709638797204,
+        "logprobs_max": 0.15964332880405815,
+        "logprobs_mean": 0.09514547140433564
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.049228689841838,
+        "key_vectors_mean": 0.8289709638797204,
+        "logprobs_max": 0.15964332880405815,
+        "logprobs_mean": 0.09514547140433564
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.049228689841838,
+        "key_vectors_mean": 0.8289709638797204,
+        "logprobs_max": 0.15964332880405815,
+        "logprobs_mean": 0.09514547140433564
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.049228689841838,
+        "key_vectors_mean": 0.8289709638797204,
+        "logprobs_max": 0.15964332880405815,
+        "logprobs_mean": 0.09514547140433564
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.049228689841838,
+        "key_vectors_mean": 0.8289709638797204,
+        "logprobs_max": 0.15964332880405815,
+        "logprobs_mean": 0.09514547140433564
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.35289695252274583,
+        "key_vectors_mean": 0.3027176473356075,
+        "logprobs_max": 0.261689597256941,
+        "logprobs_mean": 0.129229999780516
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.3897164579406208,
+        "key_vectors_mean": 0.34049125415129655,
+        "logprobs_max": 0.22534695471649932,
+        "logprobs_mean": 0.11711578560036877
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.3723793323457865,
+        "key_vectors_mean": 0.3241652880236512,
+        "logprobs_max": 0.2600811640893329,
+        "logprobs_mean": 0.18216162430501057
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 8,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0442256043816158,
+        "key_vectors_mean": 0.8419101282635765,
+        "logprobs_max": 0.1254873312828829,
+        "logprobs_mean": 0.08350721961491585
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.049228689841838,
+        "key_vectors_mean": 0.8289709638797204,
+        "logprobs_max": 0.15964332880405815,
+        "logprobs_mean": 0.09514547140433564
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.049228689841838,
+        "key_vectors_mean": 0.8289709638797204,
+        "logprobs_max": 0.15964332880405815,
+        "logprobs_mean": 0.09514547140433564
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.049228689841838,
+        "key_vectors_mean": 0.8289709638797204,
+        "logprobs_max": 0.15964332880405815,
+        "logprobs_mean": 0.09514547140433564
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.049228689841838,
+        "key_vectors_mean": 0.8289709638797204,
+        "logprobs_max": 0.15964332880405815,
+        "logprobs_mean": 0.09514547140433564
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.049228689841838,
+        "key_vectors_mean": 0.8289709638797204,
+        "logprobs_max": 0.15964332880405815,
+        "logprobs_mean": 0.09514547140433564
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.35289695252274583,
+        "key_vectors_mean": 0.3027176473356075,
+        "logprobs_max": 0.261689597256941,
+        "logprobs_mean": 0.129229999780516
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.3897164579406208,
+        "key_vectors_mean": 0.34049125415129655,
+        "logprobs_max": 0.22534695471649932,
+        "logprobs_mean": 0.11711578560036877
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.3723793323457865,
+        "key_vectors_mean": 0.3241652880236512,
+        "logprobs_max": 0.2600811640893329,
+        "logprobs_mean": 0.18216162430501057
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 9,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 1.0442256043816158,
+        "key_vectors_mean": 0.8419101282635765,
+        "logprobs_max": 0.1254873312828829,
+        "logprobs_mean": 0.08350721961491585
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.30772476131881804,
+        "key_vectors_mean": 0.2965480238969292,
+        "logprobs_max": 0.1401903003509872,
+        "logprobs_mean": 0.08970994598548282
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.30772476131881804,
+        "key_vectors_mean": 0.2965480238969292,
+        "logprobs_max": 0.1401903003509872,
+        "logprobs_mean": 0.08970994598548282
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.30772476131881804,
+        "key_vectors_mean": 0.2965480238969292,
+        "logprobs_max": 0.1401903003509872,
+        "logprobs_mean": 0.08970994598548282
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.30772476131881804,
+        "key_vectors_mean": 0.2965480238969292,
+        "logprobs_max": 0.1401903003509872,
+        "logprobs_mean": 0.08970994598548282
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.30772476131881804,
+        "key_vectors_mean": 0.2965480238969292,
+        "logprobs_max": 0.1401903003509872,
+        "logprobs_mean": 0.08970994598548282
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.28897883518969925,
+        "key_vectors_mean": 0.2757637685809403,
+        "logprobs_max": 0.20009763241977652,
+        "logprobs_mean": 0.17685933671668583
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 2.021448643225769,
+        "key_vectors_mean": 0.8939891274799946,
+        "logprobs_max": 0.1797830079057546,
+        "logprobs_mean": 0.1470449970413461
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.2884054448840574,
+        "key_vectors_mean": 0.26702617049648286,
+        "logprobs_max": 0.12203515118604147,
+        "logprobs_mean": 0.0877324240269889
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 16,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 2.0151884386266894,
+        "key_vectors_mean": 0.870651789891169,
+        "logprobs_max": 0.1797830079057546,
+        "logprobs_mean": 0.09907687862059765
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 1,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 2.0194617659870255,
+        "key_vectors_mean": 0.8786648332524116,
+        "logprobs_max": 0.2763861659782208,
+        "logprobs_mean": 0.13313917966988512
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 2,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 2.0194617659870255,
+        "key_vectors_mean": 0.8786648332524116,
+        "logprobs_max": 0.2763861659782208,
+        "logprobs_mean": 0.13313917966988512
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 3,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 2.0194617659870255,
+        "key_vectors_mean": 0.8786648332524116,
+        "logprobs_max": 0.2763861659782208,
+        "logprobs_mean": 0.13313917966988512
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 4,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 2.0194617659870255,
+        "key_vectors_mean": 0.8786648332524116,
+        "logprobs_max": 0.2763861659782208,
+        "logprobs_mean": 0.13313917966988512
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 5,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 2.0194617659870255,
+        "key_vectors_mean": 0.8786648332524116,
+        "logprobs_max": 0.2763861659782208,
+        "logprobs_mean": 0.13313917966988512
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 8,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 2.022846369450312,
+        "key_vectors_mean": 0.8747592694861656,
+        "logprobs_max": 0.15896085897949846,
+        "logprobs_mean": 0.08863710915527694
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 9,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.2935298378706455,
+        "key_vectors_mean": 0.28164961933506943,
+        "logprobs_max": 0.297223338504331,
+        "logprobs_mean": 0.18140935047075937
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 16,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 2.0210360885173264,
+        "key_vectors_mean": 0.880470827042415,
+        "logprobs_max": 0.1769492445766582,
+        "logprobs_mean": 0.10462294126217815
+      }
+    },
+    {
+      "ref_name": "ref_2",
+      "claimed_batch_size": 17,
+      "verify_batch_size": 17,
+      "prefill_distances": {
+        "key_vectors_max": 0.32977846223274526,
+        "key_vectors_mean": 0.2875880048476615,
+        "logprobs_max": 0.3307419821992099,
+        "logprobs_mean": 0.20878503876238852
+      },
+      "decode_distances": {
+        "key_vectors_max": 0.30796617663143955,
+        "key_vectors_mean": 0.3014509357606472,
+        "logprobs_max": 0.297223338504331,
+        "logprobs_mean": 0.13515883799246195
+      }
+    }
+  ],
+  "prefill_analysis": {
+    "per_reference_key_matrices": [
+      [
+        [
+          1.9197817758582847,
+          1.9197817758582847,
+          1.9197817758582847,
+          1.9197817758582847,
+          1.9197817758582847,
+          1.9197817758582847,
+          1.9197817758582847,
+          1.9197817758582847,
+          1.9197817758582847
+        ],
+        [
+          1.4180853918993608,
+          1.4180853918993608,
+          1.4180853918993608,
+          1.4180853918993608,
+          1.4180853918993608,
+          1.4180853918993608,
+          1.4180853918993608,
+          1.4180853918993608,
+          1.4180853918993608
+        ],
+        [
+          1.4180853918993608,
+          1.4180853918993608,
+          1.4180853918993608,
+          1.4180853918993608,
+          1.4180853918993608,
+          1.4180853918993608,
+          1.4180853918993608,
+          1.4180853918993608,
+          1.4180853918993608
+        ],
+        [
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551
+        ],
+        [
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551
+        ],
+        [
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551
+        ],
+        [
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551
+        ],
+        [
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551
+        ],
+        [
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551,
+          1.157859467174551
+        ]
+      ],
+      [
+        [
+          0.9662546259899671,
+          0.9662546259899671,
+          0.9662546259899671,
+          0.9662546259899671,
+          0.9662546259899671,
+          0.9662546259899671,
+          0.9662546259899671,
+          0.9662546259899671,
+          0.9662546259899671
+        ],
+        [
+          1.005088779541261,
+          1.005088779541261,
+          1.005088779541261,
+          1.005088779541261,
+          1.005088779541261,
+          1.005088779541261,
+          1.005088779541261,
+          1.005088779541261,
+          1.005088779541261
+        ],
+        [
+          1.005088779541261,
+          1.005088779541261,
+          1.005088779541261,
+          1.005088779541261,
+          1.005088779541261,
+          1.005088779541261,
+          1.005088779541261,
+          1.005088779541261,
+          1.005088779541261
+        ],
+        [
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469
+        ],
+        [
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469
+        ],
+        [
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469
+        ],
+        [
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469
+        ],
+        [
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469
+        ],
+        [
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469,
+          0.9073297844645469
+        ]
+      ],
+      [
+        [
+          0.2928088504900867,
+          0.2928088504900867,
+          0.2928088504900867,
+          0.2928088504900867,
+          0.2928088504900867,
+          0.2928088504900867,
+          0.2928088504900867,
+          0.2928088504900867,
+          0.2928088504900867
+        ],
+        [
+          0.2993705944545051,
+          0.2993705944545051,
+          0.2993705944545051,
+          0.2993705944545051,
+          0.2993705944545051,
+          0.2993705944545051,
+          0.2993705944545051,
+          0.2993705944545051,
+          0.2993705944545051
+        ],
+        [
+          0.2993705944545051,
+          0.2993705944545051,
+          0.2993705944545051,
+          0.2993705944545051,
+          0.2993705944545051,
+          0.2993705944545051,
+          0.2993705944545051,
+          0.2993705944545051,
+          0.2993705944545051
+        ],
+        [
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615
+        ],
+        [
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615
+        ],
+        [
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615
+        ],
+        [
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615
+        ],
+        [
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615
+        ],
+        [
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615,
+          0.2875880048476615
+        ]
+      ]
+    ],
+    "per_reference_logprob_matrices": [
+      [
+        [
+          0.5337640925150612,
+          0.5337640925150612,
+          0.5337640925150612,
+          0.5337640925150612,
+          0.5337640925150612,
+          0.5337640925150612,
+          0.5337640925150612,
+          0.5337640925150612,
+          0.5337640925150612
+        ],
+        [
+          0.3768265031451201,
+          0.3768265031451201,
+          0.3768265031451201,
+          0.3768265031451201,
+          0.3768265031451201,
+          0.3768265031451201,
+          0.3768265031451201,
+          0.3768265031451201,
+          0.3768265031451201
+        ],
+        [
+          0.3768265031451201,
+          0.3768265031451201,
+          0.3768265031451201,
+          0.3768265031451201,
+          0.3768265031451201,
+          0.3768265031451201,
+          0.3768265031451201,
+          0.3768265031451201,
+          0.3768265031451201
+        ],
+        [
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612
+        ],
+        [
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612
+        ],
+        [
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612
+        ],
+        [
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612
+        ],
+        [
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612
+        ],
+        [
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612,
+          0.15951811779196612
+        ]
+      ],
+      [
+        [
+          0.15252535290483313,
+          0.15252535290483313,
+          0.15252535290483313,
+          0.15252535290483313,
+          0.15252535290483313,
+          0.15252535290483313,
+          0.15252535290483313,
+          0.15252535290483313,
+          0.15252535290483313
+        ],
+        [
+          0.10946577941509629,
+          0.10946577941509629,
+          0.10946577941509629,
+          0.10946577941509629,
+          0.10946577941509629,
+          0.10946577941509629,
+          0.10946577941509629,
+          0.10946577941509629,
+          0.10946577941509629
+        ],
+        [
+          0.10946577941509629,
+          0.10946577941509629,
+          0.10946577941509629,
+          0.10946577941509629,
+          0.10946577941509629,
+          0.10946577941509629,
+          0.10946577941509629,
+          0.10946577941509629,
+          0.10946577941509629
+        ],
+        [
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605
+        ],
+        [
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605
+        ],
+        [
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605
+        ],
+        [
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605
+        ],
+        [
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605
+        ],
+        [
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605,
+          0.11120749317973605
+        ]
+      ],
+      [
+        [
+          0.12965560050740665,
+          0.12965560050740665,
+          0.12965560050740665,
+          0.12965560050740665,
+          0.12965560050740665,
+          0.12965560050740665,
+          0.12965560050740665,
+          0.12965560050740665,
+          0.12965560050740665
+        ],
+        [
+          0.08849492742613714,
+          0.08849492742613714,
+          0.08849492742613714,
+          0.08849492742613714,
+          0.08849492742613714,
+          0.08849492742613714,
+          0.08849492742613714,
+          0.08849492742613714,
+          0.08849492742613714
+        ],
+        [
+          0.08849492742613714,
+          0.08849492742613714,
+          0.08849492742613714,
+          0.08849492742613714,
+          0.08849492742613714,
+          0.08849492742613714,
+          0.08849492742613714,
+          0.08849492742613714,
+          0.08849492742613714
+        ],
+        [
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852
+        ],
+        [
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852
+        ],
+        [
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852
+        ],
+        [
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852
+        ],
+        [
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852
+        ],
+        [
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852,
+          0.20878503876238852
+        ]
+      ]
+    ],
+    "key_vectors": {
+      "matrix": [
+        [
+          1.0596150841127796,
+          1.0596150841127796,
+          1.0596150841127796,
+          1.0596150841127796,
+          1.0596150841127796,
+          1.0596150841127796,
+          1.0596150841127796,
+          1.0596150841127796,
+          1.0596150841127796
+        ],
+        [
+          0.9075149219650424,
+          0.9075149219650424,
+          0.9075149219650424,
+          0.9075149219650424,
+          0.9075149219650424,
+          0.9075149219650424,
+          0.9075149219650424,
+          0.9075149219650424,
+          0.9075149219650424
+        ],
+        [
+          0.9075149219650424,
+          0.9075149219650424,
+          0.9075149219650424,
+          0.9075149219650424,
+          0.9075149219650424,
+          0.9075149219650424,
+          0.9075149219650424,
+          0.9075149219650424,
+          0.9075149219650424
+        ],
+        [
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865
+        ],
+        [
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865
+        ],
+        [
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865
+        ],
+        [
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865
+        ],
+        [
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865
+        ],
+        [
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865,
+          0.7842590854955865
+        ]
+      ],
+      "baseline_mean": 0.8422443823351536,
+      "signal_all_mean": 0.8422443823351535,
+      "signal_meaningful_mean": 0.8824698279833345,
+      "snr_all": 0.9999999999999999,
+      "snr_meaningful": 1.0477598265917243,
+      "n_meaningful_pairs": 40
+    },
+    "logprobs": {
+      "matrix": [
+        [
+          0.271981681975767,
+          0.271981681975767,
+          0.271981681975767,
+          0.271981681975767,
+          0.271981681975767,
+          0.271981681975767,
+          0.271981681975767,
+          0.271981681975767,
+          0.271981681975767
+        ],
+        [
+          0.19159573666211785,
+          0.19159573666211785,
+          0.19159573666211785,
+          0.19159573666211785,
+          0.19159573666211785,
+          0.19159573666211785,
+          0.19159573666211785,
+          0.19159573666211785,
+          0.19159573666211785
+        ],
+        [
+          0.19159573666211785,
+          0.19159573666211785,
+          0.19159573666211785,
+          0.19159573666211785,
+          0.19159573666211785,
+          0.19159573666211785,
+          0.19159573666211785,
+          0.19159573666211785,
+          0.19159573666211785
+        ],
+        [
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969
+        ],
+        [
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969
+        ],
+        [
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969
+        ],
+        [
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969
+        ],
+        [
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969
+        ],
+        [
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969,
+          0.1598368832446969
+        ]
+      ],
+      "baseline_mean": 0.1793549394186871,
+      "signal_all_mean": 0.17935493941868708,
+      "signal_meaningful_mean": 0.19338144168700824,
+      "snr_all": 0.9999999999999999,
+      "snr_meaningful": 1.0782052744896955,
+      "n_meaningful_pairs": 40
+    },
+    "excluded_pairs": [
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        16
+      ],
+      [
+        4,
+        17
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        5,
+        16
+      ],
+      [
+        5,
+        17
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        8,
+        16
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        9,
+        16
+      ],
+      [
+        9,
+        17
+      ],
+      [
+        16,
+        17
+      ]
+    ]
+  },
+  "decode_analysis": {
+    "per_reference_key_matrices": [
+      [
+        [
+          0.45039993942110296,
+          0.45039993942110296,
+          0.45039993942110296,
+          0.45039993942110296,
+          0.45039993942110296,
+          0.692815004063703,
+          0.4859195980290481,
+          0.440767502288284,
+          0.4508600305237951
+        ],
+        [
+          0.42753995115663374,
+          0.42753995115663374,
+          0.42753995115663374,
+          0.42753995115663374,
+          0.42753995115663374,
+          0.6517207550814038,
+          0.44561232998623906,
+          0.4170853140079851,
+          0.432021436854853
+        ],
+        [
+          0.42753995115663374,
+          0.42753995115663374,
+          0.42753995115663374,
+          0.42753995115663374,
+          0.42753995115663374,
+          0.6517207550814038,
+          0.44561232998623906,
+          0.4170853140079851,
+          0.432021436854853
+        ],
+        [
+          0.4147336430948918,
+          0.4147336430948918,
+          0.4147336430948918,
+          0.4147336430948918,
+          0.4147336430948918,
+          0.6405492693797997,
+          0.3799462689641337,
+          0.40951050404933115,
+          0.42565773794348677
+        ],
+        [
+          0.4147336430948918,
+          0.4147336430948918,
+          0.4147336430948918,
+          0.4147336430948918,
+          0.4147336430948918,
+          0.6405492693797997,
+          0.3799462689641337,
+          0.40951050404933115,
+          0.42565773794348677
+        ],
+        [
+          0.4042791520302675,
+          0.4042791520302675,
+          0.4042791520302675,
+          0.4042791520302675,
+          0.4042791520302675,
+          0.6106806559268324,
+          0.4258333601783479,
+          0.39617208701886913,
+          0.4083351498465351
+        ],
+        [
+          0.4042791520302675,
+          0.4042791520302675,
+          0.4042791520302675,
+          0.4042791520302675,
+          0.4042791520302675,
+          0.6106806559268324,
+          0.4258333601783479,
+          0.39617208701886913,
+          0.4083351498465351
+        ],
+        [
+          0.3908410280519299,
+          0.3908410280519299,
+          0.3908410280519299,
+          0.3908410280519299,
+          0.3908410280519299,
+          0.6027499165850992,
+          0.3799039695825491,
+          0.38540398017214866,
+          0.39882835073625716
+        ],
+        [
+          0.3647061059916979,
+          0.3647061059916979,
+          0.3647061059916979,
+          0.3647061059916979,
+          0.3647061059916979,
+          0.639064630490712,
+          0.43225795639668285,
+          0.38837221161590213,
+          0.41385958036889764
+        ]
+      ],
+      [
+        [
+          0.8207501956194099,
+          0.8207501956194099,
+          0.8207501956194099,
+          0.6334555111193936,
+          0.6334555111193936,
+          0.8486447209403734,
+          0.8566472640176007,
+          0.8139786655471438,
+          0.8460845509309568
+        ],
+        [
+          0.6072278696000434,
+          0.6072278696000434,
+          0.6072278696000434,
+          0.8665738498584422,
+          0.8665738498584422,
+          0.6326324764203419,
+          0.6382155584642663,
+          0.5884744277151212,
+          0.6308758115422357
+        ],
+        [
+          0.6072278696000434,
+          0.6072278696000434,
+          0.6072278696000434,
+          0.8665738498584422,
+          0.8665738498584422,
+          0.6326324764203419,
+          0.6382155584642663,
+          0.5884744277151212,
+          0.6308758115422357
+        ],
+        [
+          0.8451203025224093,
+          0.8451203025224093,
+          0.8451203025224093,
+          0.6540219309474731,
+          0.6540219309474731,
+          0.8451664504682913,
+          0.8484055130459387,
+          0.8350929119292511,
+          0.8334620103021906
+        ],
+        [
+          0.8451203025224093,
+          0.8451203025224093,
+          0.8451203025224093,
+          0.6540219309474731,
+          0.6540219309474731,
+          0.8451664504682913,
+          0.8484055130459387,
+          0.8350929119292511,
+          0.8334620103021906
+        ],
+        [
+          0.6857221332662974,
+          0.6857221332662974,
+          0.6857221332662974,
+          0.9028125085843627,
+          0.9028125085843627,
+          0.7122009778719822,
+          0.6972786676663283,
+          0.6666273381695983,
+          0.693059929282969
+        ],
+        [
+          0.6857221332662974,
+          0.6857221332662974,
+          0.6857221332662974,
+          0.9028125085843627,
+          0.9028125085843627,
+          0.7122009778719822,
+          0.6972786676663283,
+          0.6666273381695983,
+          0.693059929282969
+        ],
+        [
+          0.8358927650804479,
+          0.8358927650804479,
+          0.8358927650804479,
+          0.6503726565261297,
+          0.6503726565261297,
+          0.8662414794917499,
+          0.8615689486553549,
+          0.8201963997528962,
+          0.8573362392355799
+        ],
+        [
+          0.7851474052781522,
+          0.7851474052781522,
+          0.7851474052781522,
+          0.6881687065903606,
+          0.6881687065903606,
+          0.7771031063597587,
+          0.810700141326802,
+          0.7541793109036119,
+          0.7783110019566829
+        ]
+      ],
+      [
+        [
+          0.5679196958971691,
+          0.5679196958971691,
+          0.5679196958971691,
+          0.5679196958971691,
+          0.5679196958971691,
+          0.5694975909388035,
+          0.5727149355457363,
+          0.5622984418177008,
+          0.5563814181870642
+        ],
+        [
+          0.295095297230906,
+          0.295095297230906,
+          0.295095297230906,
+          0.295095297230906,
+          0.295095297230906,
+          0.27441673385231996,
+          0.8873344920571636,
+          0.27974775929123,
+          0.8551398563269405
+        ],
+        [
+          0.295095297230906,
+          0.295095297230906,
+          0.295095297230906,
+          0.295095297230906,
+          0.295095297230906,
+          0.27441673385231996,
+          0.8873344920571636,
+          0.27974775929123,
+          0.8551398563269405
+        ],
+        [
+          0.2811131836708846,
+          0.2811131836708846,
+          0.2811131836708846,
+          0.2811131836708846,
+          0.2811131836708846,
+          0.3837932815903889,
+          0.2838018136926058,
+          0.32047193674244734,
+          0.38846283984353475
+        ],
+        [
+          0.2811131836708846,
+          0.2811131836708846,
+          0.2811131836708846,
+          0.2811131836708846,
+          0.2811131836708846,
+          0.3837932815903889,
+          0.2838018136926058,
+          0.32047193674244734,
+          0.38846283984353475
+        ],
+        [
+          0.8289709638797204,
+          0.8289709638797204,
+          0.8289709638797204,
+          0.8289709638797204,
+          0.8289709638797204,
+          0.3027176473356075,
+          0.34049125415129655,
+          0.3241652880236512,
+          0.8419101282635765
+        ],
+        [
+          0.8289709638797204,
+          0.8289709638797204,
+          0.8289709638797204,
+          0.8289709638797204,
+          0.8289709638797204,
+          0.3027176473356075,
+          0.34049125415129655,
+          0.3241652880236512,
+          0.8419101282635765
+        ],
+        [
+          0.2965480238969292,
+          0.2965480238969292,
+          0.2965480238969292,
+          0.2965480238969292,
+          0.2965480238969292,
+          0.2757637685809403,
+          0.8939891274799946,
+          0.26702617049648286,
+          0.870651789891169
+        ],
+        [
+          0.8786648332524116,
+          0.8786648332524116,
+          0.8786648332524116,
+          0.8786648332524116,
+          0.8786648332524116,
+          0.8747592694861656,
+          0.28164961933506943,
+          0.880470827042415,
+          0.3014509357606472
+        ]
+      ]
+    ],
+    "per_reference_logprob_matrices": [
+      [
+        [
+          0.11383545251582612,
+          0.11383545251582612,
+          0.11383545251582612,
+          0.11383545251582612,
+          0.11383545251582612,
+          0.17276101604436525,
+          0.12500000000970127,
+          0.08333333333818398,
+          0.2144276889753689
+        ],
+        [
+          0.18600423663296617,
+          0.18600423663296617,
+          0.18600423663296617,
+          0.18600423663296617,
+          0.18600423663296617,
+          0.15550211698688718,
+          0.17276101589238693,
+          0.1595177975415394,
+          0.20326314059334882
+        ],
+        [
+          0.18600423663296617,
+          0.18600423663296617,
+          0.18600423663296617,
+          0.18600423663296617,
+          0.18600423663296617,
+          0.15550211698688718,
+          0.17276101589238693,
+          0.1595177975415394,
+          0.20326314059334882
+        ],
+        [
+          0.041666666666666664,
+          0.041666666666666664,
+          0.041666666666666664,
+          0.041666666666666664,
+          0.041666666666666664,
+          0.15951780022574544,
+          0.08333333537302677,
+          0.12500000204454406,
+          0.11383545573717135
+        ],
+        [
+          0.041666666666666664,
+          0.041666666666666664,
+          0.041666666666666664,
+          0.041666666666666664,
+          0.041666666666666664,
+          0.15951780022574544,
+          0.08333333537302677,
+          0.12500000204454406,
+          0.11383545573717135
+        ],
+        [
+          0.1935729728556238,
+          0.1935729728556238,
+          0.1935729728556238,
+          0.1935729728556238,
+          0.1935729728556238,
+          0.20700495034006386,
+          0.14225889844593198,
+          0.1595177968815742,
+          0.22047928134332126
+        ],
+        [
+          0.1935729728556238,
+          0.1935729728556238,
+          0.1935729728556238,
+          0.1935729728556238,
+          0.1935729728556238,
+          0.20700495034006386,
+          0.14225889844593198,
+          0.1595177968815742,
+          0.22047928134332126
+        ],
+        [
+          0.1005922344546023,
+          0.1005922344546023,
+          0.1005922344546023,
+          0.1005922344546023,
+          0.1005922344546023,
+          0.1595177975366888,
+          0.058925565102308876,
+          0.10059223177382619,
+          0.172761023525107
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.17677669865795775,
+          0.12500000203969344,
+          0.16666666871121075,
+          0.12500000469541786
+        ]
+      ],
+      [
+        [
+          0.23380754756024333,
+          0.23380754756024333,
+          0.23380754756024333,
+          0.1860075318093585,
+          0.1860075318093585,
+          0.13928273689914258,
+          0.22390727158949728,
+          0.1647645910429119,
+          0.21214012132895754
+        ],
+        [
+          0.20115120374789872,
+          0.20115120374789872,
+          0.20115120374789872,
+          0.143508630286724,
+          0.143508630286724,
+          0.13713280596500144,
+          0.17090916170865292,
+          0.10416730243984329,
+          0.07604753219044252
+        ],
+        [
+          0.20115120374789872,
+          0.20115120374789872,
+          0.20115120374789872,
+          0.143508630286724,
+          0.143508630286724,
+          0.13713280596500144,
+          0.17090916170865292,
+          0.10416730243984329,
+          0.07604753219044252
+        ],
+        [
+          0.2274129537102546,
+          0.2274129537102546,
+          0.2274129537102546,
+          0.1557491154639388,
+          0.1557491154639388,
+          0.1969899981697636,
+          0.1979436384178981,
+          0.18346471654606944,
+          0.17352800715612152
+        ],
+        [
+          0.2274129537102546,
+          0.2274129537102546,
+          0.2274129537102546,
+          0.1557491154639388,
+          0.1557491154639388,
+          0.1969899981697636,
+          0.1979436384178981,
+          0.18346471654606944,
+          0.17352800715612152
+        ],
+        [
+          0.28580520809116267,
+          0.28580520809116267,
+          0.28580520809116267,
+          0.3160451233319715,
+          0.3160451233319715,
+          0.2331830998340089,
+          0.3330287279305331,
+          0.2068069293250531,
+          0.2714269723358001
+        ],
+        [
+          0.28580520809116267,
+          0.28580520809116267,
+          0.28580520809116267,
+          0.3160451233319715,
+          0.3160451233319715,
+          0.2331830998340089,
+          0.3330287279305331,
+          0.2068069293250531,
+          0.2714269723358001
+        ],
+        [
+          0.24924053234777357,
+          0.24924053234777357,
+          0.24924053234777357,
+          0.20862617553407622,
+          0.20862617553407622,
+          0.17417547568766867,
+          0.2228988402833648,
+          0.08869885437610457,
+          0.2009191743443884
+        ],
+        [
+          0.28597387966137594,
+          0.28597387966137594,
+          0.28597387966137594,
+          0.21824302480206184,
+          0.21824302480206184,
+          0.18211854195371993,
+          0.2547700577088447,
+          0.15777533983941705,
+          0.2233218682262713
+        ]
+      ],
+      [
+        [
+          0.05466036634733155,
+          0.05466036634733155,
+          0.05466036634733155,
+          0.05466036634733155,
+          0.05466036634733155,
+          0.09842112160252008,
+          0.08840471331186472,
+          0.15088511876569013,
+          0.04200363002062154
+        ],
+        [
+          0.17540093574950943,
+          0.17540093574950943,
+          0.17540093574950943,
+          0.17540093574950943,
+          0.17540093574950943,
+          0.14897741981895427,
+          0.1553344953882522,
+          0.08628343104221657,
+          0.14273428488633855
+        ],
+        [
+          0.17540093574950943,
+          0.17540093574950943,
+          0.17540093574950943,
+          0.17540093574950943,
+          0.17540093574950943,
+          0.14897741981895427,
+          0.1553344953882522,
+          0.08628343104221657,
+          0.14273428488633855
+        ],
+        [
+          0.10423585173037324,
+          0.10423585173037324,
+          0.10423585173037324,
+          0.10423585173037324,
+          0.10423585173037324,
+          0.13953546297443087,
+          0.166082916591938,
+          0.14138966970087993,
+          0.10699774780979447
+        ],
+        [
+          0.10423585173037324,
+          0.10423585173037324,
+          0.10423585173037324,
+          0.10423585173037324,
+          0.10423585173037324,
+          0.13953546297443087,
+          0.166082916591938,
+          0.14138966970087993,
+          0.10699774780979447
+        ],
+        [
+          0.09514547140433564,
+          0.09514547140433564,
+          0.09514547140433564,
+          0.09514547140433564,
+          0.09514547140433564,
+          0.129229999780516,
+          0.11711578560036877,
+          0.18216162430501057,
+          0.08350721961491585
+        ],
+        [
+          0.09514547140433564,
+          0.09514547140433564,
+          0.09514547140433564,
+          0.09514547140433564,
+          0.09514547140433564,
+          0.129229999780516,
+          0.11711578560036877,
+          0.18216162430501057,
+          0.08350721961491585
+        ],
+        [
+          0.08970994598548282,
+          0.08970994598548282,
+          0.08970994598548282,
+          0.08970994598548282,
+          0.08970994598548282,
+          0.17685933671668583,
+          0.1470449970413461,
+          0.0877324240269889,
+          0.09907687862059765
+        ],
+        [
+          0.13313917966988512,
+          0.13313917966988512,
+          0.13313917966988512,
+          0.13313917966988512,
+          0.13313917966988512,
+          0.08863710915527694,
+          0.18140935047075937,
+          0.10462294126217815,
+          0.13515883799246195
+        ]
+      ]
+    ],
+    "key_vectors": {
+      "matrix": [
+        [
+          0.6130232769792273,
+          0.6130232769792273,
+          0.6130232769792273,
+          0.5505917154792218,
+          0.5505917154792218,
+          0.7036524386476266,
+          0.6384272658641285,
+          0.6056815365510428,
+          0.6177753332139386
+        ],
+        [
+          0.44328770599586104,
+          0.44328770599586104,
+          0.44328770599586104,
+          0.5297363660819939,
+          0.5297363660819939,
+          0.5195899884513552,
+          0.6570541268358897,
+          0.4284358336714455,
+          0.6393457015746763
+        ],
+        [
+          0.44328770599586104,
+          0.44328770599586104,
+          0.44328770599586104,
+          0.5297363660819939,
+          0.5297363660819939,
+          0.5195899884513552,
+          0.6570541268358897,
+          0.4284358336714455,
+          0.6393457015746763
+        ],
+        [
+          0.5136557097627286,
+          0.5136557097627286,
+          0.5136557097627286,
+          0.4499562525710832,
+          0.4499562525710832,
+          0.62316966714616,
+          0.5040511985675594,
+          0.5216917842403431,
+          0.5491941960297374
+        ],
+        [
+          0.5136557097627286,
+          0.5136557097627286,
+          0.5136557097627286,
+          0.4499562525710832,
+          0.4499562525710832,
+          0.62316966714616,
+          0.5040511985675594,
+          0.5216917842403431,
+          0.5491941960297374
+        ],
+        [
+          0.6396574163920951,
+          0.6396574163920951,
+          0.6396574163920951,
+          0.7120208748314502,
+          0.7120208748314502,
+          0.5418664270448074,
+          0.4878677606653243,
+          0.4623215710707062,
+          0.6477684024643602
+        ],
+        [
+          0.6396574163920951,
+          0.6396574163920951,
+          0.6396574163920951,
+          0.7120208748314502,
+          0.7120208748314502,
+          0.5418664270448074,
+          0.4878677606653243,
+          0.4623215710707062,
+          0.6477684024643602
+        ],
+        [
+          0.5077606056764357,
+          0.5077606056764357,
+          0.5077606056764357,
+          0.44592056949166287,
+          0.44592056949166287,
+          0.5815850548859297,
+          0.7118206819059663,
+          0.4908755168071759,
+          0.7089387932876686
+        ],
+        [
+          0.6761727815074204,
+          0.6761727815074204,
+          0.6761727815074204,
+          0.64384654861149,
+          0.64384654861149,
+          0.7636423354455454,
+          0.5082025723528515,
+          0.6743407831873096,
+          0.4978738393620759
+        ]
+      ],
+      "baseline_mean": 0.4908883042213888,
+      "signal_all_mean": 0.5731608521602737,
+      "signal_meaningful_mean": 0.582596352283268,
+      "snr_all": 1.167599323983446,
+      "snr_meaningful": 1.186820601088347,
+      "n_meaningful_pairs": 66
+    },
+    "logprobs": {
+      "matrix": [
+        [
+          0.13410112214113368,
+          0.13410112214113368,
+          0.13410112214113368,
+          0.1181677835575054,
+          0.1181677835575054,
+          0.13682162484867597,
+          0.1457706616370211,
+          0.13299434771559535,
+          0.156190480108316
+        ],
+        [
+          0.18751879204345812,
+          0.18751879204345812,
+          0.18751879204345812,
+          0.1683046008897332,
+          0.1683046008897332,
+          0.14720411425694765,
+          0.1663348909964307,
+          0.11665617700786642,
+          0.14068165255670997
+        ],
+        [
+          0.18751879204345812,
+          0.18751879204345812,
+          0.18751879204345812,
+          0.1683046008897332,
+          0.1683046008897332,
+          0.14720411425694765,
+          0.1663348909964307,
+          0.11665617700786642,
+          0.14068165255670997
+        ],
+        [
+          0.12443849070243151,
+          0.12443849070243151,
+          0.12443849070243151,
+          0.10055054462032624,
+          0.10055054462032624,
+          0.16534775378997998,
+          0.14911996346095427,
+          0.14995146276383117,
+          0.1314537369010291
+        ],
+        [
+          0.12443849070243151,
+          0.12443849070243151,
+          0.12443849070243151,
+          0.10055054462032624,
+          0.10055054462032624,
+          0.16534775378997998,
+          0.14911996346095427,
+          0.14995146276383117,
+          0.1314537369010291
+        ],
+        [
+          0.1915078841170407,
+          0.1915078841170407,
+          0.1915078841170407,
+          0.20158785586397698,
+          0.20158785586397698,
+          0.1898060166515296,
+          0.19746780399227795,
+          0.1828287835038793,
+          0.19180449109801237
+        ],
+        [
+          0.1915078841170407,
+          0.1915078841170407,
+          0.1915078841170407,
+          0.20158785586397698,
+          0.20158785586397698,
+          0.1898060166515296,
+          0.19746780399227795,
+          0.1828287835038793,
+          0.19180449109801237
+        ],
+        [
+          0.1465142375959529,
+          0.1465142375959529,
+          0.1465142375959529,
+          0.13297611865805378,
+          0.13297611865805378,
+          0.17018420331368111,
+          0.14295646747567325,
+          0.09234117005897323,
+          0.15758569216336435
+        ],
+        [
+          0.13970435311042037,
+          0.13970435311042037,
+          0.13970435311042037,
+          0.11712740149064899,
+          0.11712740149064899,
+          0.1491774499223182,
+          0.1870598034064325,
+          0.14302164993760197,
+          0.1611602369713837
+        ]
+      ],
+      "baseline_mean": 0.15011278034920744,
+      "signal_all_mean": 0.1553003779306074,
+      "signal_meaningful_mean": 0.15482143510655083,
+      "snr_all": 1.0345580007866888,
+      "snr_meaningful": 1.0313674475044006,
+      "n_meaningful_pairs": 66
+    },
+    "excluded_pairs": [
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        8,
+        9
+      ]
+    ]
+  }
+}

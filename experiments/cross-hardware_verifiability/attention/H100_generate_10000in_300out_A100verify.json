@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "reference_file": "H100_generate_10000in_300out.json",
+    "reference_environments": {
+      "eager": {
+        "hostname": "d013d4f0b0a1",
+        "platform": "Linux-6.8.0-84-generic-x86_64-with-glibc2.39",
+        "python_version": "3.12.11",
+        "torch_version": "2.8.0+cu128",
+        "cuda_version": "12.8",
+        "cudnn_version": "91002",
+        "transformers_version": "4.57.3",
+        "numpy_version": "2.1.2",
+        "attn_implementation": "eager",
+        "gpu_name": "NVIDIA H100 NVL",
+        "gpu_count": 1,
+        "flash_attn_version": "2.8.3"
+      },
+      "sdpa": {
+        "hostname": "d013d4f0b0a1",
+        "platform": "Linux-6.8.0-84-generic-x86_64-with-glibc2.39",
+        "python_version": "3.12.11",
+        "torch_version": "2.8.0+cu128",
+        "cuda_version": "12.8",
+        "cudnn_version": "91002",
+        "transformers_version": "4.57.3",
+        "numpy_version": "2.1.2",
+        "attn_implementation": "sdpa",
+        "gpu_name": "NVIDIA H100 NVL",
+        "gpu_count": 1,
+        "flash_attn_version": "2.8.3"
+      },
+      "flash_attention_2": {
+        "hostname": "d013d4f0b0a1",
+        "platform": "Linux-6.8.0-84-generic-x86_64-with-glibc2.39",
+        "python_version": "3.12.11",
+        "torch_version": "2.8.0+cu128",
+        "cuda_version": "12.8",
+        "cudnn_version": "91002",
+        "transformers_version": "4.57.3",
+        "numpy_version": "2.1.2",
+        "attn_implementation": "flash_attention_2",
+        "gpu_name": "NVIDIA H100 NVL",
+        "gpu_count": 1,
+        "flash_attn_version": "2.8.3"
+      }
+    },
+    "verifier_environments": {
+      "eager": {
+        "hostname": "2b0c722dfad5",
+        "platform": "Linux-5.15.0-161-generic-x86_64-with-glibc2.39",
+        "python_version": "3.12.11",
+        "torch_version": "2.8.0+cu128",
+        "cuda_version": "12.8",
+        "cudnn_version": "91002",
+        "transformers_version": "4.57.3",
+        "numpy_version": "2.1.2",
+        "attn_implementation": "eager",
+        "gpu_name": "NVIDIA A100-SXM4-80GB",
+        "gpu_count": 1,
+        "flash_attn_version": "2.8.3"
+      },
+      "sdpa": {
+        "hostname": "2b0c722dfad5",
+        "platform": "Linux-5.15.0-161-generic-x86_64-with-glibc2.39",
+        "python_version": "3.12.11",
+        "torch_version": "2.8.0+cu128",
+        "cuda_version": "12.8",
+        "cudnn_version": "91002",
+        "transformers_version": "4.57.3",
+        "numpy_version": "2.1.2",
+        "attn_implementation": "sdpa",
+        "gpu_name": "NVIDIA A100-SXM4-80GB",
+        "gpu_count": 1,
+        "flash_attn_version": "2.8.3"
+      },
+      "flash_attention_2": {
+        "hostname": "2b0c722dfad5",
+        "platform": "Linux-5.15.0-161-generic-x86_64-with-glibc2.39",
+        "python_version": "3.12.11",
+        "torch_version": "2.8.0+cu128",
+        "cuda_version": "12.8",
+        "cudnn_version": "91002",
+        "transformers_version": "4.57.3",
+        "numpy_version": "2.1.2",
+        "attn_implementation": "flash_attention_2",
+        "gpu_name": "NVIDIA A100-SXM4-80GB",
+        "gpu_count": 1,
+        "flash_attn_version": "2.8.3"
+      }
+    }
+  },
+  "cross_hardware": {
+    "prefill": {
+      "key_matrix": [
+        [
+          0.8507909300214784,
+          12.927758904771041,
+          13.012884295392267
+        ],
+        [
+          12.742296987143254,
+          0.7234214508587044,
+          0.5941304014633995
+        ],
+        [
+          12.74102034504187,
+          0.6867630052215179,
+          0.834132837377788
+        ]
+      ],
+      "logprob_matrix": [
+        [
+          0.7483902280205567,
+          3.5182393652568944,
+          3.576282578619734
+        ],
+        [
+          8.379475555995588,
+          0.2464319331393423,
+          0.22586291733791963
+        ],
+        [
+          8.371480719857132,
+          0.19904280512041117,
+          0.17904993589919424
+        ]
+      ],
+      "diagonal_key": 0.8027817394193235,
+      "diagonal_logprob": 0.39129069901969776,
+      "off_diagonal_key": 8.784142323172224,
+      "off_diagonal_logprob": 4.045063990364613,
+      "key_snr": 10.9421302102936,
+      "logprob_snr": 10.337746336671762
+    },
+    "decode": {
+      "key_matrix": [
+        [
+          0.7784325330002102,
+          4.480348306028056,
+          4.521691943659284
+        ],
+        [
+          2.368514930211968,
+          0.45345785371197506,
+          0.4642461140920538
+        ],
+        [
+          2.6679538075233498,
+          0.49291053452591543,
+          0.4597030223847405
+        ]
+      ],
+      "logprob_matrix": [
+        [
+          0.24661050499956946,
+          1.4666386630504593,
+          1.471665024090304
+        ],
+        [
+          0.9691805391356297,
+          0.109987192238107,
+          0.11081937497572908
+        ],
+        [
+          1.2627748962786374,
+          0.11902927861388635,
+          0.11217957355208463
+        ]
+      ],
+      "diagonal_key": 0.5638644696989753,
+      "diagonal_logprob": 0.1562590902632537,
+      "off_diagonal_key": 2.4992776060067716,
+      "off_diagonal_logprob": 0.9000179626907743,
+      "key_snr": 4.432408389450458,
+      "logprob_snr": 5.7597798705629915
+    }
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "metadata": {
+    "model": "Qwen/Qwen3-14B",
+    "dtype": "bfloat16",
+    "tp_sizes": [
+      1,
+      2,
+      4
+    ],
+    "reference_file": "A100_TP_generation_10k_context.json",
+    "reproducibility_test_passed": true,
+    "reference_environments": {
+      "1": {
+        "hostname": "63ddf43f81b3",
+        "platform": "Linux-6.8.0-52-generic-x86_64-with-glibc2.39",
+        "python_version": "3.12.3",
+        "torch_version": "2.9.0+cu128",
+        "cuda_version": "12.8",
+        "cudnn_version": "91002",
+        "transformers_version": "4.57.3",
+        "numpy_version": "2.1.2",
+        "gpu_name": "NVIDIA A100-SXM4-80GB",
+        "gpu_count": 4,
+        "tensor_parallel_size": 1,
+        "vllm_version": "0.11.2"
+      },
+      "2": {
+        "hostname": "63ddf43f81b3",
+        "platform": "Linux-6.8.0-52-generic-x86_64-with-glibc2.39",
+        "python_version": "3.12.3",
+        "torch_version": "2.9.0+cu128",
+        "cuda_version": "12.8",
+        "cudnn_version": "91002",
+        "transformers_version": "4.57.3",
+        "numpy_version": "2.1.2",
+        "gpu_name": "NVIDIA A100-SXM4-80GB",
+        "gpu_count": 4,
+        "tensor_parallel_size": 2,
+        "vllm_version": "0.11.2"
+      },
+      "4": {
+        "hostname": "63ddf43f81b3",
+        "platform": "Linux-6.8.0-52-generic-x86_64-with-glibc2.39",
+        "python_version": "3.12.3",
+        "torch_version": "2.9.0+cu128",
+        "cuda_version": "12.8",
+        "cudnn_version": "91002",
+        "transformers_version": "4.57.3",
+        "numpy_version": "2.1.2",
+        "gpu_name": "NVIDIA A100-SXM4-80GB",
+        "gpu_count": 4,
+        "tensor_parallel_size": 4,
+        "vllm_version": "0.11.2"
+      }
+    },
+    "verifier_environments": {
+      "1": {
+        "hostname": "552ddec725ff",
+        "platform": "Linux-5.15.0-91-generic-x86_64-with-glibc2.39",
+        "python_version": "3.12.3",
+        "torch_version": "2.9.0+cu128",
+        "cuda_version": "12.8",
+        "cudnn_version": "91002",
+        "transformers_version": "4.57.3",
+        "numpy_version": "2.1.2",
+        "gpu_name": "NVIDIA H100 80GB HBM3",
+        "gpu_count": 4,
+        "tensor_parallel_size": 1,
+        "vllm_version": "0.11.2"
+      },
+      "2": {
+        "hostname": "552ddec725ff",
+        "platform": "Linux-5.15.0-91-generic-x86_64-with-glibc2.39",
+        "python_version": "3.12.3",
+        "torch_version": "2.9.0+cu128",
+        "cuda_version": "12.8",
+        "cudnn_version": "91002",
+        "transformers_version": "4.57.3",
+        "numpy_version": "2.1.2",
+        "gpu_name": "NVIDIA H100 80GB HBM3",
+        "gpu_count": 4,
+        "tensor_parallel_size": 2,
+        "vllm_version": "0.11.2"
+      },
+      "4": {
+        "hostname": "552ddec725ff",
+        "platform": "Linux-5.15.0-91-generic-x86_64-with-glibc2.39",
+        "python_version": "3.12.3",
+        "torch_version": "2.9.0+cu128",
+        "cuda_version": "12.8",
+        "cudnn_version": "91002",
+        "transformers_version": "4.57.3",
+        "numpy_version": "2.1.2",
+        "gpu_name": "NVIDIA H100 80GB HBM3",
+        "gpu_count": 4,
+        "tensor_parallel_size": 4,
+        "vllm_version": "0.11.2"
+      }
+    },
+    "timestamp": "20251126_235308"
+  },
+  "within_hardware_analysis": {
+    "matrix": [
+      [
+        0.0,
+        0.25309717396235404,
+        0.26850142303716656
+      ],
+      [
+        0.25309717396235404,
+        0.0,
+        0.31387649015279884
+      ],
+      [
+        0.26850142303716656,
+        0.31387649015279884,
+        0.0
+      ]
+    ],
+    "per_reference_matrices": [
+      [
+        [
+          0.0,
+          0.2388941516870637,
+          0.34557262708957187
+        ],
+        [
+          0.2388941516870637,
+          0.0,
+          0.36947223906587096
+        ],
+        [
+          0.34557262708957187,
+          0.36947223906587096,
+          0.0
+        ]
+      ],
+      [
+        [
+          0.0,
+          0.17190835720660355,
+          0.20086374223864922
+        ],
+        [
+          0.17190835720660355,
+          0.0,
+          0.30656410137976786
+        ],
+        [
+          0.20086374223864922,
+          0.30656410137976786,
+          0.0
+        ]
+      ],
+      [
+        [
+          0.0,
+          0.34848901299339485,
+          0.25906789978327877
+        ],
+        [
+          0.34848901299339485,
+          0.0,
+          0.2655931300127577
+        ],
+        [
+          0.25906789978327877,
+          0.2655931300127577,
+          0.0
+        ]
+      ]
+    ],
+    "diagonal": 0.0,
+    "off_diagonal": 0.2784916957174398,
+    "snr": null,
+    "equivalent_pairs": []
+  },
+  "cross_hardware_analysis": {
+    "matrix": [
+      [
+        0.3603422493328981,
+        0.28846082861751304,
+        0.29902061849494477
+      ],
+      [
+        0.23993916491915787,
+        0.23262088992710928,
+        0.30927818210175106
+      ],
+      [
+        0.24060822143074964,
+        0.32489163776722935,
+        0.35471519165414844
+      ]
+    ],
+    "per_reference_matrices": [
+      [
+        [
+          0.320638158251515,
+          0.33431425579295054,
+          0.2918913194105665
+        ],
+        [
+          0.24592203240161503,
+          0.34153470026735083,
+          0.4543532080281161
+        ],
+        [
+          0.2767745657196259,
+          0.406573725915282,
+          0.413463623603519
+        ]
+      ],
+      [
+        [
+          0.3338142813232572,
+          0.34449399966562516,
+          0.3225103695420876
+        ],
+        [
+          0.14452228905290174,
+          0.13269883686032105,
+          0.2701399749982486
+        ],
+        [
+          0.22936499449483813,
+          0.223696600268649,
+          0.30738294643682257
+        ]
+      ],
+      [
+        [
+          0.4265743084239222,
+          0.18657423039396345,
+          0.2826601665321802
+        ],
+        [
+          0.32937317330295673,
+          0.22362913265365592,
+          0.20334136327888852
+        ],
+        [
+          0.21568510407778488,
+          0.344404587117757,
+          0.3432990049221038
+        ]
+      ]
+    ],
+    "diagonal": 0.3158927769713853,
+    "off_diagonal": 0.2836997755552243,
+    "snr": 0.8980888334174315
+  }
+}

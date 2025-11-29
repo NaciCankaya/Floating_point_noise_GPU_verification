@@ -1,0 +1,510 @@
+================================================================================
+CROSS-HARDWARE BATCH SIZE DETECTABILITY - GENERATION (reference)
+================================================================================
+
+System: c6c6242ae438
+GPU: NVIDIA A100 80GB PCIe
+Attention: sdpa
+Layers: [28]
+Found 2 PDF(s)
+  Loading: /workspace/Llama3.1.pdf
+  Loading: /workspace/Verification-for-International-AI-Governance.pdf
+Total source tokens: 219497
+Prompt structure: 33 prefix + 4000 snippet + 34 suffix = 4067 tokens
+All 51 prompts: 4067 tokens each
+
+Sample prompt ending:
+' websites\nare likely to contain"\n\nBased on this excerpt, what type of document do you think this is from, and what is its likely subject matter? Explain your reasoning.<|im_end|>\n<|im_start|>assistant\n'
+
+================================================================================
+REFERENCE: ref_0
+================================================================================
+
+Prompt length: 4067 tokens
+
+  bs=1:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=2:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=3:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=4:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=5:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=8:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=9:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=16:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=17:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+
+================================================================================
+REFERENCE: ref_1
+================================================================================
+
+Prompt length: 4067 tokens
+
+  bs=1:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=2:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=3:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=4:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=5:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=8:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=9:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=16:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=17:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+
+================================================================================
+REFERENCE: ref_2
+================================================================================
+
+Prompt length: 4067 tokens
+
+  bs=1:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=2:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=3:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=4:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=5:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=8:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=9:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=16:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+  bs=17:      Prompt: 4067 tokens → Final: 4217 tokens (150 generated)
+
+--- Token consistency for ref_0 ---
+
+================================================================================
+TOKEN GENERATION CONSISTENCY CHECK
+================================================================================
+
+Generated tokens by batch size:
+  bs=1:
+    IDs:  [1986, 49465, 374, 504, 264, 3412, 5567, 476, 10916, 1895, 11, 4363, 10735, 389, 279, 4401, 323, 16460, 315, 264, 501, 738, 315, 16266, 4119, 2598, 444, 80001, 220, 18, 13, 576, 2197, 594, 3832, 4925, 374, 30188, 2163, 20443, 11229, 11, 11689, 3460, 4128, 4119, 323, 862, 16928, 13, 5692, 594, 279, 32711, 4815, 419, 16688, 1447, 16, 13, 3070, 7524, 3990, 95518, 576, 2197, 374, 32930, 304, 264, 1616, 429, 374, 14260, 315, 3412, 15689, 476, 10916, 6682, 13, 1084, 5646, 14158, 1075, 330, 37155, 1335, 330, 4703, 12, 36930, 1335, 330, 4133, 12, 36930, 1335, 323, 330, 81330, 39288, 1335, 892, 525, 4185, 304, 14250, 476, 10916, 4378, 13, 576, 9362, 315, 12632, 11, 12396, 11, 323, 11682, 27787, 315, 80798, 323, 3059, 4623, 11554, 419, 23850, 382, 17, 13, 3070, 13019, 33364, 95518, 576, 6028, 5244, 374, 389, 444, 80001, 220, 18, 11, 264, 501, 738]
+    Text: 'This excerpt is from a research paper or technical report, likely focused on the development and evaluation of a new set of foundation models called Llama 3. The document\'s subject matter is centered around artificial intelligence, specifically large language models and their capabilities. Here\'s the reasoning behind this conclusion:\n\n1. **Document Type**: The document is structured in a way that is typical of research papers or technical reports. It includes sections like "Introduction," "Pre-Training," "Post-Training," and "Experimental Evaluation," which are common in academic or technical writing. The presence of tables, figures, and detailed descriptions of methodologies and results further supports this classification.\n\n2. **Subject Matter**: The primary focus is on Llama 3, a new set'
+    ✓
+  bs=2:
+    IDs:  [1986, 49465, 374, 504, 264, 3412, 5567, 476, 10916, 1895, 11, 4363, 10735, 389, 279, 4401, 323, 16460, 315, 264, 501, 738, 315, 16266, 4119, 2598, 444, 80001, 220, 18, 13, 576, 2197, 594, 3832, 4925, 374, 30188, 2163, 20443, 11229, 11, 11689, 3460, 4128, 4119, 323, 862, 16928, 13, 5692, 594, 279, 32711, 4815, 419, 16688, 1447, 16, 13, 3070, 7524, 3990, 95518, 576, 2197, 12033, 448, 264, 11682, 16800, 323, 23251, 315, 279, 444, 80001, 220, 18, 4119, 11, 2670, 862, 17646, 11, 4862, 1882, 11, 323, 16460, 13, 1084, 1083, 5646, 12632, 323, 12396, 11, 892, 525, 14260, 304, 3412, 15689, 311, 3042, 821, 323, 3059, 13, 576, 9362, 315, 264, 11682, 25305, 1140, 304, 279, 87577, 4623, 11554, 279, 4522, 429, 419, 374, 264, 15908, 3412, 2197, 382, 17, 13, 3070, 13019, 33364, 95518, 576, 2197, 34334, 279, 4401, 315, 444, 80001, 220, 18, 11, 264]
+    Text: "This excerpt is from a research paper or technical report, likely focused on the development and evaluation of a new set of foundation models called Llama 3. The document's subject matter is centered around artificial intelligence, specifically large language models and their capabilities. Here's the reasoning behind this conclusion:\n\n1. **Document Type**: The document begins with a detailed introduction and overview of the Llama 3 models, including their architecture, training process, and evaluation. It also includes tables and figures, which are typical in research papers to present data and results. The presence of a detailed contributor list in the appendix further supports the idea that this is a formal research document.\n\n2. **Subject Matter**: The document discusses the development of Llama 3, a"
+    ✗ DIFFERENT
+  bs=3:
+    IDs:  [1986, 49465, 374, 504, 264, 3412, 5567, 476, 10916, 1895, 11, 4363, 10735, 389, 279, 4401, 323, 16460, 315, 264, 501, 738, 315, 16266, 4119, 2598, 444, 80001, 220, 18, 13, 576, 2197, 594, 3832, 4925, 374, 30188, 2163, 20443, 11229, 11, 11689, 3460, 4128, 4119, 323, 862, 16928, 13, 5692, 594, 279, 32711, 4815, 419, 16688, 1447, 16, 13, 3070, 7524, 3990, 95518, 576, 2197, 12033, 448, 264, 11682, 16800, 323, 23251, 315, 279, 444, 80001, 220, 18, 4119, 11, 2670, 862, 17646, 11, 4862, 1882, 11, 323, 16460, 13, 1084, 1083, 5646, 12632, 323, 12396, 11, 892, 525, 14260, 304, 3412, 15689, 311, 3042, 821, 323, 3059, 13, 576, 9362, 315, 264, 11682, 25305, 1140, 304, 279, 87577, 4623, 11554, 279, 4522, 429, 419, 374, 264, 15908, 3412, 2197, 382, 17, 13, 3070, 13019, 33364, 95518, 576, 2197, 34334, 279, 4401, 315, 444, 80001, 220, 18, 11, 264]
+    Text: "This excerpt is from a research paper or technical report, likely focused on the development and evaluation of a new set of foundation models called Llama 3. The document's subject matter is centered around artificial intelligence, specifically large language models and their capabilities. Here's the reasoning behind this conclusion:\n\n1. **Document Type**: The document begins with a detailed introduction and overview of the Llama 3 models, including their architecture, training process, and evaluation. It also includes tables and figures, which are typical in research papers to present data and results. The presence of a detailed contributor list in the appendix further supports the idea that this is a formal research document.\n\n2. **Subject Matter**: The document discusses the development of Llama 3, a"
+    ✗ DIFFERENT
+  bs=4:
+    IDs:  [1986, 49465, 374, 504, 264, 3412, 5567, 476, 10916, 1895, 11, 4363, 10735, 389, 279, 4401, 323, 16460, 315, 264, 501, 738, 315, 16266, 4119, 2598, 444, 80001, 220, 18, 13, 576, 2197, 594, 3832, 4925, 374, 30188, 2163, 20443, 11229, 11, 11689, 3460, 4128, 4119, 323, 862, 16928, 13, 5692, 594, 279, 32711, 4815, 419, 16688, 1447, 16, 13, 3070, 7524, 3990, 95518, 576, 2197, 374, 32930, 304, 264, 1616, 429, 374, 14260, 315, 3412, 15689, 476, 10916, 6682, 13, 1084, 5646, 14158, 1075, 330, 37155, 1335, 330, 4703, 12, 36930, 1335, 330, 4133, 12, 36930, 1335, 323, 330, 40404, 318, 57597, 55795, 1335, 892, 525, 4185, 304, 14250, 476, 10916, 4378, 13, 576, 9362, 315, 12632, 11, 12396, 11, 323, 11682, 27787, 315, 80798, 323, 3059, 4623, 11554, 419, 23850, 382, 17, 13, 3070, 13019, 33364, 95518, 576, 6028, 5244, 374, 389, 444, 80001, 220, 18, 11, 264]
+    Text: 'This excerpt is from a research paper or technical report, likely focused on the development and evaluation of a new set of foundation models called Llama 3. The document\'s subject matter is centered around artificial intelligence, specifically large language models and their capabilities. Here\'s the reasoning behind this conclusion:\n\n1. **Document Type**: The document is structured in a way that is typical of research papers or technical reports. It includes sections like "Introduction," "Pre-Training," "Post-Training," and "Multimodal Extensions," which are common in academic or technical writing. The presence of tables, figures, and detailed descriptions of methodologies and results further supports this classification.\n\n2. **Subject Matter**: The primary focus is on Llama 3, a'
+    ✗ DIFFERENT
+  bs=5:
+    IDs:  [1986, 49465, 374, 504, 264, 3412, 5567, 476, 10916, 1895, 11, 4363, 10735, 389, 279, 4401, 323, 16460, 315, 264, 501, 738, 315, 16266, 4119, 2598, 444, 80001, 220, 18, 13, 576, 2197, 594, 3832, 4925, 374, 30188, 2163, 20443, 11229, 11, 11689, 3460, 4128, 4119, 323, 862, 16928, 13, 5692, 594, 279, 32711, 4815, 419, 16688, 1447, 16, 13, 3070, 7524, 3990, 95518, 576, 2197, 374, 32930, 304, 264, 1616, 429, 374, 14260, 315, 3412, 15689, 476, 10916, 6682, 13, 1084, 5646, 14158, 1075, 330, 37155, 1335, 330, 4703, 12, 36930, 1335, 330, 4133, 12, 36930, 1335, 323, 330, 81330, 39288, 1335, 892, 525, 4185, 304, 14250, 476, 10916, 4378, 13, 576, 9362, 315, 12632, 11, 12396, 11, 323, 11682, 27787, 315, 80798, 323, 3059, 4623, 11554, 419, 23850, 382, 17, 13, 3070, 13019, 33364, 95518, 576, 6028, 5244, 374, 389, 444, 80001, 220, 18, 11, 264, 501, 738]
+    Text: 'This excerpt is from a research paper or technical report, likely focused on the development and evaluation of a new set of foundation models called Llama 3. The document\'s subject matter is centered around artificial intelligence, specifically large language models and their capabilities. Here\'s the reasoning behind this conclusion:\n\n1. **Document Type**: The document is structured in a way that is typical of research papers or technical reports. It includes sections like "Introduction," "Pre-Training," "Post-Training," and "Experimental Evaluation," which are common in academic or technical writing. The presence of tables, figures, and detailed descriptions of methodologies and results further supports this classification.\n\n2. **Subject Matter**: The primary focus is on Llama 3, a new set'
+    ✓
+  bs=8:
+    IDs:  [1986, 49465, 374, 504, 264, 3412, 5567, 476, 10916, 1895, 11, 4363, 10735, 389, 279, 4401, 323, 16460, 315, 264, 501, 738, 315, 16266, 4119, 2598, 444, 80001, 220, 18, 13, 576, 2197, 594, 3832, 4925, 374, 30188, 2163, 20443, 11229, 11, 11689, 3460, 4128, 4119, 323, 862, 16928, 13, 5692, 594, 279, 32711, 4815, 419, 16688, 1447, 16, 13, 3070, 7524, 3990, 95518, 576, 2197, 374, 32930, 304, 264, 1616, 429, 374, 14260, 315, 3412, 15689, 476, 10916, 6682, 13, 1084, 5646, 14158, 1075, 330, 37155, 1335, 330, 4703, 12, 36930, 1335, 330, 4133, 12, 36930, 1335, 323, 330, 40404, 318, 57597, 55795, 1335, 892, 525, 4185, 304, 14250, 476, 10916, 4378, 13, 576, 9362, 315, 12632, 11, 12396, 11, 323, 11682, 27787, 315, 80798, 323, 3059, 4623, 11554, 419, 23850, 382, 17, 13, 3070, 13019, 33364, 95518, 576, 6028, 5244, 374, 389, 444, 80001, 220, 18, 11, 264]
+    Text: 'This excerpt is from a research paper or technical report, likely focused on the development and evaluation of a new set of foundation models called Llama 3. The document\'s subject matter is centered around artificial intelligence, specifically large language models and their capabilities. Here\'s the reasoning behind this conclusion:\n\n1. **Document Type**: The document is structured in a way that is typical of research papers or technical reports. It includes sections like "Introduction," "Pre-Training," "Post-Training," and "Multimodal Extensions," which are common in academic or technical writing. The presence of tables, figures, and detailed descriptions of methodologies and results further supports this classification.\n\n2. **Subject Matter**: The primary focus is on Llama 3, a'
+    ✗ DIFFERENT
+  bs=9:
+    IDs:  [1986, 49465, 374, 504, 264, 3412, 5567, 476, 10916, 1895, 11, 4363, 10735, 389, 279, 4401, 323, 16460, 315, 264, 501, 738, 315, 16266, 4119, 2598, 444, 80001, 220, 18, 13, 576, 2197, 594, 3832, 4925, 374, 30188, 2163, 20443, 11229, 11, 11689, 3460, 4128, 4119, 323, 862, 16928, 13, 5692, 594, 279, 32711, 4815, 419, 16688, 1447, 16, 13, 3070, 7524, 3990, 95518, 576, 2197, 374, 32930, 304, 264, 1616, 429, 374, 14260, 315, 3412, 15689, 476, 10916, 6682, 13, 1084, 5646, 14158, 1075, 330, 37155, 1335, 330, 4703, 12, 36930, 1335, 330, 4133, 12, 36930, 1335, 323, 330, 40404, 318, 57597, 55795, 1335, 892, 525, 4185, 304, 14250, 476, 10916, 4378, 13, 576, 9362, 315, 12632, 11, 12396, 11, 323, 11682, 27787, 315, 80798, 323, 3059, 4623, 11554, 419, 23850, 382, 17, 13, 3070, 13019, 33364, 95518, 576, 6028, 5244, 374, 389, 444, 80001, 220, 18, 11, 264]
+    Text: 'This excerpt is from a research paper or technical report, likely focused on the development and evaluation of a new set of foundation models called Llama 3. The document\'s subject matter is centered around artificial intelligence, specifically large language models and their capabilities. Here\'s the reasoning behind this conclusion:\n\n1. **Document Type**: The document is structured in a way that is typical of research papers or technical reports. It includes sections like "Introduction," "Pre-Training," "Post-Training," and "Multimodal Extensions," which are common in academic or technical writing. The presence of tables, figures, and detailed descriptions of methodologies and results further supports this classification.\n\n2. **Subject Matter**: The primary focus is on Llama 3, a'
+    ✗ DIFFERENT
+  bs=16:
+    IDs:  [1986, 49465, 374, 504, 264, 3412, 5567, 476, 10916, 1895, 11, 4363, 10735, 389, 279, 4401, 323, 16460, 315, 264, 501, 738, 315, 16266, 4119, 2598, 444, 80001, 220, 18, 13, 576, 2197, 594, 3832, 4925, 374, 30188, 2163, 20443, 11229, 11, 11689, 3460, 4128, 4119, 323, 862, 16928, 382, 14374, 26759, 287, 1447, 16, 13, 3070, 3851, 323, 28338, 334, 510, 256, 481, 576, 2197, 12033, 448, 264, 2265, 429, 33845, 330, 43, 80001, 220, 18, 6252, 67, 315, 26874, 1, 323, 374, 66113, 553, 279, 444, 80001, 7909, 518, 15819, 13, 1096, 14807, 432, 374, 264, 10916, 2197, 5435, 311, 15235, 3412, 624, 256, 481, 576, 16800, 34334, 279, 4401, 315, 16266, 4119, 11, 892, 525, 4586, 58238, 15235, 4119, 6188, 311, 1824, 264, 6884, 2088, 315, 9079, 382, 17, 13, 3070, 62226, 12309, 334, 510, 256, 481, 576, 2197, 5707, 11682, 10916, 1995, 911, 279, 444, 80001]
+    Text: 'This excerpt is from a research paper or technical report, likely focused on the development and evaluation of a new set of foundation models called Llama 3. The document\'s subject matter is centered around artificial intelligence, specifically large language models and their capabilities.\n\n### Reasoning:\n\n1. **Title and Introduction**:\n   - The document begins with a title that mentions "Llama 3 Herd of Models" and is authored by the Llama Team at Meta. This indicates it is a technical document related to AI research.\n   - The introduction discusses the development of foundation models, which are general-purpose AI models designed to support a wide range of tasks.\n\n2. **Technical Details**:\n   - The document provides detailed technical information about the Llama'
+    ✗ DIFFERENT
+  bs=17:
+    IDs:  [1986, 49465, 374, 504, 264, 3412, 5567, 476, 10916, 1895, 11, 4363, 10735, 389, 279, 4401, 323, 16460, 315, 264, 501, 738, 315, 16266, 4119, 2598, 444, 80001, 220, 18, 13, 576, 2197, 594, 3832, 4925, 374, 30188, 2163, 20443, 11229, 11, 11689, 3460, 4128, 4119, 323, 862, 16928, 13, 5692, 594, 279, 32711, 4815, 419, 16688, 1447, 16, 13, 3070, 7524, 3990, 95518, 576, 2197, 374, 32930, 304, 264, 1616, 429, 374, 14260, 315, 3412, 15689, 476, 10916, 6682, 13, 1084, 5646, 14158, 1075, 330, 37155, 1335, 330, 4703, 12, 36930, 1335, 330, 4133, 12, 36930, 1335, 323, 330, 40404, 318, 57597, 55795, 1335, 892, 525, 4185, 304, 14250, 476, 10916, 4378, 13, 576, 9362, 315, 12632, 11, 12396, 11, 323, 11682, 27787, 315, 80798, 323, 3059, 4623, 11554, 419, 23850, 382, 17, 13, 3070, 13019, 33364, 95518, 576, 6028, 5244, 374, 389, 444, 80001, 220, 18, 11, 264]
+    Text: 'This excerpt is from a research paper or technical report, likely focused on the development and evaluation of a new set of foundation models called Llama 3. The document\'s subject matter is centered around artificial intelligence, specifically large language models and their capabilities. Here\'s the reasoning behind this conclusion:\n\n1. **Document Type**: The document is structured in a way that is typical of research papers or technical reports. It includes sections like "Introduction," "Pre-Training," "Post-Training," and "Multimodal Extensions," which are common in academic or technical writing. The presence of tables, figures, and detailed descriptions of methodologies and results further supports this classification.\n\n2. **Subject Matter**: The primary focus is on Llama 3, a'
+    ✗ DIFFERENT
+
+⚠ Element 0 generates DIFFERENT tokens across batch sizes
+
+--- Token consistency for ref_1 ---
+
+================================================================================
+TOKEN GENERATION CONSISTENCY CHECK
+================================================================================
+
+Generated tokens by batch size:
+  bs=1:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 3412, 476, 10916, 1895, 11, 4363, 5435, 311, 264, 3460, 4128, 1614, 476, 264, 4013, 315, 4128, 4119, 13, 576, 2197, 11469, 264, 3460, 1372, 315, 20343, 323, 54930, 862, 1824, 11, 892, 374, 14260, 369, 3412, 15689, 476, 10916, 6682, 13, 22406, 11, 279, 2197, 5646, 15057, 311, 10916, 6682, 323, 3412, 15689, 11, 4623, 12613, 419, 16688, 382, 785, 3832, 4925, 315, 279, 2197, 374, 4363, 5435, 311, 279, 4401, 323, 15673, 315, 264, 4128, 1614, 11, 10767, 6941, 330, 43, 80001, 220, 18, 1, 3118, 389, 279, 15823, 26139, 3772, 13, 1096, 374, 68357, 553, 279, 11682, 1140, 315, 20343, 323, 279, 6286, 315, 1824, 369, 330, 43, 80001, 220, 18, 1, 304, 279, 15823, 26139, 13, 576, 2197, 1083, 5646, 15057, 311, 1008, 4128, 4119, 323, 3412, 15689, 11, 892, 13230, 429, 432]
+    Text: 'Based on the excerpt provided, this document appears to be from a research or technical report, likely related to a large language model or a series of language models. The document lists a large number of contributors and acknowledges their support, which is typical for research papers or technical reports. Additionally, the document includes references to technical reports and research papers, further supporting this conclusion.\n\nThe subject matter of the document is likely related to the development and improvement of a language model, possibly named "Llama 3" based on the acknowledgments section. This is evidenced by the detailed list of contributors and the mention of support for "Llama 3" in the acknowledgments. The document also includes references to other language models and research papers, which suggests that it'
+    ✓
+  bs=2:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 3412, 476, 10916, 1895, 5435, 311, 264, 3460, 4128, 1614, 11, 4363, 6941, 444, 80001, 220, 18, 13, 576, 2197, 11469, 264, 3460, 1372, 315, 20343, 323, 15823, 26139, 11, 892, 374, 14260, 369, 264, 3412, 2390, 476, 3162, 4401, 5041, 13, 576, 2213, 1083, 5646, 15057, 311, 10916, 6682, 323, 14250, 15689, 11, 18860, 429, 279, 2197, 374, 4363, 264, 11682, 1895, 476, 9705, 315, 279, 4401, 323, 3412, 4815, 279, 4128, 1614, 382, 14374, 26759, 287, 1447, 16, 13, 3070, 52984, 4831, 1759, 95518, 576, 16376, 1140, 315, 20343, 11, 2670, 5036, 315, 7775, 323, 862, 12783, 11, 13230, 264, 39706, 5041, 11, 892, 374, 4185, 304, 3460, 12934, 3412, 7079, 476, 3162, 4401, 27172, 382, 17, 13, 3070, 90236, 83027, 95518, 576, 2197, 5646, 264, 3772, 12235, 311, 60608, 7775, 323, 11104, 429, 3897]
+    Text: 'Based on the excerpt provided, this document appears to be from a research or technical report related to a large language model, likely named Llama 3. The document lists a large number of contributors and acknowledgments, which is typical for a research project or software development effort. The content also includes references to technical reports and academic papers, indicating that the document is likely a detailed report or documentation of the development and research behind the language model.\n\n### Reasoning:\n\n1. **Contributor List**: The extensive list of contributors, including names of individuals and their roles, suggests a collaborative effort, which is common in large-scale research projects or software development initiatives.\n\n2. **Acknowledgements**: The document includes a section dedicated to acknowledging individuals and organizations that provided'
+    ✗ DIFFERENT
+  bs=3:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 3412, 476, 10916, 1895, 5435, 311, 264, 3460, 4128, 1614, 11, 4363, 6941, 444, 80001, 220, 18, 13, 576, 2197, 11469, 264, 3460, 1372, 315, 20343, 323, 15823, 26139, 11, 892, 374, 14260, 369, 264, 3412, 2390, 476, 3162, 4401, 5041, 13, 576, 2213, 1083, 5646, 15057, 311, 10916, 6682, 323, 14250, 15689, 11, 18860, 429, 279, 2197, 374, 4363, 264, 11682, 1895, 476, 9705, 315, 279, 4401, 323, 3412, 4815, 279, 4128, 1614, 382, 14374, 26759, 287, 1447, 16, 13, 3070, 52984, 4831, 1759, 95518, 576, 16376, 1140, 315, 20343, 11, 2670, 5036, 315, 7775, 323, 862, 12783, 11, 13230, 264, 39706, 5041, 11, 892, 374, 4185, 304, 3460, 12934, 3412, 7079, 476, 3162, 4401, 27172, 382, 17, 13, 3070, 90236, 83027, 95518, 576, 2197, 5646, 264, 3772, 12235, 311, 60608, 7775, 323, 11104, 429, 3897]
+    Text: 'Based on the excerpt provided, this document appears to be from a research or technical report related to a large language model, likely named Llama 3. The document lists a large number of contributors and acknowledgments, which is typical for a research project or software development effort. The content also includes references to technical reports and academic papers, indicating that the document is likely a detailed report or documentation of the development and research behind the language model.\n\n### Reasoning:\n\n1. **Contributor List**: The extensive list of contributors, including names of individuals and their roles, suggests a collaborative effort, which is common in large-scale research projects or software development initiatives.\n\n2. **Acknowledgements**: The document includes a section dedicated to acknowledging individuals and organizations that provided'
+    ✗ DIFFERENT
+  bs=4:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 3412, 476, 10916, 1895, 11, 4363, 5435, 311, 264, 3460, 4128, 1614, 476, 264, 4013, 315, 4128, 4119, 13, 576, 2197, 11469, 264, 3460, 1372, 315, 20343, 323, 54930, 862, 1824, 11, 892, 374, 14260, 369, 3412, 15689, 476, 10916, 6682, 304, 279, 2070, 315, 20443, 11229, 11, 7945, 304, 5810, 4128, 8692, 320, 45, 12567, 3593, 14374, 26759, 287, 1447, 16, 13, 3070, 52984, 4831, 1759, 95518, 576, 2197, 8471, 448, 264, 1293, 1140, 315, 20343, 11, 892, 374, 4185, 304, 3412, 15689, 11, 5310, 1846, 15860, 3460, 39706, 8869, 13, 1096, 13230, 264, 5089, 2390, 448, 5248, 20343, 11, 4363, 264, 3460, 4128, 1614, 476, 264, 4013, 315, 4119, 382, 17, 13, 3070, 90236, 83027, 95518, 576, 2197, 5646, 458, 330, 90236, 83027, 1, 3772, 11, 1380, 432, 9339, 5257, 7775, 323, 11104, 369, 862]
+    Text: 'Based on the excerpt provided, this document appears to be from a research or technical report, likely related to a large language model or a series of language models. The document lists a large number of contributors and acknowledges their support, which is typical for research papers or technical reports in the field of artificial intelligence, particularly in natural language processing (NLP).\n\n### Reasoning:\n\n1. **Contributor List**: The document starts with a long list of contributors, which is common in research papers, especially those involving large collaborative efforts. This suggests a significant project with multiple contributors, likely a large language model or a series of models.\n\n2. **Acknowledgements**: The document includes an "Acknowledgements" section, where it thanks various individuals and organizations for their'
+    ✗ DIFFERENT
+  bs=5:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 3412, 476, 10916, 1895, 5435, 311, 264, 3460, 4128, 1614, 11, 4363, 6941, 444, 80001, 220, 18, 13, 576, 2197, 11469, 264, 3460, 1372, 315, 20343, 323, 15823, 26139, 11, 892, 374, 14260, 369, 264, 3412, 2390, 476, 3162, 4401, 5041, 13, 576, 3832, 4925, 374, 30188, 2163, 264, 4128, 1614, 11, 438, 68357, 553, 279, 5036, 315, 20343, 323, 279, 15057, 311, 10916, 6682, 323, 3412, 15689, 429, 5244, 389, 4128, 4119, 323, 862, 8357, 382, 14374, 26759, 287, 1447, 16, 13, 3070, 52984, 4831, 1759, 95518, 576, 16376, 1140, 315, 20343, 11, 2670, 5036, 1075, 330, 32, 329, 487, 64, 26894, 1335, 330, 43, 96119, 8394, 78, 1335, 323, 330, 43, 3101, 300, 38185, 9034, 1335, 13230, 264, 39706, 5041, 11, 10767, 264, 3412, 2390, 476, 264, 3162, 4401, 20162, 13, 576, 5036, 525, 16807]
+    Text: 'Based on the excerpt provided, this document appears to be from a research or technical report related to a large language model, likely named Llama 3. The document lists a large number of contributors and acknowledgments, which is typical for a research project or software development effort. The subject matter is centered around a language model, as evidenced by the names of contributors and the references to technical reports and research papers that focus on language models and their applications.\n\n### Reasoning:\n\n1. **Contributor List**: The extensive list of contributors, including names like "Aaditya Singh," "Lubo Malo," and "Lukas Blecher," suggests a collaborative effort, possibly a research project or a software development initiative. The names are diverse'
+    ✗ DIFFERENT
+  bs=8:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 3412, 476, 10916, 1895, 11, 4363, 5435, 311, 264, 3460, 4128, 1614, 476, 264, 4013, 315, 4128, 4119, 13, 576, 2197, 11469, 264, 3460, 1372, 315, 20343, 323, 54930, 862, 1824, 11, 892, 374, 14260, 369, 3412, 15689, 476, 10916, 6682, 304, 279, 2070, 315, 20443, 11229, 11, 7945, 304, 5810, 4128, 8692, 320, 45, 12567, 3593, 14374, 26759, 287, 1447, 16, 13, 3070, 52984, 4831, 1759, 95518, 576, 2197, 12033, 448, 264, 1293, 1140, 315, 20343, 11, 892, 374, 4185, 304, 3412, 15689, 11, 5310, 1846, 15860, 3460, 39706, 8869, 13, 1096, 13230, 264, 5089, 2390, 448, 5248, 20343, 11, 4363, 264, 3460, 4128, 1614, 476, 264, 4013, 315, 4119, 382, 17, 13, 3070, 90236, 83027, 95518, 576, 2197, 5646, 458, 330, 90236, 83027, 1, 3772, 11, 1380, 432, 9339, 3151, 7775, 323, 11104, 369, 862]
+    Text: 'Based on the excerpt provided, this document appears to be from a research or technical report, likely related to a large language model or a series of language models. The document lists a large number of contributors and acknowledges their support, which is typical for research papers or technical reports in the field of artificial intelligence, particularly in natural language processing (NLP).\n\n### Reasoning:\n\n1. **Contributor List**: The document begins with a long list of contributors, which is common in research papers, especially those involving large collaborative efforts. This suggests a significant project with multiple contributors, likely a large language model or a series of models.\n\n2. **Acknowledgements**: The document includes an "Acknowledgements" section, where it thanks specific individuals and organizations for their'
+    ✗ DIFFERENT
+  bs=9:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 3412, 476, 10916, 1895, 11, 4363, 5435, 311, 264, 3460, 4128, 1614, 476, 264, 4013, 315, 4128, 4119, 13, 576, 2197, 11469, 264, 3460, 1372, 315, 20343, 323, 54930, 862, 1824, 11, 892, 374, 14260, 369, 3412, 15689, 476, 10916, 6682, 304, 279, 2070, 315, 20443, 11229, 11, 7945, 304, 5810, 4128, 8692, 320, 45, 12567, 3593, 14374, 26759, 287, 1447, 16, 13, 3070, 52984, 4831, 1759, 95518, 576, 2197, 12033, 448, 264, 1293, 1140, 315, 20343, 11, 892, 374, 4185, 304, 3412, 15689, 11, 5310, 1846, 15860, 3460, 39706, 8869, 13, 1096, 13230, 264, 5089, 2390, 448, 5248, 20343, 11, 4363, 264, 3460, 4128, 1614, 476, 264, 4013, 315, 4119, 382, 17, 13, 3070, 90236, 83027, 95518, 576, 2197, 5646, 458, 330, 90236, 83027, 1, 3772, 11, 1380, 432, 9339, 3151, 7775, 323, 11104, 369, 862]
+    Text: 'Based on the excerpt provided, this document appears to be from a research or technical report, likely related to a large language model or a series of language models. The document lists a large number of contributors and acknowledges their support, which is typical for research papers or technical reports in the field of artificial intelligence, particularly in natural language processing (NLP).\n\n### Reasoning:\n\n1. **Contributor List**: The document begins with a long list of contributors, which is common in research papers, especially those involving large collaborative efforts. This suggests a significant project with multiple contributors, likely a large language model or a series of models.\n\n2. **Acknowledgements**: The document includes an "Acknowledgements" section, where it thanks specific individuals and organizations for their'
+    ✗ DIFFERENT
+  bs=16:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 3412, 476, 10916, 1895, 5435, 311, 264, 3460, 4128, 1614, 11, 4363, 6941, 444, 80001, 220, 18, 13, 576, 2197, 11469, 264, 3460, 1372, 315, 20343, 323, 15823, 26139, 11, 892, 374, 14260, 369, 264, 3412, 2390, 476, 3162, 4401, 5041, 13, 576, 3832, 4925, 374, 30188, 2163, 264, 4128, 1614, 11, 438, 68357, 553, 279, 5036, 315, 20343, 323, 279, 15057, 311, 10916, 6682, 323, 3412, 15689, 5435, 311, 4128, 4119, 382, 14374, 26759, 287, 1447, 16, 13, 3070, 52984, 4831, 1759, 25, 1019, 256, 481, 576, 2197, 12033, 448, 264, 1293, 1140, 315, 20343, 11, 892, 374, 4185, 304, 14250, 15689, 11, 3412, 7079, 11, 476, 3162, 4401, 8869, 13, 576, 5036, 2924, 11811, 11, 24198, 11, 323, 1008, 15387, 6398, 304, 279, 4401, 323, 7497, 315, 264, 4128, 1614, 382, 17, 13, 3070, 90236]
+    Text: 'Based on the excerpt provided, this document appears to be from a research or technical report related to a large language model, likely named Llama 3. The document lists a large number of contributors and acknowledgments, which is typical for a research project or software development effort. The subject matter is centered around a language model, as evidenced by the names of contributors and the references to technical reports and research papers related to language models.\n\n### Reasoning:\n\n1. **Contributor List:**\n   - The document begins with a long list of contributors, which is common in academic papers, research projects, or software development efforts. The names include researchers, engineers, and other professionals involved in the development and testing of a language model.\n\n2. **Acknowled'
+    ✗ DIFFERENT
+  bs=17:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 3412, 476, 10916, 1895, 11, 4363, 5435, 311, 264, 3460, 4128, 1614, 476, 264, 4013, 315, 4128, 4119, 13, 576, 2197, 11469, 264, 3460, 1372, 315, 20343, 323, 54930, 862, 1824, 11, 892, 374, 4185, 304, 3412, 15689, 476, 10916, 6682, 13, 22406, 11, 279, 2197, 5646, 264, 3772, 315, 15057, 11, 892, 4623, 11554, 419, 16688, 382, 785, 3832, 4925, 315, 279, 2197, 374, 4363, 5435, 311, 82687, 304, 5810, 4128, 8692, 320, 45, 12567, 8, 323, 5662, 6832, 11, 11689, 21080, 389, 3460, 4128, 4119, 13, 1096, 374, 29476, 504, 279, 5036, 315, 20343, 323, 279, 15057, 11, 892, 2924, 4278, 389, 5257, 13566, 315, 451, 12567, 11, 1741, 438, 41733, 7681, 454, 1693, 11, 7299, 65489, 42578, 4119, 11, 9124, 4128, 4119, 369, 2421, 63530, 6832, 11, 323, 5666, 5980, 15908, 13664, 369, 6888]
+    Text: 'Based on the excerpt provided, this document appears to be from a research or technical report, likely related to a large language model or a series of language models. The document lists a large number of contributors and acknowledges their support, which is common in research papers or technical reports. Additionally, the document includes a section of references, which further supports this conclusion.\n\nThe subject matter of the document is likely related to advancements in natural language processing (NLP) and machine learning, specifically focusing on large language models. This is evident from the names of contributors and the references, which include works on various aspects of NLP, such as semantic deduplication, multi-query transformer models, visual language models for few-shot learning, and operation-based formalisms for math'
+    ✗ DIFFERENT
+
+⚠ Element 0 generates DIFFERENT tokens across batch sizes
+
+--- Token consistency for ref_2 ---
+
+================================================================================
+TOKEN GENERATION CONSISTENCY CHECK
+================================================================================
+
+Generated tokens by batch size:
+  bs=1:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 10916, 476, 14250, 1895, 10735, 389, 279, 34086, 323, 22901, 315, 20443, 11229, 320, 15469, 8, 5942, 11, 7945, 304, 279, 2266, 315, 6489, 19473, 323, 4763, 10520, 13, 5692, 525, 279, 1376, 3501, 429, 1824, 419, 16688, 1447, 16, 13, 3070, 62226, 25806, 95518, 576, 2197, 34334, 5257, 10916, 23783, 323, 18940, 1741, 438, 26193, 24231, 11, 11773, 27406, 11, 3728, 22901, 11, 44321, 25463, 11, 28030, 11773, 11, 323, 15235, 54192, 7611, 13, 4220, 13347, 525, 11136, 9761, 304, 10916, 6682, 476, 4158, 47293, 382, 17, 13, 3070, 77606, 681, 323, 55473, 95518, 362, 5089, 13348, 315, 279, 1467, 374, 12235, 311, 24392, 1246, 311, 2569, 323, 10146, 15235, 5942, 11, 2670, 279, 990, 315, 89129, 12538, 11, 11773, 23783, 11, 323, 821, 25463, 13, 1096, 5285, 82, 448, 279, 3832, 4925, 315, 264, 1895]
+    Text: 'Based on the excerpt provided, this document appears to be from a technical or academic report focused on the governance and verification of artificial intelligence (AI) systems, particularly in the context of international agreements and security concerns. Here are the key points that support this conclusion:\n\n1. **Technical Focus**: The document discusses various technical mechanisms and concepts such as confidential computing, hardware licensing, location verification, enforced encryption, networking hardware, and AI-enabled devices. These topics are typically covered in technical reports or whitepapers.\n\n2. **Governance and Verification**: A significant portion of the text is dedicated to discussing how to govern and verify AI systems, including the use of cryptographic techniques, hardware mechanisms, and data encryption. This aligns with the subject matter of a report'
+    ✓
+  bs=2:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 10916, 476, 14250, 1895, 10735, 389, 279, 34086, 323, 22901, 315, 20443, 11229, 320, 15469, 8, 5942, 11, 7945, 304, 279, 2266, 315, 6489, 19473, 323, 4763, 10520, 13, 5692, 525, 279, 1376, 3501, 429, 1824, 419, 16688, 1447, 16, 13, 3070, 62226, 25806, 95518, 576, 2197, 34334, 5257, 10916, 23783, 323, 18940, 1741, 438, 26193, 24231, 11, 11773, 27406, 11, 3728, 22901, 11, 44321, 25463, 11, 28030, 11773, 11, 323, 15235, 54192, 7611, 13, 4220, 525, 678, 10916, 5671, 9760, 311, 279, 4401, 323, 23172, 315, 15235, 5942, 382, 17, 13, 3070, 77606, 681, 323, 55473, 95518, 362, 5089, 13348, 315, 279, 1467, 374, 12235, 311, 24392, 1246, 311, 2569, 323, 10146, 15235, 5942, 11, 2670, 279, 990, 315, 89129, 12538, 11, 11773, 23783, 11, 323, 821, 25463, 13, 1096, 14807, 429, 279, 2197, 374, 11658]
+    Text: 'Based on the excerpt provided, this document appears to be from a technical or academic report focused on the governance and verification of artificial intelligence (AI) systems, particularly in the context of international agreements and security concerns. Here are the key points that support this conclusion:\n\n1. **Technical Focus**: The document discusses various technical mechanisms and concepts such as confidential computing, hardware licensing, location verification, enforced encryption, networking hardware, and AI-enabled devices. These are all technical areas relevant to the development and deployment of AI systems.\n\n2. **Governance and Verification**: A significant portion of the text is dedicated to discussing how to govern and verify AI systems, including the use of cryptographic techniques, hardware mechanisms, and data encryption. This indicates that the document is concerned'
+    ✗ DIFFERENT
+  bs=3:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 10916, 476, 14250, 1895, 10735, 389, 279, 34086, 323, 22901, 315, 20443, 11229, 320, 15469, 8, 5942, 11, 7945, 304, 279, 2266, 315, 6489, 19473, 323, 4763, 10520, 13, 5692, 525, 279, 1376, 3501, 429, 1824, 419, 16688, 1447, 16, 13, 3070, 62226, 25806, 95518, 576, 2197, 34334, 5257, 10916, 23783, 323, 18940, 1741, 438, 26193, 24231, 11, 11773, 27406, 11, 3728, 22901, 11, 44321, 25463, 11, 28030, 11773, 11, 323, 15235, 54192, 7611, 13, 4220, 525, 678, 10916, 5671, 9760, 311, 279, 4401, 323, 23172, 315, 15235, 5942, 382, 17, 13, 3070, 77606, 681, 323, 55473, 95518, 362, 5089, 13348, 315, 279, 1467, 374, 12235, 311, 24392, 1246, 311, 2569, 323, 10146, 15235, 5942, 11, 2670, 279, 990, 315, 89129, 12538, 11, 11773, 23783, 11, 323, 821, 25463, 13, 1096, 14807, 429, 279, 2197, 374, 11658]
+    Text: 'Based on the excerpt provided, this document appears to be from a technical or academic report focused on the governance and verification of artificial intelligence (AI) systems, particularly in the context of international agreements and security concerns. Here are the key points that support this conclusion:\n\n1. **Technical Focus**: The document discusses various technical mechanisms and concepts such as confidential computing, hardware licensing, location verification, enforced encryption, networking hardware, and AI-enabled devices. These are all technical areas relevant to the development and deployment of AI systems.\n\n2. **Governance and Verification**: A significant portion of the text is dedicated to discussing how to govern and verify AI systems, including the use of cryptographic techniques, hardware mechanisms, and data encryption. This indicates that the document is concerned'
+    ✗ DIFFERENT
+  bs=4:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 10916, 476, 14250, 1895, 10735, 389, 279, 34086, 323, 22901, 315, 20443, 11229, 320, 15469, 8, 5942, 11, 7945, 304, 279, 2266, 315, 6489, 19473, 323, 4763, 10520, 13, 5692, 525, 279, 1376, 3501, 429, 1824, 419, 16688, 1447, 16, 13, 3070, 62226, 25806, 95518, 576, 2197, 34334, 5257, 10916, 23783, 323, 18940, 1741, 438, 26193, 24231, 11, 11773, 27406, 11, 3728, 22901, 11, 44321, 25463, 11, 28030, 11773, 11, 323, 19734, 13737, 13, 4220, 525, 678, 10916, 5671, 9760, 311, 279, 5666, 323, 4763, 315, 15235, 5942, 382, 17, 13, 3070, 77606, 681, 323, 55473, 95518, 362, 5089, 13348, 315, 279, 1467, 374, 12235, 311, 24392, 1246, 311, 2569, 323, 10146, 15235, 5942, 11, 2670, 279, 990, 315, 89129, 12538, 11, 11773, 23783, 11, 323, 821, 25463, 13, 1096, 14807, 429, 279, 2197, 374, 11658, 448]
+    Text: 'Based on the excerpt provided, this document appears to be from a technical or academic report focused on the governance and verification of artificial intelligence (AI) systems, particularly in the context of international agreements and security concerns. Here are the key points that support this conclusion:\n\n1. **Technical Focus**: The document discusses various technical mechanisms and concepts such as confidential computing, hardware licensing, location verification, enforced encryption, networking hardware, and electrical infrastructure. These are all technical areas relevant to the operation and security of AI systems.\n\n2. **Governance and Verification**: A significant portion of the text is dedicated to discussing how to govern and verify AI systems, including the use of cryptographic techniques, hardware mechanisms, and data encryption. This indicates that the document is concerned with'
+    ✗ DIFFERENT
+  bs=5:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 10916, 476, 14250, 1895, 10735, 389, 279, 34086, 323, 22901, 315, 20443, 11229, 320, 15469, 8, 5942, 11, 7945, 304, 279, 2266, 315, 6489, 19473, 323, 4763, 10520, 13, 5692, 525, 279, 1376, 3501, 429, 1824, 419, 16688, 1447, 16, 13, 3070, 62226, 25806, 95518, 576, 2197, 34334, 5257, 10916, 23783, 323, 18940, 1741, 438, 26193, 24231, 11, 11773, 27406, 11, 3728, 22901, 11, 44321, 25463, 11, 28030, 11773, 11, 323, 15235, 54192, 7611, 13, 4220, 525, 678, 10916, 5671, 9760, 311, 279, 4401, 323, 23172, 315, 15235, 5942, 382, 17, 13, 3070, 77606, 681, 323, 55473, 95518, 362, 5089, 13348, 315, 279, 1467, 374, 12235, 311, 24392, 1246, 311, 2569, 323, 10146, 15235, 5942, 11, 2670, 279, 990, 315, 89129, 12538, 11, 11773, 23783, 11, 323, 821, 25463, 13, 1096, 14807, 429, 279, 2197, 374, 11658]
+    Text: 'Based on the excerpt provided, this document appears to be from a technical or academic report focused on the governance and verification of artificial intelligence (AI) systems, particularly in the context of international agreements and security concerns. Here are the key points that support this conclusion:\n\n1. **Technical Focus**: The document discusses various technical mechanisms and concepts such as confidential computing, hardware licensing, location verification, enforced encryption, networking hardware, and AI-enabled devices. These are all technical areas relevant to the development and deployment of AI systems.\n\n2. **Governance and Verification**: A significant portion of the text is dedicated to discussing how to govern and verify AI systems, including the use of cryptographic techniques, hardware mechanisms, and data encryption. This indicates that the document is concerned'
+    ✗ DIFFERENT
+  bs=8:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 10916, 476, 14250, 1895, 10735, 389, 279, 34086, 323, 22901, 315, 20443, 11229, 320, 15469, 8, 5942, 11, 7945, 304, 279, 2266, 315, 6489, 19473, 323, 4763, 10520, 13, 5692, 525, 279, 1376, 3501, 429, 1824, 419, 16688, 1447, 16, 13, 3070, 62226, 25806, 95518, 576, 2197, 34334, 5257, 10916, 23783, 323, 18940, 1741, 438, 26193, 24231, 11, 11773, 27406, 11, 3728, 22901, 11, 44321, 25463, 11, 28030, 11773, 11, 323, 15235, 54192, 7611, 13, 4220, 525, 678, 10916, 5671, 9760, 311, 279, 4401, 11, 23172, 11, 323, 34086, 315, 15235, 5942, 382, 17, 13, 3070, 77606, 681, 323, 55473, 95518, 362, 5089, 13348, 315, 279, 1467, 374, 12235, 311, 24392, 1246, 311, 5978, 429, 15235, 5942, 525, 48698, 448, 6489, 19473, 323, 1246, 311, 10146, 862, 8733, 13, 1096, 5646, 13347, 1075, 27406, 30856, 11, 3728]
+    Text: 'Based on the excerpt provided, this document appears to be from a technical or academic report focused on the governance and verification of artificial intelligence (AI) systems, particularly in the context of international agreements and security concerns. Here are the key points that support this conclusion:\n\n1. **Technical Focus**: The document discusses various technical mechanisms and concepts such as confidential computing, hardware licensing, location verification, enforced encryption, networking hardware, and AI-enabled devices. These are all technical areas relevant to the development, deployment, and governance of AI systems.\n\n2. **Governance and Verification**: A significant portion of the text is dedicated to discussing how to ensure that AI systems are compliant with international agreements and how to verify their compliance. This includes topics like licensing schemes, location'
+    ✗ DIFFERENT
+  bs=9:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 10916, 476, 14250, 1895, 10735, 389, 279, 34086, 323, 22901, 315, 20443, 11229, 320, 15469, 8, 5942, 11, 7945, 304, 279, 2266, 315, 6489, 19473, 323, 4763, 10520, 13, 5692, 525, 279, 1376, 3501, 429, 1824, 419, 16688, 1447, 16, 13, 3070, 62226, 25806, 95518, 576, 2197, 34334, 5257, 10916, 23783, 323, 18940, 1741, 438, 26193, 24231, 11, 11773, 27406, 11, 3728, 22901, 11, 44321, 25463, 11, 28030, 11773, 11, 323, 15235, 54192, 7611, 13, 4220, 525, 678, 10916, 5671, 9760, 311, 279, 4401, 11, 23172, 11, 323, 34086, 315, 15235, 5942, 382, 17, 13, 3070, 77606, 681, 323, 55473, 95518, 362, 5089, 13348, 315, 279, 1467, 374, 12235, 311, 24392, 1246, 311, 5978, 429, 15235, 5942, 525, 48698, 448, 6489, 19473, 323, 1246, 311, 10146, 862, 8733, 13, 1096, 5646, 13347, 1075, 27406, 30856, 11, 3728]
+    Text: 'Based on the excerpt provided, this document appears to be from a technical or academic report focused on the governance and verification of artificial intelligence (AI) systems, particularly in the context of international agreements and security concerns. Here are the key points that support this conclusion:\n\n1. **Technical Focus**: The document discusses various technical mechanisms and concepts such as confidential computing, hardware licensing, location verification, enforced encryption, networking hardware, and AI-enabled devices. These are all technical areas relevant to the development, deployment, and governance of AI systems.\n\n2. **Governance and Verification**: A significant portion of the text is dedicated to discussing how to ensure that AI systems are compliant with international agreements and how to verify their compliance. This includes topics like licensing schemes, location'
+    ✗ DIFFERENT
+  bs=16:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 10916, 476, 14250, 1895, 10735, 389, 279, 34086, 323, 22901, 315, 20443, 11229, 320, 15469, 8, 5942, 11, 7945, 304, 279, 2266, 315, 6489, 19473, 323, 4763, 10520, 13, 5692, 525, 279, 1376, 3501, 429, 1824, 419, 16688, 1447, 16, 13, 3070, 62226, 25806, 95518, 576, 2197, 34334, 5257, 10916, 23783, 323, 18940, 1741, 438, 26193, 24231, 11, 11773, 27406, 11, 3728, 22901, 11, 44321, 25463, 11, 28030, 11773, 11, 323, 15235, 54192, 7611, 13, 4220, 525, 678, 10916, 5671, 9760, 311, 279, 4401, 11, 23172, 11, 323, 34086, 315, 15235, 5942, 382, 17, 13, 3070, 77606, 681, 323, 55473, 95518, 362, 5089, 13348, 315, 279, 1467, 374, 12235, 311, 24392, 1246, 311, 2569, 323, 10146, 15235, 5942, 11, 2670, 279, 990, 315, 89129, 12538, 11, 11773, 23783, 11, 323, 821, 25463, 13, 1096, 14807, 429, 279]
+    Text: 'Based on the excerpt provided, this document appears to be from a technical or academic report focused on the governance and verification of artificial intelligence (AI) systems, particularly in the context of international agreements and security concerns. Here are the key points that support this conclusion:\n\n1. **Technical Focus**: The document discusses various technical mechanisms and concepts such as confidential computing, hardware licensing, location verification, enforced encryption, networking hardware, and AI-enabled devices. These are all technical areas relevant to the development, deployment, and governance of AI systems.\n\n2. **Governance and Verification**: A significant portion of the text is dedicated to discussing how to govern and verify AI systems, including the use of cryptographic techniques, hardware mechanisms, and data encryption. This indicates that the'
+    ✗ DIFFERENT
+  bs=17:
+    IDs:  [28715, 389, 279, 49465, 3897, 11, 419, 2197, 7952, 311, 387, 504, 264, 10916, 476, 14250, 1895, 10735, 389, 279, 34086, 323, 22901, 315, 20443, 11229, 320, 15469, 8, 5942, 11, 7945, 304, 279, 2266, 315, 6489, 19473, 323, 4763, 10520, 13, 5692, 525, 279, 1376, 3501, 429, 1824, 419, 16688, 1447, 16, 13, 3070, 62226, 25806, 95518, 576, 2197, 34334, 5257, 10916, 23783, 323, 18940, 1741, 438, 26193, 24231, 11, 11773, 27406, 11, 3728, 22901, 11, 44321, 25463, 11, 28030, 11773, 11, 323, 19734, 13737, 13, 4220, 525, 678, 10916, 5671, 9760, 311, 279, 5666, 323, 4763, 315, 15235, 5942, 382, 17, 13, 3070, 77606, 681, 323, 55473, 95518, 362, 5089, 13348, 315, 279, 1467, 374, 12235, 311, 24392, 1246, 311, 2569, 323, 10146, 15235, 5942, 11, 2670, 279, 990, 315, 89129, 12538, 11, 11773, 23783, 11, 323, 821, 25463, 13, 1096, 14807, 429, 279, 2197, 374, 11658, 448]
+    Text: 'Based on the excerpt provided, this document appears to be from a technical or academic report focused on the governance and verification of artificial intelligence (AI) systems, particularly in the context of international agreements and security concerns. Here are the key points that support this conclusion:\n\n1. **Technical Focus**: The document discusses various technical mechanisms and concepts such as confidential computing, hardware licensing, location verification, enforced encryption, networking hardware, and electrical infrastructure. These are all technical areas relevant to the operation and security of AI systems.\n\n2. **Governance and Verification**: A significant portion of the text is dedicated to discussing how to govern and verify AI systems, including the use of cryptographic techniques, hardware mechanisms, and data encryption. This indicates that the document is concerned with'
+    ✗ DIFFERENT
+
+⚠ Element 0 generates DIFFERENT tokens across batch sizes
+
+================================================================================
+WITHIN-HARDWARE BATCH SIZE EFFECTS (PREFILL)
+================================================================================
+
+================================================================================
+REF_0
+================================================================================
+
+Key Vectors (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=2    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=3    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=4    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=5    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=8    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=9    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=16   0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=17   0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+Logprobs (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=2    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=3    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=4    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=5    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=8    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=9    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=16   0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=17   0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+================================================================================
+REF_1
+================================================================================
+
+Key Vectors (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=2    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=3    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=4    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=5    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=8    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=9    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=16   0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=17   0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+Logprobs (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=2    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=3    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=4    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=5    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=8    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=9    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=16   0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=17   0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+================================================================================
+REF_2
+================================================================================
+
+Key Vectors (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=2    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=3    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=4    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=5    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=8    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=9    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=16   0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=17   0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+Logprobs (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=2    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=3    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=4    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=5    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=8    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=9    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=16   0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=17   0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+================================================================================
+AGGREGATE (average across references):
+================================================================================
+
+Key Vectors (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=2    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=3    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=4    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=5    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=8    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=9    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=16   0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=17   0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+Logprobs (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=2    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=3    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=4    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=5    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=8    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=9    0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=16   0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+bs=17   0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00  0.00e+00
+
+Off-diagonal stats:
+  Key vectors - Mean: 0.00e+00, Range: [0.00e+00, 0.00e+00]
+  Logprobs - Mean: 0.00e+00, Range: [0.00e+00, 0.00e+00]
+
+⚠ WARNING: 36/36 comparisons are EXACTLY ZERO
+  All batch sizes produce identical results (single kernel class)
+
+Kernel equivalence classes:
+  Class 1: [1, 2, 3, 4, 5, 8, 9, 16, 17]
+
+Equivalent pairs (will be excluded from cross-hardware signal):
+  (1, 2)
+  (1, 3)
+  (1, 4)
+  (1, 5)
+  (1, 8)
+  (1, 9)
+  (1, 16)
+  (1, 17)
+  (2, 3)
+  (2, 4)
+  (2, 5)
+  (2, 8)
+  (2, 9)
+  (2, 16)
+  (2, 17)
+  (3, 4)
+  (3, 5)
+  (3, 8)
+  (3, 9)
+  (3, 16)
+  (3, 17)
+  (4, 5)
+  (4, 8)
+  (4, 9)
+  (4, 16)
+  (4, 17)
+  (5, 8)
+  (5, 9)
+  (5, 16)
+  (5, 17)
+  (8, 9)
+  (8, 16)
+  (8, 17)
+  (9, 16)
+  (9, 17)
+  (16, 17)
+
+✗ SANITY CHECK FAILED (No variation)
+
+================================================================================
+WITHIN-HARDWARE BATCH SIZE EFFECTS (DECODE)
+================================================================================
+
+================================================================================
+REF_0
+================================================================================
+
+Key Vectors (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  2.16e+01  2.16e+01  2.14e+01  4.86e-01  2.13e+01  2.13e+01  1.81e+01  2.14e+01
+bs=2    2.16e+01  0.00e+00  0.00e+00  5.69e+00  2.16e+01  5.68e+00  5.68e+00  2.56e+01  5.66e+00
+bs=3    2.16e+01  0.00e+00  0.00e+00  5.69e+00  2.16e+01  5.68e+00  5.68e+00  2.56e+01  5.66e+00
+bs=4    2.14e+01  5.69e+00  5.69e+00  0.00e+00  2.14e+01  3.21e-01  3.21e-01  2.55e+01  3.17e-01
+bs=5    4.86e-01  2.16e+01  2.16e+01  2.14e+01  0.00e+00  2.13e+01  2.13e+01  1.81e+01  2.14e+01
+bs=8    2.13e+01  5.68e+00  5.68e+00  3.21e-01  2.13e+01  0.00e+00  0.00e+00  2.55e+01  3.47e-01
+bs=9    2.13e+01  5.68e+00  5.68e+00  3.21e-01  2.13e+01  0.00e+00  0.00e+00  2.55e+01  3.47e-01
+bs=16   1.81e+01  2.56e+01  2.56e+01  2.55e+01  1.81e+01  2.55e+01  2.55e+01  0.00e+00  2.55e+01
+bs=17   2.14e+01  5.66e+00  5.66e+00  3.17e-01  2.14e+01  3.47e-01  3.47e-01  2.55e+01  0.00e+00
+
+Logprobs (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00       inf       inf       inf  2.49e-01       inf       inf       inf       inf
+bs=2         inf  0.00e+00  0.00e+00       inf       inf       inf       inf       inf       inf
+bs=3         inf  0.00e+00  0.00e+00       inf       inf       inf       inf       inf       inf
+bs=4         inf       inf       inf  0.00e+00       inf  1.31e-01  1.31e-01       inf  2.49e-01
+bs=5    2.49e-01       inf       inf       inf  0.00e+00       inf       inf       inf       inf
+bs=8         inf       inf       inf  1.31e-01       inf  0.00e+00  0.00e+00       inf  2.81e-01
+bs=9         inf       inf       inf  1.31e-01       inf  0.00e+00  0.00e+00       inf  2.81e-01
+bs=16        inf       inf       inf       inf       inf       inf       inf  0.00e+00       inf
+bs=17        inf       inf       inf  2.49e-01       inf  2.81e-01  2.81e-01       inf  0.00e+00
+
+================================================================================
+REF_1
+================================================================================
+
+Key Vectors (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  2.22e+01  2.22e+01  2.21e+01  2.10e+01  2.19e+01  2.19e+01  2.65e+01  2.70e+01
+bs=2    2.22e+01  0.00e+00  0.00e+00  6.51e+00  1.87e+01  6.60e+00  6.60e+00  2.63e+01  2.68e+01
+bs=3    2.22e+01  0.00e+00  0.00e+00  6.51e+00  1.87e+01  6.60e+00  6.60e+00  2.63e+01  2.68e+01
+bs=4    2.21e+01  6.51e+00  6.51e+00  0.00e+00  1.96e+01  2.00e+00  2.00e+00  2.58e+01  2.65e+01
+bs=5    2.10e+01  1.87e+01  1.87e+01  1.96e+01  0.00e+00  1.95e+01  1.95e+01  2.36e+01  2.86e+01
+bs=8    2.19e+01  6.60e+00  6.60e+00  2.00e+00  1.95e+01  0.00e+00  0.00e+00  2.57e+01  2.63e+01
+bs=9    2.19e+01  6.60e+00  6.60e+00  2.00e+00  1.95e+01  0.00e+00  0.00e+00  2.57e+01  2.63e+01
+bs=16   2.65e+01  2.63e+01  2.63e+01  2.58e+01  2.36e+01  2.57e+01  2.57e+01  0.00e+00  3.28e+01
+bs=17   2.70e+01  2.68e+01  2.68e+01  2.65e+01  2.86e+01  2.63e+01  2.63e+01  3.28e+01  0.00e+00
+
+Logprobs (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00       inf       inf       inf       inf       inf       inf       inf       inf
+bs=2         inf  0.00e+00  0.00e+00       inf       inf       inf       inf       inf       inf
+bs=3         inf  0.00e+00  0.00e+00       inf       inf       inf       inf       inf       inf
+bs=4         inf       inf       inf  0.00e+00       inf  1.13e+00  1.13e+00       inf       inf
+bs=5         inf       inf       inf       inf  0.00e+00       inf       inf       inf       inf
+bs=8         inf       inf       inf  1.18e+00       inf  0.00e+00  0.00e+00       inf       inf
+bs=9         inf       inf       inf  1.18e+00       inf  0.00e+00  0.00e+00       inf       inf
+bs=16        inf       inf       inf       inf       inf       inf       inf  0.00e+00       inf
+bs=17        inf       inf       inf       inf       inf       inf       inf       inf  0.00e+00
+
+================================================================================
+REF_2
+================================================================================
+
+Key Vectors (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  2.49e+01  2.49e+01  2.34e+01  2.48e+01  2.74e+01  2.74e+01  2.40e+01  2.34e+01
+bs=2    2.49e+01  0.00e+00  0.00e+00  2.33e+01  2.73e-01  2.69e+01  2.69e+01  1.93e+01  2.33e+01
+bs=3    2.49e+01  0.00e+00  0.00e+00  2.33e+01  2.73e-01  2.69e+01  2.69e+01  1.93e+01  2.33e+01
+bs=4    2.34e+01  2.33e+01  2.33e+01  0.00e+00  2.33e+01  3.20e+01  3.20e+01  2.55e+01  2.95e-01
+bs=5    2.48e+01  2.73e-01  2.73e-01  2.33e+01  0.00e+00  2.69e+01  2.69e+01  1.93e+01  2.33e+01
+bs=8    2.74e+01  2.69e+01  2.69e+01  3.20e+01  2.69e+01  0.00e+00  0.00e+00  2.45e+01  3.20e+01
+bs=9    2.74e+01  2.69e+01  2.69e+01  3.20e+01  2.69e+01  0.00e+00  0.00e+00  2.45e+01  3.20e+01
+bs=16   2.40e+01  1.93e+01  1.93e+01  2.55e+01  1.93e+01  2.45e+01  2.45e+01  0.00e+00  2.56e+01
+bs=17   2.34e+01  2.33e+01  2.33e+01  2.95e-01  2.33e+01  3.20e+01  3.20e+01  2.56e+01  0.00e+00
+
+Logprobs (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00       inf       inf       inf       inf       inf       inf       inf       inf
+bs=2         inf  0.00e+00  0.00e+00       inf  1.75e-01       inf       inf       inf       inf
+bs=3         inf  0.00e+00  0.00e+00       inf  1.75e-01       inf       inf       inf       inf
+bs=4         inf       inf       inf  0.00e+00       inf       inf       inf       inf  2.30e-01
+bs=5         inf  1.75e-01  1.75e-01       inf  0.00e+00       inf       inf       inf       inf
+bs=8         inf       inf       inf       inf       inf  0.00e+00  0.00e+00       inf       inf
+bs=9         inf       inf       inf       inf       inf  0.00e+00  0.00e+00       inf       inf
+bs=16        inf       inf       inf       inf       inf       inf       inf  0.00e+00       inf
+bs=17        inf       inf       inf  1.99e-01       inf       inf       inf       inf  0.00e+00
+
+================================================================================
+AGGREGATE (average across references):
+================================================================================
+
+Key Vectors (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00  2.29e+01  2.29e+01  2.23e+01  1.54e+01  2.35e+01  2.35e+01  2.29e+01  2.39e+01
+bs=2    2.29e+01  0.00e+00  0.00e+00  1.18e+01  1.35e+01  1.31e+01  1.31e+01  2.37e+01  1.86e+01
+bs=3    2.29e+01  0.00e+00  0.00e+00  1.18e+01  1.35e+01  1.31e+01  1.31e+01  2.37e+01  1.86e+01
+bs=4    2.23e+01  1.18e+01  1.18e+01  0.00e+00  2.14e+01  1.14e+01  1.14e+01  2.56e+01  9.04e+00
+bs=5    1.54e+01  1.35e+01  1.35e+01  2.14e+01  0.00e+00  2.26e+01  2.26e+01  2.03e+01  2.44e+01
+bs=8    2.35e+01  1.31e+01  1.31e+01  1.14e+01  2.26e+01  0.00e+00  0.00e+00  2.52e+01  1.96e+01
+bs=9    2.35e+01  1.31e+01  1.31e+01  1.14e+01  2.26e+01  0.00e+00  0.00e+00  2.52e+01  1.96e+01
+bs=16   2.29e+01  2.37e+01  2.37e+01  2.56e+01  2.03e+01  2.52e+01  2.52e+01  0.00e+00  2.79e+01
+bs=17   2.39e+01  1.86e+01  1.86e+01  9.04e+00  2.44e+01  1.96e+01  1.96e+01  2.79e+01  0.00e+00
+
+Logprobs (mean L2 distance):
+       bs=  1 bs=  2 bs=  3 bs=  4 bs=  5 bs=  8 bs=  9 bs= 16 bs= 17 
+bs=1    0.00e+00       inf       inf       inf       inf       inf       inf       inf       inf
+bs=2         inf  0.00e+00  0.00e+00       inf       inf       inf       inf       inf       inf
+bs=3         inf  0.00e+00  0.00e+00       inf       inf       inf       inf       inf       inf
+bs=4         inf       inf       inf  0.00e+00       inf       inf       inf       inf       inf
+bs=5         inf       inf       inf       inf  0.00e+00       inf       inf       inf       inf
+bs=8         inf       inf       inf       inf       inf  0.00e+00  0.00e+00       inf       inf
+bs=9         inf       inf       inf       inf       inf  0.00e+00  0.00e+00       inf       inf
+bs=16        inf       inf       inf       inf       inf       inf       inf  0.00e+00       inf
+bs=17        inf       inf       inf       inf       inf       inf       inf       inf  0.00e+00
+
+Off-diagonal stats:
+  Key vectors - Mean: 1.81e+01, Range: [0.00e+00, 2.79e+01]
+  Logprobs - Mean: 0.00e+00, Range: [0.00e+00, inf]
+
+⚠ NOTE: 2/36 comparisons are equivalent (< 1e-09)
+
+Kernel equivalence classes:
+  Class 1: [1]
+  Class 2: [2, 3]
+  Class 3: [4]
+  Class 4: [5]
+  Class 5: [8, 9]
+  Class 6: [16]
+  Class 7: [17]
+
+Equivalent pairs (will be excluded from cross-hardware signal):
+  (2, 3)
+  (8, 9)
+
+✗ SANITY CHECK FAILED (No variation)
+
+✓ Saved to: /workspace/experiments/decode_20251126_164754.json
+
+Next step: Copy to verifier machine, set TEACHER_FORCING=True

@@ -1,0 +1,104 @@
+================================================================================
+TENSOR PARALLELISM DETECTABILITY EXPERIMENT
+================================================================================
+
+Hostname: 63ddf43f81b3
+GPUs: 4x NVIDIA A100-SXM4-80GB
+vLLM: 0.11.2
+Model: Qwen/Qwen3-14B
+TP sizes to test: [1, 2, 4]
+Mode: LOCAL
+
+Loading tokenizer...
+Found 1 PDF(s)
+  Loading: /workspace/Verification-for-International-AI-Governance.pdf
+Total source tokens: 120215
+Prompt structure: 33 prefix + 10000 snippet + 34 suffix = 10067 tokens
+Created 3 prompts
+
+================================================================================
+TENSOR PARALLEL = 1
+================================================================================
+Loading model with TP=1...
+
+================================================================================
+REPRODUCIBILITY TEST
+================================================================================
+Running same prompt 5 times...
+  Run 1: done
+  Run 2: done
+  Run 3: done
+  Run 4: done
+  Run 5: done
+
+✓ REPRODUCIBILITY TEST PASSED
+  All 5 runs identical
+  Max logprob difference: 0.00e+00
+  ref_0: 3 positions captured
+  ref_1: 3 positions captured
+  ref_2: 3 positions captured
+
+================================================================================
+TENSOR PARALLEL = 2
+================================================================================
+Loading model with TP=2...
+  ref_0: 3 positions captured
+  ref_1: 3 positions captured
+  ref_2: 3 positions captured
+
+================================================================================
+TENSOR PARALLEL = 4
+================================================================================
+Loading model with TP=4...
+  ref_0: 3 positions captured
+  ref_1: 3 positions captured
+  ref_2: 3 positions captured
+
+================================================================================
+WITHIN-HARDWARE TP COMPARISON (PREFILL)
+================================================================================
+
+--- ref_0 ---
+
+Logprobs (L2 distance):
+       TP=  1 TP=  2 TP=  4
+TP=1    0.00e+00   3.76e-01   3.69e-01
+TP=2    3.76e-01   0.00e+00   1.75e-01
+TP=4    3.69e-01   1.75e-01   0.00e+00
+
+--- ref_1 ---
+
+Logprobs (L2 distance):
+       TP=  1 TP=  2 TP=  4
+TP=1    0.00e+00   3.17e-01   1.83e-01
+TP=2    3.17e-01   0.00e+00   2.12e-01
+TP=4    1.83e-01   2.12e-01   0.00e+00
+
+--- ref_2 ---
+
+Logprobs (L2 distance):
+       TP=  1 TP=  2 TP=  4
+TP=1    0.00e+00   2.86e-01   3.68e-01
+TP=2    2.86e-01   0.00e+00   4.21e-01
+TP=4    3.68e-01   4.21e-01   0.00e+00
+
+================================================================================
+AGGREGATE (average across references):
+================================================================================
+
+Logprobs (L2 distance):
+       TP=  1 TP=  2 TP=  4
+TP=1    0.00e+00   3.26e-01   3.07e-01
+TP=2    3.26e-01   0.00e+00   2.69e-01
+TP=4    3.07e-01   2.69e-01   0.00e+00
+
+Diagonal (same TP): 0.00e+00
+Off-diagonal (different TP): 3.01e-01
+SNR: inf
+
+Saved to: /workspace/experiments/tp_experiment_20251126_234742.json
+
+For cross-hardware comparison:
+  1. Copy /workspace/experiments/tp_experiment_20251126_234742.json to second machine
+  2. Set CROSS_HARDWARE_MODE = True
+  3. Set REFERENCE_FILE = '<path to json>'

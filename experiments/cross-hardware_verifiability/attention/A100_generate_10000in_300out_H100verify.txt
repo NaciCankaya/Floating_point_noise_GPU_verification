@@ -1,0 +1,159 @@
+================================================================================
+ATTENTION IMPLEMENTATION CROSS-HARDWARE EXPERIMENT
+================================================================================
+GPU: NVIDIA H100 NVL
+Hostname: d013d4f0b0a1
+Found 1 PDF(s)
+  Loading: /workspace/Verification-for-International-AI-Governance.pdf
+Total source tokens: 120215
+Prompt structure: 33 prefix + 10000 snippet + 34 suffix = 10067 tokens
+
+Created 6 prompts
+
+================================================================================
+VERIFICATION MODE
+================================================================================
+Loaded reference: A100_generate_10000in_300out.json
+
+Environment comparison:
+  Generator GPU: NVIDIA A100-SXM4-80GB
+  Verifier GPU:  NVIDIA H100 NVL
+  torch_version: 2.8.0+cu128 vs 2.8.0+cu128 ✓
+  transformers_version: 4.57.3 vs 4.57.3 ✓
+  cuda_version: 12.8 vs 12.8 ✓
+
+--- Verifying with: eager ---
+Loading model with attention: eager
+  Claimed eager:
+    ref_0: done
+    ref_1: done
+    ref_2: done
+    ref_3: done
+    ref_4: done
+    ref_5: done
+  Claimed sdpa:
+    ref_0: done
+    ref_1: done
+    ref_2: done
+    ref_3: done
+    ref_4: done
+    ref_5: done
+  Claimed flash_attention_2:
+    ref_0: done
+    ref_1: done
+    ref_2: done
+    ref_3: done
+    ref_4: done
+    ref_5: done
+
+--- Verifying with: sdpa ---
+Loading model with attention: sdpa
+  Claimed eager:
+    ref_0: done
+    ref_1: done
+    ref_2: done
+    ref_3: done
+    ref_4: done
+    ref_5: done
+  Claimed sdpa:
+    ref_0: done
+    ref_1: done
+    ref_2: done
+    ref_3: done
+    ref_4: done
+    ref_5: done
+  Claimed flash_attention_2:
+    ref_0: done
+    ref_1: done
+    ref_2: done
+    ref_3: done
+    ref_4: done
+    ref_5: done
+
+--- Verifying with: flash_attention_2 ---
+Loading model with attention: flash_attention_2
+  Claimed eager:
+    ref_0: done
+    ref_1: done
+    ref_2: done
+    ref_3: done
+    ref_4: done
+    ref_5: done
+  Claimed sdpa:
+    ref_0: done
+    ref_1: done
+    ref_2: done
+    ref_3: done
+    ref_4: done
+    ref_5: done
+  Claimed flash_attention_2:
+    ref_0: done
+    ref_1: done
+    ref_2: done
+    ref_3: done
+    ref_4: done
+    ref_5: done
+
+================================================================================
+CROSS-HARDWARE VERIFICATION (PREFILL)
+================================================================================
+
+AGGREGATE (average across references):
+  Rows = claimed attention, Cols = verified attention
+
+Key Vectors (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   8.51e-01   1.27e+01   1.27e+01
+      sdpa   1.29e+01   7.23e-01   6.87e-01
+flash_attention_2   1.30e+01   5.94e-01   8.34e-01
+
+Logprobs (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   6.88e-01   3.83e+00   3.79e+00
+      sdpa   7.83e+00   2.45e-01   1.98e-01
+flash_attention_2   7.86e+00   2.24e-01   1.78e-01
+
+================================================================================
+SNR ANALYSIS
+================================================================================
+
+Diagonal (baseline = cross-hardware, same attention):
+  Key vectors: 8.03e-01
+  Logprobs: 3.70e-01
+
+Off-diagonal (different attention):
+  Key vectors - Mean: 8.78e+00, SNR: 10.94×
+  Logprobs - Mean: 3.95e+00, SNR: 10.69×
+
+================================================================================
+CROSS-HARDWARE VERIFICATION (DECODE)
+================================================================================
+
+AGGREGATE (average across references):
+  Rows = claimed attention, Cols = verified attention
+
+Key Vectors (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   1.39e+00   2.67e+00   2.68e+00
+      sdpa   2.52e+00   4.45e-01   3.90e-01
+flash_attention_2   3.84e+00   3.34e-01   3.72e-01
+
+Logprobs (L2 distance):
+                eager       sdpa flash_attention_2
+     eager   3.68e-01   1.24e+00   1.26e+00
+      sdpa   1.13e+00   1.22e-01   1.01e-01
+flash_attention_2   1.41e+00   1.18e-01   1.27e-01
+
+================================================================================
+SNR ANALYSIS
+================================================================================
+
+Diagonal (baseline = cross-hardware, same attention):
+  Key vectors: 7.35e-01
+  Logprobs: 2.06e-01
+
+Off-diagonal (different attention):
+  Key vectors - Mean: 2.07e+00, SNR: 2.82×
+  Logprobs - Mean: 8.77e-01, SNR: 4.26×
+
+Saved to: /workspace/experiments/attn_verify_20251126_195646.json
