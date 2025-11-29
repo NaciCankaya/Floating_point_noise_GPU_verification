@@ -1,6 +1,6 @@
 # Prefill vs Decode: Batch Size Detectability
-This experiment tests whether a verifier using prefill (parallel forward pass) can detect the batch size used during decode (autoregressive generation) by comparing key vectors and logprobs. While batch size does affect activations within each mode (decode-decode or prefill-prefill comparisons show clear differences), the baseline noise from the decode-vs-prefill mode difference (~0.2-1.0 L2) overwhelms the batch size signal, yielding SNR ≈ 1 Conclusion: Prefill cannot reliably verify decode batch size—the inference mode difference is the dominant source of variation.
+This experiment tests whether a verifier using prefill (parallel forward pass) can detect the batch size used during decode (autoregressive generation) by comparing key vectors and logprobs. 
 
-You will see slightly different SNR values for repetitions of this experiment for different configurations (sequence lengths, tested batch sizes etc.). But they will all be around 1, meaning that the baseline noise across modes exceeds or hides whatever signal you would get from batch size difference.
 
-Lesson: Floating point forensics needs to maintain the same computational mode. A result that is to be expected, since detecting computational methods is what this forensics is all about, after all.
+## Critical correction
+I found that for prefill inference and realistic sequence lengths (>300tokens) batch size did not affect numerics in the first batch element at all. Of course, this means that this kind of verification was doomed from the start. It might still be worth trying other differences in production methods. For example: Can we detect quantization format (AWQ vs. QPTQ, for example) or attention mode (eager vs. FA2) or tensor parallelism with prefill re-execution?
