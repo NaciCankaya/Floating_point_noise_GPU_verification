@@ -7,5 +7,5 @@ Using vLLM to simulate realistic production inference, optimized for performance
 
 ## **Results?**
 - Deterministic for all TP ranks, for GLM4.6, Qwen3 30B A3, Deepseek v2 coder lite, Qwen2.5 7B, long and short context.
-- NOT deterministic for Kimi K2 thinking. Tested if MLA was the reason by using DS v2 coder lite ->No. Tested v2 in INT4 -> YES. 
+- NOT deterministic for Kimi K2 thinking. This prompted an investigation to find the root cause. Tested if MLA was the reason by using DS v2 coder lite ->No. Tested v2 in INT4 -> YES. 
 - This result motivated my number format experiments, to be found in Floating_point_noise_GPU_verification/experiments/number_format.
