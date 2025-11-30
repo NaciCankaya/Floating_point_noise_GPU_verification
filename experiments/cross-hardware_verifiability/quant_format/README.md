@@ -36,11 +36,6 @@ inf distance where generated token sequences split apart
 For sequence generation runs that did not split apart. Diverging decode runs obviosly give inf in off-diagonals
 
 
- ### Implications
-
- Difference between GPTQ and AQW is much larger than within AWQ with or without the Marlin kernel. One is qualitatively different maths, the other is different kernel selection for basically the same maths.
-
-
  ## Results (A100 generation, H100 re-execution)
 ```
 Pair                               Signal      Noise      SNR
@@ -53,3 +48,7 @@ gptq_marlin_vs_gptq              1.25e-01   9.91e-02     1.26×
 awq_vs_awq_marlin                3.02e-02   3.17e-02     0.95×
 ```
 In short: QPTQ vs. AWQ is stronger signal than cross-hardware-noise baseline, but Marlin kernel on/off is too subtle and only evident when re-executing with identical hardware.
+
+ ## Implications
+
+ Difference between GPTQ and AQW is much larger than within AWQ with or without the Marlin kernel. One is qualitatively different maths, the other is different kernel selection for basically the same maths.
