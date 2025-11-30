@@ -1,0 +1,319 @@
+================================================================================
+QUANTIZATION FORMAT DETECTION EXPERIMENT - GENERATION
+================================================================================
+
+System: 637c3157512e
+GPU: NVIDIA A100-SXM4-80GB
+vLLM: 0.11.2
+PyTorch: 2.9.1+cu128
+CUDA: 12.8
+
+Configurations:
+  awq: Qwen/Qwen3-8B-AWQ (quant=awq)
+  awq_marlin: Qwen/Qwen3-8B-AWQ (quant=awq_marlin)
+  gptq_marlin: AlphaGaO/Qwen3-8B-GPTQ (quant=gptq_marlin)
+
+Loading first model to create prompts...
+Loading model: Qwen/Qwen3-8B-AWQ
+  Quantization: awq
+  Dtype: float16
+Found 1 PDF(s)
+  Loading: /workspace/Verification-for-International-AI-Governance.pdf
+Total source tokens: 120215
+Prompt structure: 33 prefix + 8000 snippet + 34 suffix = 8067 tokens
+Created 4 prompts
+
+
+================================================================================
+REPRODUCIBILITY CHECK (NOISE FLOOR MEASUREMENT)
+================================================================================
+Running 3 identical inference passes per config
+Measures within-format variance from atomics/non-deterministic kernels.
+
+
+--- Checking: awq ---
+Loading model: Qwen/Qwen3-8B-AWQ
+  Quantization: awq
+  Dtype: float16
+  Run 1: 100 tokens
+  Run 2: 100 tokens
+  Run 3: 100 tokens
+
+  Pairwise distances:
+    Run 1 vs 2: decode=0.00e+00, prefill=0.00e+00
+    Run 1 vs 3: decode=0.00e+00, prefill=0.00e+00
+    Run 2 vs 3: decode=0.00e+00, prefill=0.00e+00
+
+  awq noise floor: DETERMINISTIC (decode=0.00e+00)
+
+--- Checking: awq_marlin ---
+Loading model: Qwen/Qwen3-8B-AWQ
+  Quantization: awq_marlin
+  Dtype: float16
+  Run 1: 100 tokens
+  Run 2: 100 tokens
+  Run 3: 100 tokens
+
+  Pairwise distances:
+    Run 1 vs 2: decode=0.00e+00, prefill=0.00e+00
+    Run 1 vs 3: decode=0.00e+00, prefill=0.00e+00
+    Run 2 vs 3: decode=0.00e+00, prefill=0.00e+00
+
+  awq_marlin noise floor: DETERMINISTIC (decode=0.00e+00)
+
+--- Checking: gptq_marlin ---
+Loading model: AlphaGaO/Qwen3-8B-GPTQ
+  Quantization: gptq_marlin
+  Dtype: float16
+  Run 1: 100 tokens
+  Run 2: 100 tokens
+  Run 3: 100 tokens
+
+  Pairwise distances:
+    Run 1 vs 2: decode=0.00e+00, prefill=0.00e+00
+    Run 1 vs 3: decode=0.00e+00, prefill=0.00e+00
+    Run 2 vs 3: decode=0.00e+00, prefill=0.00e+00
+
+  gptq_marlin noise floor: DETERMINISTIC (decode=0.00e+00)
+
+----------------------------------------
+NOISE FLOOR SUMMARY
+----------------------------------------
+  awq: decode=0.00e+00, prefill=0.00e+00
+  awq_marlin: decode=0.00e+00, prefill=0.00e+00
+  gptq_marlin: decode=0.00e+00, prefill=0.00e+00
+
+Cross-format signal must exceed this noise floor to be detectable.
+================================================================================
+
+================================================================================
+GENERATION MODE
+================================================================================
+
+--- Config: awq ---
+Loading model: Qwen/Qwen3-8B-AWQ
+  Quantization: awq
+  Dtype: float16
+  ref_0: 100 tokens
+    -> <think>
+Okay, let me try to figure out what kind of document this is and what it's...
+  ref_1: 100 tokens
+    -> <think>
+Okay, let me try to figure out what kind of document this is and what it's...
+  ref_2: 100 tokens
+    -> <think>
+Okay, let me try to figure out what kind of document this is and what it's...
+  ref_3: 100 tokens
+    -> <think>
+Okay, let's tackle this query. The user provided a lengthy excerpt from a document and...
+
+--- Config: awq_marlin ---
+Loading model: Qwen/Qwen3-8B-AWQ
+  Quantization: awq_marlin
+  Dtype: float16
+  ref_0: 100 tokens
+    -> <think>
+Okay, let me try to figure out what kind of document this is and what it's...
+  ref_1: 100 tokens
+    -> <think>
+Okay, let me try to figure out what kind of document this is and what it's...
+  ref_2: 100 tokens
+    -> <think>
+Okay, let me try to figure out what kind of document this is and what it's...
+  ref_3: 100 tokens
+    -> <think>
+Okay, let's tackle this query. The user provided a lengthy excerpt from a document and...
+
+--- Config: gptq_marlin ---
+Loading model: AlphaGaO/Qwen3-8B-GPTQ
+  Quantization: gptq_marlin
+  Dtype: float16
+  ref_0: 100 tokens
+    -> <think>
+Okay, let's see. The user provided an excerpt from a document and wants to know...
+  ref_1: 100 tokens
+    -> <think>
+Okay, let's see. The user provided an excerpt from a document and wants to know...
+  ref_2: 100 tokens
+    -> <think>
+Okay, let me try to figure out what kind of document this is and what it's...
+  ref_3: 100 tokens
+    -> <think>
+Okay, let's see. The user provided an excerpt from a document and wants to know...
+
+================================================================================
+TOKEN GENERATION CONSISTENCY CHECK
+================================================================================
+
+--- ref_0 ---
+  awq:
+    Tokens: 100
+    First 30: "<think>\nOkay, let me try to figure out what kind of document this is and what it's about. The user provided an excerpt from a document"...
+    ✓
+  awq_marlin:
+    Tokens: 100
+    First 30: "<think>\nOkay, let me try to figure out what kind of document this is and what it's about. The user provided an excerpt from a document"...
+    ✓
+  gptq_marlin:
+    Tokens: 100
+    First 30: "<think>\nOkay, let's see. The user provided an excerpt from a document and wants to know what type of document it is and its subject matter"...
+    ✗ DIFFERENT
+
+--- ref_1 ---
+  awq:
+    Tokens: 100
+    First 30: "<think>\nOkay, let me try to figure out what kind of document this is and what it's about. The user provided a long excerpt from a"...
+    ✓
+  awq_marlin:
+    Tokens: 100
+    First 30: "<think>\nOkay, let me try to figure out what kind of document this is and what it's about. The user provided a long excerpt from a"...
+    ✓
+  gptq_marlin:
+    Tokens: 100
+    First 30: "<think>\nOkay, let's see. The user provided an excerpt from a document and wants to know what type of document it is and its subject matter"...
+    ✗ DIFFERENT
+
+--- ref_2 ---
+  awq:
+    Tokens: 100
+    First 30: "<think>\nOkay, let me try to figure out what kind of document this is and what it's about. The user provided an excerpt from a document"...
+    ✓
+  awq_marlin:
+    Tokens: 100
+    First 30: "<think>\nOkay, let me try to figure out what kind of document this is and what it's about. The user provided an excerpt from a document"...
+    ✓
+  gptq_marlin:
+    Tokens: 100
+    First 30: "<think>\nOkay, let me try to figure out what kind of document this is and what it's about. The user provided an excerpt from a document"...
+    ✗ DIFFERENT
+
+--- ref_3 ---
+  awq:
+    Tokens: 100
+    First 30: "<think>\nOkay, let's tackle this query. The user provided a lengthy excerpt from a document and is asking about the type of document and its subject"...
+    ✓
+  awq_marlin:
+    Tokens: 100
+    First 30: "<think>\nOkay, let's tackle this query. The user provided a lengthy excerpt from a document and is asking about the type of document and its subject"...
+    ✓
+  gptq_marlin:
+    Tokens: 100
+    First 30: "<think>\nOkay, let's see. The user provided an excerpt from a document and wants to know what type of document it is and its subject matter"...
+    ✗ DIFFERENT
+
+================================================================================
+WITHIN-HARDWARE QUANTIZATION EFFECTS (PREFILL)
+================================================================================
+
+--- ref_0 ---
+
+Logprobs (L2 distance):
+                       awq   awq_marlin  gptq_marlin
+         awq     0.00e+00     3.50e-02     4.75e+00
+  awq_marlin     3.50e-02     0.00e+00     4.73e+00
+ gptq_marlin     4.75e+00     4.73e+00     0.00e+00
+
+--- ref_1 ---
+
+Logprobs (L2 distance):
+                       awq   awq_marlin  gptq_marlin
+         awq     0.00e+00     4.16e-02     3.97e+00
+  awq_marlin     4.16e-02     0.00e+00     3.95e+00
+ gptq_marlin     3.81e+00     3.79e+00     0.00e+00
+
+--- ref_2 ---
+
+Logprobs (L2 distance):
+                       awq   awq_marlin  gptq_marlin
+         awq     0.00e+00     3.82e-02     4.01e+00
+  awq_marlin     3.82e-02     0.00e+00     4.00e+00
+ gptq_marlin     3.87e+00     3.87e+00     0.00e+00
+
+--- ref_3 ---
+
+Logprobs (L2 distance):
+                       awq   awq_marlin  gptq_marlin
+         awq     0.00e+00     4.46e-02     4.28e+00
+  awq_marlin     4.46e-02     0.00e+00     4.30e+00
+ gptq_marlin     4.28e+00     4.30e+00     0.00e+00
+
+================================================================================
+AGGREGATE (average across references):
+================================================================================
+                       awq   awq_marlin  gptq_marlin
+         awq     0.00e+00     3.99e-02     4.25e+00
+  awq_marlin     3.99e-02     0.00e+00     4.25e+00
+ gptq_marlin     4.18e+00     4.17e+00     0.00e+00
+
+Off-diagonal stats:
+  Mean: 2.82e+00
+  Range: [3.99e-02, 4.25e+00]
+
+Kernel equivalence classes:
+  Class 1: ['awq']
+  Class 2: ['awq_marlin']
+  Class 3: ['gptq_marlin']
+
+================================================================================
+WITHIN-HARDWARE QUANTIZATION EFFECTS (DECODE)
+================================================================================
+
+--- ref_0 ---
+
+Logprobs (L2 distance):
+                       awq   awq_marlin  gptq_marlin
+         awq     0.00e+00     2.73e-02          inf
+  awq_marlin     2.73e-02     0.00e+00          inf
+ gptq_marlin          inf          inf     0.00e+00
+
+--- ref_1 ---
+
+Logprobs (L2 distance):
+                       awq   awq_marlin  gptq_marlin
+         awq     0.00e+00     2.13e-02     5.63e+00
+  awq_marlin     2.13e-02     0.00e+00     5.63e+00
+ gptq_marlin     5.63e+00     5.63e+00     0.00e+00
+
+--- ref_2 ---
+
+Logprobs (L2 distance):
+                       awq   awq_marlin  gptq_marlin
+         awq     0.00e+00     3.21e-02          inf
+  awq_marlin     3.21e-02     0.00e+00          inf
+ gptq_marlin          inf          inf     0.00e+00
+
+--- ref_3 ---
+
+Logprobs (L2 distance):
+                       awq   awq_marlin  gptq_marlin
+         awq     0.00e+00     3.19e-02     6.13e+00
+  awq_marlin     3.19e-02     0.00e+00     6.15e+00
+ gptq_marlin     6.13e+00     6.15e+00     0.00e+00
+
+================================================================================
+AGGREGATE (average across references):
+================================================================================
+                       awq   awq_marlin  gptq_marlin
+         awq     0.00e+00     2.82e-02          inf
+  awq_marlin     2.82e-02     0.00e+00          inf
+ gptq_marlin          inf          inf     0.00e+00
+
+Off-diagonal stats:
+  Mean: 2.82e-02
+  Range: [2.82e-02, 2.82e-02]
+
+Kernel equivalence classes:
+  Class 1: ['awq']
+  Class 2: ['awq_marlin']
+  Class 3: ['gptq_marlin']
+
+✓ Generation results saved to: /workspace/experiments/quant_generate_20251130_092450.json
+
+Next step: Copy /workspace/experiments/quant_generate_20251130_092450.json to verifier machine
+Then set TEACHER_FORCING = True and REFERENCE_FILE = '<path>'
+File size: 1.5 MB
+
+================================================================================
+EXPERIMENT COMPLETE
+================================================================================
+

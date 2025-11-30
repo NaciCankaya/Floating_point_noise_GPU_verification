@@ -1,0 +1,797 @@
+{
+  "metadata": {
+    "reference_gpu": "NVIDIA A100-SXM4-80GB",
+    "verifier_gpu": "NVIDIA H100 80GB HBM3",
+    "reference_file": "INT4_A100_generation.json",
+    "reference_environment": {
+      "hostname": "637c3157512e",
+      "platform": "Linux-5.15.0-160-generic-x86_64-with-glibc2.39",
+      "python_version": "3.12.11",
+      "torch_version": "2.9.1+cu128",
+      "cuda_version": "12.8",
+      "cudnn_version": "91002",
+      "transformers_version": "4.57.3",
+      "numpy_version": "2.1.2",
+      "gpu_name": "NVIDIA A100-SXM4-80GB",
+      "gpu_count": 1,
+      "vllm_version": "0.11.2"
+    },
+    "verifier_environment": {
+      "hostname": "0ce493a31677",
+      "platform": "Linux-5.15.0-157-generic-x86_64-with-glibc2.39",
+      "python_version": "3.12.11",
+      "torch_version": "2.9.0+cu128",
+      "cuda_version": "12.8",
+      "cudnn_version": "91002",
+      "transformers_version": "4.57.3",
+      "numpy_version": "2.1.2",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "gpu_count": 1,
+      "vllm_version": "0.11.2"
+    },
+    "environment_validation": {
+      "valid": false,
+      "mismatches": [
+        [
+          "torch_version",
+          "2.9.1+cu128",
+          "2.9.0+cu128"
+        ]
+      ]
+    },
+    "model_configs": {
+      "awq": {
+        "model_name": "Qwen/Qwen3-8B-AWQ",
+        "quantization": "awq",
+        "dtype": "float16"
+      },
+      "awq_marlin": {
+        "model_name": "Qwen/Qwen3-8B-AWQ",
+        "quantization": "awq_marlin",
+        "dtype": "float16"
+      },
+      "gptq_marlin": {
+        "model_name": "AlphaGaO/Qwen3-8B-GPTQ",
+        "quantization": "gptq_marlin",
+        "dtype": "float16"
+      }
+    },
+    "timestamp": "20251130_094250",
+    "prefill_equivalent_pairs": [],
+    "decode_equivalent_pairs": []
+  },
+  "comparisons": [
+    {
+      "ref_idx": 0,
+      "claimed_config": "awq",
+      "verify_config": "awq",
+      "is_diagonal": true,
+      "prefill_distances": {
+        "logprobs_mean": 0.04406124220947969,
+        "logprobs_max": 0.0817686560280852
+      },
+      "decode_distances": {
+        "logprobs_mean": 0.034566174925445774,
+        "logprobs_max": 0.05557062074193988
+      }
+    },
+    {
+      "ref_idx": 1,
+      "claimed_config": "awq",
+      "verify_config": "awq",
+      "is_diagonal": true,
+      "prefill_distances": {
+        "logprobs_mean": 0.05700159302052057,
+        "logprobs_max": 0.09084377472244255
+      },
+      "decode_distances": {
+        "logprobs_mean": 0.028161244629379023,
+        "logprobs_max": 0.04198196906417686
+      }
+    },
+    {
+      "ref_idx": 2,
+      "claimed_config": "awq",
+      "verify_config": "awq",
+      "is_diagonal": true,
+      "prefill_distances": {
+        "logprobs_mean": 0.04122407848694685,
+        "logprobs_max": 0.07945624765217203
+      },
+      "decode_distances": {
+        "logprobs_mean": 0.025434208241626205,
+        "logprobs_max": 0.044952394804461775
+      }
+    },
+    {
+      "ref_idx": 3,
+      "claimed_config": "awq",
+      "verify_config": "awq",
+      "is_diagonal": true,
+      "prefill_distances": {
+        "logprobs_mean": 0.04203394282668756,
+        "logprobs_max": 0.054051025726218976
+      },
+      "decode_distances": {
+        "logprobs_mean": 0.046628472010034554,
+        "logprobs_max": 0.05631055506865503
+      }
+    },
+    {
+      "ref_idx": 0,
+      "claimed_config": "awq_marlin",
+      "verify_config": "awq",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 0.04864702800683485,
+        "logprobs_max": 0.07773078574718618
+      },
+      "decode_distances": {
+        "logprobs_mean": 0.04332421178436575,
+        "logprobs_max": 0.04867270336048208
+      }
+    },
+    {
+      "ref_idx": 1,
+      "claimed_config": "awq_marlin",
+      "verify_config": "awq",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 0.03264372751897163,
+        "logprobs_max": 0.07094380082057329
+      },
+      "decode_distances": {
+        "logprobs_mean": 0.019795529240288864,
+        "logprobs_max": 0.04350133176571838
+      }
+    },
+    {
+      "ref_idx": 2,
+      "claimed_config": "awq_marlin",
+      "verify_config": "awq",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 0.044378627353518996,
+        "logprobs_max": 0.051728337331165025
+      },
+      "decode_distances": {
+        "logprobs_mean": 0.0067220940551553756,
+        "logprobs_max": 0.02014104386943436
+      }
+    },
+    {
+      "ref_idx": 3,
+      "claimed_config": "awq_marlin",
+      "verify_config": "awq",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 0.07114233291900696,
+        "logprobs_max": 0.11223422284679015
+      },
+      "decode_distances": {
+        "logprobs_mean": 0.042984073489931635,
+        "logprobs_max": 0.07964580995198553
+      }
+    },
+    {
+      "ref_idx": 0,
+      "claimed_config": "gptq_marlin",
+      "verify_config": "awq",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 4.720543939484693,
+        "logprobs_max": 5.908906507428674
+      },
+      "decode_distances": {
+        "logprobs_mean": 3.239871313985622,
+        "logprobs_max": 4.263888718184705
+      }
+    },
+    {
+      "ref_idx": 1,
+      "claimed_config": "gptq_marlin",
+      "verify_config": "awq",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 3.802275022887881,
+        "logprobs_max": 4.462780405775706
+      },
+      "decode_distances": {
+        "logprobs_mean": 2.3906857619623536,
+        "logprobs_max": 4.017177438950657
+      }
+    },
+    {
+      "ref_idx": 2,
+      "claimed_config": "gptq_marlin",
+      "verify_config": "awq",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 3.8450195543774366,
+        "logprobs_max": 4.675871797870508
+      },
+      "decode_distances": {
+        "logprobs_mean": 2.2133407347035225,
+        "logprobs_max": 3.0291955022125925
+      }
+    },
+    {
+      "ref_idx": 3,
+      "claimed_config": "gptq_marlin",
+      "verify_config": "awq",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 4.268687029727683,
+        "logprobs_max": 4.4885615841126105
+      },
+      "decode_distances": {
+        "logprobs_mean": 2.399383372801311,
+        "logprobs_max": 3.434381993891058
+      }
+    },
+    {
+      "ref_idx": 0,
+      "claimed_config": "awq",
+      "verify_config": "awq_marlin",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 0.0655999150895027,
+        "logprobs_max": 0.13159707682226296
+      },
+      "decode_distances": {
+        "logprobs_mean": 0.012570247389787036,
+        "logprobs_max": 0.022087649054087895
+      }
+    },
+    {
+      "ref_idx": 1,
+      "claimed_config": "awq",
+      "verify_config": "awq_marlin",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 0.05254232110047611,
+        "logprobs_max": 0.08952006497882349
+      },
+      "decode_distances": {
+        "logprobs_mean": 0.044310535049663924,
+        "logprobs_max": 0.07328774624739258
+      }
+    },
+    {
+      "ref_idx": 2,
+      "claimed_config": "awq",
+      "verify_config": "awq_marlin",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 0.03955209543238624,
+        "logprobs_max": 0.06037411201156834
+      },
+      "decode_distances": {
+        "logprobs_mean": 0.021903430630267572,
+        "logprobs_max": 0.03125
+      }
+    },
+    {
+      "ref_idx": 3,
+      "claimed_config": "awq",
+      "verify_config": "awq_marlin",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 0.03610709960623013,
+        "logprobs_max": 0.08104511617144732
+      },
+      "decode_distances": {
+        "logprobs_mean": 0.05005042455279318,
+        "logprobs_max": 0.06442190630157228
+      }
+    },
+    {
+      "ref_idx": 0,
+      "claimed_config": "awq_marlin",
+      "verify_config": "awq_marlin",
+      "is_diagonal": true,
+      "prefill_distances": {
+        "logprobs_mean": 0.08235381362602635,
+        "logprobs_max": 0.12658686355749663
+      },
+      "decode_distances": {
+        "logprobs_mean": 0.024203262169788204,
+        "logprobs_max": 0.034890001708946
+      }
+    },
+    {
+      "ref_idx": 1,
+      "claimed_config": "awq_marlin",
+      "verify_config": "awq_marlin",
+      "is_diagonal": true,
+      "prefill_distances": {
+        "logprobs_mean": 0.03499849346712221,
+        "logprobs_max": 0.05181057104046321
+      },
+      "decode_distances": {
+        "logprobs_mean": 0.04629166131404844,
+        "logprobs_max": 0.06442352540044828
+      }
+    },
+    {
+      "ref_idx": 2,
+      "claimed_config": "awq_marlin",
+      "verify_config": "awq_marlin",
+      "is_diagonal": true,
+      "prefill_distances": {
+        "logprobs_mean": 0.030875397057000598,
+        "logprobs_max": 0.04939163156081842
+      },
+      "decode_distances": {
+        "logprobs_mean": 0.02199026563721713,
+        "logprobs_max": 0.050648461658632515
+      }
+    },
+    {
+      "ref_idx": 3,
+      "claimed_config": "awq_marlin",
+      "verify_config": "awq_marlin",
+      "is_diagonal": true,
+      "prefill_distances": {
+        "logprobs_mean": 0.06352304787573365,
+        "logprobs_max": 0.1383650789477026
+      },
+      "decode_distances": {
+        "logprobs_mean": 0.026510105299381432,
+        "logprobs_max": 0.038271719891496
+      }
+    },
+    {
+      "ref_idx": 0,
+      "claimed_config": "gptq_marlin",
+      "verify_config": "awq_marlin",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 4.703760779244048,
+        "logprobs_max": 5.860463057410116
+      },
+      "decode_distances": {
+        "logprobs_mean": 3.226632193410366,
+        "logprobs_max": 4.257402836348116
+      }
+    },
+    {
+      "ref_idx": 1,
+      "claimed_config": "gptq_marlin",
+      "verify_config": "awq_marlin",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 3.786651868627309,
+        "logprobs_max": 4.462778129176428
+      },
+      "decode_distances": {
+        "logprobs_mean": 2.3843209134308676,
+        "logprobs_max": 4.029240264618267
+      }
+    },
+    {
+      "ref_idx": 2,
+      "claimed_config": "gptq_marlin",
+      "verify_config": "awq_marlin",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 3.8679192348402953,
+        "logprobs_max": 4.7167275127122235
+      },
+      "decode_distances": {
+        "logprobs_mean": 2.241511612540426,
+        "logprobs_max": 3.001586494568331
+      }
+    },
+    {
+      "ref_idx": 3,
+      "claimed_config": "gptq_marlin",
+      "verify_config": "awq_marlin",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 4.2585148980646546,
+        "logprobs_max": 4.488617412121105
+      },
+      "decode_distances": {
+        "logprobs_mean": 2.391730069887737,
+        "logprobs_max": 3.434381993891058
+      }
+    },
+    {
+      "ref_idx": 0,
+      "claimed_config": "awq",
+      "verify_config": "gptq_marlin",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 4.7408229973858775,
+        "logprobs_max": 5.974985658961044
+      },
+      "decode_distances": {
+        "logprobs_mean": 2.553244205750549,
+        "logprobs_max": 3.20332185085846
+      }
+    },
+    {
+      "ref_idx": 1,
+      "claimed_config": "awq",
+      "verify_config": "gptq_marlin",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 4.005691420897521,
+        "logprobs_max": 4.598640848185577
+      },
+      "decode_distances": {
+        "logprobs_mean": 2.065185917762155,
+        "logprobs_max": 3.2353472477763403
+      }
+    },
+    {
+      "ref_idx": 2,
+      "claimed_config": "awq",
+      "verify_config": "gptq_marlin",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 4.006774856942651,
+        "logprobs_max": 4.831544838846842
+      },
+      "decode_distances": {
+        "logprobs_mean": 1.898724058177324,
+        "logprobs_max": 2.270982078114531
+      }
+    },
+    {
+      "ref_idx": 3,
+      "claimed_config": "awq",
+      "verify_config": "gptq_marlin",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 4.2572562173463355,
+        "logprobs_max": 4.4809463174207895
+      },
+      "decode_distances": {
+        "logprobs_mean": 2.855841133731591,
+        "logprobs_max": 5.475311799183785
+      }
+    },
+    {
+      "ref_idx": 0,
+      "claimed_config": "awq_marlin",
+      "verify_config": "gptq_marlin",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 4.726699567226528,
+        "logprobs_max": 5.968054316634509
+      },
+      "decode_distances": {
+        "logprobs_mean": 2.5589482558039136,
+        "logprobs_max": 3.1829921640292187
+      }
+    },
+    {
+      "ref_idx": 1,
+      "claimed_config": "awq_marlin",
+      "verify_config": "gptq_marlin",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 3.984827277307264,
+        "logprobs_max": 4.540781922634677
+      },
+      "decode_distances": {
+        "logprobs_mean": 2.0584536093520502,
+        "logprobs_max": 3.2323449530125736
+      }
+    },
+    {
+      "ref_idx": 2,
+      "claimed_config": "awq_marlin",
+      "verify_config": "gptq_marlin",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 4.005603770033044,
+        "logprobs_max": 4.835049580428968
+      },
+      "decode_distances": {
+        "logprobs_mean": 1.8872299435509363,
+        "logprobs_max": 2.2751234890901424
+      }
+    },
+    {
+      "ref_idx": 3,
+      "claimed_config": "awq_marlin",
+      "verify_config": "gptq_marlin",
+      "is_diagonal": false,
+      "prefill_distances": {
+        "logprobs_mean": 4.278006533669795,
+        "logprobs_max": 4.522718669777032
+      },
+      "decode_distances": {
+        "logprobs_mean": 2.8611074487953374,
+        "logprobs_max": 5.488919723071186
+      }
+    },
+    {
+      "ref_idx": 0,
+      "claimed_config": "gptq_marlin",
+      "verify_config": "gptq_marlin",
+      "is_diagonal": true,
+      "prefill_distances": {
+        "logprobs_mean": 0.02292791156824144,
+        "logprobs_max": 0.037916946707620275
+      },
+      "decode_distances": {
+        "logprobs_mean": 0.02263749242509926,
+        "logprobs_max": 0.037780113474992986
+      }
+    },
+    {
+      "ref_idx": 1,
+      "claimed_config": "gptq_marlin",
+      "verify_config": "gptq_marlin",
+      "is_diagonal": true,
+      "prefill_distances": {
+        "logprobs_mean": 0.06340514188445785,
+        "logprobs_max": 0.10481152195209012
+      },
+      "decode_distances": {
+        "logprobs_mean": 0.019484769810012233,
+        "logprobs_max": 0.027204309427329387
+      }
+    },
+    {
+      "ref_idx": 2,
+      "claimed_config": "gptq_marlin",
+      "verify_config": "gptq_marlin",
+      "is_diagonal": true,
+      "prefill_distances": {
+        "logprobs_mean": 0.041368976734032295,
+        "logprobs_max": 0.048317092703895635
+      },
+      "decode_distances": {
+        "logprobs_mean": 0.04157280169376623,
+        "logprobs_max": 0.08699631816921909
+      }
+    },
+    {
+      "ref_idx": 3,
+      "claimed_config": "gptq_marlin",
+      "verify_config": "gptq_marlin",
+      "is_diagonal": true,
+      "prefill_distances": {
+        "logprobs_mean": 0.05505686618083522,
+        "logprobs_max": 0.08833232835411607
+      },
+      "decode_distances": {
+        "logprobs_mean": 0.03914635525123062,
+        "logprobs_max": 0.04442587827246248
+      }
+    }
+  ],
+  "prefill_analysis": {
+    "matrix": [
+      [
+        0.04608021413590867,
+        0.0484503578071488,
+        4.252636373143096
+      ],
+      [
+        0.04920292894958311,
+        0.0529376880064707,
+        4.2487842870591574
+      ],
+      [
+        4.159131386619423,
+        4.154211695194077,
+        0.045689724091891704
+      ]
+    ],
+    "per_reference_matrices": [
+      [
+        [
+          0.04406124220947969,
+          0.0655999150895027,
+          4.7408229973858775
+        ],
+        [
+          0.04864702800683485,
+          0.08235381362602635,
+          4.726699567226528
+        ],
+        [
+          4.720543939484693,
+          4.703760779244048,
+          0.02292791156824144
+        ]
+      ],
+      [
+        [
+          0.05700159302052057,
+          0.05254232110047611,
+          4.005691420897521
+        ],
+        [
+          0.03264372751897163,
+          0.03499849346712221,
+          3.984827277307264
+        ],
+        [
+          3.802275022887881,
+          3.786651868627309,
+          0.06340514188445785
+        ]
+      ],
+      [
+        [
+          0.04122407848694685,
+          0.03955209543238624,
+          4.006774856942651
+        ],
+        [
+          0.044378627353518996,
+          0.030875397057000598,
+          4.005603770033044
+        ],
+        [
+          3.8450195543774366,
+          3.8679192348402953,
+          0.041368976734032295
+        ]
+      ],
+      [
+        [
+          0.04203394282668756,
+          0.03610709960623013,
+          4.2572562173463355
+        ],
+        [
+          0.07114233291900696,
+          0.06352304787573365,
+          4.278006533669795
+        ],
+        [
+          4.268687029727683,
+          4.2585148980646546,
+          0.05505686618083522
+        ]
+      ]
+    ],
+    "baseline_mean": 0.04823587541142369,
+    "signal_all_mean": 2.818736171462081,
+    "signal_meaningful_mean": 2.818736171462081,
+    "snr_all": 58.43650908001393,
+    "snr_meaningful": 58.43650908001393,
+    "excluded_pairs": [],
+    "n_excluded_cells": 0,
+    "n_meaningful_pairs": 6,
+    "pairwise_snr": {
+      "awq_vs_awq_marlin": {
+        "signal": 0.04882664337836595,
+        "noise_floor": 0.04950895107118969,
+        "snr": 0.9862184983106865
+      },
+      "awq_vs_gptq_marlin": {
+        "signal": 4.2058838798812594,
+        "noise_floor": 0.045884969113900186,
+        "snr": 91.66147348690593
+      },
+      "awq_marlin_vs_gptq_marlin": {
+        "signal": 4.201497991126617,
+        "noise_floor": 0.0493137060491812,
+        "snr": 85.19939643020155
+      }
+    }
+  },
+  "decode_analysis": {
+    "matrix": [
+      [
+        0.03369752495162139,
+        0.03220865940562793,
+        2.3432488288554048
+      ],
+      [
+        0.028206477142435408,
+        0.0297488236051088,
+        2.3414348143755594
+      ],
+      [
+        2.560820295863202,
+        2.561048697317349,
+        0.030710354795027088
+      ]
+    ],
+    "per_reference_matrices": [
+      [
+        [
+          0.034566174925445774,
+          0.012570247389787036,
+          2.553244205750549
+        ],
+        [
+          0.04332421178436575,
+          0.024203262169788204,
+          2.5589482558039136
+        ],
+        [
+          3.239871313985622,
+          3.226632193410366,
+          0.02263749242509926
+        ]
+      ],
+      [
+        [
+          0.028161244629379023,
+          0.044310535049663924,
+          2.065185917762155
+        ],
+        [
+          0.019795529240288864,
+          0.04629166131404844,
+          2.0584536093520502
+        ],
+        [
+          2.3906857619623536,
+          2.3843209134308676,
+          0.019484769810012233
+        ]
+      ],
+      [
+        [
+          0.025434208241626205,
+          0.021903430630267572,
+          1.898724058177324
+        ],
+        [
+          0.0067220940551553756,
+          0.02199026563721713,
+          1.8872299435509363
+        ],
+        [
+          2.2133407347035225,
+          2.241511612540426,
+          0.04157280169376623
+        ]
+      ],
+      [
+        [
+          0.046628472010034554,
+          0.05005042455279318,
+          2.855841133731591
+        ],
+        [
+          0.042984073489931635,
+          0.026510105299381432,
+          2.8611074487953374
+        ],
+        [
+          2.399383372801311,
+          2.391730069887737,
+          0.03914635525123062
+        ]
+      ]
+    ],
+    "baseline_mean": 0.03138556778391909,
+    "signal_all_mean": 1.6444946288265967,
+    "signal_meaningful_mean": 1.6444946288265967,
+    "snr_all": 52.396523145558014,
+    "snr_meaningful": 52.396523145558014,
+    "excluded_pairs": [],
+    "n_excluded_cells": 0,
+    "n_meaningful_pairs": 6,
+    "pairwise_snr": {
+      "awq_vs_awq_marlin": {
+        "signal": 0.03020756827403167,
+        "noise_floor": 0.031723174278365095,
+        "snr": 0.9522240116630745
+      },
+      "awq_vs_gptq_marlin": {
+        "signal": 2.4520345623593034,
+        "noise_floor": 0.03220393987332424,
+        "snr": 76.14082537740724
+      },
+      "awq_marlin_vs_gptq_marlin": {
+        "signal": 2.4512417558464543,
+        "noise_floor": 0.030229589200067943,
+        "snr": 81.08749806765303
+      }
+    }
+  }
+}
