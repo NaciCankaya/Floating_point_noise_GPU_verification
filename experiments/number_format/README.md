@@ -12,9 +12,6 @@ vLLM inference with different model quants.
 - So INT inference in vLLM can be reproducible, without compromise in performance. Different quant methods all produce unique activations/logprobs -> Verifiability is still possible!
 
 Across four different INT4 formats for Qwen3 8B:
-================================================================================
-LOGPROB COMPARISON RESULTS
-================================================================================
 
 ✓ IDENTICAL LOGPROBS: None
 
