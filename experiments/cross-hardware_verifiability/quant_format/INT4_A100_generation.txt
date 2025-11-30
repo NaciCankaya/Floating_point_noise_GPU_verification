@@ -11,7 +11,8 @@ CUDA: 12.8
 Configurations:
   awq: Qwen/Qwen3-8B-AWQ (quant=awq)
   awq_marlin: Qwen/Qwen3-8B-AWQ (quant=awq_marlin)
-  gptq_marlin: AlphaGaO/Qwen3-8B-GPTQ (quant=gptq_marlin)
+  gptq_marlin: JunHowie/Qwen3-8B-GPTQ-Int4 (quant=gptq_marlin)
+  gptq: JunHowie/Qwen3-8B-GPTQ-Int4 (quant=gptq)
 
 Loading first model to create prompts...
 Loading model: Qwen/Qwen3-8B-AWQ
@@ -62,7 +63,7 @@ Loading model: Qwen/Qwen3-8B-AWQ
   awq_marlin noise floor: DETERMINISTIC (decode=0.00e+00)
 
 --- Checking: gptq_marlin ---
-Loading model: AlphaGaO/Qwen3-8B-GPTQ
+Loading model: JunHowie/Qwen3-8B-GPTQ-Int4
   Quantization: gptq_marlin
   Dtype: float16
   Run 1: 100 tokens
@@ -76,12 +77,28 @@ Loading model: AlphaGaO/Qwen3-8B-GPTQ
 
   gptq_marlin noise floor: DETERMINISTIC (decode=0.00e+00)
 
+--- Checking: gptq ---
+Loading model: JunHowie/Qwen3-8B-GPTQ-Int4
+  Quantization: gptq
+  Dtype: float16
+  Run 1: 100 tokens
+  Run 2: 100 tokens
+  Run 3: 100 tokens
+
+  Pairwise distances:
+    Run 1 vs 2: decode=4.67e-02, prefill=0.00e+00
+    Run 1 vs 3: decode=inf, prefill=0.00e+00
+    Run 2 vs 3: decode=inf, prefill=0.00e+00
+
+  gptq noise floor: decode=4.67e-02, prefill=0.00e+00
+
 ----------------------------------------
 NOISE FLOOR SUMMARY
 ----------------------------------------
   awq: decode=0.00e+00, prefill=0.00e+00
   awq_marlin: decode=0.00e+00, prefill=0.00e+00
   gptq_marlin: decode=0.00e+00, prefill=0.00e+00
+  gptq: decode=4.67e-02, prefill=0.00e+00
 
 Cross-format signal must exceed this noise floor to be detectable.
 ================================================================================
@@ -125,21 +142,38 @@ Okay, let me try to figure out what kind of document this is and what it's...
 Okay, let's tackle this query. The user provided a lengthy excerpt from a document and...
 
 --- Config: gptq_marlin ---
-Loading model: AlphaGaO/Qwen3-8B-GPTQ
+Loading model: JunHowie/Qwen3-8B-GPTQ-Int4
   Quantization: gptq_marlin
   Dtype: float16
   ref_0: 100 tokens
     -> <think>
-Okay, let's see. The user provided an excerpt from a document and wants to know...
+Okay, let me try to figure out what this document is about. The user provided an...
   ref_1: 100 tokens
     -> <think>
-Okay, let's see. The user provided an excerpt from a document and wants to know...
+Okay, let me try to figure out what this document is about. The user provided an...
   ref_2: 100 tokens
     -> <think>
-Okay, let me try to figure out what kind of document this is and what it's...
+Okay, let me try to figure out what this document is about. The user provided an...
   ref_3: 100 tokens
     -> <think>
-Okay, let's see. The user provided an excerpt from a document and wants to know...
+Okay, let me try to figure out what kind of document this is and what it's...
+
+--- Config: gptq ---
+Loading model: JunHowie/Qwen3-8B-GPTQ-Int4
+  Quantization: gptq
+  Dtype: float16
+  ref_0: 100 tokens
+    -> <think>
+Okay, let me try to figure out what this document is about. The user provided an...
+  ref_1: 100 tokens
+    -> <think>
+Okay, let me try to figure out what this document is about. The user provided an...
+  ref_2: 100 tokens
+    -> <think>
+Okay, let me try to figure out what this document is about. The user provided an...
+  ref_3: 100 tokens
+    -> <think>
+Okay, let me try to figure out what kind of document this is and what it's...
 
 ================================================================================
 TOKEN GENERATION CONSISTENCY CHECK
@@ -156,7 +190,11 @@ TOKEN GENERATION CONSISTENCY CHECK
     ✓
   gptq_marlin:
     Tokens: 100
-    First 30: "<think>\nOkay, let's see. The user provided an excerpt from a document and wants to know what type of document it is and its subject matter"...
+    First 30: '<think>\nOkay, let me try to figure out what this document is about. The user provided an excerpt from a document, and I need to determine'...
+    ✗ DIFFERENT
+  gptq:
+    Tokens: 100
+    First 30: '<think>\nOkay, let me try to figure out what this document is about. The user provided an excerpt from a document, and I need to determine'...
     ✗ DIFFERENT
 
 --- ref_1 ---
@@ -170,7 +208,11 @@ TOKEN GENERATION CONSISTENCY CHECK
     ✓
   gptq_marlin:
     Tokens: 100
-    First 30: "<think>\nOkay, let's see. The user provided an excerpt from a document and wants to know what type of document it is and its subject matter"...
+    First 30: '<think>\nOkay, let me try to figure out what this document is about. The user provided an excerpt from a document and wants to know the type'...
+    ✗ DIFFERENT
+  gptq:
+    Tokens: 100
+    First 30: '<think>\nOkay, let me try to figure out what this document is about. The user provided an excerpt from a document and wants to know the type'...
     ✗ DIFFERENT
 
 --- ref_2 ---
@@ -184,7 +226,11 @@ TOKEN GENERATION CONSISTENCY CHECK
     ✓
   gptq_marlin:
     Tokens: 100
-    First 30: "<think>\nOkay, let me try to figure out what kind of document this is and what it's about. The user provided an excerpt from a document"...
+    First 30: '<think>\nOkay, let me try to figure out what this document is about. The user provided an excerpt from a document, and I need to determine'...
+    ✗ DIFFERENT
+  gptq:
+    Tokens: 100
+    First 30: '<think>\nOkay, let me try to figure out what this document is about. The user provided an excerpt from a document, and I need to determine'...
     ✗ DIFFERENT
 
 --- ref_3 ---
@@ -198,7 +244,11 @@ TOKEN GENERATION CONSISTENCY CHECK
     ✓
   gptq_marlin:
     Tokens: 100
-    First 30: "<think>\nOkay, let's see. The user provided an excerpt from a document and wants to know what type of document it is and its subject matter"...
+    First 30: "<think>\nOkay, let me try to figure out what kind of document this is and what it's about. The user provided an excerpt from a document"...
+    ✗ DIFFERENT
+  gptq:
+    Tokens: 100
+    First 30: "<think>\nOkay, let me try to figure out what kind of document this is and what it's about. The user provided an excerpt from a document"...
     ✗ DIFFERENT
 
 ================================================================================
@@ -208,51 +258,67 @@ WITHIN-HARDWARE QUANTIZATION EFFECTS (PREFILL)
 --- ref_0 ---
 
 Logprobs (L2 distance):
-                       awq   awq_marlin  gptq_marlin
-         awq     0.00e+00     3.50e-02     4.75e+00
-  awq_marlin     3.50e-02     0.00e+00     4.73e+00
- gptq_marlin     4.75e+00     4.73e+00     0.00e+00
+                       awq   awq_marlin  gptq_marlin         gptq
+         awq     0.00e+00     3.50e-02     5.94e+00     5.96e+00
+  awq_marlin     3.50e-02     0.00e+00     5.94e+00     5.96e+00
+ gptq_marlin     5.71e+00     5.71e+00     0.00e+00     1.63e-01
+        gptq     5.75e+00     5.75e+00     1.63e-01     0.00e+00
 
 --- ref_1 ---
 
 Logprobs (L2 distance):
-                       awq   awq_marlin  gptq_marlin
-         awq     0.00e+00     4.16e-02     3.97e+00
-  awq_marlin     4.16e-02     0.00e+00     3.95e+00
- gptq_marlin     3.81e+00     3.79e+00     0.00e+00
+                       awq   awq_marlin  gptq_marlin         gptq
+         awq     0.00e+00     4.16e-02     6.36e+00     6.38e+00
+  awq_marlin     4.16e-02     0.00e+00     6.36e+00     6.38e+00
+ gptq_marlin     5.48e+00     5.48e+00     0.00e+00     2.01e-01
+        gptq     5.51e+00     5.51e+00     2.01e-01     0.00e+00
 
 --- ref_2 ---
 
 Logprobs (L2 distance):
-                       awq   awq_marlin  gptq_marlin
-         awq     0.00e+00     3.82e-02     4.01e+00
-  awq_marlin     3.82e-02     0.00e+00     4.00e+00
- gptq_marlin     3.87e+00     3.87e+00     0.00e+00
+                       awq   awq_marlin  gptq_marlin         gptq
+         awq     0.00e+00     3.82e-02     6.13e+00     5.98e+00
+  awq_marlin     3.82e-02     0.00e+00     6.12e+00     5.97e+00
+ gptq_marlin     5.14e+00     5.14e+00     0.00e+00     2.52e-01
+        gptq     5.98e+00     5.97e+00     2.58e-01     0.00e+00
 
 --- ref_3 ---
 
 Logprobs (L2 distance):
-                       awq   awq_marlin  gptq_marlin
-         awq     0.00e+00     4.46e-02     4.28e+00
-  awq_marlin     4.46e-02     0.00e+00     4.30e+00
- gptq_marlin     4.28e+00     4.30e+00     0.00e+00
+                       awq   awq_marlin  gptq_marlin         gptq
+         awq     0.00e+00     4.46e-02     5.36e+00     5.52e+00
+  awq_marlin     4.46e-02     0.00e+00     5.38e+00     5.54e+00
+ gptq_marlin     4.20e+00     4.23e+00     0.00e+00     4.07e-01
+        gptq     4.42e+00     4.45e+00     4.07e-01     0.00e+00
 
 ================================================================================
 AGGREGATE (average across references):
 ================================================================================
-                       awq   awq_marlin  gptq_marlin
-         awq     0.00e+00     3.99e-02     4.25e+00
-  awq_marlin     3.99e-02     0.00e+00     4.25e+00
- gptq_marlin     4.18e+00     4.17e+00     0.00e+00
+                       awq   awq_marlin  gptq_marlin         gptq
+         awq     0.00e+00     3.99e-02     5.95e+00     5.96e+00
+  awq_marlin     3.99e-02     0.00e+00     5.95e+00     5.96e+00
+ gptq_marlin     5.13e+00     5.14e+00     0.00e+00     2.56e-01
+        gptq     5.42e+00     5.42e+00     2.57e-01     0.00e+00
 
 Off-diagonal stats:
-  Mean: 2.82e+00
-  Range: [3.99e-02, 4.25e+00]
+  Mean: 3.79e+00
+  Range: [3.99e-02, 5.96e+00]
 
 Kernel equivalence classes:
   Class 1: ['awq']
   Class 2: ['awq_marlin']
   Class 3: ['gptq_marlin']
+  Class 4: ['gptq']
+
+----------------------------------------
+PAIRWISE DISTANCE SUMMARY
+----------------------------------------
+  awq_vs_awq_marlin: 3.99e-02 → SMALL difference
+  gptq_marlin_vs_gptq: 2.57e-01 → MODERATE difference
+  awq_vs_gptq_marlin: 5.54e+00 → LARGE difference
+  awq_marlin_vs_gptq_marlin: 5.54e+00 → LARGE difference
+  awq_vs_gptq: 5.69e+00 → LARGE difference
+  awq_marlin_vs_gptq: 5.69e+00 → LARGE difference
 
 ================================================================================
 WITHIN-HARDWARE QUANTIZATION EFFECTS (DECODE)
@@ -261,57 +327,82 @@ WITHIN-HARDWARE QUANTIZATION EFFECTS (DECODE)
 --- ref_0 ---
 
 Logprobs (L2 distance):
-                       awq   awq_marlin  gptq_marlin
-         awq     0.00e+00     2.73e-02          inf
-  awq_marlin     2.73e-02     0.00e+00          inf
- gptq_marlin          inf          inf     0.00e+00
+                       awq   awq_marlin  gptq_marlin         gptq
+         awq     0.00e+00     2.73e-02          inf          inf
+  awq_marlin     2.73e-02     0.00e+00          inf          inf
+ gptq_marlin          inf          inf     0.00e+00     9.59e-02
+        gptq          inf          inf     9.59e-02     0.00e+00
 
 --- ref_1 ---
 
 Logprobs (L2 distance):
-                       awq   awq_marlin  gptq_marlin
-         awq     0.00e+00     2.13e-02     5.63e+00
-  awq_marlin     2.13e-02     0.00e+00     5.63e+00
- gptq_marlin     5.63e+00     5.63e+00     0.00e+00
+                       awq   awq_marlin  gptq_marlin         gptq
+         awq     0.00e+00     2.13e-02     1.27e+00     1.27e+00
+  awq_marlin     2.13e-02     0.00e+00     1.27e+00     1.27e+00
+ gptq_marlin     1.27e+00     1.27e+00     0.00e+00     1.04e-01
+        gptq     1.27e+00     1.27e+00     1.04e-01     0.00e+00
 
 --- ref_2 ---
 
 Logprobs (L2 distance):
-                       awq   awq_marlin  gptq_marlin
-         awq     0.00e+00     3.21e-02          inf
-  awq_marlin     3.21e-02     0.00e+00          inf
- gptq_marlin          inf          inf     0.00e+00
+                       awq   awq_marlin  gptq_marlin         gptq
+         awq     0.00e+00     3.21e-02     2.34e+00     2.36e+00
+  awq_marlin     3.21e-02     0.00e+00     2.34e+00     2.36e+00
+ gptq_marlin     2.34e+00     2.34e+00     0.00e+00     6.97e-02
+        gptq     2.36e+00     2.36e+00     6.97e-02     0.00e+00
 
 --- ref_3 ---
 
 Logprobs (L2 distance):
-                       awq   awq_marlin  gptq_marlin
-         awq     0.00e+00     3.19e-02     6.13e+00
-  awq_marlin     3.19e-02     0.00e+00     6.15e+00
- gptq_marlin     6.13e+00     6.15e+00     0.00e+00
+                       awq   awq_marlin  gptq_marlin         gptq
+         awq     0.00e+00     3.19e-02          inf          inf
+  awq_marlin     3.19e-02     0.00e+00          inf          inf
+ gptq_marlin          inf          inf     0.00e+00     7.42e-02
+        gptq          inf          inf     7.42e-02     0.00e+00
 
 ================================================================================
 AGGREGATE (average across references):
 ================================================================================
-                       awq   awq_marlin  gptq_marlin
-         awq     0.00e+00     2.82e-02          inf
-  awq_marlin     2.82e-02     0.00e+00          inf
- gptq_marlin          inf          inf     0.00e+00
+                       awq   awq_marlin  gptq_marlin         gptq
+         awq     0.00e+00     2.82e-02          inf          inf
+  awq_marlin     2.82e-02     0.00e+00          inf          inf
+ gptq_marlin          inf          inf     0.00e+00     8.58e-02
+        gptq          inf          inf     8.58e-02     0.00e+00
 
 Off-diagonal stats:
-  Mean: 2.82e-02
-  Range: [2.82e-02, 2.82e-02]
+  Mean: 5.70e-02
+  Range: [2.82e-02, 8.58e-02]
 
 Kernel equivalence classes:
   Class 1: ['awq']
   Class 2: ['awq_marlin']
   Class 3: ['gptq_marlin']
+  Class 4: ['gptq']
 
-✓ Generation results saved to: /workspace/experiments/quant_generate_20251130_092450.json
+----------------------------------------
+PAIRWISE DISTANCE SUMMARY
+----------------------------------------
+  awq_vs_awq_marlin: 2.82e-02 → SMALL difference
+  gptq_marlin_vs_gptq: 8.58e-02 → SMALL difference
+  awq_vs_gptq_marlin: inf → LARGE difference
+  awq_vs_gptq: inf → LARGE difference
+  awq_marlin_vs_gptq_marlin: inf → LARGE difference
+  awq_marlin_vs_gptq: inf → LARGE difference
 
-Next step: Copy /workspace/experiments/quant_generate_20251130_092450.json to verifier machine
+================================================================================
+SIGNAL-TO-NOISE ANALYSIS
+================================================================================
+
+Noise floor (within-format variance): 1.17e-02
+Cross-format distance: 5.70e-02
+SNR: 4.9×
+→ Quantization format is MARGINALLY detectable (3 < SNR < 10)
+
+✓ Generation results saved to: /workspace/experiments/quant_generate_20251130_191633.json
+
+Next step: Copy /workspace/experiments/quant_generate_20251130_191633.json to verifier machine
 Then set TEACHER_FORCING = True and REFERENCE_FILE = '<path>'
-File size: 1.5 MB
+File size: 2.0 MB
 
 ================================================================================
 EXPERIMENT COMPLETE

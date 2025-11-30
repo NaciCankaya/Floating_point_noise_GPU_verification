@@ -2,8 +2,8 @@
 QUANTIZATION FORMAT DETECTION EXPERIMENT - VERIFICATION (teacher-forcing)
 ================================================================================
 
-System: 0ce493a31677
-GPU: NVIDIA H100 80GB HBM3
+System: 17ae938f3494
+GPU: NVIDIA H100 NVL
 vLLM: 0.11.2
 PyTorch: 2.9.0+cu128
 CUDA: 12.8
@@ -11,13 +11,14 @@ CUDA: 12.8
 Configurations:
   awq: Qwen/Qwen3-8B-AWQ (quant=awq)
   awq_marlin: Qwen/Qwen3-8B-AWQ (quant=awq_marlin)
-  gptq_marlin: AlphaGaO/Qwen3-8B-GPTQ (quant=gptq_marlin)
+  gptq_marlin: JunHowie/Qwen3-8B-GPTQ-Int4 (quant=gptq_marlin)
+  gptq: JunHowie/Qwen3-8B-GPTQ-Int4 (quant=gptq)
 
 Reference file: INT4_A100_generation.json
 
 Loading reference file...
 Reference GPU: NVIDIA A100-SXM4-80GB
-Verifier GPU:  NVIDIA H100 80GB HBM3
+Verifier GPU:  NVIDIA H100 NVL
 
 ================================================================================
 ENVIRONMENT VALIDATION
@@ -29,8 +30,8 @@ Critical dependencies:
   ✓ cuda_version: 12.8
 
 Expected differences (hardware):
-  ✓ gpu_name: reference=NVIDIA A100-SXM4-80GB, verifier=NVIDIA H100 80GB HBM3
-  ✓ hostname: reference=637c3157512e, verifier=0ce493a31677
+  ✓ gpu_name: reference=NVIDIA A100-SXM4-80GB, verifier=NVIDIA H100 NVL
+  ✓ hostname: reference=637c3157512e, verifier=17ae938f3494
 
 ⚠ ENVIRONMENT MISMATCHES DETECTED
   Results may be affected by software differences, not just hardware.
@@ -68,13 +69,23 @@ Loading model: Qwen/Qwen3-8B-AWQ
 
   Claimed config: gptq_marlin
     ref_0 (off):      Prompt: 8067, Gen: 100 → verified
-      Prefill: 4.72e+00, Decode: 3.24e+00
+      Prefill: 5.70e+00, Decode: 2.14e+00
     ref_1 (off):      Prompt: 8067, Gen: 100 → verified
-      Prefill: 3.80e+00, Decode: 2.39e+00
+      Prefill: 5.50e+00, Decode: 1.38e+00
     ref_2 (off):      Prompt: 8067, Gen: 100 → verified
-      Prefill: 3.85e+00, Decode: 2.21e+00
+      Prefill: 5.12e+00, Decode: 1.59e+00
     ref_3 (off):      Prompt: 8067, Gen: 100 → verified
-      Prefill: 4.27e+00, Decode: 2.40e+00
+      Prefill: 4.19e+00, Decode: 2.76e+00
+
+  Claimed config: gptq
+    ref_0 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 5.75e+00, Decode: 2.14e+00
+    ref_1 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 5.53e+00, Decode: 1.36e+00
+    ref_2 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 5.95e+00, Decode: 1.60e+00
+    ref_3 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 4.41e+00, Decode: 2.75e+00
 
 ================================================================================
 VERIFYING WITH: awq_marlin
@@ -105,104 +116,176 @@ Loading model: Qwen/Qwen3-8B-AWQ
 
   Claimed config: gptq_marlin
     ref_0 (off):      Prompt: 8067, Gen: 100 → verified
-      Prefill: 4.70e+00, Decode: 3.23e+00
+      Prefill: 5.70e+00, Decode: 2.12e+00
     ref_1 (off):      Prompt: 8067, Gen: 100 → verified
-      Prefill: 3.79e+00, Decode: 2.38e+00
+      Prefill: 5.49e+00, Decode: 1.38e+00
     ref_2 (off):      Prompt: 8067, Gen: 100 → verified
-      Prefill: 3.87e+00, Decode: 2.24e+00
+      Prefill: 5.14e+00, Decode: 1.58e+00
     ref_3 (off):      Prompt: 8067, Gen: 100 → verified
-      Prefill: 4.26e+00, Decode: 2.39e+00
+      Prefill: 4.20e+00, Decode: 2.73e+00
+
+  Claimed config: gptq
+    ref_0 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 5.74e+00, Decode: 2.12e+00
+    ref_1 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 5.52e+00, Decode: 1.36e+00
+    ref_2 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 5.97e+00, Decode: 1.59e+00
+    ref_3 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 4.42e+00, Decode: 2.72e+00
 
 ================================================================================
 VERIFYING WITH: gptq_marlin
 ================================================================================
-Loading model: AlphaGaO/Qwen3-8B-GPTQ
+Loading model: JunHowie/Qwen3-8B-GPTQ-Int4
   Quantization: gptq_marlin
   Dtype: float16
 
   Claimed config: awq
     ref_0 (off):      Prompt: 8067, Gen: 100 → verified
-      Prefill: 4.74e+00, Decode: 2.55e+00
+      Prefill: 5.95e+00, Decode: 1.54e+00
     ref_1 (off):      Prompt: 8067, Gen: 100 → verified
-      Prefill: 4.01e+00, Decode: 2.07e+00
+      Prefill: 6.39e+00, Decode: 2.68e+00
     ref_2 (off):      Prompt: 8067, Gen: 100 → verified
-      Prefill: 4.01e+00, Decode: 1.90e+00
+      Prefill: 6.11e+00, Decode: 2.55e+00
     ref_3 (off):      Prompt: 8067, Gen: 100 → verified
-      Prefill: 4.26e+00, Decode: 2.86e+00
+      Prefill: 5.43e+00, Decode: 2.86e+00
 
   Claimed config: awq_marlin
     ref_0 (off):      Prompt: 8067, Gen: 100 → verified
-      Prefill: 4.73e+00, Decode: 2.56e+00
+      Prefill: 5.95e+00, Decode: 1.54e+00
     ref_1 (off):      Prompt: 8067, Gen: 100 → verified
-      Prefill: 3.98e+00, Decode: 2.06e+00
+      Prefill: 6.39e+00, Decode: 2.68e+00
     ref_2 (off):      Prompt: 8067, Gen: 100 → verified
-      Prefill: 4.01e+00, Decode: 1.89e+00
+      Prefill: 6.10e+00, Decode: 2.54e+00
     ref_3 (off):      Prompt: 8067, Gen: 100 → verified
-      Prefill: 4.28e+00, Decode: 2.86e+00
+      Prefill: 5.45e+00, Decode: 2.85e+00
 
   Claimed config: gptq_marlin
     ref_0 (diag):      Prompt: 8067, Gen: 100 → verified
-      Prefill: 2.29e-02, Decode: 2.26e-02
+      Prefill: 4.41e-02, Decode: 1.26e-02
     ref_1 (diag):      Prompt: 8067, Gen: 100 → verified
-      Prefill: 6.34e-02, Decode: 1.95e-02
+      Prefill: 5.62e-02, Decode: 2.65e-02
     ref_2 (diag):      Prompt: 8067, Gen: 100 → verified
-      Prefill: 4.14e-02, Decode: 4.16e-02
+      Prefill: 4.23e-02, Decode: 2.90e-02
     ref_3 (diag):      Prompt: 8067, Gen: 100 → verified
-      Prefill: 5.51e-02, Decode: 3.91e-02
+      Prefill: 9.51e-02, Decode: 2.50e-02
+
+  Claimed config: gptq
+    ref_0 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 1.78e-01, Decode: 9.41e-02
+    ref_1 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 1.97e-01, Decode: 1.20e-01
+    ref_2 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 2.32e-01, Decode: 8.01e-02
+    ref_3 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 3.33e-01, Decode: 8.20e-02
+
+================================================================================
+VERIFYING WITH: gptq
+================================================================================
+Loading model: JunHowie/Qwen3-8B-GPTQ-Int4
+  Quantization: gptq
+  Dtype: float16
+
+  Claimed config: awq
+    ref_0 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 6.22e+00, Decode: 1.52e+00
+    ref_1 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 6.40e+00, Decode: 2.67e+00
+    ref_2 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 6.17e+00, Decode: 2.56e+00
+    ref_3 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 5.31e+00, Decode: 2.91e+00
+
+  Claimed config: awq_marlin
+    ref_0 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 6.22e+00, Decode: 1.53e+00
+    ref_1 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 6.40e+00, Decode: 2.68e+00
+    ref_2 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 6.16e+00, Decode: 2.55e+00
+    ref_3 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 5.33e+00, Decode: 2.89e+00
+
+  Claimed config: gptq_marlin
+    ref_0 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 3.60e-01, Decode: 1.98e-01
+    ref_1 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 2.16e-01, Decode: 7.47e-02
+    ref_2 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 1.32e-01, Decode: 8.16e-02
+    ref_3 (off):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 1.75e-01, Decode: 2.71e-01
+
+  Claimed config: gptq
+    ref_0 (diag):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 3.98e-01, Decode: 1.56e-01
+    ref_1 (diag):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 3.21e-01, Decode: 1.24e-01
+    ref_2 (diag):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 3.05e-01, Decode: 1.21e-01
+    ref_3 (diag):      Prompt: 8067, Gen: 100 → verified
+      Prefill: 5.02e-01, Decode: 2.99e-01
 
 ================================================================================
 CROSS-HARDWARE QUANTIZATION DETECTABILITY (PREFILL)
 ================================================================================
 
 --- ref_0 ---
-                       awq   awq_marlin  gptq_marlin
-         awq     4.41e-02     6.56e-02     4.74e+00 
-  awq_marlin     4.86e-02     8.24e-02     4.73e+00 
- gptq_marlin     4.72e+00     4.70e+00     2.29e-02 
+                       awq   awq_marlin  gptq_marlin         gptq
+         awq     4.41e-02     6.56e-02     5.95e+00     6.22e+00 
+  awq_marlin     4.86e-02     8.24e-02     5.95e+00     6.22e+00 
+ gptq_marlin     5.70e+00     5.70e+00     4.41e-02     3.60e-01 
+        gptq     5.75e+00     5.74e+00     1.78e-01     3.98e-01 
 
 --- ref_1 ---
-                       awq   awq_marlin  gptq_marlin
-         awq     5.70e-02     5.25e-02     4.01e+00 
-  awq_marlin     3.26e-02     3.50e-02     3.98e+00 
- gptq_marlin     3.80e+00     3.79e+00     6.34e-02 
+                       awq   awq_marlin  gptq_marlin         gptq
+         awq     5.70e-02     5.25e-02     6.39e+00     6.40e+00 
+  awq_marlin     3.26e-02     3.50e-02     6.39e+00     6.40e+00 
+ gptq_marlin     5.50e+00     5.49e+00     5.62e-02     2.16e-01 
+        gptq     5.53e+00     5.52e+00     1.97e-01     3.21e-01 
 
 --- ref_2 ---
-                       awq   awq_marlin  gptq_marlin
-         awq     4.12e-02     3.96e-02     4.01e+00 
-  awq_marlin     4.44e-02     3.09e-02     4.01e+00 
- gptq_marlin     3.85e+00     3.87e+00     4.14e-02 
+                       awq   awq_marlin  gptq_marlin         gptq
+         awq     4.12e-02     3.96e-02     6.11e+00     6.17e+00 
+  awq_marlin     4.44e-02     3.09e-02     6.10e+00     6.16e+00 
+ gptq_marlin     5.12e+00     5.14e+00     4.23e-02     1.32e-01 
+        gptq     5.95e+00     5.97e+00     2.32e-01     3.05e-01 
 
 --- ref_3 ---
-                       awq   awq_marlin  gptq_marlin
-         awq     4.20e-02     3.61e-02     4.26e+00 
-  awq_marlin     7.11e-02     6.35e-02     4.28e+00 
- gptq_marlin     4.27e+00     4.26e+00     5.51e-02 
+                       awq   awq_marlin  gptq_marlin         gptq
+         awq     4.20e-02     3.61e-02     5.43e+00     5.31e+00 
+  awq_marlin     7.11e-02     6.35e-02     5.45e+00     5.33e+00 
+ gptq_marlin     4.19e+00     4.20e+00     9.51e-02     1.75e-01 
+        gptq     4.41e+00     4.42e+00     3.33e-01     5.02e-01 
 
 ================================================================================
 AGGREGATE (average across references):
   Rows = claimed config, Cols = verified config
 ================================================================================
-                       awq   awq_marlin  gptq_marlin
-         awq     4.61e-02     4.85e-02     4.25e+00 
-  awq_marlin     4.92e-02     5.29e-02     4.25e+00 
- gptq_marlin     4.16e+00     4.15e+00     4.57e-02 
+                       awq   awq_marlin  gptq_marlin         gptq
+         awq     4.61e-02     4.85e-02     5.97e+00     6.02e+00 
+  awq_marlin     4.92e-02     5.29e-02     5.97e+00     6.03e+00 
+ gptq_marlin     5.13e+00     5.13e+00     5.94e-02     2.21e-01 
+        gptq     5.41e+00     5.41e+00     2.35e-01     3.82e-01 
 
 ================================================================================
 SNR ANALYSIS
 ================================================================================
 
 Diagonal (baseline = cross-hardware, same config):
-  Mean: 4.82e-02
+  Mean: 1.35e-01
 
 Off-diagonal (all pairs):
-  Count: 6
-  Mean: 2.82e+00
-  SNR (all): 58.44×
+  Count: 12
+  Mean: 3.80e+00
+  SNR (all): 28.16×
 
 Off-diagonal (meaningful pairs only):
-  Count: 6
-  Mean: 2.82e+00
-  SNR (meaningful): 58.44×
+  Count: 12
+  Mean: 3.80e+00
+  SNR (meaningful): 28.16×
 
 ================================================================================
 PAIRWISE SNR ANALYSIS
@@ -215,74 +298,91 @@ SNR = signal / noise_floor
     Signal: 4.88e-02, Noise: 4.95e-02
     SNR: 1.0× → NOT RELIABLY DETECTABLE
   awq vs gptq_marlin:
-    Signal: 4.21e+00, Noise: 4.59e-02
-    SNR: 91.7× → CLEARLY DETECTABLE
+    Signal: 5.55e+00, Noise: 5.27e-02
+    SNR: 105.2× → TRIVIALLY DETECTABLE
+  awq vs gptq:
+    Signal: 5.72e+00, Noise: 2.14e-01
+    SNR: 26.7× → CLEARLY DETECTABLE
   awq_marlin vs gptq_marlin:
-    Signal: 4.20e+00, Noise: 4.93e-02
-    SNR: 85.2× → CLEARLY DETECTABLE
+    Signal: 5.55e+00, Noise: 5.62e-02
+    SNR: 98.9× → CLEARLY DETECTABLE
+  awq_marlin vs gptq:
+    Signal: 5.72e+00, Noise: 2.17e-01
+    SNR: 26.3× → CLEARLY DETECTABLE
+  gptq_marlin vs gptq:
+    Signal: 2.28e-01, Noise: 2.21e-01
+    SNR: 1.0× → NOT RELIABLY DETECTABLE
 
 ----------------------------------------
 PAIRWISE SNR SUMMARY TABLE
 ----------------------------------------
 Pair                               Signal      Noise      SNR
 ------------------------------------------------------------
-awq_vs_gptq_marlin               4.21e+00   4.59e-02     91.7×
-awq_marlin_vs_gptq_marlin        4.20e+00   4.93e-02     85.2×
-awq_vs_awq_marlin                4.88e-02   4.95e-02      1.0×
+awq_vs_gptq_marlin               5.55e+00   5.27e-02   105.20×
+awq_marlin_vs_gptq_marlin        5.55e+00   5.62e-02    98.86×
+awq_vs_gptq                      5.72e+00   2.14e-01    26.73×
+awq_marlin_vs_gptq               5.72e+00   2.17e-01    26.32×
+gptq_marlin_vs_gptq              2.28e-01   2.21e-01     1.03×
+awq_vs_awq_marlin                4.88e-02   4.95e-02     0.99×
 
 ================================================================================
 CROSS-HARDWARE QUANTIZATION DETECTABILITY (DECODE)
 ================================================================================
 
 --- ref_0 ---
-                       awq   awq_marlin  gptq_marlin
-         awq     3.46e-02     1.26e-02     2.55e+00 
-  awq_marlin     4.33e-02     2.42e-02     2.56e+00 
- gptq_marlin     3.24e+00     3.23e+00     2.26e-02 
+                       awq   awq_marlin  gptq_marlin         gptq
+         awq     3.46e-02     1.26e-02     1.54e+00     1.52e+00 
+  awq_marlin     4.33e-02     2.42e-02     1.54e+00     1.53e+00 
+ gptq_marlin     2.14e+00     2.12e+00     1.26e-02     1.98e-01 
+        gptq     2.14e+00     2.12e+00     9.41e-02     1.56e-01 
 
 --- ref_1 ---
-                       awq   awq_marlin  gptq_marlin
-         awq     2.82e-02     4.43e-02     2.07e+00 
-  awq_marlin     1.98e-02     4.63e-02     2.06e+00 
- gptq_marlin     2.39e+00     2.38e+00     1.95e-02 
+                       awq   awq_marlin  gptq_marlin         gptq
+         awq     2.82e-02     4.43e-02     2.68e+00     2.67e+00 
+  awq_marlin     1.98e-02     4.63e-02     2.68e+00     2.68e+00 
+ gptq_marlin     1.38e+00     1.38e+00     2.65e-02     7.47e-02 
+        gptq     1.36e+00     1.36e+00     1.20e-01     1.24e-01 
 
 --- ref_2 ---
-                       awq   awq_marlin  gptq_marlin
-         awq     2.54e-02     2.19e-02     1.90e+00 
-  awq_marlin     6.72e-03     2.20e-02     1.89e+00 
- gptq_marlin     2.21e+00     2.24e+00     4.16e-02 
+                       awq   awq_marlin  gptq_marlin         gptq
+         awq     2.54e-02     2.19e-02     2.55e+00     2.56e+00 
+  awq_marlin     6.72e-03     2.20e-02     2.54e+00     2.55e+00 
+ gptq_marlin     1.59e+00     1.58e+00     2.90e-02     8.16e-02 
+        gptq     1.60e+00     1.59e+00     8.01e-02     1.21e-01 
 
 --- ref_3 ---
-                       awq   awq_marlin  gptq_marlin
-         awq     4.66e-02     5.01e-02     2.86e+00 
-  awq_marlin     4.30e-02     2.65e-02     2.86e+00 
- gptq_marlin     2.40e+00     2.39e+00     3.91e-02 
+                       awq   awq_marlin  gptq_marlin         gptq
+         awq     4.66e-02     5.01e-02     2.86e+00     2.91e+00 
+  awq_marlin     4.30e-02     2.65e-02     2.85e+00     2.89e+00 
+ gptq_marlin     2.76e+00     2.73e+00     2.50e-02     2.71e-01 
+        gptq     2.75e+00     2.72e+00     8.20e-02     2.99e-01 
 
 ================================================================================
 AGGREGATE (average across references):
   Rows = claimed config, Cols = verified config
 ================================================================================
-                       awq   awq_marlin  gptq_marlin
-         awq     3.37e-02     3.22e-02     2.34e+00 
-  awq_marlin     2.82e-02     2.97e-02     2.34e+00 
- gptq_marlin     2.56e+00     2.56e+00     3.07e-02 
+                       awq   awq_marlin  gptq_marlin         gptq
+         awq     3.37e-02     3.22e-02     2.41e+00     2.42e+00 
+  awq_marlin     2.82e-02     2.97e-02     2.40e+00     2.41e+00 
+ gptq_marlin     1.97e+00     1.95e+00     2.33e-02     1.56e-01 
+        gptq     1.96e+00     1.95e+00     9.40e-02     1.75e-01 
 
 ================================================================================
 SNR ANALYSIS
 ================================================================================
 
 Diagonal (baseline = cross-hardware, same config):
-  Mean: 3.14e-02
+  Mean: 6.54e-02
 
 Off-diagonal (all pairs):
-  Count: 6
-  Mean: 1.64e+00
-  SNR (all): 52.40×
+  Count: 12
+  Mean: 1.48e+00
+  SNR (all): 22.65×
 
 Off-diagonal (meaningful pairs only):
-  Count: 6
-  Mean: 1.64e+00
-  SNR (meaningful): 52.40×
+  Count: 12
+  Mean: 1.48e+00
+  SNR (meaningful): 22.65×
 
 ================================================================================
 PAIRWISE SNR ANALYSIS
@@ -295,28 +395,40 @@ SNR = signal / noise_floor
     Signal: 3.02e-02, Noise: 3.17e-02
     SNR: 1.0× → NOT RELIABLY DETECTABLE
   awq vs gptq_marlin:
-    Signal: 2.45e+00, Noise: 3.22e-02
-    SNR: 76.1× → CLEARLY DETECTABLE
+    Signal: 2.19e+00, Noise: 2.85e-02
+    SNR: 76.8× → CLEARLY DETECTABLE
+  awq vs gptq:
+    Signal: 2.19e+00, Noise: 1.04e-01
+    SNR: 21.0× → CLEARLY DETECTABLE
   awq_marlin vs gptq_marlin:
-    Signal: 2.45e+00, Noise: 3.02e-02
-    SNR: 81.1× → CLEARLY DETECTABLE
+    Signal: 2.18e+00, Noise: 2.65e-02
+    SNR: 82.2× → CLEARLY DETECTABLE
+  awq_marlin vs gptq:
+    Signal: 2.18e+00, Noise: 1.02e-01
+    SNR: 21.3× → CLEARLY DETECTABLE
+  gptq_marlin vs gptq:
+    Signal: 1.25e-01, Noise: 9.91e-02
+    SNR: 1.3× → NOT RELIABLY DETECTABLE
 
 ----------------------------------------
 PAIRWISE SNR SUMMARY TABLE
 ----------------------------------------
 Pair                               Signal      Noise      SNR
 ------------------------------------------------------------
-awq_marlin_vs_gptq_marlin        2.45e+00   3.02e-02     81.1×
-awq_vs_gptq_marlin               2.45e+00   3.22e-02     76.1×
-awq_vs_awq_marlin                3.02e-02   3.17e-02      1.0×
+awq_marlin_vs_gptq_marlin        2.18e+00   2.65e-02    82.16×
+awq_vs_gptq_marlin               2.19e+00   2.85e-02    76.80×
+awq_marlin_vs_gptq               2.18e+00   1.02e-01    21.30×
+awq_vs_gptq                      2.19e+00   1.04e-01    20.99×
+gptq_marlin_vs_gptq              1.25e-01   9.91e-02     1.26×
+awq_vs_awq_marlin                3.02e-02   3.17e-02     0.95×
 
 ================================================================================
 PREFILL vs DECODE COMPARISON
 ================================================================================
-Prefill SNR (meaningful): 58.44×
-Decode SNR (meaningful):  52.40×
+Prefill SNR (meaningful): 28.16×
+Decode SNR (meaningful):  22.65×
 
-✓ Results saved to: /workspace/experiments/quant_verify_20251130_094250.json
+✓ Results saved to: /workspace/experiments/quant_verify_20251130_215827.json
 
 ================================================================================
 EXPERIMENT COMPLETE
