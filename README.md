@@ -12,7 +12,7 @@ https://www.alphaxiv.org/abs/2507.15916
 ## Scenario and assumptions
 
 In future AI governance scenarios, for example international treaties, datacenters may be required to report all ML computations performed on their hardware.
-To monitor and verify an (inference) server's outputs, a third party could use a security-hardened "verification cluster". The untrusted servers are required to cryptographically commit and log their ML outputs (could be AI-generated data and hashes of some activations/attn key vectors, for example). We assume that these cryptographic commitments verify the timing of an ML workload, for example via a challenge-response protocol. To verify cryptographic commitments against the claimed ML outputs they supposedly correspond to, the verification cluster reproduces a random selection of the untrusted record entries. This reproduction serves verificatio subgoal 1A. 
+To monitor and verify an (inference) server's outputs, a third party could use a security-hardened "verification cluster". The untrusted servers are required to cryptographically commit and log their ML outputs (could be AI-generated data and hashes of some activations/attn key vectors, for example). We assume that these cryptographic commitments verify the timing of an ML workload, for example via a challenge-response protocol. To verify cryptographic commitments against the claimed ML outputs they supposedly correspond to, the verification cluster reproduces a random selection of the untrusted record entries. This reproduction serves verification subgoal 1A. 
 
 But how to ensure comprehensive reporting (subgoal 2A)?
 
@@ -20,7 +20,7 @@ But how to ensure comprehensive reporting (subgoal 2A)?
 Even if timing verification can ensure that there are no "idle bubbles" in the untrusted server, a malicious host could process hidden work in parallel and "off the record". This might be hidden from timing verification if the host can use more efficient execution than declared, matching the expected timing while freeing parallel capacity that goes unmonitored.
 
 ## The solution (?)
-ML workloads are "numerically sensitive" to the exact computational graph through a processor. Non-associative operations and accumulation leave a (practically) unique "compounded rounding error" for each graph. This is oftern refered to as "non-determinism" in ML. However, in this work, I make a critical distinction:
+ML workloads are "numerically sensitive" to the exact computational graph through a processor. Non-associative operations and accumulation leave a (practically) unique "compounded rounding error" for each graph. This is often referred to as "non-determinism" in ML. However, in this work, I make a critical distinction:
 
 **GPU computations exhibit two types of "rounding error":**
 
