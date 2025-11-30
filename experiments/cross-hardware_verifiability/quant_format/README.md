@@ -16,11 +16,6 @@ Off-diagonal stats:
   Mean: 2.81e+00
   Range: [3.88e-02, 4.24e+00]
 
-Kernel equivalence classes:
-  Class 1: ['awq']
-  Class 2: ['awq_marlin']
-  Class 3: ['gptq_marlin']
-
 
 DECODE
                        awq   awq_marlin  gptq_marlin
