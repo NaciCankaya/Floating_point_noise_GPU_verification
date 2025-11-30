@@ -5,9 +5,7 @@ I do not mean FP4 vs. FP8 or so. That would be too easy to detect in numerics. S
 ## Results (within identical hardware)
 
 Within hardware (H100):
-================================================================================
-WITHIN-HARDWARE QUANTIZATION EFFECTS (PREFILL)
-================================================================================
+
                        awq   awq_marlin  gptq_marlin
          awq     0.00e+00     3.88e-02     4.23e+00
   awq_marlin     3.88e-02     0.00e+00     4.24e+00
@@ -23,9 +21,8 @@ Kernel equivalence classes:
   Class 3: ['gptq_marlin']
 
 
-================================================================================
 WITHIN-HARDWARE QUANTIZATION EFFECTS (DECODE)
-================================================================================
+
 Logprobs (L2 distance):
                        awq   awq_marlin  gptq_marlin
          awq     0.00e+00     2.07e-02     6.18e+00
