@@ -34,10 +34,4 @@ ML workloads are "numerically sensitive" to the exact computational graph throug
 **If statistical noise is low (or can be characterized), systematic deviations become detectable and attributable to specific (inference) setups. ML workloads computed in parallel to the recorded ML work (we verify timing and allow no idling) would interfere with the numerics of the recorded/comitted activations/key vectors**
 At least this is the result I was hoping for with these experiments. Currently, this repo contains results from my first few experimental runs, and the results are promising so far.
 
-## Experiments and Results
-
-For more information on results and their implications, check out this post:
-
-https://docs.google.com/document/d/1-HhQYaEQiz4-cMBblJc3kbXR5Ncp519COoEAVtyT4-Y/edit?usp=sharing
-
-**Last Updated:** November 2025
+**Last Updated:** December 2025
