@@ -1,5 +1,9 @@
 # Inference Verification via Floating-Point Forensics
 
+## Overview and Discussion on Substack
+https://nacicankaya.substack.com/p/catching-misreporting-about-ml-hardware
+
+
 ## Context
 Verification of an AI datacenter's ML computations (accurate and comprehensive reporting)
 
