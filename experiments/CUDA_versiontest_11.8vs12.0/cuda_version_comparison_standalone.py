@@ -32,12 +32,16 @@ from pathlib import Path
 MODEL_NAME    = "Qwen/Qwen2.5-7B-Instruct"
 CACHE_DIR     = "/workspace/huggingface_cache"
 OUTPUT_DIR    = "/workspace/experiments"
-TORCH_VERSION = "2.8.0"
 DEFAULT_V1    = "cu128"
 DEFAULT_V2    = "cu129"
-PROMPT_FILE   = "dummytext.txt"
 REPETITIONS   = 5
 SAMPLE_LAYERS = [1, 2, 3, 4, 7, 10, 14, 18, 22]  # last layer appended automatically
+
+# Prompt file search order (first hit wins)
+PROMPT_SEARCH = [
+    Path(__file__).parent / "dummytext.txt",   # next to this script
+    Path("/workspace/dummytext.txt"),           # workspace root
+]
 
 FALLBACK_PROMPT = (
     "The development of large language models has fundamentally transformed "
@@ -55,21 +59,26 @@ FALLBACK_PROMPT = (
 
 def install_torch(cuda_tag: str):
     url = f"https://download.pytorch.org/whl/{cuda_tag}"
+    # No version pin: let pip resolve the latest torch for this CUDA tag.
     # torchvision must be reinstalled alongside torch to stay ABI-compatible;
     # transformers imports it via image_utils even for text-only models.
-    pkgs = [f"torch=={TORCH_VERSION}", "torchvision"]
+    pkgs = ["torch", "torchvision"]
     cmd = [sys.executable, "-m", "pip", "install", "-q"] + pkgs + ["--index-url", url]
-    print(f"\n  pip install torch=={TORCH_VERSION} torchvision --index-url .../{cuda_tag}")
+    print(f"\n  pip install torch torchvision --index-url .../{cuda_tag}")
     r = subprocess.run(cmd)
     if r.returncode != 0:
         raise RuntimeError(f"pip install failed for {cuda_tag}")
+    # Report what was actually installed
+    probe = subprocess.run([sys.executable, "-c", "import torch; print(torch.__version__)"],
+                           capture_output=True, text=True)
+    print(f"  Installed: {probe.stdout.strip()}")
 
 # ============================================================
 # COLLECTION  (torch imported lazily — must run in a fresh subprocess
 #              after install_torch() has completed)
 # ============================================================
 
-def run_collection(output_dir: str) -> str:
+def run_collection(output_dir: str, prompt_file: str = "") -> str:
     os.environ.setdefault("HF_HOME", CACHE_DIR)
     os.environ.setdefault("TRANSFORMERS_CACHE", CACHE_DIR)
 
@@ -94,12 +103,17 @@ def run_collection(output_dir: str) -> str:
         attn_implementation="eager",
     )
 
-    try:
-        prompt = Path(PROMPT_FILE).read_text(encoding="utf-8").strip()
-        print(f"  Prompt: {PROMPT_FILE}")
-    except FileNotFoundError:
+    # Prompt: explicit arg → search list → fallback
+    prompt = None
+    search = ([Path(prompt_file)] if prompt_file else []) + list(PROMPT_SEARCH)
+    for p in search:
+        if Path(p).exists():
+            prompt = Path(p).read_text(encoding="utf-8").strip()
+            print(f"  Prompt: {p}")
+            break
+    if prompt is None:
         prompt = FALLBACK_PROMPT
-        print("  Prompt: fallback text")
+        print("  Prompt: fallback text (dummytext.txt not found)")
 
     prompt_tokens = len(tokenizer.encode(prompt))
     num_layers = model.config.num_hidden_layers
@@ -311,28 +325,32 @@ def _save_comparison(data: dict, cuda1: str, cuda2: str, output_dir: str):
 # ORCHESTRATOR
 # ============================================================
 
-def orchestrate(v1: str, v2: str, output_dir: str):
+def orchestrate(v1: str, v2: str, output_dir: str, prompt_file: str = ""):
     json_files = []
 
     for tag in (v1, v2):
         print(f"\n{'='*60}")
-        print(f"INSTALLING torch=={TORCH_VERSION} ({tag})")
+        print(f"INSTALLING torch ({tag})")
         print("=" * 60)
         install_torch(tag)
 
         print(f"\nCOLLECTING activations ({tag})")
+        t_before = datetime.now().timestamp()
         cmd = [sys.executable, __file__, "--collect", "--out", output_dir]
-        result = subprocess.run(cmd, capture_output=False, text=True)
+        if prompt_file:
+            cmd += ["--prompt", prompt_file]
+        result = subprocess.run(cmd)
         if result.returncode != 0:
             raise RuntimeError(f"Collection subprocess failed for {tag}")
 
-        # Find the JSON just written (most recent matching this tag)
+        # Find the JSON written during this collection run (by mtime, not filename)
         candidates = sorted(
-            Path(output_dir).glob(f"*_{tag}_*.json"),
+            [p for p in Path(output_dir).glob("*.json")
+             if "comparison" not in p.name and p.stat().st_mtime >= t_before],
             key=lambda p: p.stat().st_mtime,
         )
         if not candidates:
-            raise RuntimeError(f"No JSON found for {tag} in {output_dir}")
+            raise RuntimeError(f"No JSON written after collection for {tag} in {output_dir}")
         json_files.append(str(candidates[-1]))
         print(f"  -> {candidates[-1].name}")
 
@@ -352,17 +370,18 @@ def main():
                    help="Collect activations with currently installed torch and save JSON")
     p.add_argument("--compare",  nargs=2, metavar=("FILE1", "FILE2"),
                    help="Compare two previously collected JSON files")
-    p.add_argument("--v1",  default=DEFAULT_V1, help=f"First CUDA tag  (default: {DEFAULT_V1})")
-    p.add_argument("--v2",  default=DEFAULT_V2, help=f"Second CUDA tag (default: {DEFAULT_V2})")
-    p.add_argument("--out", default=OUTPUT_DIR, help=f"Output directory (default: {OUTPUT_DIR})")
+    p.add_argument("--v1",     default=DEFAULT_V1,  help=f"First CUDA tag  (default: {DEFAULT_V1})")
+    p.add_argument("--v2",     default=DEFAULT_V2,  help=f"Second CUDA tag (default: {DEFAULT_V2})")
+    p.add_argument("--out",    default=OUTPUT_DIR,  help=f"Output directory (default: {OUTPUT_DIR})")
+    p.add_argument("--prompt", default="",          help="Path to prompt text file (plain text)")
     args = p.parse_args()
 
     if args.collect:
-        run_collection(args.out)
+        run_collection(args.out, args.prompt)
     elif args.compare:
         compare_cuda_versions(args.compare[0], args.compare[1], args.out)
     else:
-        orchestrate(args.v1, args.v2, args.out)
+        orchestrate(args.v1, args.v2, args.out, args.prompt)
 
 
 if __name__ == "__main__":
