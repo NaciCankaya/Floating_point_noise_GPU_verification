@@ -55,9 +55,11 @@ FALLBACK_PROMPT = (
 
 def install_torch(cuda_tag: str):
     url = f"https://download.pytorch.org/whl/{cuda_tag}"
-    pkg = f"torch=={TORCH_VERSION}"
-    cmd = [sys.executable, "-m", "pip", "install", "-q", pkg, "--index-url", url]
-    print(f"\n  pip install {pkg} --index-url .../{cuda_tag}")
+    # torchvision must be reinstalled alongside torch to stay ABI-compatible;
+    # transformers imports it via image_utils even for text-only models.
+    pkgs = [f"torch=={TORCH_VERSION}", "torchvision"]
+    cmd = [sys.executable, "-m", "pip", "install", "-q"] + pkgs + ["--index-url", url]
+    print(f"\n  pip install torch=={TORCH_VERSION} torchvision --index-url .../{cuda_tag}")
     r = subprocess.run(cmd)
     if r.returncode != 0:
         raise RuntimeError(f"pip install failed for {cuda_tag}")
